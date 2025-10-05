@@ -449,6 +449,7 @@ async function initializeApp() {
   populateBlockFilter();
   await generateCharacters();
   setupEventListeners();
+  initFavoritesEvents(); // Initialiser les favoris
   displayCharacters(allCharacters);
   updateStats(allCharacters.length, allCharacters.length);
   loadingSpinner.classList.add("hidden");
@@ -748,16 +749,49 @@ function createCharacterCard(charData, index) {
     .replace(/</g, "&lt;")
     .replace(/>/g, "&gt;");
 
+  // Échapper les caractères pour les attributs data
+  const escapedName = charData.name
+    .replace(/'/g, "\\'")
+    .replace(/"/g, "&quot;");
+
   card.innerHTML = `
+        <button
+          class="favorite-btn ${
+            isFavorite(charData.codePoint) ? "is-favorite" : ""
+          }"
+          data-codepoint="${charData.codePoint}"
+          data-label-add="Ajouter ${escapedName} aux favoris"
+          data-label-remove="Retirer ${escapedName} des favoris"
+          aria-label="${
+            isFavorite(charData.codePoint)
+              ? `Retirer ${escapedName} des favoris`
+              : `Ajouter ${escapedName} aux favoris`
+          }"
+          title="${
+            isFavorite(charData.codePoint)
+              ? "Retirer des favoris"
+              : "Ajouter aux favoris"
+          }"
+          type="button"
+        >${isFavorite(charData.codePoint) ? "⭐" : "☆"}</button>
         <div class="char-display" aria-hidden="true">${displayChar}</div>
         <div class="char-info" aria-hidden="true">
             <div class="char-code">U+${charData.hex}</div>
             <div class="char-code" style="color: var(--secondary-color-on-dark);">${escapedHtmlEntity}</div>
-            <div class="char-name" title="${charData.name}">${charData.name}</div>
+            <div class="char-name" title="${charData.name}">${
+    charData.name
+  }</div>
         </div>
     `;
 
+  // Événement pour copier le caractère
   card.addEventListener("click", () => copyToClipboard(charData));
+
+  // Événement pour le bouton favori (empêcher la propagation)
+  const favoriteBtn = card.querySelector(".favorite-btn");
+  if (favoriteBtn) {
+    favoriteBtn.addEventListener("click", (e) => toggleFavorite(e, charData));
+  }
 
   return card;
 }
@@ -941,4 +975,186 @@ function updateStats(displayed, total) {
   statsDisplay.textContent = `${displayed.toLocaleString("fr-FR")} caractère${
     displayed > 1 ? "s" : ""
   } affiché${displayed > 1 ? "s" : ""} sur ${total.toLocaleString("fr-FR")}`;
+}
+
+// ===== GESTION DES FAVORIS =====
+
+const FAVORITES_KEY = "uniclaude-favorites";
+let favorites = [];
+
+// Charger les favoris depuis localStorage
+function loadFavorites() {
+  try {
+    const stored = localStorage.getItem(FAVORITES_KEY);
+    favorites = stored ? JSON.parse(stored) : [];
+    renderFavorites();
+  } catch (error) {
+    console.error("Erreur lors du chargement des favoris:", error);
+    favorites = [];
+  }
+}
+
+// Sauvegarder les favoris dans localStorage
+function saveFavorites() {
+  try {
+    localStorage.setItem(FAVORITES_KEY, JSON.stringify(favorites));
+  } catch (error) {
+    console.error("Erreur lors de la sauvegarde des favoris:", error);
+  }
+}
+
+// Vérifier si un caractère est en favori
+function isFavorite(codePoint) {
+  return favorites.some((fav) => fav.codePoint === codePoint);
+}
+
+// Ajouter un caractère aux favoris
+function addToFavorites(charData) {
+  if (!isFavorite(charData.codePoint)) {
+    favorites.unshift({
+      char: charData.char,
+      codePoint: charData.codePoint,
+      hex: charData.hex,
+      name: charData.name,
+      htmlEntity: charData.htmlEntity,
+    });
+    saveFavorites();
+    renderFavorites();
+    updateFavoriteButtons();
+    return true;
+  }
+  return false;
+}
+
+// Retirer un caractère des favoris
+function removeFromFavorites(codePoint) {
+  favorites = favorites.filter((fav) => fav.codePoint !== codePoint);
+  saveFavorites();
+  renderFavorites();
+  updateFavoriteButtons();
+}
+
+// Effacer tous les favoris
+function clearAllFavorites() {
+  if (favorites.length === 0) return;
+
+  if (confirm("Êtes-vous sûr de vouloir effacer tous vos favoris ?")) {
+    favorites = [];
+    saveFavorites();
+    renderFavorites();
+    updateFavoriteButtons();
+  }
+}
+
+// Afficher les favoris
+function renderFavorites() {
+  const favoritesSection = document.getElementById("favoritesSection");
+  const favoritesGrid = document.getElementById("favoritesGrid");
+  const favoritesEmpty = document.getElementById("favoritesEmpty");
+
+  if (favorites.length === 0) {
+    favoritesSection.classList.add("hidden");
+    favoritesEmpty.style.display = "block";
+    favoritesGrid.innerHTML = "";
+    return;
+  }
+
+  favoritesSection.classList.remove("hidden");
+  favoritesEmpty.style.display = "none";
+
+  favoritesGrid.innerHTML = favorites
+    .map((fav) => {
+      // Vérifier si c'est un espace
+      const isSpace =
+        fav.name.toLowerCase().includes("space") ||
+        (fav.codePoint >= 0x2000 && fav.codePoint <= 0x200a) ||
+        fav.codePoint === 0x0020 ||
+        fav.codePoint === 0x00a0 ||
+        fav.codePoint === 0x202f ||
+        fav.codePoint === 0x205f ||
+        fav.codePoint === 0x3000;
+
+      // Afficher un symbole visible pour les espaces
+      const displayChar = isSpace
+        ? `<span aria-hidden="true" style="background: rgba(99, 102, 241, 0.2); padding: 0.5rem 1rem; border: 2px dashed var(--primary-color); border-radius: 0.25rem; font-size: 2rem;">␣</span>`
+        : fav.char;
+
+      // Échapper l'entité HTML pour affichage
+      const escapedHtmlEntity = fav.htmlEntity
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;");
+
+      // Échapper les attributs
+      const escapedName = fav.name.replace(/'/g, "\\'").replace(/"/g, "&quot;");
+
+      return `
+    <button
+      class="favorite-item"
+      onclick="copyToClipboard({char: '${fav.char.replace(
+        /'/g,
+        "\\'"
+      )}', name: '${escapedName}'})"
+      title="Cliquer pour copier ${fav.name}"
+      role="listitem"
+    >
+      <div class="favorite-char">${displayChar}</div>
+      <div class="favorite-info">
+        <div class="favorite-code">U+${fav.hex}</div>
+        <div class="favorite-code" style="color: var(--secondary-color-on-dark);">${escapedHtmlEntity}</div>
+        <div class="favorite-name" title="${fav.name}">${fav.name}</div>
+      </div>
+      <button
+        class="remove-favorite"
+        onclick="event.stopPropagation(); removeFromFavorites(${fav.codePoint})"
+        aria-label="Retirer ${fav.name} des favoris"
+        title="Retirer des favoris"
+      >×</button>
+    </button>
+  `;
+    })
+    .join("");
+}
+
+// Mettre à jour l'état des boutons étoile
+function updateFavoriteButtons() {
+  document.querySelectorAll(".favorite-btn").forEach((btn) => {
+    const codePoint = parseInt(btn.dataset.codepoint);
+    if (isFavorite(codePoint)) {
+      btn.classList.add("is-favorite");
+      btn.setAttribute("aria-label", btn.dataset.labelRemove);
+      btn.textContent = "⭐";
+    } else {
+      btn.classList.remove("is-favorite");
+      btn.setAttribute("aria-label", btn.dataset.labelAdd);
+      btn.textContent = "☆";
+    }
+  });
+}
+
+// Basculer l'état favori d'un caractère
+function toggleFavorite(event, charData) {
+  event.stopPropagation(); // Empêcher la copie du caractère
+
+  const btn = event.currentTarget;
+
+  if (isFavorite(charData.codePoint)) {
+    removeFromFavorites(charData.codePoint);
+  } else {
+    addToFavorites(charData);
+    // Animation
+    btn.classList.add("adding");
+    setTimeout(() => btn.classList.remove("adding"), 400);
+  }
+}
+
+// Initialiser les événements des favoris
+function initFavoritesEvents() {
+  const clearBtn = document.getElementById("clearFavorites");
+  if (clearBtn) {
+    clearBtn.addEventListener("click", clearAllFavorites);
+  }
+
+  // Charger les favoris au démarrage
+  loadFavorites();
 }

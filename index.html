@@ -64,6 +64,33 @@
         class="characters-section"
         aria-label="Grille des caractères Unicode"
       >
+        <!-- Section des favoris -->
+        <div
+          id="favoritesSection"
+          class="favorites-section hidden"
+          role="region"
+          aria-label="Caractères favoris"
+        >
+          <div class="favorites-header">
+            <h2>⭐ Favoris</h2>
+            <button
+              id="clearFavorites"
+              class="clear-favorites-btn"
+              aria-label="Effacer tous les favoris"
+              title="Effacer tous les favoris"
+            >
+              Tout effacer
+            </button>
+          </div>
+          <div id="favoritesGrid" class="favorites-grid" role="list">
+            <!-- Les favoris seront générés ici -->
+          </div>
+          <p class="favorites-empty" id="favoritesEmpty">
+            Aucun favori pour le moment. Cliquez sur ⭐ pour ajouter des
+            caractères.
+          </p>
+        </div>
+
         <div class="keyboard-help" id="keyboardHelp">
           <p>
             <strong>Navigation au clavier :</strong>
