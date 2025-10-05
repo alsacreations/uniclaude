@@ -595,6 +595,7 @@ main {
   background: var(--success-color);
   color: white;
   padding: 1rem 1.5rem;
+  border: 2px solid var(--color-white);
   border-radius: 0.75rem;
   box-shadow: var(--shadow-lg);
   display: flex;

@@ -120,9 +120,7 @@
   --border-color: var(--color-slate-600);
 
   /* États */
-  --success-color: var(
-    --color-emerald-400
-  ); /* Optimisé pour contraste WCAG AAA (7.18:1) */
+  --success-color: var(--color-green-500);
 
   /* Ombres (utilisent les primitives) */
   --shadow: var(--shadow-sm);
