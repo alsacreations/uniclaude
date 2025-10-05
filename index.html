@@ -7,23 +7,45 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <header>
+    <a href="#main" class="skip-link">Aller au contenu principal</a>
+
+    <header role="banner">
       <h1>🦄 UniClaude</h1>
       <p class="subtitle">
         Explorez et copiez plus de 149 000 caractères Unicode
       </p>
     </header>
 
-    <main>
-      <section class="search-section">
+    <main
+      role="main"
+      id="main"
+      tabindex="-1"
+      role="main"
+      id="main"
+      tabindex="-1"
+    >
+      <section
+        class="search-section"
+        role="search"
+        aria-label="Recherche de caractères Unicode"
+      >
         <div class="search-container">
+          <label for="searchInput" class="visually-hidden"
+            >Rechercher un caractère</label
+          >
           <input
             type="text"
             id="searchInput"
             placeholder="Rechercher par caractère, nom, code hexa, entité HTML..."
             autocomplete="off"
           />
-          <button id="clearSearch" class="clear-btn" title="Effacer">×</button>
+          <button
+            id="clearSearch"
+            class="clear-btn"
+            aria-label="Effacer la recherche"
+          >
+            ×
+          </button>
         </div>
 
         <div class="filters">
@@ -33,32 +55,58 @@
           </select>
         </div>
 
-        <div class="stats">
+        <div class="stats" role="status" aria-live="polite">
           <span id="statsDisplay">Chargement...</span>
         </div>
       </section>
 
-      <section class="characters-section">
-        <div id="charactersGrid" class="characters-grid">
+      <section
+        class="characters-section"
+        aria-label="Grille des caractères Unicode"
+      >
+        <div class="keyboard-help" id="keyboardHelp">
+          <p>
+            <strong>Navigation au clavier :</strong>
+            Utilisez les <kbd>flèches</kbd> pour naviguer, <kbd>Entrée</kbd> ou
+            <kbd>Espace</kbd> pour copier un caractère. <kbd>Home</kbd> et
+            <kbd>End</kbd> pour aller au début/fin.
+          </p>
+        </div>
+        <div
+          id="charactersGrid"
+          class="characters-grid"
+          role="grid"
+          aria-describedby="keyboardHelp"
+        >
           <!-- Les caractères seront générés ici -->
         </div>
       </section>
 
-      <div id="loadingSpinner" class="loading">
-        <div class="spinner"></div>
+      <div id="loadingSpinner" class="loading" role="status" aria-live="polite">
+        <div class="spinner" aria-hidden="true"></div>
         <p>Génération des caractères Unicode...</p>
       </div>
     </main>
 
-    <div id="copyNotification" class="copy-notification">
-      <span class="copied-char"></span>
+    <div
+      id="copyNotification"
+      class="copy-notification"
+      role="status"
+      aria-live="polite"
+      aria-atomic="true"
+    >
+      <span class="copied-char" aria-hidden="true"></span>
       <span class="copied-text">Copié !</span>
     </div>
 
-    <footer>
+    <footer role="contentinfo" role="contentinfo">
       <p>
         Données Unicode version 15.1 •
-        <a href="https://unicode.org" target="_blank" rel="noopener"
+        <a
+          href="https://unicode.org"
+          target="_blank"
+          rel="noopener"
+          aria-label="Unicode.org (ouvre une nouvelle fenêtre)"
           >Unicode.org</a
         >
       </p>

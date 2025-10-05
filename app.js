@@ -697,8 +697,8 @@ function displayCharacters(characters) {
   const displayLimit = 500;
   const charsToDisplay = characters.slice(0, displayLimit);
 
-  charsToDisplay.forEach((charData) => {
-    const card = createCharacterCard(charData);
+  charsToDisplay.forEach((charData, index) => {
+    const card = createCharacterCard(charData, index);
     charactersGrid.appendChild(card);
   });
 
@@ -711,11 +711,20 @@ function displayCharacters(characters) {
   }
 }
 
-function createCharacterCard(charData) {
-  const card = document.createElement("div");
+function createCharacterCard(charData, index) {
+  const card = document.createElement("button");
   card.className = "char-card";
   card.setAttribute("data-char", charData.char);
   card.setAttribute("data-codepoint", charData.codePoint);
+  card.setAttribute("data-index", index);
+  card.setAttribute("type", "button");
+
+  // Seul le premier bouton est tabbable, les autres utilisent la navigation par flèches
+  card.setAttribute("tabindex", index === 0 ? "0" : "-1");
+
+  // Label accessible pour le bouton
+  const accessibleLabel = `Copier ${charData.name}, code ${charData.hex}, entité ${charData.htmlEntity}`;
+  card.setAttribute("aria-label", accessibleLabel);
 
   // Pour les espaces, afficher un symbole visible
   let displayChar = charData.char;
@@ -730,7 +739,7 @@ function createCharacterCard(charData) {
 
   if (isSpace) {
     // Afficher un cadre avec "␣" (symbole open box U+2423) pour visualiser l'espace
-    displayChar = `<span style="background: rgba(99, 102, 241, 0.2); padding: 0.5rem 1rem; border: 2px dashed var(--primary-color); border-radius: 0.25rem; font-size: 2rem;">␣</span>`;
+    displayChar = `<span aria-hidden="true" style="background: rgba(99, 102, 241, 0.2); padding: 0.5rem 1rem; border: 2px dashed var(--primary-color); border-radius: 0.25rem; font-size: 2rem;">␣</span>`;
   }
 
   // Échapper l'entité HTML pour qu'elle s'affiche telle quelle
@@ -740,10 +749,10 @@ function createCharacterCard(charData) {
     .replace(/>/g, "&gt;");
 
   card.innerHTML = `
-        <div class="char-display">${displayChar}</div>
-        <div class="char-info">
+        <div class="char-display" aria-hidden="true">${displayChar}</div>
+        <div class="char-info" aria-hidden="true">
             <div class="char-code">U+${charData.hex}</div>
-            <div class="char-code" style="color: var(--secondary-color);">${escapedHtmlEntity}</div>
+            <div class="char-code" style="color: var(--secondary-color-on-dark);">${escapedHtmlEntity}</div>
             <div class="char-name" title="${charData.name}">${charData.name}</div>
         </div>
     `;
@@ -802,6 +811,76 @@ function setupEventListeners() {
 
   searchInput.addEventListener("input", (e) => {
     clearSearchBtn.classList.toggle("visible", e.target.value.length > 0);
+  });
+
+  // Navigation au clavier dans la grille (flèches)
+  setupGridNavigation();
+}
+
+// ===== Navigation par flèches dans la grille =====
+function setupGridNavigation() {
+  charactersGrid.addEventListener("keydown", (e) => {
+    // Ne gérer que si on est sur un bouton de caractère
+    if (!e.target.classList.contains("char-card")) return;
+
+    const cards = Array.from(
+      charactersGrid.querySelectorAll(".char-card[data-index]")
+    );
+    const currentIndex = parseInt(e.target.getAttribute("data-index"));
+    let targetIndex = currentIndex;
+
+    // Calculer le nombre de colonnes (approximatif basé sur la largeur)
+    const gridComputedStyle = window.getComputedStyle(charactersGrid);
+    const gridColumnCount =
+      gridComputedStyle.gridTemplateColumns.split(" ").length;
+
+    switch (e.key) {
+      case "ArrowRight":
+        e.preventDefault();
+        targetIndex = Math.min(currentIndex + 1, cards.length - 1);
+        break;
+
+      case "ArrowLeft":
+        e.preventDefault();
+        targetIndex = Math.max(currentIndex - 1, 0);
+        break;
+
+      case "ArrowDown":
+        e.preventDefault();
+        targetIndex = Math.min(
+          currentIndex + gridColumnCount,
+          cards.length - 1
+        );
+        break;
+
+      case "ArrowUp":
+        e.preventDefault();
+        targetIndex = Math.max(currentIndex - gridColumnCount, 0);
+        break;
+
+      case "Home":
+        e.preventDefault();
+        targetIndex = 0;
+        break;
+
+      case "End":
+        e.preventDefault();
+        targetIndex = cards.length - 1;
+        break;
+
+      default:
+        return; // Ne rien faire pour les autres touches
+    }
+
+    // Déplacer le focus et mettre à jour les tabindex
+    if (targetIndex !== currentIndex && cards[targetIndex]) {
+      // Retirer le tabindex de l'élément actuel
+      e.target.setAttribute("tabindex", "-1");
+
+      // Ajouter le tabindex au nouvel élément et focus
+      cards[targetIndex].setAttribute("tabindex", "0");
+      cards[targetIndex].focus();
+    }
   });
 }
 
