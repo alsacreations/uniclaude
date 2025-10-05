@@ -631,13 +631,14 @@ main {
 footer {
   text-align: center;
   padding: var(--spacing-m);
+  background-color: var(--color-gray-900);
   color: var(--text-muted);
   font-size: var(--text-14);
 }
 
 footer a {
-  color: var(--primary-color);
-  text-decoration: none;
+  color: currentColor;
+  text-decoration: underline;
   transition: color 0.2s;
 }
 
