@@ -91,4 +91,40 @@
   --focus-ring-color: AccentColor;
   --focus-ring-width: 2px;
   --focus-ring-offset: 2px;
+
+  /* ===== Tokens spécifiques UniClaude ===== */
+
+  /* Couleurs principales */
+  --primary-color: var(--color-indigo-500);
+  --primary-dark: var(--color-indigo-600);
+  --primary-color-on-dark: var(
+    --color-indigo-400
+  ); /* Optimisé pour contraste WCAG AA (5.78:1) */
+  --secondary-color: var(--color-violet-500);
+  --secondary-color-on-dark: var(
+    --color-violet-400
+  ); /* Optimisé pour contraste WCAG AA (6.10:1) */
+
+  /* Surfaces et arrière-plans */
+  --bg-color: var(--color-slate-900);
+  --bg-light: var(--color-slate-800);
+  --bg-card: var(--color-slate-700);
+
+  /* Texte */
+  --text-color: var(--color-slate-100);
+  --text-muted: var(
+    --color-slate-300
+  ); /* Optimisé pour contraste WCAG AA (10.15:1) */
+
+  /* Bordures */
+  --border-color: var(--color-slate-600);
+
+  /* États */
+  --success-color: var(
+    --color-emerald-400
+  ); /* Optimisé pour contraste WCAG AAA (7.18:1) */
+
+  /* Ombres (utilisent les primitives) */
+  --shadow: var(--shadow-sm);
+  --shadow-lg: var(--shadow-lg);
 }
