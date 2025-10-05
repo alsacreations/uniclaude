@@ -30,6 +30,7 @@ const UNICODE_BLOCKS = [
   { name: "Tibétain", start: 0x0f00, end: 0x0fff },
   { name: "Géorgien", start: 0x10a0, end: 0x10ff },
   { name: "Hangul Jamo", start: 0x1100, end: 0x11ff },
+  { name: "Runique", start: 0x16a0, end: 0x16ff },
   { name: "Ponctuation générale", start: 0x2000, end: 0x206f },
   { name: "Exposants et indices", start: 0x2070, end: 0x209f },
   { name: "Symboles monétaires", start: 0x20a0, end: 0x20cf },
@@ -426,6 +427,58 @@ const CHARACTER_NAMES = {
   0x216f: "ROMAN NUMERAL ONE THOUSAND",
 };
 
+// ===== Blocs populaires pour l'affichage initial =====
+const POPULAR_BLOCKS = [
+  {
+    name: "Flèches",
+    displayName: "Arrows",
+    blockName: "Flèches",
+    count: 8,
+  },
+  {
+    name: "Emoticons",
+    displayName: "Emoticons",
+    blockName: "Emojis - Emoticons",
+    count: 8,
+  },
+  {
+    name: "Symboles et pictogrammes divers",
+    displayName: "Miscellaneous Symbols and Pictographs",
+    blockName: "Emojis - Symboles et pictogrammes divers",
+    count: 8,
+  },
+  {
+    name: "Latin de base",
+    displayName: "Basic Latin",
+    blockName: "Latin de base",
+    count: 8,
+  },
+  {
+    name: "Grec et copte",
+    displayName: "Greek and Coptic",
+    blockName: "Grec et copte",
+    count: 8,
+  },
+  {
+    name: "Cyrillique",
+    displayName: "Cyrillic",
+    blockName: "Cyrillique",
+    count: 8,
+  },
+  {
+    name: "Runique",
+    displayName: "Runic",
+    blockName: "Runique",
+    count: 8,
+  },
+  {
+    name: "Symboles monétaires",
+    displayName: "Currency Symbols",
+    blockName: "Symboles monétaires",
+    count: 8,
+  },
+];
+
 // ===== État de l'application =====
 let allCharacters = [];
 let filteredCharacters = [];
@@ -457,9 +510,8 @@ async function initializeApp() {
   setupEventListeners();
   initFavoritesEvents(); // Initialiser les favoris
 
-  // Afficher 100 caractères aléatoires au démarrage
-  const randomChars = getRandomCharacters(allCharacters, 100);
-  displayCharacters(randomChars, true); // true = mode aléatoire
+  // Afficher les blocs populaires au démarrage
+  displayPopularBlocks();
 
   // Afficher le nombre total de caractères dans le footer
   updateTotalCharsCount(allCharacters.length);
@@ -530,6 +582,7 @@ async function generateCharacters() {
             hex: hexCode,
             decimal: codePoint,
             block: block.name,
+            blockName: block.name, // Ajout pour correspondre avec POPULAR_BLOCKS
             name: charName,
             htmlEntity: htmlEntity,
             emojiGroup: emojiInfo?.group || null,
@@ -757,6 +810,9 @@ function isDisplayableCharacter(char, codePoint) {
     [0x0400, 0x04ff], // Cyrillique
     [0x0500, 0x052f], // Cyrillique supplément
 
+    // Runique (bon support moderne)
+    [0x16a0, 0x16ff], // Runique
+
     // Ponctuation et symboles généraux (excellent support)
     [0x2000, 0x206f], // Ponctuation générale
     [0x2070, 0x209f], // Exposants et indices
@@ -801,6 +857,10 @@ function getRandomCharacters(characters, count) {
     isDisplayableCharacter(charData.char, charData.codePoint)
   );
 
+  console.log(
+    `   🎲 Caractères affichables après filtrage: ${displayable.length} sur ${characters.length}`
+  );
+
   // Créer une copie pour ne pas modifier l'original
   const shuffled = [...displayable];
 
@@ -822,15 +882,11 @@ function displayCharacters(characters, isRandom = false) {
   if (isRandom) {
     const randomTitle = document.createElement("div");
     randomTitle.className = "random-title";
-    randomTitle.style.gridColumn = "1 / -1";
-    randomTitle.style.textAlign = "center";
-    randomTitle.style.padding = "1rem";
-    randomTitle.style.marginBottom = "1rem";
     randomTitle.innerHTML = `
-      <h3 style="color: var(--primary-color-on-dark); font-size: 1.25rem; margin: 0 0 0.5rem 0; font-weight: 600;">
+      <h3>
         🎲 Quelques caractères aléatoirement choisis pour vous
       </h3>
-      <p style="color: var(--text-muted); font-size: 0.9rem; margin: 0;">
+      <p>
         Utilisez la recherche ou les filtres pour explorer les ${allCharacters.length.toLocaleString(
           "fr-FR"
         )} caractères disponibles
@@ -851,14 +907,99 @@ function displayCharacters(characters, isRandom = false) {
   if (!isRandom && characters.length > displayLimit) {
     const moreInfo = document.createElement("div");
     moreInfo.className = "info-card";
-    moreInfo.style.gridColumn = "1 / -1";
-    moreInfo.style.textAlign = "center";
-    moreInfo.style.padding = "1rem";
-    moreInfo.innerHTML = `<p style="color: var(--text-muted);">Affichage limité à ${displayLimit} caractères sur ${characters.length.toLocaleString(
+    moreInfo.innerHTML = `<p>Affichage limité à ${displayLimit} caractères sur ${characters.length.toLocaleString(
       "fr-FR"
     )}. Utilisez la recherche ou les filtres pour affiner.</p>`;
     charactersGrid.appendChild(moreInfo);
   }
+}
+
+function displayPopularBlocks() {
+  console.log("🌟 Affichage des blocs populaires...");
+  console.log("Total de caractères:", allCharacters.length);
+  console.log("Blocs à afficher:", POPULAR_BLOCKS);
+
+  charactersGrid.innerHTML = "";
+
+  // Introduction
+  const introSection = document.createElement("div");
+  introSection.className = "popular-blocks-intro";
+  introSection.innerHTML = `
+    <h2>
+      🌟 En manque d'idées ?
+    </h2>
+  `;
+  charactersGrid.appendChild(introSection);
+
+  // Afficher chaque bloc populaire
+  POPULAR_BLOCKS.forEach((blockConfig) => {
+    console.log(`\n📦 Traitement du bloc: ${blockConfig.displayName}`);
+    console.log(
+      `   Recherche des caractères avec blockName = "${blockConfig.blockName}"`
+    );
+
+    // Filtrer les caractères du bloc
+    const blockChars = allCharacters.filter(
+      (char) => char.blockName === blockConfig.blockName
+    );
+
+    console.log(`   Trouvé ${blockChars.length} caractères`);
+
+    if (blockChars.length === 0) {
+      console.log(`   ⚠️ Aucun caractère trouvé pour ce bloc!`);
+      return;
+    }
+
+    // Sélectionner aléatoirement les caractères
+    const randomChars = getRandomCharacters(blockChars, blockConfig.count);
+
+    // Créer la section du bloc
+    const blockSection = document.createElement("div");
+    blockSection.className = "popular-block-section";
+
+    // Titre du bloc (cliquable pour filtrer)
+    const blockTitleContainer = document.createElement("div");
+    blockTitleContainer.className = "popular-block-header";
+
+    const blockTitle = document.createElement("button");
+    blockTitle.type = "button";
+    blockTitle.className = "popular-block-title";
+    blockTitle.textContent = blockConfig.displayName;
+    const filterLabel = `Filtrer par ${blockConfig.displayName}`;
+    blockTitle.setAttribute("aria-label", filterLabel);
+    blockTitle.setAttribute("title", filterLabel);
+
+    // Événement de clic pour appliquer le filtre
+    blockTitle.addEventListener("click", () => {
+      // Sélectionner le bloc dans le filtre
+      blockFilter.value = blockConfig.blockName;
+      currentBlock = blockConfig.blockName;
+
+      // Appliquer le filtre
+      filterCharacters("", blockConfig.blockName);
+
+      // Afficher les stats
+      statsContainer.classList.remove("hidden");
+
+      // Scroller vers le haut
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+
+    blockTitleContainer.appendChild(blockTitle);
+    blockSection.appendChild(blockTitleContainer);
+
+    // Grille des caractères
+    const blockGrid = document.createElement("div");
+    blockGrid.className = "popular-block-grid";
+
+    randomChars.forEach((charData, index) => {
+      const card = createCharacterCard(charData, index);
+      blockGrid.appendChild(card);
+    });
+
+    blockSection.appendChild(blockGrid);
+    charactersGrid.appendChild(blockSection);
+  });
 }
 
 function createCharacterCard(charData, index) {

@@ -654,6 +654,94 @@ footer a:hover {
   color: var(--secondary-color);
 }
 
+/* ===== Titres et messages informatifs ===== */
+
+.random-title {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: var(--spacing-l);
+  margin-bottom: var(--spacing-l);
+}
+
+.random-title h3 {
+  color: var(--primary-color-on-dark);
+  font-size: var(--text-xl);
+  font-weight: 600;
+  margin: 0 0 var(--spacing-s) 0;
+}
+
+.random-title p {
+  color: var(--text-muted);
+  font-size: var(--text-14);
+  margin: 0;
+}
+
+.info-card {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: var(--spacing-l);
+}
+
+.info-card p {
+  color: var(--text-muted);
+  margin: 0;
+}
+
+/* ===== Blocs populaires ===== */
+
+.popular-blocks-intro {
+  grid-column: 1 / -1;
+  padding-block: var(--spacing-m);
+}
+
+.popular-blocks-intro h2 {
+  font-size: var(--text-2xl);
+  font-weight: 600;
+  margin: 0 0 var(--spacing-s) 0;
+}
+
+.popular-blocks-intro p {
+  color: var(--text-muted);
+  font-size: var(--text-l);
+  margin: 0;
+}
+
+.popular-block-section {
+  grid-column: 1 / -1;
+  margin-bottom: var(--spacing-s);
+}
+
+.popular-block-header {
+  margin-bottom: var(--spacing-s);
+}
+
+.popular-block-title {
+  all: unset;
+  font-size: var(--text-l);
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-underline-offset: 2px;
+  transition: all 0.2s ease;
+}
+
+.popular-block-title:hover {
+  text-decoration-color: currentColor;
+}
+
+.popular-block-title:focus-visible {
+  outline: 2px solid var(--secondary-color);
+  outline-offset: 4px;
+  border-radius: var(--radius-s);
+}
+
+.popular-block-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: var(--gap-m);
+}
+
 /* ===== Responsive ===== */
 
 @media (max-width: 768px) {
@@ -695,6 +783,23 @@ footer a:hover {
     bottom: 1rem;
     right: 1rem;
     left: 1rem;
+  }
+
+  .popular-blocks-intro h2 {
+    font-size: var(--text-xl);
+  }
+
+  .popular-blocks-intro p {
+    font-size: var(--text-m);
+  }
+
+  .popular-block-title {
+    font-size: var(--text-l);
+  }
+
+  .popular-block-grid {
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)) !important;
+    gap: var(--gap-s) !important;
   }
 }
 
