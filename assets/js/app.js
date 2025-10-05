@@ -694,10 +694,56 @@ function getHtmlEntity(codePoint) {
   return `&#${codePoint};`;
 }
 
+// ===== Vérification si un caractère est bien affiché =====
+function isDisplayableCharacter(char, codePoint) {
+  // Les espaces sont toujours considérés comme affichables
+  if (
+    (codePoint >= 0x2000 && codePoint <= 0x200a) ||
+    codePoint === 0x0020 ||
+    codePoint === 0x00a0 ||
+    codePoint === 0x202f ||
+    codePoint === 0x205f ||
+    codePoint === 0x3000
+  ) {
+    return true;
+  }
+
+  // Exclure les plages de caractères souvent non affichables
+  const problematicRanges = [
+    [0x0590, 0x05ff], // Hébreu (souvent sans police)
+    [0x0600, 0x06ff], // Arabe (souvent sans police)
+    [0x0700, 0x074f], // Syriaque
+    [0x0780, 0x07bf], // Thaana
+    [0x0900, 0x097f], // Dévanagari
+    [0x0980, 0x09ff], // Bengali
+    [0x0a00, 0x0a7f], // Gurmukhi
+    [0x0a80, 0x0aff], // Gujarati
+    [0x0b00, 0x0b7f], // Oriya
+    [0x0b80, 0x0bff], // Tamoul
+    [0x0c00, 0x0c7f], // Telugu
+    [0x0c80, 0x0cff], // Kannada
+    [0x0d00, 0x0d7f], // Malayalam
+    [0x0e80, 0x0eff], // Lao
+    [0x0f00, 0x0fff], // Tibétain
+    [0x1100, 0x11ff], // Hangul Jamo
+  ];
+
+  for (const [start, end] of problematicRanges) {
+    if (codePoint >= start && codePoint <= end) return false;
+  }
+
+  return true;
+}
+
 // ===== Sélection aléatoire de caractères =====
 function getRandomCharacters(characters, count) {
+  // Filtrer d'abord les caractères affichables
+  const displayable = characters.filter((charData) =>
+    isDisplayableCharacter(charData.char, charData.codePoint)
+  );
+
   // Créer une copie pour ne pas modifier l'original
-  const shuffled = [...characters];
+  const shuffled = [...displayable];
 
   // Algorithme de Fisher-Yates pour mélanger
   for (let i = shuffled.length - 1; i > 0; i--) {
