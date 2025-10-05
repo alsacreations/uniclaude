@@ -430,6 +430,7 @@ const CHARACTER_NAMES = {
 let allCharacters = [];
 let filteredCharacters = [];
 let currentBlock = "";
+let emojiData = {}; // Données enrichies des emojis
 
 // ===== Éléments DOM =====
 const searchInput = document.getElementById("searchInput");
@@ -448,6 +449,9 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 async function initializeApp() {
+  // Charger les données enrichies des emojis
+  await loadEmojiData();
+
   populateBlockFilter();
   await generateCharacters();
   setupEventListeners();
@@ -464,6 +468,20 @@ async function initializeApp() {
   statsContainer.classList.add("hidden");
 
   loadingSpinner.classList.add("hidden");
+}
+
+// ===== Chargement des données emoji enrichies =====
+async function loadEmojiData() {
+  try {
+    const response = await fetch("assets/js/emoji-data.json");
+    emojiData = await response.json();
+    console.log(
+      `✅ Données emoji chargées : ${Object.keys(emojiData).length} emojis`
+    );
+  } catch (error) {
+    console.error("❌ Erreur lors du chargement des données emoji:", error);
+    emojiData = {}; // Fallback sur objet vide
+  }
 }
 
 // ===== Génération des caractères =====
@@ -488,19 +506,34 @@ async function generateCharacters() {
 
         // Filtrer les caractères de contrôle et invalides
         if (isValidCharacter(char, codePoint)) {
-          const charName =
-            CHARACTER_NAMES[codePoint] ||
-            getCharacterName(codePoint, block.name);
+          const hexCode = codePoint.toString(16).toUpperCase().padStart(4, "0");
+
+          // Essayer d'abord les données emoji enrichies
+          let charName = null;
+          let emojiInfo = null;
+
+          if (emojiData[hexCode]) {
+            emojiInfo = emojiData[hexCode];
+            charName = emojiInfo.name;
+          } else {
+            // Fallback sur les noms existants
+            charName =
+              CHARACTER_NAMES[codePoint] ||
+              getCharacterName(codePoint, block.name);
+          }
+
           const htmlEntity = getHtmlEntity(codePoint);
 
           allCharacters.push({
             char: char,
             codePoint: codePoint,
-            hex: codePoint.toString(16).toUpperCase().padStart(4, "0"),
+            hex: hexCode,
             decimal: codePoint,
             block: block.name,
             name: charName,
             htmlEntity: htmlEntity,
+            emojiGroup: emojiInfo?.group || null,
+            emojiSubgroup: emojiInfo?.subgroup || null,
           });
         }
       } catch (e) {
@@ -1122,11 +1155,33 @@ function loadFavorites() {
   try {
     const stored = localStorage.getItem(FAVORITES_KEY);
     favorites = stored ? JSON.parse(stored) : [];
+
+    // Enrichir les favoris avec les données emoji si disponibles
+    favorites = favorites.map((fav) => enrichFavoriteWithEmojiData(fav));
+
     renderFavorites();
   } catch (error) {
     console.error("Erreur lors du chargement des favoris:", error);
     favorites = [];
   }
+}
+
+// Enrichir un favori avec les données emoji
+function enrichFavoriteWithEmojiData(fav) {
+  const hexCode =
+    fav.hex || fav.codePoint.toString(16).toUpperCase().padStart(4, "0");
+
+  if (emojiData[hexCode]) {
+    const emojiInfo = emojiData[hexCode];
+    return {
+      ...fav,
+      name: emojiInfo.name, // Utiliser le nom enrichi
+      emojiGroup: emojiInfo.group,
+      emojiSubgroup: emojiInfo.subgroup,
+    };
+  }
+
+  return fav; // Retourner tel quel si pas d'emoji data
 }
 
 // Sauvegarder les favoris dans localStorage
