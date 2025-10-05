@@ -492,6 +492,7 @@ const blockFilter = document.getElementById("blockFilter");
 const charactersGrid = document.getElementById("charactersGrid");
 const statsDisplay = document.getElementById("statsDisplay");
 const statsContainer = document.querySelector(".stats");
+const resetButton = document.getElementById("resetButton");
 const totalCharsCount = document.getElementById("totalCharsCount");
 const loadingSpinner = document.getElementById("loadingSpinner");
 const copyNotification = document.getElementById("copyNotification");
@@ -1133,6 +1134,7 @@ function setupEventListeners() {
   searchInput.addEventListener("input", handleSearch);
   clearSearchBtn.addEventListener("click", clearSearch);
   blockFilter.addEventListener("change", handleBlockFilter);
+  resetButton.addEventListener("click", resetFilters);
 
   searchInput.addEventListener("input", (e) => {
     clearSearchBtn.classList.toggle("visible", e.target.value.length > 0);
@@ -1270,6 +1272,21 @@ function clearSearch() {
   blockFilter.value = ""; // Réinitialiser aussi le filtre de bloc
   currentBlock = "";
   filterCharacters("", "");
+}
+
+function resetFilters() {
+  // Réinitialiser tous les filtres
+  searchInput.value = "";
+  clearSearchBtn.classList.remove("visible");
+  blockFilter.value = "";
+  currentBlock = "";
+
+  // Cacher les stats et réafficher les blocs populaires
+  statsContainer.classList.add("hidden");
+  displayPopularBlocks();
+
+  // Scroller vers le haut
+  window.scrollTo({ top: 0, behavior: "smooth" });
 }
 
 function updateStats(displayed, total) {
