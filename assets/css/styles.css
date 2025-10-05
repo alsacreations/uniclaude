@@ -130,7 +130,6 @@ main {
   background: transparent;
   border: none;
   color: var(--text-muted);
-  font-size: var(--text-32);
   cursor: pointer;
   padding: 0;
   width: 2rem;
@@ -140,6 +139,12 @@ main {
   justify-content: center;
   border-radius: var(--radius-full);
   transition: all 0.2s;
+}
+
+.clear-btn svg {
+  width: 1.25rem;
+  height: 1.25rem;
+  flex-shrink: 0;
 }
 
 .clear-btn:hover {
@@ -157,7 +162,6 @@ main {
   display: flex;
   align-items: center;
   gap: var(--gap-m);
-  margin-bottom: var(--spacing-16);
 }
 
 .filters label {
@@ -179,9 +183,14 @@ main {
 /* ===== Statistiques ===== */
 
 .stats {
+  margin-top: var(--spacing-16);
   text-align: center;
   color: var(--text-muted);
   font-size: var(--text-15);
+}
+
+.stats.hidden {
+  display: none;
 }
 
 /* ===== Section des caractères ===== */

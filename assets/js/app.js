@@ -437,6 +437,8 @@ const clearSearchBtn = document.getElementById("clearSearch");
 const blockFilter = document.getElementById("blockFilter");
 const charactersGrid = document.getElementById("charactersGrid");
 const statsDisplay = document.getElementById("statsDisplay");
+const statsContainer = document.querySelector(".stats");
+const totalCharsCount = document.getElementById("totalCharsCount");
 const loadingSpinner = document.getElementById("loadingSpinner");
 const copyNotification = document.getElementById("copyNotification");
 
@@ -455,7 +457,12 @@ async function initializeApp() {
   const randomChars = getRandomCharacters(allCharacters, 100);
   displayCharacters(randomChars, true); // true = mode aléatoire
 
-  updateStats(allCharacters.length, allCharacters.length);
+  // Afficher le nombre total de caractères dans le footer
+  updateTotalCharsCount(allCharacters.length);
+
+  // Cacher les stats (elles ne s'affichent que lors de recherche/filtre)
+  statsContainer.classList.add("hidden");
+
   loadingSpinner.classList.add("hidden");
 }
 
@@ -1071,20 +1078,38 @@ function filterCharacters(searchTerm, blockName) {
   }
 
   filteredCharacters = filtered;
-  displayCharacters(filteredCharacters);
-  updateStats(filteredCharacters.length, allCharacters.length);
+
+  // Si aucun filtre n'est actif (pas de recherche ni de bloc), afficher aléatoire
+  if (!searchTerm && !blockName) {
+    const randomChars = getRandomCharacters(allCharacters, 100);
+    displayCharacters(randomChars, true); // true = mode aléatoire
+    statsContainer.classList.add("hidden");
+  } else {
+    displayCharacters(filteredCharacters);
+    updateStats(filteredCharacters.length, allCharacters.length);
+  }
 }
 
 function clearSearch() {
   searchInput.value = "";
   clearSearchBtn.classList.remove("visible");
-  filterCharacters("", currentBlock);
+  blockFilter.value = ""; // Réinitialiser aussi le filtre de bloc
+  currentBlock = "";
+  filterCharacters("", "");
 }
 
 function updateStats(displayed, total) {
+  // Afficher les stats seulement lors de recherche/filtre
+  statsContainer.classList.remove("hidden");
   statsDisplay.textContent = `${displayed.toLocaleString("fr-FR")} caractère${
     displayed > 1 ? "s" : ""
   } affiché${displayed > 1 ? "s" : ""} sur ${total.toLocaleString("fr-FR")}`;
+}
+
+function updateTotalCharsCount(total) {
+  totalCharsCount.textContent = `${total.toLocaleString(
+    "fr-FR"
+  )} caractères Unicode disponibles`;
 }
 
 // ===== GESTION DES FAVORIS =====

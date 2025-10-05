@@ -42,7 +42,21 @@
             class="clear-btn"
             aria-label="Effacer la recherche"
           >
-            ×
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <line x1="18" y1="6" x2="6" y2="18"></line>
+              <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
           </button>
         </div>
 
@@ -53,8 +67,8 @@
           </select>
         </div>
 
-        <div class="stats" role="status" aria-live="polite">
-          <span id="statsDisplay">Chargement...</span>
+        <div class="stats hidden" role="status" aria-live="polite">
+          <span id="statsDisplay"></span>
         </div>
       </section>
 
@@ -125,7 +139,7 @@
 
     <footer role="contentinfo" role="contentinfo">
       <p>
-        Données Unicode version 15.1 •
+        <span id="totalCharsCount"></span> • Données Unicode version 15.1 •
         <a
           href="https://unicode.org"
           target="_blank"
