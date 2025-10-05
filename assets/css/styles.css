@@ -261,6 +261,7 @@ main {
   align-items: center;
   gap: var(--spacing-12);
   min-height: 140px;
+  user-select: unset;
 }
 
 .favorite-item:hover .favorite-item-btn {
@@ -431,6 +432,7 @@ main {
   gap: var(--gap-s);
   position: relative;
   overflow: hidden;
+  user-select: unset;
 }
 
 .char-card::before {
@@ -738,7 +740,7 @@ footer a:hover {
 
 .popular-block-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
   gap: var(--gap-m);
 }
 
@@ -762,7 +764,7 @@ footer a:hover {
   }
 
   .characters-grid {
-    grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
     gap: var(--spacing-12);
   }
 
