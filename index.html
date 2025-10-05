@@ -71,17 +71,7 @@
           role="region"
           aria-label="Caractères favoris"
         >
-          <div class="favorites-header">
-            <h2>⭐ Favoris</h2>
-            <button
-              id="clearFavorites"
-              class="clear-favorites-btn"
-              aria-label="Effacer tous les favoris"
-              title="Effacer tous les favoris"
-            >
-              Tout effacer
-            </button>
-          </div>
+          <h2 class="favorites-header">⭐ Favoris</h2>
           <div id="favoritesGrid" class="favorites-grid" role="list">
             <!-- Les favoris seront générés ici -->
           </div>
@@ -125,6 +115,15 @@
       <span class="copied-char" aria-hidden="true"></span>
       <span class="copied-text">Copié !</span>
     </div>
+
+    <!-- Annonce ARIA pour les favoris -->
+    <div
+      id="favoritesAnnouncement"
+      class="visually-hidden"
+      role="status"
+      aria-live="polite"
+      aria-atomic="true"
+    ></div>
 
     <footer role="contentinfo" role="contentinfo">
       <p>

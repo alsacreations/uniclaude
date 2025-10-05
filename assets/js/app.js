@@ -450,7 +450,11 @@ async function initializeApp() {
   await generateCharacters();
   setupEventListeners();
   initFavoritesEvents(); // Initialiser les favoris
-  displayCharacters(allCharacters);
+
+  // Afficher 100 caractères aléatoires au démarrage
+  const randomChars = getRandomCharacters(allCharacters, 100);
+  displayCharacters(randomChars, true); // true = mode aléatoire
+
   updateStats(allCharacters.length, allCharacters.length);
   loadingSpinner.classList.add("hidden");
 }
@@ -690,12 +694,48 @@ function getHtmlEntity(codePoint) {
   return `&#${codePoint};`;
 }
 
+// ===== Sélection aléatoire de caractères =====
+function getRandomCharacters(characters, count) {
+  // Créer une copie pour ne pas modifier l'original
+  const shuffled = [...characters];
+
+  // Algorithme de Fisher-Yates pour mélanger
+  for (let i = shuffled.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+  }
+
+  // Retourner les N premiers
+  return shuffled.slice(0, count);
+}
+
 // ===== Affichage des caractères =====
-function displayCharacters(characters) {
+function displayCharacters(characters, isRandom = false) {
   charactersGrid.innerHTML = "";
 
-  // Limiter l'affichage initial pour de meilleures performances
-  const displayLimit = 500;
+  // Afficher un titre si mode aléatoire
+  if (isRandom) {
+    const randomTitle = document.createElement("div");
+    randomTitle.className = "random-title";
+    randomTitle.style.gridColumn = "1 / -1";
+    randomTitle.style.textAlign = "center";
+    randomTitle.style.padding = "1rem";
+    randomTitle.style.marginBottom = "1rem";
+    randomTitle.innerHTML = `
+      <h3 style="color: var(--primary-color-on-dark); font-size: 1.25rem; margin: 0 0 0.5rem 0; font-weight: 600;">
+        🎲 Quelques caractères aléatoirement choisis pour vous
+      </h3>
+      <p style="color: var(--text-muted); font-size: 0.9rem; margin: 0;">
+        Utilisez la recherche ou les filtres pour explorer les ${allCharacters.length.toLocaleString(
+          "fr-FR"
+        )} caractères disponibles
+      </p>
+    `;
+    charactersGrid.appendChild(randomTitle);
+  }
+
+  // Limiter l'affichage pour de meilleures performances
+  const displayLimit = isRandom ? characters.length : 500;
   const charsToDisplay = characters.slice(0, displayLimit);
 
   charsToDisplay.forEach((charData, index) => {
@@ -703,11 +743,15 @@ function displayCharacters(characters) {
     charactersGrid.appendChild(card);
   });
 
-  if (characters.length > displayLimit) {
+  if (!isRandom && characters.length > displayLimit) {
     const moreInfo = document.createElement("div");
-    moreInfo.className = "char-card";
+    moreInfo.className = "info-card";
     moreInfo.style.gridColumn = "1 / -1";
-    moreInfo.innerHTML = `<p style="color: var(--text-muted);">Affichage limité à ${displayLimit} caractères sur ${characters.length}. Utilisez la recherche pour affiner.</p>`;
+    moreInfo.style.textAlign = "center";
+    moreInfo.style.padding = "1rem";
+    moreInfo.innerHTML = `<p style="color: var(--text-muted);">Affichage limité à ${displayLimit} caractères sur ${characters.length.toLocaleString(
+      "fr-FR"
+    )}. Utilisez la recherche ou les filtres pour affiner.</p>`;
     charactersGrid.appendChild(moreInfo);
   }
 }
@@ -740,7 +784,7 @@ function createCharacterCard(charData, index) {
 
   if (isSpace) {
     // Afficher un cadre avec "␣" (symbole open box U+2423) pour visualiser l'espace
-    displayChar = `<span aria-hidden="true" style="background: rgba(99, 102, 241, 0.2); padding: 0.5rem 1rem; border: 2px dashed var(--primary-color); border-radius: 0.25rem; font-size: 2rem;">␣</span>`;
+    displayChar = `<span class="space-symbol" aria-hidden="true">␣</span>`;
   }
 
   // Échapper l'entité HTML pour qu'elle s'affiche telle quelle
@@ -773,6 +817,7 @@ function createCharacterCard(charData, index) {
               : "Ajouter aux favoris"
           }"
           type="button"
+          tabindex="0"
         >${isFavorite(charData.codePoint) ? "⭐" : "☆"}</button>
         <div class="char-display" aria-hidden="true">${displayChar}</div>
         <div class="char-info" aria-hidden="true">
@@ -1021,6 +1066,7 @@ function addToFavorites(charData) {
     saveFavorites();
     renderFavorites();
     updateFavoriteButtons();
+    announceFavoriteChange(`${charData.name} ajouté aux favoris`);
     return true;
   }
   return false;
@@ -1028,21 +1074,29 @@ function addToFavorites(charData) {
 
 // Retirer un caractère des favoris
 function removeFromFavorites(codePoint) {
+  const favorite = favorites.find((fav) => fav.codePoint === codePoint);
   favorites = favorites.filter((fav) => fav.codePoint !== codePoint);
   saveFavorites();
   renderFavorites();
   updateFavoriteButtons();
+  if (favorite) {
+    announceFavoriteChange(`${favorite.name} retiré des favoris`);
+  }
 }
 
 // Effacer tous les favoris
 function clearAllFavorites() {
   if (favorites.length === 0) return;
 
+  const count = favorites.length;
   if (confirm("Êtes-vous sûr de vouloir effacer tous vos favoris ?")) {
     favorites = [];
     saveFavorites();
     renderFavorites();
     updateFavoriteButtons();
+    announceFavoriteChange(
+      `${count} favori${count > 1 ? "s" : ""} effacé${count > 1 ? "s" : ""}`
+    );
   }
 }
 
@@ -1076,7 +1130,7 @@ function renderFavorites() {
 
       // Afficher un symbole visible pour les espaces
       const displayChar = isSpace
-        ? `<span aria-hidden="true" style="background: rgba(99, 102, 241, 0.2); padding: 0.5rem 1rem; border: 2px dashed var(--primary-color); border-radius: 0.25rem; font-size: 2rem;">␣</span>`
+        ? `<span class="space-symbol" aria-hidden="true">␣</span>`
         : fav.char;
 
       // Échapper l'entité HTML pour affichage
@@ -1089,28 +1143,31 @@ function renderFavorites() {
       const escapedName = fav.name.replace(/'/g, "\\'").replace(/"/g, "&quot;");
 
       return `
-    <button
-      class="favorite-item"
-      onclick="copyToClipboard({char: '${fav.char.replace(
-        /'/g,
-        "\\'"
-      )}', name: '${escapedName}'})"
-      title="Cliquer pour copier ${fav.name}"
-      role="listitem"
-    >
-      <div class="favorite-char">${displayChar}</div>
-      <div class="favorite-info">
-        <div class="favorite-code">U+${fav.hex}</div>
-        <div class="favorite-code" style="color: var(--secondary-color-on-dark);">${escapedHtmlEntity}</div>
-        <div class="favorite-name" title="${fav.name}">${fav.name}</div>
-      </div>
+    <div class="favorite-item" role="listitem">
+      <button
+        class="favorite-item-btn"
+        onclick="copyToClipboard({char: '${fav.char.replace(
+          /'/g,
+          "\\'"
+        )}', name: '${escapedName}'})"
+        title="Cliquer pour copier ${fav.name}"
+        aria-label="Copier ${fav.name}"
+      >
+        <div class="favorite-char">${displayChar}</div>
+        <div class="favorite-info">
+          <div class="favorite-code">U+${fav.hex}</div>
+          <div class="favorite-code" style="color: var(--secondary-color-on-dark);">${escapedHtmlEntity}</div>
+          <div class="favorite-name" title="${fav.name}">${fav.name}</div>
+        </div>
+      </button>
       <button
         class="remove-favorite"
         onclick="event.stopPropagation(); removeFromFavorites(${fav.codePoint})"
         aria-label="Retirer ${fav.name} des favoris"
         title="Retirer des favoris"
+        type="button"
       >×</button>
-    </button>
+    </div>
   `;
     })
     .join("");
@@ -1148,13 +1205,20 @@ function toggleFavorite(event, charData) {
   }
 }
 
+// Annoncer les changements de favoris aux lecteurs d'écran
+function announceFavoriteChange(message) {
+  const announcement = document.getElementById("favoritesAnnouncement");
+  if (announcement) {
+    announcement.textContent = message;
+    // Effacer après 3 secondes pour éviter l'encombrement
+    setTimeout(() => {
+      announcement.textContent = "";
+    }, 3000);
+  }
+}
+
 // Initialiser les événements des favoris
 function initFavoritesEvents() {
-  const clearBtn = document.getElementById("clearFavorites");
-  if (clearBtn) {
-    clearBtn.addEventListener("click", clearAllFavorites);
-  }
-
   // Charger les favoris au démarrage
   loadFavorites();
 }
