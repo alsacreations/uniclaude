@@ -696,43 +696,62 @@ function getHtmlEntity(codePoint) {
 
 // ===== Vérification si un caractère est bien affiché =====
 function isDisplayableCharacter(char, codePoint) {
-  // Les espaces sont toujours considérés comme affichables
-  if (
-    (codePoint >= 0x2000 && codePoint <= 0x200a) ||
-    codePoint === 0x0020 ||
-    codePoint === 0x00a0 ||
-    codePoint === 0x202f ||
-    codePoint === 0x205f ||
-    codePoint === 0x3000
-  ) {
-    return true;
-  }
+  // APPROCHE RESTRICTIVE : On liste les plages SÛREMENT affichables
+  // plutôt que d'exclure les problématiques
 
-  // Exclure les plages de caractères souvent non affichables
-  const problematicRanges = [
-    [0x0590, 0x05ff], // Hébreu (souvent sans police)
-    [0x0600, 0x06ff], // Arabe (souvent sans police)
-    [0x0700, 0x074f], // Syriaque
-    [0x0780, 0x07bf], // Thaana
-    [0x0900, 0x097f], // Dévanagari
-    [0x0980, 0x09ff], // Bengali
-    [0x0a00, 0x0a7f], // Gurmukhi
-    [0x0a80, 0x0aff], // Gujarati
-    [0x0b00, 0x0b7f], // Oriya
-    [0x0b80, 0x0bff], // Tamoul
-    [0x0c00, 0x0c7f], // Telugu
-    [0x0c80, 0x0cff], // Kannada
-    [0x0d00, 0x0d7f], // Malayalam
-    [0x0e80, 0x0eff], // Lao
-    [0x0f00, 0x0fff], // Tibétain
-    [0x1100, 0x11ff], // Hangul Jamo
+  const safeRanges = [
+    // Latin de base et Latin-1
+    [0x0020, 0x007e], // ASCII imprimable
+    [0x00a0, 0x00ff], // Latin-1 supplément
+
+    // Latin étendu (bien supporté)
+    [0x0100, 0x017f], // Latin étendu-A
+    [0x0180, 0x024f], // Latin étendu-B
+
+    // IPA et modificateurs (bon support)
+    [0x0250, 0x02af], // IPA
+    [0x02b0, 0x02ff], // Lettres modificatives
+
+    // Grec et Cyrillique (excellent support)
+    [0x0370, 0x03ff], // Grec et copte
+    [0x0400, 0x04ff], // Cyrillique
+    [0x0500, 0x052f], // Cyrillique supplément
+
+    // Ponctuation et symboles généraux (excellent support)
+    [0x2000, 0x206f], // Ponctuation générale
+    [0x2070, 0x209f], // Exposants et indices
+    [0x20a0, 0x20cf], // Symboles monétaires (€$¥£)
+    [0x2100, 0x214f], // Symboles lettres
+    [0x2150, 0x218f], // Formes numériques (½⅓¼)
+    [0x2190, 0x21ff], // Flèches
+    [0x2200, 0x22ff], // Opérateurs mathématiques
+    [0x2300, 0x23ff], // Symboles techniques
+    [0x2460, 0x24ff], // Alphanumériques entourés
+    [0x2500, 0x257f], // Symboles de boîtes
+    [0x2580, 0x259f], // Blocs
+    [0x25a0, 0x25ff], // Formes géométriques
+    [0x2600, 0x26ff], // Symboles divers (☀☁☂)
+    [0x2700, 0x27bf], // Dingbats (✂✉✏)
+    [0x2900, 0x297f], // Flèches supplémentaires-B
+    [0x2b00, 0x2bff], // Symboles et flèches divers
+
+    // CJK de base (bon support)
+    [0x3040, 0x309f], // Hiragana
+    [0x30a0, 0x30ff], // Katakana
+
+    // Emojis (excellent support moderne)
+    [0x1f300, 0x1f5ff], // Symboles et pictogrammes
+    [0x1f600, 0x1f64f], // Emoticons
+    [0x1f680, 0x1f6ff], // Transport et cartes
+    [0x1f900, 0x1f9ff], // Symboles supplémentaires
   ];
 
-  for (const [start, end] of problematicRanges) {
-    if (codePoint >= start && codePoint <= end) return false;
+  // Vérifier si le caractère est dans une plage sûre
+  for (const [start, end] of safeRanges) {
+    if (codePoint >= start && codePoint <= end) return true;
   }
 
-  return true;
+  return false;
 }
 
 // ===== Sélection aléatoire de caractères =====
