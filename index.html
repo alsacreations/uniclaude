@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>UniClaude - Explorateur de caractères Unicode</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header>
+      <h1>🦄 UniClaude</h1>
+      <p class="subtitle">
+        Explorez et copiez plus de 149 000 caractères Unicode
+      </p>
+    </header>
+
+    <main>
+      <section class="search-section">
+        <div class="search-container">
+          <input
+            type="text"
+            id="searchInput"
+            placeholder="Rechercher par caractère, nom, code hexa, entité HTML..."
+            autocomplete="off"
+          />
+          <button id="clearSearch" class="clear-btn" title="Effacer">×</button>
+        </div>
+
+        <div class="filters">
+          <label for="blockFilter">Filtrer par bloc :</label>
+          <select id="blockFilter">
+            <option value="">Tous les blocs</option>
+          </select>
+        </div>
+
+        <div class="stats">
+          <span id="statsDisplay">Chargement...</span>
+        </div>
+      </section>
+
+      <section class="characters-section">
+        <div id="charactersGrid" class="characters-grid">
+          <!-- Les caractères seront générés ici -->
+        </div>
+      </section>
+
+      <div id="loadingSpinner" class="loading">
+        <div class="spinner"></div>
+        <p>Génération des caractères Unicode...</p>
+      </div>
+    </main>
+
+    <div id="copyNotification" class="copy-notification">
+      <span class="copied-char"></span>
+      <span class="copied-text">Copié !</span>
+    </div>
+
+    <footer>
+      <p>
+        Données Unicode version 15.1 •
+        <a href="https://unicode.org" target="_blank" rel="noopener"
+          >Unicode.org</a
+        >
+      </p>
+    </footer>
+
+    <script src="app.js"></script>
+  </body>
+</html>
