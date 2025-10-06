@@ -501,12 +501,6 @@ input:not(
     --input-border-width: 2px;
   }
 
-  /* État valide après interaction utilisateur */
-  &:user-valid {
-    --input-border-color: var(--success);
-    --input-border-width: 2px;
-  }
-
   /* Placeholder */
   &::placeholder {
     opacity: 100%;

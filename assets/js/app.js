@@ -887,32 +887,15 @@ function getRandomCharacters(characters, count) {
 let currentDisplayLimit = 500; // Limite initiale d'affichage
 const DISPLAY_INCREMENT = 200; // Nombre de caractères à ajouter à chaque clic
 
-function displayCharacters(characters, isRandom = false, append = false) {
+function displayCharacters(characters, append = false) {
   // Réinitialiser la limite si on ne fait pas un append
   if (!append) {
     currentDisplayLimit = 500;
     charactersGrid.innerHTML = "";
   }
 
-  // Afficher un titre si mode aléatoire
-  if (isRandom && !append) {
-    const randomTitle = document.createElement("div");
-    randomTitle.className = "random-title";
-    randomTitle.innerHTML = `
-      <h3>
-        🎲 Quelques caractères aléatoirement choisis pour vous
-      </h3>
-      <p>
-        Utilisez la recherche ou les filtres pour explorer les ${allCharacters.length.toLocaleString(
-          "fr-FR"
-        )} caractères disponibles
-      </p>
-    `;
-    charactersGrid.appendChild(randomTitle);
-  }
-
   // Limiter l'affichage pour de meilleures performances
-  const displayLimit = isRandom ? characters.length : currentDisplayLimit;
+  const displayLimit = currentDisplayLimit;
   const startIndex = append
     ? charactersGrid.querySelectorAll(".char-card").length
     : 0;
@@ -930,7 +913,7 @@ function displayCharacters(characters, isRandom = false, append = false) {
   });
 
   // Ajouter le bouton "Afficher plus" s'il reste des caractères
-  if (!isRandom && characters.length > displayLimit) {
+  if (characters.length > displayLimit) {
     const loadMoreContainer = document.createElement("div");
     loadMoreContainer.className = "load-more-container";
 
@@ -953,7 +936,7 @@ function displayCharacters(characters, isRandom = false, append = false) {
 
     loadMoreBtn.addEventListener("click", () => {
       currentDisplayLimit += DISPLAY_INCREMENT;
-      displayCharacters(characters, isRandom, true);
+      displayCharacters(characters, true);
     });
 
     loadMoreContainer.appendChild(loadMoreBtn);
@@ -1309,10 +1292,9 @@ function filterCharacters(searchTerm, blockName) {
 
   filteredCharacters = filtered;
 
-  // Si aucun filtre n'est actif (pas de recherche ni de bloc), afficher aléatoire
+  // Si aucun filtre n'est actif (pas de recherche ni de bloc), afficher les blocs populaires
   if (!searchTerm && !blockName) {
-    const randomChars = getRandomCharacters(allCharacters, 100);
-    displayCharacters(randomChars, true); // true = mode aléatoire
+    displayPopularBlocks();
     statsContainer.classList.add("hidden");
   } else {
     displayCharacters(filteredCharacters);

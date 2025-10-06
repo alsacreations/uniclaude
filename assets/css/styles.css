@@ -394,18 +394,6 @@ main {
   margin-bottom: var(--spacing-m);
 }
 
-/* Titre pour l'affichage aléatoire */
-.random-title {
-  background: linear-gradient(
-    135deg,
-    color-mix(in srgb, var(--color-indigo-500) 5%, transparent),
-    color-mix(in srgb, var(--color-violet-500) 5%, transparent)
-  );
-  border: 1px solid color-mix(in srgb, var(--primary-color) 30%, transparent);
-  border-radius: var(--radius-lg);
-  padding: var(--spacing-24) var(--spacing-16);
-}
-
 .char-card {
   /* Reset button styles */
   font-family: inherit;
@@ -651,26 +639,6 @@ footer a:hover {
 }
 
 /* ===== Titres et messages informatifs ===== */
-
-.random-title {
-  grid-column: 1 / -1;
-  text-align: center;
-  padding: var(--spacing-l);
-  margin-bottom: var(--spacing-l);
-}
-
-.random-title h3 {
-  color: var(--primary-color-on-dark);
-  font-size: var(--text-xl);
-  font-weight: 600;
-  margin: 0 0 var(--spacing-s) 0;
-}
-
-.random-title p {
-  color: var(--text-muted);
-  font-size: var(--text-14);
-  margin: 0;
-}
 
 .info-card {
   grid-column: 1 / -1;
