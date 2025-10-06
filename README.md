@@ -15,8 +15,10 @@ Application web pour rechercher, explorer et copier facilement plus de 10 000 ca
 ## ✨ Fonctionnalités
 
 - 🔍 **Recherche multi-critères** : par caractère, nom Unicode, code hexadécimal, entité HTML, ou bloc
+- 🇫🇷 **Recherche en français** : plus de 620 mots-clés français (coeur, fleche, espace insécable, cadratin, etc.)
 - 📋 **Copie en un clic** : cliquez sur n'importe quel caractère pour le copier dans votre presse-papier
 - 🏷️ **Informations complètes** : code Unicode (hexa), entité HTML, et nom du caractère
+- 🔗 **URLs partageables** : partagez des recherches directes via l'URL (ex: `?search=coeur`)
 - 🎨 **Interface moderne** : design dark mode responsive et accessible
 - ♿ **Accessible** : conforme aux guidelines WCAG et RGAA niveau 1
 - 🚀 **Zéro dépendance** : HTML/CSS/JS natifs uniquement
@@ -63,10 +65,33 @@ npx http-server
 #### Recherche
 
 - Tapez dans le champ de recherche pour filtrer par :
-  - Caractère : `€`, `→`, `♥`
-  - Nom : `euro`, `arrow`, `heart`
-  - Code hexa : `20AC`, `2192`
-  - Entité HTML : `&euro;`, `&#8364;`
+  - **Caractère** : `€`, `→`, `♥`
+  - **Nom Unicode** : `euro`, `arrow`, `heart`
+  - **Mots-clés français** : `coeur`, `fleche`, `espace insécable`, `tiret cadratin`
+  - **Code hexa** : `20AC`, `2192`
+  - **Entité HTML** : `&euro;`, `&#8364;`
+
+#### URLs Partageables
+
+Partagez des recherches directes en utilisant les paramètres d'URL :
+
+```
+# Rechercher "coeur"
+https://example.com/?search=coeur
+
+# Filtrer par bloc "Emoticons"
+https://example.com/?block=Emoticons
+
+# Combiner recherche et bloc
+https://example.com/?search=hand&block=Miscellaneous%20Symbols%20and%20Pictographs
+```
+
+Les paramètres disponibles :
+
+- `search` : terme de recherche
+- `block` : nom du bloc Unicode (sensible à la casse)
+
+L'URL est automatiquement mise à jour quand vous effectuez une recherche, permettant de partager facilement un lien direct.
 
 #### Filtres
 

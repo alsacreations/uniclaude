@@ -1316,6 +1316,69 @@ const totalCharsCount = document.getElementById("totalCharsCount");
 const loadingSpinner = document.getElementById("loadingSpinner");
 const copyNotification = document.getElementById("copyNotification");
 
+// ===== Gestion des paramètres URL =====
+/**
+ * Récupère les paramètres de l'URL
+ * @returns {Object} Object contenant les paramètres (ex: {search: "coeur", block: "Emoticons"})
+ */
+function getURLParams() {
+  const params = new URLSearchParams(window.location.search);
+  return {
+    search: params.get("search") || "",
+    block: params.get("block") || "",
+  };
+}
+
+/**
+ * Met à jour l'URL avec les paramètres de recherche actuels
+ * @param {string} searchTerm - Terme de recherche
+ * @param {string} blockName - Nom du bloc sélectionné
+ */
+function updateURL(searchTerm, blockName) {
+  const params = new URLSearchParams();
+
+  if (searchTerm) {
+    params.set("search", searchTerm);
+  }
+
+  if (blockName) {
+    params.set("block", blockName);
+  }
+
+  const newURL = params.toString()
+    ? `${window.location.pathname}?${params.toString()}`
+    : window.location.pathname;
+
+  // Utiliser pushState pour mettre à jour l'URL sans recharger la page
+  window.history.pushState(
+    { search: searchTerm, block: blockName },
+    "",
+    newURL
+  );
+}
+
+/**
+ * Applique les paramètres URL au chargement de la page
+ */
+function applyURLParams() {
+  const { search, block } = getURLParams();
+
+  // Si des paramètres existent, les appliquer
+  if (search || block) {
+    if (search) {
+      searchInput.value = search;
+    }
+
+    if (block) {
+      blockFilter.value = block;
+      currentBlock = block;
+    }
+
+    // Lancer la recherche/filtrage
+    filterCharacters(search.toLowerCase().trim(), block);
+  }
+}
+
 // ===== Initialisation =====
 document.addEventListener("DOMContentLoaded", () => {
   initializeApp();
@@ -1330,16 +1393,34 @@ async function initializeApp() {
   setupEventListeners();
   initFavoritesEvents(); // Initialiser les favoris
 
-  // Afficher les blocs populaires au démarrage
-  displayPopularBlocks();
+  // Appliquer les paramètres URL s'ils existent
+  const urlParams = getURLParams();
+  if (urlParams.search || urlParams.block) {
+    applyURLParams();
+  } else {
+    // Afficher les blocs populaires seulement si pas de paramètres URL
+    displayPopularBlocks();
+  }
 
   // Afficher le nombre total de caractères dans le footer
   updateTotalCharsCount(allCharacters.length);
 
   // Cacher les stats (elles ne s'affichent que lors de recherche/filtre)
-  statsContainer.classList.add("hidden");
+  if (!urlParams.search && !urlParams.block) {
+    statsContainer.classList.add("hidden");
+  }
 
   loadingSpinner.classList.add("hidden");
+
+  // Gérer le bouton retour du navigateur
+  window.addEventListener("popstate", (event) => {
+    if (event.state) {
+      searchInput.value = event.state.search || "";
+      blockFilter.value = event.state.block || "";
+      currentBlock = event.state.block || "";
+      filterCharacters(event.state.search || "", event.state.block || "");
+    }
+  });
 }
 
 // ===== Chargement des données emoji enrichies =====
@@ -2150,6 +2231,9 @@ function filterCharacters(searchTerm, blockName) {
   }
 
   filteredCharacters = filtered;
+
+  // Mettre à jour l'URL avec les paramètres de recherche
+  updateURL(searchTerm, blockName);
 
   // Si aucun filtre n'est actif (pas de recherche ni de bloc), afficher les blocs populaires
   if (!searchTerm && !blockName) {
