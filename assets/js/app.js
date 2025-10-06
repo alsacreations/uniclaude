@@ -2268,8 +2268,9 @@ function filterCharacters(searchTerm, blockName) {
         });
 
         // Vérifier si au moins un mot de recherche (ou sa traduction) correspond à un tag
+        // Important : on cherche si le TAG contient le MOT (pas l'inverse)
         matchesSemanticTags = extendedSearchWords.some((word) =>
-          allTags.some((tag) => tag.includes(word) || word.includes(tag))
+          allTags.some((tag) => tag.includes(word))
         );
       }
 
