@@ -5,6 +5,8 @@
 Vous cherchez un emoji ? Un symbole mathématique ? Une flèche ? Un espace insécable ? Un tiret cadratin ?  
 **UniClaude** vous permet de rechercher et copier plus de **10 000 caractères Unicode** en un clic.
 
+**🆕 Nouveauté** : Recherche sémantique par contexte ! Tapez `fruit yellow` pour trouver 🍌, ou `fly wing` pour ✈️
+
 ---
 
 ## 🎯 À quoi ça sert ?
@@ -27,12 +29,24 @@ UniClaude est un **explorateur de caractères Unicode** qui vous aide à :
 
 ### 🔍 Recherche puissante et intuitive
 
-**Recherchez en anglais ou en français** :
+**Recherche classique en français** :
 
 - Tapez `coeur` pour trouver ❤️ 💕 💖 ♥
 - Tapez `fleche` pour trouver → ← ↑ ↓ ⇒ ⇐
 - Tapez `etoile` pour trouver ⭐ ★ ✨ ✩
 - Tapez `main` pour trouver 👋 ✋ 🤚 👌 👍
+
+**Recherche sémantique par contexte** :
+
+Trouvez des caractères par leur contexte ou synonymes (tags Unicode CLDR) :
+
+- `fruit yellow` → 🍌 (banane)
+- `fly wing` → ✈️ (avion)
+- `transport vehicle` → 🚗 🚕 🚙 🚌 🚎 (véhicules)
+- `food hot` → 🍕 🌭 🍔 (nourriture chaude)
+- `animal cat` → 🐱 🐈 😺 (chats)
+
+_Combinez plusieurs mots pour affiner votre recherche !_
 
 **Recherche typographique en français** :
 

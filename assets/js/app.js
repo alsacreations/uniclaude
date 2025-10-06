@@ -320,6 +320,14 @@ const FR_TO_EN_KEYWORDS = {
   "sous-marin": "submarine",
   ancre: "anchor",
 
+  // Contexte transport aérien
+  fly: "airplane plane aircraft",
+  flying: "airplane plane aircraft",
+  wing: "airplane plane aircraft",
+  voler: "airplane plane aircraft bird",
+  aile: "airplane plane aircraft bird wing",
+  vol: "flight airplane plane",
+
   // Objets du quotidien
   maison: "house home",
   telephone: "telephone phone",
@@ -1303,6 +1311,7 @@ let allCharacters = [];
 let filteredCharacters = [];
 let currentBlock = "";
 let emojiData = {}; // Données enrichies des emojis
+let semanticTags = {}; // Tags sémantiques pour recherche avancée
 
 // ===== Éléments DOM =====
 const searchInput = document.getElementById("searchInput");
@@ -1385,8 +1394,8 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 async function initializeApp() {
-  // Charger les données enrichies des emojis
-  await loadEmojiData();
+  // Charger les données enrichies des emojis et tags sémantiques
+  await Promise.all([loadEmojiData(), loadSemanticTags()]);
 
   populateBlockFilter();
   await generateCharacters();
@@ -1434,6 +1443,22 @@ async function loadEmojiData() {
   } catch (error) {
     console.error("❌ Erreur lors du chargement des données emoji:", error);
     emojiData = {}; // Fallback sur objet vide
+  }
+}
+
+// ===== Chargement des tags sémantiques =====
+async function loadSemanticTags() {
+  try {
+    const response = await fetch("assets/js/semantic-tags.json");
+    semanticTags = await response.json();
+    console.log(
+      `✅ Tags sémantiques chargés : ${
+        Object.keys(semanticTags).length
+      } caractères enrichis`
+    );
+  } catch (error) {
+    console.error("❌ Erreur lors du chargement des tags sémantiques:", error);
+    semanticTags = {}; // Fallback sur objet vide
   }
 }
 
@@ -2196,6 +2221,8 @@ function filterCharacters(searchTerm, blockName) {
   if (searchTerm) {
     // Traduire les mots français en anglais pour la recherche
     const translatedTerms = translateSearchTerm(searchTerm);
+    // Diviser le terme de recherche en mots pour recherche sémantique
+    const searchWords = searchTerm.toLowerCase().split(/\s+/);
 
     filtered = filtered.filter((char) => {
       const matchesChar = char.char.toLowerCase().includes(searchTerm);
@@ -2218,6 +2245,34 @@ function filterCharacters(searchTerm, blockName) {
         );
       }
 
+      // 🆕 Recherche sémantique par tags (CLDR)
+      let matchesSemanticTags = false;
+      const charCode = char.decimal.toString(16).toUpperCase();
+      const charTags = semanticTags[charCode];
+
+      if (charTags && searchWords.length > 0) {
+        // Combiner tous les tags (EN + FR)
+        const allTags = [
+          ...(charTags.tags || []),
+          ...(charTags.tagsFr || []),
+        ].map((tag) => tag.toLowerCase());
+
+        // Étendre les mots de recherche avec le dictionnaire FR_TO_EN
+        const extendedSearchWords = [...searchWords];
+        searchWords.forEach((word) => {
+          // Traduire via notre dictionnaire pour enrichir la recherche
+          const translated = translateSearchTerm(word);
+          if (translated) {
+            extendedSearchWords.push(...translated.toLowerCase().split(/\s+/));
+          }
+        });
+
+        // Vérifier si au moins un mot de recherche (ou sa traduction) correspond à un tag
+        matchesSemanticTags = extendedSearchWords.some((word) =>
+          allTags.some((tag) => tag.includes(word) || word.includes(tag))
+        );
+      }
+
       return (
         matchesChar ||
         matchesHex ||
@@ -2225,7 +2280,8 @@ function filterCharacters(searchTerm, blockName) {
         matchesName ||
         matchesBlock ||
         matchesHtmlEntity ||
-        matchesTranslated
+        matchesTranslated ||
+        matchesSemanticTags
       );
     });
   }
