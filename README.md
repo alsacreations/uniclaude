@@ -1,216 +1,309 @@
 # 🦄 UniClaude
 
-**Explorateur de caractères Unicode** - Assistant unicode pour les humains
+> **Votre assistant Unicode pour trouver et copier facilement n'importe quel caractère spécial**
 
-Application web pour rechercher, explorer et copier facilement plus de 10 000 caractères Unicode.
-
-[![Accessibilité](https://img.shields.io/badge/Accessibilit%C3%A9-WCAG%202.1%20AA-brightgreen)](./ACCESSIBILITY.md)
-[![Contraste](https://img.shields.io/badge/Contraste-100%25%20AA-brightgreen)](./COLOR_CONTRAST_ANALYSIS.md)
-[![HTML5](https://img.shields.io/badge/HTML5-native-orange)](https://www.w3.org/TR/html52/)
-[![CSS3](https://img.shields.io/badge/CSS3-native-blue)](https://www.w3.org/Style/CSS/)
-[![Vanilla JS](https://img.shields.io/badge/JavaScript-Vanilla-yellow)](https://developer.mozilla.org/fr/docs/Web/JavaScript)
+Vous cherchez un emoji ? Un symbole mathématique ? Une flèche ? Un espace insécable ? Un tiret cadratin ?  
+**UniClaude** vous permet de rechercher et copier plus de **10 000 caractères Unicode** en un clic.
 
 ---
 
-## ✨ Fonctionnalités
+## 🎯 À quoi ça sert ?
 
-- 🔍 **Recherche multi-critères** : par caractère, nom Unicode, code hexadécimal, entité HTML, ou bloc
-- 🇫🇷 **Recherche en français** : plus de 620 mots-clés français (coeur, fleche, espace insécable, cadratin, etc.)
-- 📋 **Copie en un clic** : cliquez sur n'importe quel caractère pour le copier dans votre presse-papier
-- 🏷️ **Informations complètes** : code Unicode (hexa), entité HTML, et nom du caractère
-- 🔗 **URLs partageables** : partagez des recherches directes via l'URL (ex: `?search=coeur`)
-- 🎨 **Interface moderne** : design dark mode responsive et accessible
-- ♿ **Accessible** : conforme aux guidelines WCAG et RGAA niveau 1
-- 🚀 **Zéro dépendance** : HTML/CSS/JS natifs uniquement
+UniClaude est un **explorateur de caractères Unicode** qui vous aide à :
 
----
+- 💬 Trouver des **emojis et symboles** pour vos messages et documents
+- 📝 Copier des **caractères typographiques** professionnels (guillemets français « », tirets longs —, espaces insécables)
+- 🔢 Accéder à des **symboles mathématiques** (≠, ≤, ≥, ∞, √, ∑)
+- ➡️ Insérer des **flèches** et symboles de navigation (→, ←, ↑, ↓, ⇒)
+- 💰 Utiliser des **symboles monétaires** du monde entier (€, $, £, ¥, ₹)
+- 🌍 Écrire dans différents **alphabets** (grec α β γ, cyrillique, arabe, hébreu...)
+- ⭐ Ajouter des **symboles décoratifs** (★, ♥, ♠, ✓, ✗)
 
-## 📦 Blocs Unicode Inclus
-
-Plus de **80 blocs Unicode** couverts, incluant :
-
-- **Scripts** : Latin (base et étendus), Grec, Cyrillique, Arabe, Hébreu, scripts asiatiques...
-- **Ponctuation** : générale, typographique, espaces variés
-- **Symboles** : mathématiques, monétaires, flèches, formes géométriques
-- **Emojis** : emoticons, symboles divers, transport, drapeaux
-- **Spéciaux** : exposants, indices, fractions, chiffres romains
+**Tout est accessible en un clic, sans installation !**
 
 ---
 
-## 🚀 Utilisation
+## ✨ Ce que vous pouvez faire
 
-### Installation Locale
+### 🔍 Recherche puissante et intuitive
 
-1. Clonez le repository :
+**Recherchez en anglais ou en français** :
 
-```bash
-git clone https://github.com/alsacreations/uniclaude.git
-cd uniclaude
+- Tapez `coeur` pour trouver ❤️ 💕 💖 ♥
+- Tapez `fleche` pour trouver → ← ↑ ↓ ⇒ ⇐
+- Tapez `etoile` pour trouver ⭐ ★ ✨ ✩
+- Tapez `main` pour trouver 👋 ✋ 🤚 👌 👍
+
+**Recherche typographique en français** :
+
+- `espace insécable` → (espace insécable)
+- `tiret cadratin` → — (tiret long)
+- `guillemet français` → « »
+- `points de suspension` → …
+- `apostrophe typographique` → '
+
+**Recherche technique** :
+
+- Par caractère : `€`, `→`, `♥`
+- Par nom anglais : `euro`, `arrow`, `heart`
+- Par code hexadécimal : `20AC`, `2192`
+- Par entité HTML : `&euro;`, `&#8364;`
+
+### 📋 Copie instantanée
+
+Cliquez simplement sur n'importe quel caractère pour le copier dans votre presse-papier.  
+Une notification vous confirme que c'est fait. Collez ensuite où vous voulez !
+
+### 🏷️ Informations détaillées
+
+Chaque caractère affiche :
+
+- Le **caractère** lui-même en grand
+- Son **nom Unicode** officiel
+- Son **code hexadécimal** (ex: U+20AC)
+- Son **entité HTML** (ex: &euro;)
+- Le **bloc Unicode** auquel il appartient
+
+### ⭐ Favoris
+
+Marquez vos caractères préférés pour y accéder rapidement :
+
+- Cliquez sur l'étoile pour ajouter aux favoris
+- Vos favoris sont sauvegardés localement
+- Section repliable pour ne pas encombrer l'écran
+
+### 🔗 Partage facile
+
+Partagez une recherche en copiant simplement l'URL :
+
+- L'URL se met à jour automatiquement quand vous cherchez
+- Envoyez le lien à un collègue : il verra directement votre recherche
+- Enregistrez des recherches fréquentes dans vos marque-pages
+
+**Exemples d'URLs** :
+
+```text
+?search=coeur          → Recherche "coeur"
+?search=cadratin       → Recherche "cadratin"
+?block=Emoticons       → Tous les emoticons
 ```
 
-2. Ouvrez `index.html` dans votre navigateur, ou lancez un serveur local :
+### 🎨 Interface agréable
 
-```bash
-# Python 3
-python3 -m http.server 8000
-
-# Node.js avec http-server
-npx http-server
-```
-
-3. Accédez à `http://localhost:8000`
-
-### Navigation
-
-#### Recherche
-
-- Tapez dans le champ de recherche pour filtrer par :
-  - **Caractère** : `€`, `→`, `♥`
-  - **Nom Unicode** : `euro`, `arrow`, `heart`
-  - **Mots-clés français** : `coeur`, `fleche`, `espace insécable`, `tiret cadratin`
-  - **Code hexa** : `20AC`, `2192`
-  - **Entité HTML** : `&euro;`, `&#8364;`
-
-#### URLs Partageables
-
-Partagez des recherches directes en utilisant les paramètres d'URL :
-
-```
-# Rechercher "coeur"
-https://example.com/?search=coeur
-
-# Filtrer par bloc "Emoticons"
-https://example.com/?block=Emoticons
-
-# Combiner recherche et bloc
-https://example.com/?search=hand&block=Miscellaneous%20Symbols%20and%20Pictographs
-```
-
-Les paramètres disponibles :
-
-- `search` : terme de recherche
-- `block` : nom du bloc Unicode (sensible à la casse)
-
-L'URL est automatiquement mise à jour quand vous effectuez une recherche, permettant de partager facilement un lien direct.
-
-#### Filtres
-
-- Sélectionnez un bloc Unicode dans le menu déroulant pour affiner les résultats
-
-#### Copie
-
-- Cliquez sur n'importe quelle carte de caractère pour copier le caractère
-- Une notification confirme la copie
+- **Design moderne** en mode sombre reposant pour les yeux
+- **Responsive** : fonctionne sur ordinateur, tablette et mobile
+- **Navigation au clavier** complète pour plus d'efficacité
+- **Accessible** : conforme aux normes WCAG et RGAA
 
 ---
 
-## ♿ Accessibilité
+## � Caractères disponibles
 
-UniClaude est développé selon les **Guidelines d'accessibilité Alsacréations** et vise la conformité **RGAA niveau 1**.
+Plus de **10 000 caractères** répartis en **80+ catégories** :
 
-### Fonctionnalités d'accessibilité
+### � Emojis et symboles
 
-✅ **Navigation au clavier complète**
+Emoticons 😀, symboles et pictogrammes 🎨, transport 🚗, drapeaux 🇫🇷, animaux 🐱
 
-- `Tab` / `Shift+Tab` : navigation entre les éléments
-- `Enter` ou `Espace` : activation des boutons
-- Lien d'évitement : "Aller au contenu principal"
+### ✍️ Typographie française
 
-✅ **Focus visible**
+Espaces (insécable, fine, cadratin), guillemets « », apostrophe ', tirets – —, points de suspension …
 
-- Contours clairs sur tous les éléments interactifs
-- Utilisation de `:focus-visible` pour ne pas gêner la navigation à la souris
+### 🔤 Alphabets
 
-✅ **Sémantique HTML**
+Latin (base, étendu, spéciaux), grec Ω, cyrillique Я, arabe, hébreu, et bien d'autres
 
-- Structure avec landmarks ARIA (`banner`, `main`, `contentinfo`, `search`)
-- Titres hiérarchisés
-- Boutons appropriés pour les actions
+### ➕ Mathématiques et sciences
 
-✅ **ARIA**
+Opérateurs + − × ÷, comparaisons ≤ ≥ ≠, symboles ∞ √ ∑ ∫ °, indices ₀ ₁, exposants ² ³
 
-- Labels accessibles sur tous les contrôles
-- Live regions pour les notifications et mises à jour dynamiques
-- Rôles et propriétés appropriés
+### 💰 Monnaies et nombres
 
-✅ **Design inclusif**
+Symboles monétaires € $ £ ¥ ₹, fractions ½ ¼ ¾, chiffres romains Ⅰ Ⅱ Ⅲ
 
-- Tailles de police fluides (rem/em)
-- Support du zoom jusqu'à 200%
-- **Contrastes de couleurs WCAG 2.1 AA conformes** ✅
+### ↗️ Flèches et formes
 
-📄 Documentation détaillée :
+Flèches → ⇒ ↑ ⤴️, formes géométriques ● ■ ▲ ◆, cadres et bordures ┌ ─ │
 
-- [Rapport d'accessibilité complet](./ACCESSIBILITY.md)
-- [Analyse des contrastes de couleurs](./COLOR_CONTRAST_ANALYSIS.md)
-- [Documentation navigation clavier](./KEYBOARD_NAVIGATION.md)
+### ⚡ Symboles techniques
+
+Musique ♫ ♪, jeux de cartes ♠ ♥ ♦ ♣, signes du zodiac ♈, électricité ⚡, contrôles ⏵ ⏸
 
 ---
 
-## 🛠️ Technologies
+## 🚀 Comment l'utiliser ?
 
-- **HTML5** : Structure sémantique
-- **CSS3** : Grid, Flexbox, variables CSS, focus-visible
-- **JavaScript Vanilla** : Aucune dépendance externe
-- **Unicode 15.1** : Base de données des caractères
+### En ligne (le plus simple)
+
+Visitez simplement [l'application web](#) dans votre navigateur. Aucune installation nécessaire !
+
+### En local
+
+Si vous préférez utiliser UniClaude sans connexion :
+
+1. Téléchargez le projet depuis [GitHub](https://github.com/alsacreations/uniclaude)
+2. Ouvrez le fichier `index.html` dans votre navigateur
+3. C'est tout ! Ça fonctionne directement
 
 ---
 
-## 📁 Structure du Projet
+## 💡 Astuces d'utilisation
+
+### Recherche rapide
+
+- Tapez quelques lettres : la recherche filtre instantanément
+- Utilisez des mots français : `fleche`, `coeur`, `etoile`
+- Cherchez par domaine : `math`, `currency`, `arrow`
+
+### Navigation au clavier
+
+- `Tab` : passer d'un élément à l'autre
+- `Entrée` ou `Espace` : copier le caractère sélectionné
+- `Ctrl+F` ou `Cmd+F` : aller directement au champ de recherche
+
+### Filtres
+
+- Utilisez le menu déroulant pour voir tous les caractères d'une catégorie
+- Combinez recherche et filtre pour affiner : recherchez "double" dans "Arrows"
+
+### Favoris
+
+- Gardez vos caractères fréquents à portée de main
+- Idéal pour les symboles typographiques que vous utilisez souvent
+- Les favoris restent même après avoir fermé le navigateur
+
+---
+
+## ♿ Accessible à tous
+
+UniClaude est conçu pour être **utilisable par tout le monde**, y compris les personnes en situation de handicap.
+
+### ⌨️ Navigation au clavier
+
+Vous n'avez pas besoin de souris :
+
+- `Tab` et `Shift+Tab` : naviguer entre les éléments
+- `Entrée` ou `Espace` : copier un caractère
+- Liens d'évitement pour accéder rapidement au contenu
+
+### 👁️ Confort visuel
+
+- **Contrastes élevés** : texte toujours lisible (conformité WCAG 2.1 AA)
+- **Focus visible** : vous voyez toujours où vous êtes
+- **Zoom** : fonctionne jusqu'à 200% sans perte de fonctionnalité
+- **Police adaptative** : s'adapte à vos préférences de taille
+
+### 🔊 Compatible lecteurs d'écran
+
+- Structure sémantique HTML
+- Labels ARIA sur tous les contrôles
+- Notifications en direct pour les actions (copie réussie, etc.)
+
+📄 **Documentation complète** : [Rapport d'accessibilité](./ACCESSIBILITY.md)
+
+---
+
+## 🙋 Questions fréquentes
+
+### Faut-il créer un compte ?
+
+Non, aucun compte nécessaire. L'application fonctionne directement dans votre navigateur.
+
+### Mes favoris sont-ils sauvegardés ?
+
+Oui, vos favoris sont enregistrés localement dans votre navigateur. Ils restent disponibles même après avoir fermé la page.
+
+### Ça fonctionne hors ligne ?
+
+Après votre première visite, la plupart des fonctionnalités fonctionnent hors connexion grâce au cache du navigateur.
+
+### Les caractères copiés fonctionnent partout ?
+
+La plupart des applications modernes supportent Unicode. Si un caractère ne s'affiche pas, c'est que l'application de destination ne supporte pas ce caractère spécifique.
+
+### C'est gratuit ?
+
+Oui, totalement gratuit et open source. Pas de publicité, pas de tracking.
+
+### Je peux suggérer des améliorations ?
+
+Absolument ! Ouvrez une [issue sur GitHub](https://github.com/alsacreations/uniclaude/issues) ou contribuez directement au code.
+
+---
+
+## �‍💻 Pour les développeurs
+
+### Technologies
+
+- **HTML5** sémantique (zéro framework)
+- **CSS3** moderne (Grid, Flexbox, variables CSS)
+- **JavaScript Vanilla** (aucune dépendance)
+- **Unicode 15.1** (base de données officielle)
+
+### Structure du projet
 
 ```
 uniclaude/
-├── index.html          # Structure HTML principale
-├── styles.css          # Styles et design
-├── app.js             # Logique JavaScript
-├── README.md          # Ce fichier
-├── ACCESSIBILITY.md   # Rapport d'accessibilité
-└── LICENSE            # Licence du projet
+├── index.html                  # Page principale
+├── assets/
+│   ├── css/
+│   │   ├── app.css            # Point d'entrée CSS
+│   │   ├── theme.css          # Variables et thème
+│   │   ├── natives.css        # Styles éléments natifs
+│   │   └── styles.css         # Composants application
+│   ├── js/
+│   │   ├── app.js             # Logique principale
+│   │   └── emoji-data.json    # Données enrichies emojis
+│   └── images/
+│       └── favicon.svg        # Icône du site
+├── README.md                   # Ce fichier
+├── ACCESSIBILITY.md            # Rapport accessibilité
+└── LICENSE                     # Licence MIT
 ```
 
----
+### Contribuer
 
-## 🤝 Contribution
+Les contributions sont bienvenues ! Veuillez :
 
-Les contributions sont les bienvenues ! Veuillez suivre les guidelines :
-
-1. **Accessibilité** : tout ajout doit respecter les [guidelines d'accessibilité](https://github.com/alsacreations/kiwipedia/blob/main/guidelines/accessibility.md)
-2. **Code** : maintenir le style existant (HTML/CSS/JS natifs)
-3. **Tests** : tester la navigation au clavier et avec lecteur d'écran
-
----
-
-## 📝 TODO / Roadmap
-
-- [ ] Ajouter plus de blocs Unicode (CJK, scripts rares...)
-- [ ] Améliorer les noms de caractères (base plus complète)
-- [ ] Option de copie multiple (sélection)
-- [ ] Export de favoris
-- [ ] Mode d'affichage alternatif (liste vs grille)
-- [ ] Tests automatisés d'accessibilité (pa11y, axe-core)
-- [ ] Thème clair en option
-- [ ] PWA pour utilisation hors-ligne
+1. Respecter les [guidelines d'accessibilité](https://github.com/alsacreations/kiwipedia/blob/main/guidelines/accessibility.md)
+2. Maintenir le code sans dépendances externes
+3. Tester la navigation au clavier et avec lecteurs d'écran
+4. Documenter les nouvelles fonctionnalités
 
 ---
 
 ## 📜 Licence
 
-MIT License - voir [LICENSE](./LICENSE)
+**MIT License** - Vous êtes libre d'utiliser, modifier et distribuer ce projet.
+
+Voir le fichier [LICENSE](./LICENSE) pour plus de détails.
 
 ---
 
-## 👥 Crédits
+## � Crédits
 
-Développé par [Alsacréations](https://www.alsacreations.fr/)
+**Développé avec ❤️ par [Alsacréations](https://www.alsacreations.fr/)**
 
-Données Unicode © Unicode, Inc.
+Données Unicode © [Unicode Consortium](https://unicode.org/)
 
 ---
 
-## 🔗 Ressources
+## 🔗 Liens utiles
 
-- [Consortium Unicode](https://unicode.org/)
-- [Unicode Character Database](https://www.unicode.org/Public/UCD/latest/)
-- [WCAG 2.1](https://www.w3.org/WAI/WCAG21/quickref/)
-- [RGAA 4.1](https://www.numerique.gouv.fr/publications/rgaa-accessibilite/)
+### Documentation Unicode
+
+- [Consortium Unicode](https://unicode.org/) - Organisme de standardisation
+- [Unicode Character Database](https://www.unicode.org/Public/UCD/latest/) - Base de données officielle
+- [Unicode 15.1 Release Notes](https://www.unicode.org/versions/Unicode15.1.0/) - Dernière version
+
+### Accessibilité
+
+- [WCAG 2.1](https://www.w3.org/WAI/WCAG21/quickref/) - Guidelines d'accessibilité web
+- [RGAA 4.1](https://www.numerique.gouv.fr/publications/rgaa-accessibilite/) - Référentiel français
 - [Guidelines Alsacréations](https://github.com/alsacreations/kiwipedia/blob/main/guidelines/accessibility.md)
+
+### Outils connexes
+
+- [Unicode Table](https://unicode-table.com/) - Autre explorateur Unicode
+- [CopyChar](https://copychar.cc/) - Caractères spéciaux rapides
+- [Shapecatcher](https://shapecatcher.com/) - Recherche par dessin
