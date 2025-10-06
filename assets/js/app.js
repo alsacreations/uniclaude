@@ -884,11 +884,18 @@ function getRandomCharacters(characters, count) {
 }
 
 // ===== Affichage des caractères =====
-function displayCharacters(characters, isRandom = false) {
-  charactersGrid.innerHTML = "";
+let currentDisplayLimit = 500; // Limite initiale d'affichage
+const DISPLAY_INCREMENT = 200; // Nombre de caractères à ajouter à chaque clic
+
+function displayCharacters(characters, isRandom = false, append = false) {
+  // Réinitialiser la limite si on ne fait pas un append
+  if (!append) {
+    currentDisplayLimit = 500;
+    charactersGrid.innerHTML = "";
+  }
 
   // Afficher un titre si mode aléatoire
-  if (isRandom) {
+  if (isRandom && !append) {
     const randomTitle = document.createElement("div");
     randomTitle.className = "random-title";
     randomTitle.innerHTML = `
@@ -905,21 +912,60 @@ function displayCharacters(characters, isRandom = false) {
   }
 
   // Limiter l'affichage pour de meilleures performances
-  const displayLimit = isRandom ? characters.length : 500;
-  const charsToDisplay = characters.slice(0, displayLimit);
+  const displayLimit = isRandom ? characters.length : currentDisplayLimit;
+  const startIndex = append
+    ? charactersGrid.querySelectorAll(".char-card").length
+    : 0;
+  const charsToDisplay = characters.slice(startIndex, displayLimit);
+
+  // Supprimer le bouton "Afficher plus" existant s'il y en a un
+  const existingLoadMoreBtn = charactersGrid.querySelector(".load-more-btn");
+  if (existingLoadMoreBtn) {
+    existingLoadMoreBtn.remove();
+  }
 
   charsToDisplay.forEach((charData, index) => {
-    const card = createCharacterCard(charData, index);
+    const card = createCharacterCard(charData, startIndex + index);
     charactersGrid.appendChild(card);
   });
 
+  // Ajouter le bouton "Afficher plus" s'il reste des caractères
   if (!isRandom && characters.length > displayLimit) {
-    const moreInfo = document.createElement("div");
-    moreInfo.className = "info-card";
-    moreInfo.innerHTML = `<p>Affichage limité à ${displayLimit} caractères sur ${characters.length.toLocaleString(
+    const loadMoreContainer = document.createElement("div");
+    loadMoreContainer.className = "load-more-container";
+
+    const loadMoreBtn = document.createElement("button");
+    loadMoreBtn.type = "button";
+    loadMoreBtn.className = "load-more-btn";
+    loadMoreBtn.textContent = `Afficher plus (${Math.min(
+      DISPLAY_INCREMENT,
+      characters.length - displayLimit
+    )} caractères supplémentaires)`;
+    loadMoreBtn.setAttribute(
+      "aria-label",
+      `Afficher ${Math.min(
+        DISPLAY_INCREMENT,
+        characters.length - displayLimit
+      )} caractères supplémentaires sur ${
+        characters.length - displayLimit
+      } restants`
+    );
+
+    loadMoreBtn.addEventListener("click", () => {
+      currentDisplayLimit += DISPLAY_INCREMENT;
+      displayCharacters(characters, isRandom, true);
+    });
+
+    loadMoreContainer.appendChild(loadMoreBtn);
+
+    const remainingInfo = document.createElement("p");
+    remainingInfo.className = "remaining-info";
+    remainingInfo.textContent = `${displayLimit} affichés sur ${characters.length.toLocaleString(
       "fr-FR"
-    )}. Utilisez la recherche ou les filtres pour affiner.</p>`;
-    charactersGrid.appendChild(moreInfo);
+    )} caractères`;
+    loadMoreContainer.appendChild(remainingInfo);
+
+    charactersGrid.appendChild(loadMoreContainer);
   }
 }
 

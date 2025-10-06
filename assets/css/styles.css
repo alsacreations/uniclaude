@@ -683,6 +683,50 @@ footer a:hover {
   margin: 0;
 }
 
+/* ===== Bouton "Afficher plus" ===== */
+
+.load-more-container {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--gap-s);
+  padding: var(--spacing-l);
+  margin-block: var(--spacing-m);
+}
+
+.load-more-btn {
+  padding: var(--spacing-12) var(--spacing-24);
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: var(--radius-md);
+  font-size: var(--text-m);
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.load-more-btn:hover {
+  background: color-mix(in oklch, var(--primary-color) 90%, black);
+  transform: translateY(-1px);
+}
+
+.load-more-btn:active {
+  transform: translateY(0);
+}
+
+.load-more-btn:focus-visible {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+.remaining-info {
+  color: var(--text-muted);
+  font-size: var(--text-14);
+  margin: 0;
+}
+
 /* ===== Blocs populaires ===== */
 
 .popular-blocks-intro {
