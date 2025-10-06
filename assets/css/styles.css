@@ -258,13 +258,12 @@ main {
   gap: var(--spacing-12);
   min-height: 140px;
   user-select: unset;
+  box-shadow: unset;
 }
 
 .favorite-item:hover .favorite-item-btn {
   transform: translateY(-3px);
   border-color: var(--primary-color);
-  box-shadow: 0 6px 16px
-    color-mix(in srgb, var(--color-indigo-500) 40%, transparent);
 }
 
 .favorite-item-btn:focus-visible {
@@ -418,6 +417,7 @@ main {
   position: relative;
   overflow: hidden;
   user-select: unset;
+  box-shadow: unset;
 }
 
 .char-card::before {
