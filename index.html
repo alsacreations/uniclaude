@@ -71,21 +71,18 @@
         aria-label="Grille des caractères Unicode"
       >
         <!-- Section des favoris -->
-        <div
-          id="favoritesSection"
-          class="favorites-section hidden"
-          role="region"
-          aria-label="Caractères favoris"
-        >
-          <h2 class="favorites-header">⭐ Favoris</h2>
-          <div id="favoritesGrid" class="favorites-grid" role="list">
-            <!-- Les favoris seront générés ici -->
+        <details id="favoritesSection" class="favorites-section hidden" open>
+          <summary class="details-title">⭐ Favoris</summary>
+          <div class="favorites-content">
+            <div id="favoritesGrid" class="favorites-grid" role="list">
+              <!-- Les favoris seront générés ici -->
+            </div>
+            <p class="favorites-empty" id="favoritesEmpty">
+              Aucun favori pour le moment. Cliquez sur ⭐ pour ajouter des
+              caractères.
+            </p>
           </div>
-          <p class="favorites-empty" id="favoritesEmpty">
-            Aucun favori pour le moment. Cliquez sur ⭐ pour ajouter des
-            caractères.
-          </p>
-        </div>
+        </details>
 
         <!-- <div class="keyboard-help" id="keyboardHelp">
           <p>

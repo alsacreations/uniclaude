@@ -208,6 +208,11 @@ main {
   padding: var(--spacing-24);
   margin-bottom: var(--spacing-m);
   transition: all 0.3s ease;
+
+  & .details-title {
+    font-size: var(--text-l);
+    background: none;
+  }
 }
 
 .favorites-section.hidden {
