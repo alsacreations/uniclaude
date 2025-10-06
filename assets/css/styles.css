@@ -199,11 +199,12 @@ main {
 .favorites-section {
   border: 2px solid var(--primary-color);
   border-radius: var(--radius-xl);
-  padding: var(--spacing-24);
+  padding: var(--spacing-16) var(--spacing-24);
   margin-bottom: var(--spacing-m);
   transition: all 0.3s ease;
 
   & .details-title {
+    padding: var(--spacing-8) var(--spacing-16) var(--spacing-8) 0;
     font-size: var(--text-l);
     background: none;
   }
@@ -753,7 +754,7 @@ footer {
 
 .popular-blocks-intro {
   grid-column: 1 / -1;
-  padding-block: var(--spacing-m);
+  padding-block: var(--spacing-m) var(--spacing-s);
 }
 
 .popular-blocks-intro h2 {
