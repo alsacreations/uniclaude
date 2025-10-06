@@ -39,7 +39,7 @@ body {
 
 .skip-link {
   position: absolute;
-  top: -40px;
+  top: -50px;
   left: 0;
   z-index: var(--z-above-all-level, 10000);
   padding: var(--spacing-12) var(--spacing-24);
@@ -65,6 +65,12 @@ header {
     var(--primary-color),
     var(--secondary-color)
   );
+}
+
+.logo-alsacreations {
+  @media (width < 48rem) {
+    width: 150px;
+  }
 }
 
 .logo-alsacreations-pepins-inner {
