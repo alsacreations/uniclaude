@@ -60,13 +60,6 @@
           </button>
         </div>
 
-        <div class="filters">
-          <label for="blockFilter">Filtrer par bloc :</label>
-          <select id="blockFilter">
-            <option value="">Tous les blocs</option>
-          </select>
-        </div>
-
         <div class="stats hidden" role="status" aria-live="polite">
           <span id="statsDisplay"></span>
           <button type="button" id="resetButton">Reset</button>
@@ -112,6 +105,13 @@
           <!-- Les caractères seront générés ici -->
         </div>
       </section>
+
+      <div class="filters">
+        <label for="blockFilter">Filtrer par bloc :</label>
+        <select id="blockFilter">
+          <option value="">Tous les blocs</option>
+        </select>
+      </div>
 
       <div id="loadingSpinner" class="loading" role="status" aria-live="polite">
         <div class="spinner" aria-hidden="true"></div>
