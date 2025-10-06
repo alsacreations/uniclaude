@@ -59,12 +59,23 @@ body {
 
 header {
   text-align: center;
-  padding: var(--spacing-xl) var(--spacing-m) var(--spacing-m);
+  padding: var(--spacing-m) var(--spacing-m);
   background: linear-gradient(
     135deg,
     var(--primary-color),
     var(--secondary-color)
   );
+}
+
+.logo-alsacreations-pepins-inner {
+  fill: black;
+}
+
+.header-top {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: var(--spacing-16);
+  place-items: center start;
 }
 
 header h1 {
