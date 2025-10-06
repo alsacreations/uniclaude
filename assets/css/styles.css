@@ -92,16 +92,12 @@ main {
 /* ===== Section de recherche ===== */
 
 .search-section {
-  background: var(--bg-light);
-  padding: var(--spacing-m);
   border-radius: var(--radius-xl);
   margin-bottom: var(--spacing-m);
-  box-shadow: var(--shadow);
 }
 
 .search-container {
   position: relative;
-  margin-bottom: var(--spacing-24);
 }
 
 #searchInput {
