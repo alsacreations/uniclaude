@@ -95,8 +95,8 @@
   /* ===== Tokens spécifiques UniClaude ===== */
 
   /* Couleurs principales */
-  --primary-color: var(--color-indigo-500);
-  --primary-dark: var(--color-indigo-600);
+  --primary-color: var(--color-indigo-700);
+  --primary-dark: var(--color-indigo-800);
   --primary-color-on-dark: var(
     --color-indigo-400
   ); /* Optimisé pour contraste WCAG AA (5.78:1) */
@@ -108,7 +108,7 @@
   /* Surfaces et arrière-plans */
   --bg-color: var(--color-slate-900);
   --bg-light: var(--color-slate-800);
-  --bg-card: var(--color-slate-700);
+  --bg-card: var(--color-slate-900);
 
   /* Texte */
   --text-color: var(--color-slate-100);

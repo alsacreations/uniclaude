@@ -65,7 +65,6 @@ header {
     var(--primary-color),
     var(--secondary-color)
   );
-  box-shadow: var(--shadow-lg);
 }
 
 header h1 {
@@ -198,11 +197,6 @@ main {
 /* ===== Section des favoris ===== */
 
 .favorites-section {
-  background: linear-gradient(
-    135deg,
-    color-mix(in srgb, var(--color-indigo-500) 10%, transparent),
-    color-mix(in srgb, var(--color-violet-500) 10%, transparent)
-  );
   border: 2px solid var(--primary-color);
   border-radius: var(--radius-xl);
   padding: var(--spacing-24);
@@ -420,7 +414,7 @@ main {
   width: 100%;
 
   /* Custom styles */
-  background: var(--bg-light);
+  background: var(--bg-card);
   border: 2px solid var(--border-color);
   border-radius: var(--radius-lg);
   padding: var(--spacing-24) var(--spacing-16);
@@ -619,7 +613,6 @@ main {
   padding: var(--spacing-16) var(--spacing-24);
   border: 2px solid var(--color-white);
   border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-lg);
   display: flex;
   align-items: center;
   gap: var(--spacing-12);
