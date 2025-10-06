@@ -198,7 +198,7 @@ main {
 
 .favorites-section {
   border: 2px solid var(--primary-color);
-  border-radius: var(--radius-xl);
+  border-radius: var(--radius-lg);
   padding: var(--spacing-16) var(--spacing-24);
   margin-bottom: var(--spacing-m);
   transition: all 0.3s ease;
