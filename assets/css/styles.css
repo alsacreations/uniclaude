@@ -356,6 +356,64 @@ main {
   opacity: 1;
 }
 
+/* ===== Drag & Drop pour réordonner les favoris ===== */
+
+.favorite-item[draggable="true"] {
+  cursor: grab;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.favorite-item[draggable="true"]:active {
+  cursor: grabbing;
+}
+
+/* État pendant le drag */
+.favorite-item.dragging {
+  opacity: 0.5;
+  transform: scale(0.95);
+}
+
+/* Zone de drop (survol) */
+.favorite-item.drag-over {
+  position: relative;
+}
+
+.favorite-item.drag-over::before {
+  content: "";
+  position: absolute;
+  top: -4px;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--primary-color);
+  border-radius: var(--radius-full);
+  box-shadow: 0 0 8px var(--primary-color);
+  animation: pulse-drag 0.6s ease-in-out infinite;
+}
+
+@keyframes pulse-drag {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scaleX(0.95);
+  }
+}
+
+/* Désactiver le drag sur mobile/tactile */
+@media (pointer: coarse) {
+  .favorite-item[draggable="true"] {
+    cursor: default;
+  }
+
+  .favorite-item[draggable="true"]::before {
+    display: none;
+  }
+}
+
 /* Aide navigation clavier */
 .keyboard-help {
   background: var(--bg-light);

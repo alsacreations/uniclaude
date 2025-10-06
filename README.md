@@ -82,9 +82,13 @@ Chaque caractère affiche :
 
 Marquez vos caractères préférés pour y accéder rapidement :
 
-- Cliquez sur l'étoile pour ajouter aux favoris
-- Vos favoris sont sauvegardés localement
-- Section repliable pour ne pas encombrer l'écran
+- **Ajouter** : Cliquez sur l'étoile pour ajouter aux favoris
+- **Réorganiser** : Glissez-déposez vos favoris pour les réordonner (desktop uniquement)
+- **Supprimer** : Survolez un favori et cliquez sur la croix
+- **Persistance** : Vos favoris et leur ordre sont sauvegardés localement
+- **Interface** : Section repliable pour ne pas encombrer l'écran
+
+💡 _Astuce : Organisez vos favoris par fréquence d'utilisation en les réordonnant par simple glisser-déposer !_
 
 ### 🔗 Partage facile
 
@@ -183,8 +187,9 @@ Si vous préférez utiliser UniClaude sans connexion :
 ### Favoris
 
 - Gardez vos caractères fréquents à portée de main
+- **Réorganisez** par glisser-déposer (sur desktop) : maintenez le clic et déplacez
 - Idéal pour les symboles typographiques que vous utilisez souvent
-- Les favoris restent même après avoir fermé le navigateur
+- Les favoris et leur ordre restent même après avoir fermé le navigateur
 
 ---
 
@@ -225,7 +230,13 @@ Non, aucun compte nécessaire. L'application fonctionne directement dans votre n
 
 ### Mes favoris sont-ils sauvegardés ?
 
-Oui, vos favoris sont enregistrés localement dans votre navigateur. Ils restent disponibles même après avoir fermé la page.
+Oui, vos favoris sont enregistrés localement dans votre navigateur. Ils restent disponibles même après avoir fermé la page. L'ordre dans lequel vous les organisez est également conservé.
+
+### Comment réorganiser mes favoris ?
+
+Sur **ordinateur** : Cliquez et maintenez sur un favori, puis glissez-le à la position souhaitée. Une ligne bleue vous indique où il sera déposé. L'ordre est sauvegardé automatiquement.
+
+Sur **mobile/tablette** : La réorganisation par glisser-déposer n'est pas disponible sur les appareils tactiles pour éviter les conflits avec le défilement.
 
 ### Ça fonctionne hors ligne ?
 

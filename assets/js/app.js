@@ -2482,7 +2482,15 @@ function renderFavorites() {
       const escapedName = fav.name.replace(/'/g, "\\'").replace(/"/g, "&quot;");
 
       return `
-    <div class="favorite-item" role="listitem">
+    <div class="favorite-item"
+         role="listitem"
+         draggable="true"
+         data-codepoint="${fav.codePoint}"
+         ondragstart="handleDragStart(event)"
+         ondragover="handleDragOver(event)"
+         ondragleave="handleDragLeave(event)"
+         ondrop="handleDrop(event)"
+         ondragend="handleDragEnd(event)">
       <button
         class="favorite-item-btn"
         onclick="copyToClipboard({char: '${fav.char.replace(
@@ -2515,6 +2523,90 @@ function renderFavorites() {
   `;
     })
     .join("");
+}
+
+// ===== GESTION DU DRAG & DROP POUR RÉORDONNER LES FAVORIS =====
+
+let draggedElement = null;
+let draggedIndex = null;
+
+function handleDragStart(event) {
+  draggedElement = event.currentTarget;
+  draggedIndex = Array.from(draggedElement.parentNode.children).indexOf(
+    draggedElement
+  );
+
+  // Style visuel pendant le drag
+  draggedElement.classList.add("dragging");
+
+  // Nécessaire pour Firefox
+  event.dataTransfer.effectAllowed = "move";
+  event.dataTransfer.setData("text/html", draggedElement.innerHTML);
+}
+
+function handleDragOver(event) {
+  event.preventDefault(); // Nécessaire pour permettre le drop
+
+  const dragOverElement = event.currentTarget;
+
+  // Ne pas traiter si c'est le même élément
+  if (draggedElement === dragOverElement) {
+    return;
+  }
+
+  // Ajouter un indicateur visuel
+  dragOverElement.classList.add("drag-over");
+
+  event.dataTransfer.dropEffect = "move";
+}
+
+function handleDragLeave(event) {
+  // Retirer l'indicateur visuel
+  event.currentTarget.classList.remove("drag-over");
+}
+
+function handleDrop(event) {
+  event.preventDefault();
+  event.stopPropagation();
+
+  const dropElement = event.currentTarget;
+  dropElement.classList.remove("drag-over");
+
+  // Ne pas traiter si c'est le même élément
+  if (draggedElement === dropElement) {
+    return;
+  }
+
+  // Calculer le nouvel index
+  const dropIndex = Array.from(dropElement.parentNode.children).indexOf(
+    dropElement
+  );
+
+  // Réorganiser le tableau des favoris
+  const [movedItem] = favorites.splice(draggedIndex, 1);
+  favorites.splice(dropIndex, 0, movedItem);
+
+  // Sauvegarder et re-rendre
+  saveFavorites();
+  renderFavorites();
+
+  // Annoncer le changement
+  announceFavoriteChange(
+    `${movedItem.name} déplacé en position ${dropIndex + 1}`
+  );
+}
+
+function handleDragEnd(event) {
+  // Nettoyer les styles
+  event.currentTarget.classList.remove("dragging");
+
+  // Nettoyer tous les indicateurs drag-over
+  document.querySelectorAll(".favorite-item.drag-over").forEach((el) => {
+    el.classList.remove("drag-over");
+  });
+
+  draggedElement = null;
+  draggedIndex = null;
 }
 
 // Mettre à jour l'état des boutons étoile
