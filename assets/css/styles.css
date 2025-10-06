@@ -321,8 +321,9 @@ main {
   width: 2rem;
   aspect-ratio: 1 / 1;
   padding: var(--spacing-8);
-  background-color: var(--color-orange-500);
-  color: white;
+  background-color: var(--color-orange-300);
+  box-shadow: unset;
+  color: var(--color-black);
   border: none;
   border-radius: var(--radius-full);
   line-height: 1;
@@ -345,7 +346,7 @@ main {
 }
 
 .remove-favorite:hover {
-  background: var(--color-orange-700);
+  background: var(--color-orange-500);
   transform: scale(1.1);
 }
 
@@ -458,6 +459,7 @@ main {
   top: 0.5rem;
   right: 0.5rem;
   background: color-mix(in srgb, var(--color-black) 50%, transparent);
+  box-shadow: unset;
   border: none;
   border-radius: var(--radius-full);
   width: 2rem;
