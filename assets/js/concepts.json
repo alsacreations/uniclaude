@@ -561,7 +561,7 @@
     "id": 94,
     "concept": "🏁 + ⚪ + ⚫",
     "clue": "Jeu de société",
-    "answer": "Le jeu de dames (le plateau à damier et la promotion d'un pion en dame)"
+    "answer": "Le jeu de dames"
   },
   {
     "id": 95,
@@ -598,5 +598,215 @@
     "concept": "🍬 + 🍭 + ⛓️ + 🌈",
     "clue": "Jeu vidéo",
     "answer": "Candy Crush"
+  },
+  {
+    "id": 101,
+    "concept": "🐺 + ⚔️ + ❄️ + 🧊 + 🔥",
+    "clue": "Série",
+    "answer": "Game of Thrones"
+  },
+  {
+    "id": 102,
+    "concept": "👨‍🍳 + 🧪 + 🚐 + 💵",
+    "clue": "Série",
+    "answer": "Breaking Bad"
+  },
+  {
+    "id": 103,
+    "concept": "🧇 + 🚲 + 🔦 + 📺",
+    "clue": "Série",
+    "answer": "Stranger Things"
+  },
+  {
+    "id": 104,
+    "concept": "🦑 + 🔫 + 🔴 + 🟢",
+    "clue": "Série",
+    "answer": "Squid Game"
+  },
+  {
+    "id": 105,
+    "concept": "👑 + 🏴󠁧󠁢󠁥󠁮󠁧󠁿 + 🏰 + 🏛️",
+    "clue": "Série",
+    "answer": "The Crown"
+  },
+  {
+    "id": 106,
+    "concept": "👨‍🍳 + 🥪 + 🔪 + 🤌",
+    "clue": "Série",
+    "answer": "The Bear"
+  },
+  {
+    "id": 107,
+    "concept": "📱 + 🕸️ + 👁️ + 🖤",
+    "clue": "Série",
+    "answer": "Black Mirror"
+  },
+  {
+    "id": 108,
+    "concept": "🏛️ + 🌿 + ⚔️ + 🇮🇹",
+    "clue": "Histoire",
+    "answer": "Jules César / L'Empire Romain"
+  },
+  {
+    "id": 109,
+    "concept": "🎩 + ⚓ + 🇫🇷 + 🎖️",
+    "clue": "Histoire",
+    "answer": "Napoléon Bonaparte"
+  },
+  {
+    "id": 110,
+    "concept": "👑 + ✂️ + 🍰 + 🇫🇷",
+    "clue": "Histoire",
+    "answer": "Marie-Antoinette"
+  },
+  {
+    "id": 111,
+    "concept": "👓 + 🕊️ + 🇮🇳 + 🧘‍♂️",
+    "clue": "Histoire",
+    "answer": "Mahatma Gandhi"
+  },
+  {
+    "id": 112,
+    "concept": "⛓️ + 🇿🇦 + 🕊️ + 🗳️",
+    "clue": "Histoire",
+    "answer": "Nelson Mandela"
+  },
+  {
+    "id": 113,
+    "concept": "🚌 + 🚫 + 👩🏾‍ + ✊",
+    "clue": "Histoire",
+    "answer": "Rosa Parks"
+  },
+  {
+    "id": 114,
+    "concept": "👟 + ✅ + 🏀",
+    "clue": "Marque",
+    "answer": "Nike"
+  },
+  {
+    "id": 115,
+    "concept": "🥤 + 🔴 + ⚪ + 🧊",
+    "clue": "Marque",
+    "answer": "Coca-Cola"
+  },
+  {
+    "id": 116,
+    "concept": "🍔 + 🍟 + 🤡 + 🏠",
+    "clue": "Marque",
+    "answer": "McDonald's"
+  },
+  {
+    "id": 117,
+    "concept": "☕ + 🧜‍♀️ + 🟢 + 🥤",
+    "clue": "Marque",
+    "answer": "Starbucks"
+  },
+  {
+    "id": 118,
+    "concept": "🚗 + 🐎 + 🇮🇹 + 🏎️",
+    "clue": "Marque",
+    "answer": "Ferrari"
+  },
+  {
+    "id": 119,
+    "concept": "🚗 + ⚡ + 🔋 + 🛰️",
+    "clue": "Marque",
+    "answer": "Tesla"
+  },
+  {
+    "id": 120,
+    "concept": "📦 + 📦 + 📦 + 🌎 + 🚚",
+    "clue": "Marque",
+    "answer": "Amazon"
+  },
+  {
+    "id": 121,
+    "concept": "🏰 + 🐭 + 🎇 + 🧚",
+    "clue": "Marque",
+    "answer": "Disney"
+  },
+  {
+    "id": 122,
+    "concept": "🌕 + 🕺 + 🧤 + 🎤",
+    "clue": "Chanteur",
+    "answer": "Michael Jackson"
+  },
+  {
+    "id": 123,
+    "concept": "🎤 + 💎 + 👨🏼‍🎤 + 👑",
+    "clue": "Groupe",
+    "answer": "Queen / Freddie Mercury"
+  },
+  {
+    "id": 124,
+    "concept": "🤖 + 🤖 + 🎧 + 🕺",
+    "clue": "Groupe",
+    "answer": "Daft Punk"
+  },
+  {
+    "id": 125,
+    "concept": "🐍 + 🧣 + 🎸 + 🕰️",
+    "clue": "Chanteuse",
+    "answer": "Taylor Swift"
+  },
+  {
+    "id": 126,
+    "concept": "🐝 + 👑 + 🍋 + 💃",
+    "clue": "Chanteuse",
+    "answer": "Beyoncé"
+  },
+  {
+    "id": 127,
+    "concept": "🍏 + 🥁 + 👓 + 🇬🇧",
+    "clue": "Groupe",
+    "answer": "The Beatles"
+  },
+  {
+    "id": 128,
+    "concept": "🎸 + 🍼 + 🌊 + 🎸",
+    "clue": "Groupe",
+    "answer": "Nirvana"
+  },
+  {
+    "id": 129,
+    "concept": "🏴‍☠️ + 🍷 + 🎩 + 🧔🏻‍♂️",
+    "clue": "Acteur",
+    "answer": "Johnny Depp"
+  },
+  {
+    "id": 130,
+    "concept": "👱🏻‍♀️ + 👗 + 🗽 + 💋",
+    "clue": "Actrice",
+    "answer": "Marilyn Monroe"
+  },
+  {
+    "id": 131,
+    "concept": "🕵️‍♂️ + 🕶️ + 🏃‍♂️ + 🚁",
+    "clue": "Acteur",
+    "answer": "Tom Cruise (Mission Impossible)"
+  },
+  {
+    "id": 132,
+    "concept": "👠 + 👗 + 🎭 + 🏆",
+    "clue": "Actrice",
+    "answer": "Meryl Streep"
+  },
+  {
+    "id": 133,
+    "concept": "🚢 + 🌲 + 🐺 + 🏆",
+    "clue": "Acteur",
+    "answer": "Leonardo DiCaprio"
+  },
+  {
+    "id": 134,
+    "concept": "🇫🇷 + 🎸 + 🕶️ + 🚬",
+    "clue": "Chanteur",
+    "answer": "Johnny Hallyday"
+  },
+  {
+    "id": 135,
+    "concept": "🎷 + 🕶️ + 🎹 + 🎹",
+    "clue": "Chanteur",
+    "answer": "Ray Charles"
   }
 ]
