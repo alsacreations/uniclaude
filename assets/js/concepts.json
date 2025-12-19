@@ -1285,9 +1285,9 @@
   },
   {
     "id": 215,
-    "concept": "🎸 + 🇫🇷 + 🚶‍♂️ + 🧥",
-    "clue": "Chanteur Francophone",
-    "answer": "Jean-Jacques Goldman"
+    "concept": "🐭 + 🏰 + 🔴 + 🧤",
+    "clue": "Animation",
+    "answer": "Mickey Mouse"
   },
   {
     "id": 216,
@@ -1297,21 +1297,21 @@
   },
   {
     "id": 217,
-    "concept": "🎤 + 🇫🇷 + 🧛‍♀️ + 🕸️",
-    "clue": "Chanteuse Francophone",
-    "answer": "Mylène Farmer"
+    "concept": "🎩 + 🦯 + 🕴️ + 🤐",
+    "clue": "Cinéma",
+    "answer": "Charlie Chaplin"
   },
   {
     "id": 218,
-    "concept": "🎤 + 🇫🇷 + 🧣 + 🚬",
-    "clue": "Chanteur Francophone",
-    "answer": "Renaud"
+    "concept": "🦸‍♂️ + 🟥 + 🟦 + 🌌",
+    "clue": "Super-héros",
+    "answer": "Superman"
   },
   {
     "id": 219,
-    "concept": "🎧 + 🎹 + 🕺 + 🇫🇷",
-    "clue": "Artiste",
-    "answer": "David Guetta"
+    "concept": "🤡 + 🃏 + 💜 + 🏙️",
+    "clue": "Cinéma / Comics",
+    "answer": "Le Joker"
   },
   {
     "id": 220,
@@ -1333,9 +1333,9 @@
   },
   {
     "id": 223,
-    "concept": "🎤 + 🇧🇪 + 🌊 + 👔",
-    "clue": "Chanteur Francophone",
-    "answer": "Jacques Brel"
+    "concept": "🏛️ + 🇮🇹 + 📐 + 📉",
+    "clue": "Monument",
+    "answer": "La Tour de Pise"
   },
   {
     "id": 224,
@@ -1436,7 +1436,67 @@
   {
     "id": 240,
     "concept": "🏹 + 🌳 + 🏃‍♂️ + 💰",
-    "clue": "Culture Générale / Légende",
+    "clue": "Légende",
     "answer": "Robin des Bois"
+  },
+  {
+    "id": 241,
+    "concept": "🤴 + 🦊 + 🌹 + 🪐",
+    "clue": "Littérature",
+    "answer": "Le Petit Prince"
+  },
+  {
+    "id": 242,
+    "concept": "🫐 + 🍄 + 🧙‍♂️ + 🏠",
+    "clue": "BD",
+    "answer": "Les Schtroumpfs"
+  },
+  {
+    "id": 243,
+    "concept": "🛡️ + 🧪 + 🐗 + 🇫🇷",
+    "clue": "BD",
+    "answer": "Astérix & Obélix"
+  },
+  {
+    "id": 244,
+    "concept": "🎀 + 👗 + 💄 + 💖",
+    "clue": "Jouet",
+    "answer": "Barbie"
+  },
+  {
+    "id": 245,
+    "concept": "🦍 + 🌳 + 🗡️ + 🗣️",
+    "clue": "Littérature",
+    "answer": "Tarzan"
+  },
+  {
+    "id": 246,
+    "concept": "🧞‍♂️ + 🕌 + 🐒 + 🪜",
+    "clue": "Conte",
+    "answer": "Aladdin"
+  },
+  {
+    "id": 247,
+    "concept": "🤥 + 🪵 + 🦗 + 🇮🇹",
+    "clue": "Conte",
+    "answer": "Pinocchio"
+  },
+  {
+    "id": 248,
+    "concept": "🌂 + 👜 + 🎶 + 🇬🇧",
+    "clue": "Film",
+    "answer": "Mary Poppins"
+  },
+  {
+    "id": 249,
+    "concept": "🤡 + 🐟 + 🌊 + 🦷",
+    "clue": "Animation",
+    "answer": "Le Monde de Nemo"
+  },
+  {
+    "id": 250,
+    "concept": "🏠 + 🎈 + 🎈 + ⛰️",
+    "clue": "Animation",
+    "answer": "Là-haut (Up)"
   }
 ]
