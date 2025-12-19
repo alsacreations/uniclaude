@@ -1018,5 +1018,245 @@
     "concept": "🎭 + 🕯️ + 🏛️ + 🎶",
     "clue": "Chanson",
     "answer": "Le Fantôme de l'Opéra"
+  },
+  {
+    "id": 171,
+    "concept": "🍔 + 🔫 + 💉 + 🕺",
+    "clue": "Film",
+    "answer": "Pulp Fiction"
+  },
+  {
+    "id": 172,
+    "concept": "🌀 + 🛌 + 🏢 + ⏳",
+    "clue": "Film",
+    "answer": "Inception"
+  },
+  {
+    "id": 173,
+    "concept": "👔 + 🐴 + 🔪 + 🤌",
+    "clue": "Film",
+    "answer": "Le Parrain"
+  },
+  {
+    "id": 174,
+    "concept": "🧼 + 🥊 + 🤐 + 🏙️",
+    "clue": "Film",
+    "answer": "Fight Club"
+  },
+  {
+    "id": 175,
+    "concept": "🚿 + 🔪 + 🏨 + 👗",
+    "clue": "Film",
+    "answer": "Psychose"
+  },
+  {
+    "id": 176,
+    "concept": "👹 + 🏰 + 🐴 + �",
+    "clue": "Film",
+    "answer": "Shrek"
+  },
+  {
+    "id": 177,
+    "concept": "👽 + 🥚 + 🚀 + 🤰",
+    "clue": "Film",
+    "answer": "Alien, le huitième passager"
+  },
+  {
+    "id": 178,
+    "concept": "🤖 + 🕶️ + 🏍️ + 🧱",
+    "clue": "Film",
+    "answer": "Terminator"
+  },
+  {
+    "id": 179,
+    "concept": "⚔️ + 🏟️ + 🏛️ + 🇮🇹",
+    "clue": "Film",
+    "answer": "Gladiator"
+  },
+  {
+    "id": 180,
+    "concept": "🍫 + 👟 + 🏃‍♂️ + 🪖",
+    "clue": "Film",
+    "answer": "Forrest Gump"
+  },
+  {
+    "id": 181,
+    "concept": "🏔️ + 🔫 + 🇨🇺 + 💵",
+    "clue": "Film",
+    "answer": "Scarface"
+  },
+  {
+    "id": 182,
+    "concept": "📦 + 🕵️‍♂️ + 🌧️ + 🔪",
+    "clue": "Film",
+    "answer": "Seven"
+  },
+  {
+    "id": 183,
+    "concept": "🤖 + ☔ + 🌆 + 🕵️‍♂️",
+    "clue": "Film",
+    "answer": "Blade Runner"
+  },
+  {
+    "id": 184,
+    "concept": "🤖 + 🤠 + 📦 + 🚀",
+    "clue": "Film",
+    "answer": "Toy Story"
+  },
+  {
+    "id": 185,
+    "concept": "🍩 + 👨‍👩‍👧‍👦 + 🍺 + 📺",
+    "clue": "Série",
+    "answer": "Les Simpson"
+  },
+  {
+    "id": 186,
+    "concept": "🏝️ + ✈️ + 💨 + 🔢",
+    "clue": "Série",
+    "answer": "Lost"
+  },
+  {
+    "id": 187,
+    "concept": "🧟 + 🤠 + 🏹 + 👮",
+    "clue": "Série",
+    "answer": "The Walking Dead"
+  },
+  {
+    "id": 188,
+    "concept": "📄 + 💼 + ☕ + 🖇️",
+    "clue": "Série",
+    "answer": "The Office"
+  },
+  {
+    "id": 189,
+    "concept": "🎻 + 🕵️‍♂️ + 🏙️ + 🧠",
+    "clue": "Série",
+    "answer": "Sherlock"
+  },
+  {
+    "id": 190,
+    "concept": "☕ + 🥧 + 🌲 + 🦉",
+    "clue": "Série",
+    "answer": "Twin Peaks"
+  },
+  {
+    "id": 191,
+    "concept": "🚁 + 💼 + 🦖 + 🥂",
+    "clue": "Série",
+    "answer": "Succession"
+  },
+  {
+    "id": 192,
+    "concept": "🐎 + 🔪 + 🇬🇧 + 🧔🏻‍♂️",
+    "clue": "Série",
+    "answer": "Peaky Blinders"
+  },
+  {
+    "id": 193,
+    "concept": "🔪 + 💉 + 🩸 + 🚢",
+    "clue": "Série",
+    "answer": "Dexter"
+  },
+  {
+    "id": 194,
+    "concept": "🏥 + 🩺 + 👩‍⚕️ + 💔",
+    "clue": "Série",
+    "answer": "Grey's Anatomy"
+  },
+  {
+    "id": 195,
+    "concept": "👨‍👩‍👦‍👦 + 🛹 + 📺 + 🧠",
+    "clue": "Série",
+    "answer": "Malcolm"
+  },
+  {
+    "id": 196,
+    "concept": "🃏 + 🏛️ + 🇺🇸 + 🥃",
+    "clue": "Série",
+    "answer": "House of Cards"
+  },
+  {
+    "id": 197,
+    "concept": "🍆 + 🏫 + 🇬🇧 + 🏠",
+    "clue": "Série",
+    "answer": "Sex Education"
+  },
+  {
+    "id": 198,
+    "concept": "⛓️ + �‍♂️ + 🗺️ + 🧱",
+    "clue": "Série",
+    "answer": "Prison Break"
+  },
+  {
+    "id": 199,
+    "concept": "⏳ + 🔫 + 📞 + 🕵️‍♂️",
+    "clue": "Série",
+    "answer": "24 Heures Chrono"
+  },
+  {
+    "id": 200,
+    "concept": "🎼 + 👑 + 🎭 + 🎸",
+    "clue": "Chanson",
+    "answer": "Bohemian Rhapsody (Queen)"
+  },
+  {
+    "id": 201,
+    "concept": "🕺 + 👟 + 🎶 + 🌈",
+    "clue": "Chanson",
+    "answer": "Stayin' Alive (Bee Gees)"
+  },
+  {
+    "id": 202,
+    "concept": "🤘 + 🎸 + 🏎️ + 🔥",
+    "clue": "Chanson",
+    "answer": "Highway to Hell (AC/DC)"
+  },
+  {
+    "id": 203,
+    "concept": "👟 + 💡 + 🧤 + 🕺",
+    "clue": "Chanson",
+    "answer": "Billie Jean (Michael Jackson)"
+  },
+  {
+    "id": 204,
+    "concept": "🎸 + 🇬🇧 + 🧥 + 🧱",
+    "clue": "Chanson",
+    "answer": "Wonderwall (Oasis)"
+  },
+  {
+    "id": 205,
+    "concept": "🕺 + � + � + 🤠",
+    "clue": "Chanson",
+    "answer": "YMCA (Village People)"
+  },
+  {
+    "id": 206,
+    "concept": "💃 + 👑 + 🎹 + 🇸🇪",
+    "clue": "Chanson",
+    "answer": "Dancing Queen (ABBA)"
+  },
+  {
+    "id": 207,
+    "concept": "🎸 + 🌹 + 🎩 + 🔫",
+    "clue": "Chanson",
+    "answer": "Sweet Child O' Mine (Guns N' Roses)"
+  },
+  {
+    "id": 208,
+    "concept": "🎸 + ☔ + 🟣 + 🏍️",
+    "clue": "Chanson",
+    "answer": "Purple Rain (Prince)"
+  },
+  {
+    "id": 209,
+    "concept": "✏️ + 🏃‍♂️ + 🏍️ + 🎹",
+    "clue": "Chanson",
+    "answer": "Take On Me (a-ha)"
+  },
+  {
+    "id": 210,
+    "concept": "🍝 + 🎤 + 🎧 + 🏚️",
+    "clue": "Chanson",
+    "answer": "Lose Yourself (Eminem)"
   }
 ]
