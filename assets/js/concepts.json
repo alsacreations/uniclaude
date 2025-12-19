@@ -997,9 +997,9 @@
   },
   {
     "id": 167,
-    "concept": "🕺 + 🪐 + 🚀 + ⚡",
+    "concept": "� + ☀️ + 🌊 + 🇵🇷",
     "clue": "Chanson",
-    "answer": "Starboy (The Weeknd)"
+    "answer": "Despacito (Luis Fonsi)"
   },
   {
     "id": 168,
@@ -1015,9 +1015,9 @@
   },
   {
     "id": 170,
-    "concept": "🎭 + 🕯️ + 🏛️ + 🎶",
-    "clue": "Chanson",
-    "answer": "Le Fantôme de l'Opéra"
+    "concept": "🚗 + � + 🕺 + �",
+    "clue": "Film",
+    "answer": "Grease"
   },
   {
     "id": 171,
@@ -1081,9 +1081,9 @@
   },
   {
     "id": 181,
-    "concept": "🏔️ + 🔫 + 🇨🇺 + 💵",
-    "clue": "Film",
-    "answer": "Scarface"
+    "concept": "🕸️ + �️ + �️ + �",
+    "clue": "Film / Super-héros",
+    "answer": "Spider-Man"
   },
   {
     "id": 182,
@@ -1141,15 +1141,15 @@
   },
   {
     "id": 191,
-    "concept": "🚁 + 💼 + 🦖 + 🥂",
+    "concept": "� + � + 🛸 + 🕵️‍♂️",
     "clue": "Série",
-    "answer": "Succession"
+    "answer": "X-Files"
   },
   {
     "id": 192,
-    "concept": "🐎 + 🔪 + 🇬🇧 + 🧔🏻‍♂️",
+    "concept": "� + � + ✨ + �",
     "clue": "Série",
-    "answer": "Peaky Blinders"
+    "answer": "Star Trek"
   },
   {
     "id": 193,
@@ -1177,9 +1177,9 @@
   },
   {
     "id": 197,
-    "concept": "🍆 + 🏫 + 🇬🇧 + 🏠",
-    "clue": "Série",
-    "answer": "Sex Education"
+    "concept": "🧽 + 🟨 + 🐚",
+    "clue": "Animation",
+    "answer": "Bob l'éponge"
   },
   {
     "id": 198,
@@ -1189,15 +1189,15 @@
   },
   {
     "id": 199,
-    "concept": "⏳ + 🔫 + 📞 + 🕵️‍♂️",
-    "clue": "Série",
-    "answer": "24 Heures Chrono"
+    "concept": "🍸 + 🔫 + ️‍♂️ + 🇬🇧",
+    "clue": "Cinéma",
+    "answer": "James Bond (007)"
   },
   {
     "id": 200,
-    "concept": "🎼 + 👑 + 🎭 + 🎸",
+    "concept": "💃 + 🎤 + �🇷 + �",
     "clue": "Chanson",
-    "answer": "Bohemian Rhapsody (Queen)"
+    "answer": "Mamma Mia (ABBA)"
   },
   {
     "id": 201,
@@ -1213,15 +1213,15 @@
   },
   {
     "id": 203,
-    "concept": "👟 + 💡 + 🧤 + 🕺",
+    "concept": "💃 + 🖐️ + �️ + 🇪🇸",
     "clue": "Chanson",
-    "answer": "Billie Jean (Michael Jackson)"
+    "answer": "Macarena (Los del Río)"
   },
   {
     "id": 204,
-    "concept": "🎸 + 🇬🇧 + 🧥 + 🧱",
+    "concept": "⚽ + 💃 + 🌍 + 🎤",
     "clue": "Chanson",
-    "answer": "Wonderwall (Oasis)"
+    "answer": "Waka Waka (Shakira)"
   },
   {
     "id": 205,
@@ -1255,8 +1255,188 @@
   },
   {
     "id": 210,
-    "concept": "🍝 + 🎤 + 🎧 + 🏚️",
+    "concept": "🕶️ + 🕺 + 🐎 + �🇷",
     "clue": "Chanson",
-    "answer": "Lose Yourself (Eminem)"
+    "answer": "Gangnam Style (PSY)"
+  },
+  {
+    "id": 211,
+    "concept": "🎤 + 🇫🇷 + 🌹 + 🕊️",
+    "clue": "Chanteuse Francophone",
+    "answer": "Édith Piaf"
+  },
+  {
+    "id": 212,
+    "concept": "🇨🇦 + 🎤 + 🚢 + 🧊",
+    "clue": "Chanteuse Francophone",
+    "answer": "Céline Dion"
+  },
+  {
+    "id": 213,
+    "concept": "🎤 + 🇧🇪 + 🍦 + 🎸",
+    "clue": "Chanteuse Francophone",
+    "answer": "Angèle"
+  },
+  {
+    "id": 214,
+    "concept": "🎸 + 🇫🇷 + 🧱 + 🌔",
+    "clue": "Groupe Francophone",
+    "answer": "Indochine"
+  },
+  {
+    "id": 215,
+    "concept": "🎸 + 🇫🇷 + 🚶‍♂️ + 🧥",
+    "clue": "Chanteur Francophone",
+    "answer": "Jean-Jacques Goldman"
+  },
+  {
+    "id": 216,
+    "concept": "🚬 + 🎤 + 🥬 + 🇫🇷",
+    "clue": "Chanteur Francophone",
+    "answer": "Serge Gainsbourg"
+  },
+  {
+    "id": 217,
+    "concept": "🎤 + 🇫🇷 + 🧛‍♀️ + 🕸️",
+    "clue": "Chanteuse Francophone",
+    "answer": "Mylène Farmer"
+  },
+  {
+    "id": 218,
+    "concept": "🎤 + 🇫🇷 + 🧣 + 🚬",
+    "clue": "Chanteur Francophone",
+    "answer": "Renaud"
+  },
+  {
+    "id": 219,
+    "concept": "� + � + � + �🇷",
+    "clue": "Artiste",
+    "answer": "David Guetta"
+  },
+  {
+    "id": 220,
+    "concept": "� + � + 🎸 + 🎵",
+    "clue": "Groupe",
+    "answer": "Coldplay"
+  },
+  {
+    "id": 221,
+    "concept": "� + � + 🥁 + 🔥",
+    "clue": "Groupe",
+    "answer": "Imagine Dragons"
+  },
+  {
+    "id": 222,
+    "concept": "👱‍♂️ + �� + � + �",
+    "clue": "Artiste",
+    "answer": "Justin Bieber"
+  },
+  {
+    "id": 223,
+    "concept": "🎤 + 🇧🇪 + 🌊 + 👔",
+    "clue": "Chanteur Francophone",
+    "answer": "Jacques Brel"
+  },
+  {
+    "id": 224,
+    "concept": "🎤 + 🇫🇷 + 🚕 + 🍭",
+    "clue": "Chanteuse Francophone",
+    "answer": "Vanessa Paradis"
+  },
+  {
+    "id": 225,
+    "concept": "� + 🕺 + 🎙️ + 🇺🇸",
+    "clue": "Artiste",
+    "answer": "Elvis Presley"
+  },
+  {
+    "id": 226,
+    "concept": "🖼️ + 🇮🇹 + 🤨 + 🏛️",
+    "clue": "Art",
+    "answer": "La Joconde (Mona Lisa)"
+  },
+  {
+    "id": 227,
+    "concept": "🗽 + 🇫🇷 + 🇺🇸 + 🏗️",
+    "clue": "Construction",
+    "answer": "La Statue de la Liberté"
+  },
+  {
+    "id": 228,
+    "concept": "🕌 + 🇮🇳 + 🤍 + �",
+    "clue": "Monument",
+    "answer": "Le Taj Mahal"
+  },
+  {
+    "id": 229,
+    "concept": "🇩🇪 + 🧱 + 🔨 + 🕊️",
+    "clue": "Histoire",
+    "answer": "La chute du mur de Berlin"
+  },
+  {
+    "id": 230,
+    "concept": "📖 + ⚙️ + 🖋️ + 🇩🇪",
+    "clue": "Invention",
+    "answer": "L'imprimerie (Gutenberg)"
+  },
+  {
+    "id": 231,
+    "concept": "🚢 + 🌊 + 🌎 + 🧭",
+    "clue": "Histoire",
+    "answer": "Découverte de l'Amérique (Christophe Colomb)"
+  },
+  {
+    "id": 232,
+    "concept": "👨‍🎨 + 🚁 + 🇮🇹 + 🎨",
+    "clue": "Science",
+    "answer": "Léonard de Vinci"
+  },
+  {
+    "id": 233,
+    "concept": "🧠 + 🪐 + ⚛️ + 👅",
+    "clue": "Science",
+    "answer": "Albert Einstein"
+  },
+  {
+    "id": 234,
+    "concept": "🎹 + 🎼 + 🇦🇹 + 🎩",
+    "clue": "Musique",
+    "answer": "Wolfgang Amadeus Mozart"
+  },
+  {
+    "id": 235,
+    "concept": "🏅 + 🏟️ + 🌍 + 🔥",
+    "clue": "Sport",
+    "answer": "Les Jeux Olympiques"
+  },
+  {
+    "id": 236,
+    "concept": "🐫 + 🏜️ + 📐 + 🇪🇬",
+    "clue": "Construction",
+    "answer": "Les Pyramides d'Égypte (Gizeh)"
+  },
+  {
+    "id": 237,
+    "concept": "🕰️ + 🇬🇧 + 🏰 + 🏛️",
+    "clue": "Construction",
+    "answer": "Big Ben"
+  },
+  {
+    "id": 238,
+    "concept": "🌉 + 🇺🇸 + 🌫️ + 🔴",
+    "clue": "Construction",
+    "answer": "Le Golden Gate Bridge"
+  },
+  {
+    "id": 239,
+    "concept": "� + 🦜 + 🌊 + 🐍",
+    "clue": "Géographie",
+    "answer": "La Forêt Amazonienne"
+  },
+  {
+    "id": 240,
+    "concept": "🏹 + 🌳 + 🏃‍♂️ + 💰",
+    "clue": "Culture Générale / Légende",
+    "answer": "Robin des Bois"
   }
 ]
