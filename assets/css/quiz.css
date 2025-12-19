@@ -22,7 +22,6 @@
 }
 
 .quiz-card h2 {
-  text-align: center;
   color: var(--primary-color-on-dark);
   font-size: var(--text-2xl);
   margin: 0;
@@ -37,6 +36,37 @@
 .quiz-intro, .quiz-finish {
   text-align: center;
   align-items: center;
+}
+
+.quiz-finish {
+  display: grid;
+  gap: var(--spacing-m);
+
+  @media (width >= 48rem) {
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+
+    & .finish-content {
+      align-self: start;
+      text-align: left;
+    }
+
+    & .quiz-summary {
+      grid-column: 2;
+    }
+  }
+}
+
+.finish-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-m);
+  margin-top: var(--spacing-l);
+  justify-content: center;
+
+  @media (width >= 48rem) {
+    justify-content: flex-start;
+  }
 }
 
 .btn-large {
@@ -86,10 +116,12 @@
   grid-template-areas:
     "concept"
     "clue"
-    "answer";
+    "answer"
+    "controls";
 
     & .concept-characters {
       grid-area: concept;
+      min-height: 240px;
     }
 
     & .clue-container {
@@ -100,11 +132,16 @@
       grid-area: answer;
     }
 
+    & .quiz-controls {
+      grid-area: controls;
+    }
+
     @media (width >= 48rem) {
       grid-template-columns: 1.5fr 1fr;
       grid-template-areas:
         "concept clue"
-        "concept answer";
+        "concept answer"
+        "controls controls";
     }
 }
 
@@ -126,6 +163,7 @@
 }
 
 .clue-container, .answer-container {
+  align-self: start;
   width: 100%;
   padding: var(--spacing-s);
   border-radius: var(--radius-md);
@@ -157,7 +195,7 @@
 }
 
 .concept-clue, .concept-answer {
-  font-size: var(--text-xl);
+  font-size: var(--text-l);
   font-weight: 600;
   margin: 0;
 }
@@ -176,14 +214,10 @@
 }
 
 .quiz-summary {
-  width: 100%;
   background: var(--bg-light);
   border-radius: var(--radius-md);
   padding: var(--spacing-m);
-  margin-block: var(--spacing-l);
   text-align: left;
-  max-height: 300px;
-  overflow-y: auto;
 }
 
 .summary-item {

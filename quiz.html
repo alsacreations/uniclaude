@@ -114,21 +114,25 @@
               <p class="answer-label">Réponse&#8239;:</p>
               <p id="concept-answer" class="concept-answer"></p>
             </div>
-          </div>
 
-          <div class="quiz-controls">
-            <button id="btn-show-clue" class="btn btn-secondary">Afficher l'indice</button>
-            <button id="btn-show-answer" class="btn btn-accent hidden">Voir la réponse</button>
-            <button id="btn-next" class="btn btn-primary hidden">Concept suivant</button>
+            <div class="quiz-controls">
+              <button id="btn-show-clue" class="btn btn-secondary">Afficher l'indice</button>
+              <button id="btn-show-answer" class="btn btn-accent hidden">Voir la réponse</button>
+              <button id="btn-next" class="btn btn-primary hidden">Concept suivant</button>
+            </div>
           </div>
         </div>
 
         <div id="quiz-finish" class="quiz-card quiz-finish hidden">
-          <h2>Félicitations&#8239;!</h2>
-          <p>Tu as terminé le parcours des 10 concepts&#8239;!</p>
+          <div class="finish-content">
+            <h2>Félicitations&#8239;!</h2>
+            <p>Tu as terminé le parcours des 10 concepts&#8239;!</p>
+            <div class="finish-actions">
+              <button id="restart-quiz" class="btn btn-secondary">Rejouer</button>
+              <a href="index.html" class="btn btn-primary">Retour à l'accueil</a>
+            </div>
+          </div>
           <div id="quiz-summary" class="quiz-summary"></div>
-          <button id="restart-quiz" class="btn btn-secondary">Rejouer</button>
-          <a href="index.html" class="btn btn-primary">Retour à l'accueil</a>
         </div>
       </div>
     </main>
