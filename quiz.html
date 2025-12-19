@@ -3,12 +3,12 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>UniClaude - Explorateur de caractères Unicode</title>
+    <title>UniClaude - le Quiz</title>
     <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg" />
     <meta name="author" content="Alsacreations" />
     <meta
       name="description"
-      content="Explorateur de caractères Unicode pour les humains"
+      content="Quiz sur les caractères Unicode"
     />
     <link rel="stylesheet" href="assets/css/app.css" />
     <meta name="robots" content="index,follow" />
@@ -76,8 +76,8 @@
           </svg>
         </a>
       </div>
-      <h1>🦄 UniClaude</h1>
-      <p class="subtitle">Explorateur de caractères Unicode pour les humains</p>
+      <h1>🎮 UniClaude, le Quiz&#8239;!</h1>
+      <p class="subtitle">Saurez-vous déchiffrer les concepts Unicode&#8239;?</p>
     </header>
 
     <main
@@ -88,120 +88,8 @@
       id="main"
       tabindex="-1"
     >
-      <section
-        class="search-section"
-        role="search"
-        aria-label="Recherche de caractères Unicode"
-      >
-        <div class="search-container">
-          <label for="searchInput" class="visually-hidden"
-            >Rechercher un caractère</label
-          >
-          <input
-            type="text"
-            id="searchInput"
-            placeholder="Rechercher par caractère, nom, code hexa, entité HTML..."
-            autocomplete="off"
-            autofocus
-          />
-          <button
-            id="clearSearch"
-            class="clear-btn"
-            aria-label="Effacer la recherche"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="20"
-              height="20"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              aria-hidden="true"
-            >
-              <line x1="18" y1="6" x2="6" y2="18"></line>
-              <line x1="6" y1="6" x2="18" y2="18"></line>
-            </svg>
-          </button>
-        </div>
 
-        <div class="stats hidden" role="status" aria-live="polite">
-          <span id="statsDisplay"></span>
-          <button type="button" id="resetButton">Reset</button>
-        </div>
-      </section>
-
-      <section
-        class="characters-section"
-        aria-label="Grille des caractères Unicode"
-      >
-        <!-- Section des favoris -->
-        <details id="favoritesSection" class="favorites-section hidden" open>
-          <summary class="details-title">⭐ Favoris</summary>
-          <div class="favorites-content">
-            <div id="favoritesGrid" class="favorites-grid" role="list">
-              <!-- Les favoris seront générés ici -->
-            </div>
-            <p class="favorites-empty" id="favoritesEmpty">
-              Aucun favori pour le moment. Cliquez sur ⭐ pour ajouter des
-              caractères.
-            </p>
-          </div>
-        </details>
-
-        <!-- <div class="keyboard-help" id="keyboardHelp">
-          <p>
-            <strong>Navigation au clavier :</strong>
-            Utilisez les <kbd>flèches</kbd> pour naviguer, <kbd>Entrée</kbd> ou
-            <kbd>Espace</kbd> pour copier un caractère. <kbd>Home</kbd> et
-            <kbd>End</kbd> pour aller au début/fin.
-          </p>
-        </div> -->
-
-        <div
-          id="charactersGrid"
-          class="characters-grid"
-          role="grid"
-          aria-describedby="keyboardHelp"
-        >
-          <!-- Les caractères seront générés ici -->
-        </div>
-      </section>
-
-      <div class="filters">
-        <label for="blockFilter">Filtrer par bloc :</label>
-        <select id="blockFilter">
-          <option value="">Tous les blocs</option>
-        </select>
-      </div>
-
-      <div id="loadingSpinner" class="loading" role="status" aria-live="polite">
-        <div class="spinner" aria-hidden="true"></div>
-        <p>Génération des caractères Unicode...</p>
-      </div>
     </main>
-
-    <div
-      id="copyNotification"
-      class="copy-notification"
-      role="status"
-      aria-live="polite"
-      aria-atomic="true"
-    >
-      <span class="copied-char" aria-hidden="true"></span>
-      <span class="copied-text">Copié !</span>
-    </div>
-
-    <!-- Annonce ARIA pour les favoris -->
-    <div
-      id="favoritesAnnouncement"
-      class="visually-hidden"
-      role="status"
-      aria-live="polite"
-      aria-atomic="true"
-    ></div>
 
     <footer class="footer" role="contentinfo" role="contentinfo">
       <div class="footer-alsa">
@@ -250,6 +138,5 @@
       </p>
     </footer>
 
-    <script src="assets/js/app.js"></script>
   </body>
 </html>

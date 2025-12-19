@@ -1,0 +1,602 @@
+[
+  {
+    "id": 1,
+    "concept": "👧🏻 + ⧓ + 💀",
+    "clue": "Série",
+    "answer": "La série Mercredi (Wednesday)"
+  },
+  {
+    "id": 2,
+    "concept": "🇫🇷 + 🏗️ + ⚙️",
+    "clue": "Construction",
+    "answer": "La Tour Eiffel"
+  },
+  {
+    "id": 3,
+    "concept": "🏺 + 🇮🇹 + 🌋",
+    "clue": "Géographie",
+    "answer": "Pompéi"
+  },
+  {
+    "id": 4,
+    "concept": "🎭 + 💰 + 👺 + 🇪🇸",
+    "clue": "Série",
+    "answer": "La Casa de Papel"
+  },
+  {
+    "id": 5,
+    "concept": "🍎 + ⚖️ + 🔭",
+    "clue": "Science",
+    "answer": "Isaac Newton (La Gravité)"
+  },
+  {
+    "id": 6,
+    "concept": "⚡ + 👓 + 🪄 + 🦉",
+    "clue": "Littérature / Film",
+    "answer": "Harry Potter"
+  },
+  {
+    "id": 7,
+    "concept": "🚢 + 🧊 + 🎻",
+    "clue": "Film / Histoire",
+    "answer": "Le Titanic"
+  },
+  {
+    "id": 8,
+    "concept": "🥊 + 🥩 + 🏃‍♂️",
+    "clue": "Film",
+    "answer": "Rocky"
+  },
+  {
+    "id": 9,
+    "concept": "🦶 + 💍 + 🌋",
+    "clue": "Film",
+    "answer": "Le Seigneur des Anneaux"
+  },
+  {
+    "id": 10,
+    "concept": "🐒 + 🧬 + 🧔🏻‍♂️",
+    "clue": "Science",
+    "answer": "Charles Darwin (L'Évolution)"
+  },
+  {
+    "id": 11,
+    "concept": "🇺🇸 + 🎰 + 🏜️",
+    "clue": "Géographie",
+    "answer": "Las Vegas"
+  },
+  {
+    "id": 12,
+    "concept": "🐇 + 💊 + 🕶️",
+    "clue": "Film",
+    "answer": "Matrix"
+  },
+  {
+    "id": 13,
+    "concept": "🎨 + 👩🏻‍🎨 + 🤨",
+    "clue": "Art",
+    "answer": "Frida Kahlo"
+  },
+  {
+    "id": 14,
+    "concept": "🦁 + 👑 + 🌅",
+    "clue": "Film d'animation",
+    "answer": "Le Roi Lion"
+  },
+  {
+    "id": 15,
+    "concept": "🧱 + 🐉 + 🇨🇳",
+    "clue": "Géographie",
+    "answer": "La Grande Muraille de Chine"
+  },
+  {
+    "id": 16,
+    "concept": "🎾 + 🧱 + 🇫🇷",
+    "clue": "Sport",
+    "answer": "Roland-Garros"
+  },
+  {
+    "id": 17,
+    "concept": "🐊 + 🕒 + 🏴‍☠️",
+    "clue": "Conte",
+    "answer": "Peter Pan"
+  },
+  {
+    "id": 18,
+    "concept": "☕ + 🛋️ + ⛲",
+    "clue": "Série",
+    "answer": "Friends"
+  },
+{
+    "id": 19,
+    "concept": "🐎 + 🪵 + 🏛️ + ⚔️ + 🛡️",
+    "clue": "Mythologie",
+    "answer": "Le Cheval de Troie"
+  },
+  {
+    "id": 20,
+    "concept": "🧠 + ⚡ + 🧟‍♂️",
+    "clue": "Littérature",
+    "answer": "Frankenstein"
+  },
+  {
+    "id": 21,
+    "concept": "🎹 + 🤫 + 🎞️",
+    "clue": "Histoire du Cinéma",
+    "answer": "Le cinéma muet"
+  },
+  {
+    "id": 22,
+    "concept": "🏹 + 🍎 + 🇨🇭",
+    "clue": "Légende",
+    "answer": "Guillaume Tell"
+  },
+  {
+    "id": 23,
+    "concept": "🐱 + 📦 + 🧪",
+    "clue": "Physique",
+    "answer": "Le chat de Schrödinger"
+  },
+  {
+    "id": 24,
+    "concept": "🕵️‍♂️ + 🎻 + 🔍",
+    "clue": "Littérature",
+    "answer": "Sherlock Holmes"
+  },
+  {
+    "id": 25,
+    "concept": "👗 + 👠 + 🎃",
+    "clue": "Conte",
+    "answer": "Cendrillon"
+  },
+  {
+    "id": 26,
+    "concept": "🦷 + 🦈 + 🎼",
+    "clue": "Film",
+    "answer": "Les Dents de la Mer (Jaws)"
+  },
+  {
+    "id": 27,
+    "concept": "🏎️ + 🇲🇨 + 🏁",
+    "clue": "Sport",
+    "answer": "Le Grand Prix de Monaco"
+  },
+  {
+    "id": 28,
+    "concept": "🥐 + 🥖 + 🍷 + 🧀",
+    "clue": "Gastronomie",
+    "answer": "Le Petit Déjeuner"
+  },
+  {
+    "id": 29,
+    "concept": "🧗‍♂️ + 🌋 + 🇯🇵",
+    "clue": "Géographie",
+    "answer": "Le Mont Fuji"
+  },
+  {
+    "id": 30,
+    "concept": "🍄 + 🏰 + 👨🏻‍🔧",
+    "clue": "Jeu Vidéo",
+    "answer": "Super Mario"
+  },
+  {
+    "id": 31,
+    "concept": "🚀 + 🌔 + 👨‍🚀 + 👣",
+    "clue": "Espace / Histoire",
+    "answer": "Le premier pas sur la Lune (Apollo 11)"
+  },
+  {
+    "id": 32,
+    "concept": "🧶 + 🐂 + 🏛️",
+    "clue": "Mythologie",
+    "answer": "Le fil d'Ariane et le Minotaure"
+  },
+  {
+    "id": 33,
+    "concept": "📉 + 🍎 + 🍎 + 😵‍💫",
+    "clue": "Expression",
+    "answer": "Tomber dans les pommes"
+  },
+  {
+    "id": 34,
+    "concept": "🧍 + ⬜ + 🟥 + 🟦 + 🟩",
+    "clue": "Expression",
+    "answer": "Se tenir à carreaux"
+  },
+  {
+    "id": 35,
+    "concept": "🥐 + 🌀 + 🌾 + 🎭",
+    "clue": "Expression",
+    "answer": "Se faire rouler dans la farine"
+  },
+  {
+    "id": 36,
+    "concept": "👣 + 👣 + 🍲 + 🤫",
+    "clue": "Expression",
+    "answer": "Mettre les pieds dans le plat"
+  },
+  {
+    "id": 37,
+    "concept": "🗣️ + 🥗 + 🥗 + 🤥",
+    "clue": "Expression",
+    "answer": "Raconter des salades"
+  },
+  {
+    "id": 38,
+    "concept": "🥷 + 🥚 ➔ 🥷 + 🐂",
+    "clue": "Expression",
+    "answer": "Qui vole un œuf vole un bœuf"
+  },
+  {
+    "id": 39,
+    "concept": "💧 + 🏺 + 🌊",
+    "clue": "Expression",
+    "answer": "C'est la goutte d'eau qui fait déborder le vase"
+  },
+  {
+    "id": 40,
+    "concept": "👅 + 🐈 + ❓ + 🤐",
+    "clue": "Expression",
+    "answer": "Donner sa langue au chat"
+  },
+  {
+    "id": 41,
+    "concept": "🐔 + 🦷 + ⏳ + 🚫",
+    "clue": "Expression",
+    "answer": "Quand les poules auront des dents"
+  },
+  {
+    "id": 42,
+    "concept": "🐜 + 🏔️ + 🏗️ + 🤯",
+    "clue": "Expression",
+    "answer": "Faire une montagne d'une petite souris"
+  },
+  {
+    "id": 43,
+    "concept": "🦶 + 🪵 + 🍀",
+    "clue": "Expression",
+    "answer": "Toucher du bois"
+  },
+  {
+    "id": 44,
+    "concept": "💔 + 🏺 + 🏚️ + 🛠️",
+    "clue": "Expression",
+    "answer": "Les pots cassés"
+  },
+  {
+    "id": 45,
+    "concept": "🏛️ + ⚡ + ⛈️ + 🧔🏻‍♂️ + 🔱",
+    "clue": "Mythologie",
+    "answer": "L'Olympe et les dieux grecs (Zeus et Poséidon)"
+  },
+  {
+    "id": 46,
+    "concept": "📜 + 🖋️ + 🕊️ + 🇫🇷 + ⚖️",
+    "clue": "Histoire",
+    "answer": "La Déclaration des Droits de l'Homme et du Citoyen"
+  },
+  {
+    "id": 47,
+    "concept": "🎻 + ❄️ + 🌱 + ☀️ + 🍂",
+    "clue": "Musique Classique",
+    "answer": "Les Quatre Saisons de Vivaldi"
+  },
+  {
+    "id": 48,
+    "concept": "🔭 + 🪐 + 🛰️ + 👨‍🔬 + 🇮🇹",
+    "clue": "Science / Histoire",
+    "answer": "Galilée (Découverte des lunes de Jupiter)"
+  },
+  {
+    "id": 49,
+    "concept": "🇫🇷 + 🥖 + 🎖️ + 🏰 + 🥐",
+    "clue": "Patrimoine Culturel",
+    "answer": "La gastronomie et l'art de vivre à la française"
+  },
+  {
+    "id": 50,
+    "concept": "🧖‍♂️ + 🛁 + 💡 + 🏃‍♂️ + 🏛️",
+    "clue": "Science / Anecdote",
+    "answer": "Eurêka ! (Archimède dans son bain)"
+  },
+  {
+    "id": 51,
+    "concept": "🐑 + 🐑 + 🧬 + 🧪 + 🏴‍☠️",
+    "clue": "Science",
+    "answer": "Dolly la brebis (Le premier clonage)"
+  },
+  {
+    "id": 52,
+    "concept": "🧇 + 🍫 + 🍺 + 🍟",
+    "clue": "Géographie / Gastronomie",
+    "answer": "La Belgique"
+  },
+  {
+    "id": 53,
+    "concept": "🐵 + 🙈 + 🙉 + 🙊 + 🏮",
+    "clue": "Philosophie / Sagesse",
+    "answer": "Les trois singes de la sagesse"
+  },
+  {
+    "id": 54,
+    "concept": "🦸‍♂️ + 🦇 + 🔦 + 🃏 + 🌃",
+    "clue": "Comics / Film",
+    "answer": "Batman (Le Chevalier Noir)"
+  },
+  {
+    "id": 55,
+    "concept": "🦅 + 🐍 + 🌵 + 🏜️",
+    "clue": "Géographie",
+    "answer": "Le drapeau du Mexique (La légende de Tenochtitlan)"
+  },
+  {
+    "id": 56,
+    "concept": "🦢 + 🩰 + 🎼 + 👑 + 🌌",
+    "clue": "Spectacle / Musique",
+    "answer": "Le Lac des Cygnes (Tchaïkovski)"
+  },
+  {
+    "id": 57,
+    "concept": "👂 + 🌻 + 🎨",
+    "clue": "Art",
+    "answer": "Vincent van Gogh"
+  },
+  {
+    "id": 58,
+    "concept": "🕯️ + 🧛‍♂️ + 🏰 + 🦇",
+    "clue": "Littérature / Légende",
+    "answer": "Dracula (Vlad l'Empaleur / Transylvanie)"
+  },
+  {
+    "id": 59,
+    "concept": "🧺 + 🐺 + 👵 + 🍎",
+    "clue": "Conte",
+    "answer": "Le Petit Chaperon Rouge"
+  },
+  {
+    "id": 60,
+    "concept": "🍎 + 💻 + 📱 + ⌚ + 💰",
+    "clue": "Entreprise",
+    "answer": "Apple"
+  },
+  {
+    "id": 61,
+    "concept": "🍳 + 🥚 + 🥓 + ☕",
+    "clue": "Gastronomie",
+    "answer": "Le petit-déjeuner anglais (Full English Breakfast)"
+  },
+  {
+    "id": 62,
+    "concept": "🧥 + 🦁 + ❄️ + 🚪 + 🧚",
+    "clue": "Littérature / Film",
+    "answer": "Le Monde de Narnia"
+  },
+  {
+    "id": 63,
+    "concept": "🧱 + 🧱 + 🎮 + 🕹️ + 🇷🇺",
+    "clue": "Jeu Vidéo",
+    "answer": "Tetris"
+  },
+  {
+    "id": 64,
+    "concept": "🧛‍♂️ + 🏰 + 🦇 + 🧛‍♀️ + 🇷🇴",
+    "clue": "Légende / Littérature",
+    "answer": "Dracula et la Transylvanie"
+  },
+  {
+    "id": 65,
+    "concept": "🐄 + 🤠 + 🎸 + 🏜️",
+    "clue": "Culture / Musique",
+    "answer": "Le Far West / Musique Country"
+  },
+  {
+    "id": 66,
+    "concept": "🤐 + 🤫 + 🧱 + 🧱 + 👂",
+    "clue": "Expression",
+    "answer": "Les murs ont des oreilles"
+  },
+  {
+    "id": 67,
+    "concept": "🍒 + 🍰 + 🔝 + ✨ + 🤏",
+    "clue": "Expression",
+    "answer": "La cerise sur le gâteau"
+  },
+  {
+    "id": 68,
+    "concept": "🐓 + 🥚 + 🐣 + 🧐 + ❓",
+    "clue": "Philosophie",
+    "answer": "L'œuf ou la poule (le paradoxe)"
+  },
+  {
+    "id": 69,
+    "concept": "🪞 + 🍎 + 👸 + ⛏️ + 💎",
+    "clue": "Conte",
+    "answer": "Blanche-Neige et les sept nains"
+  },
+  {
+    "id": 70,
+    "concept": "🏃‍♂️ + 🏁 + 🐢 + 🐇 + 💤",
+    "clue": "Littérature / Fable",
+    "answer": "Le Lièvre et la Tortue"
+  },
+  {
+    "id": 71,
+    "concept": "🧠 + 💡 + 💡 + 🌩️ + 🏛️",
+    "clue": "Processus",
+    "answer": "Le remue-méninges (Brainstorming)"
+  },
+  {
+    "id": 72,
+    "concept": "🎭 + 🖋️ + 💀 + 🤴",
+    "clue": "Littérature / Théâtre",
+    "answer": "William Shakespeare (Hamlet)"
+  },
+  {
+    "id": 73,
+    "concept": "🍯 + 🐻 + 🎈",
+    "clue": "Personnage",
+    "answer": "Winnie l'Ourson"
+  },
+  {
+    "id": 74,
+    "concept": "🧗 + ⛰️ + 🔝",
+    "clue": "Géographie",
+    "answer": "L'Everest"
+  },
+  {
+    "id": 75,
+    "concept": "💾 ➔ 🧊 ➔ 💿 ➔ ☁️",
+    "clue": "Informatique",
+    "answer": "L'évolution du stockage de données (Disquette vers Cloud)"
+  },
+  {
+    "id": 76,
+    "concept": "🔒 + 🔑 + 📜 + 🔏",
+    "clue": "Informatique",
+    "answer": "La cryptographie"
+  },
+  {
+    "id": 77,
+    "concept": "🐧 + 💻 + 🔓 + 👨",
+    "clue": "Informatique",
+    "answer": "Linux"
+  },
+  {
+    "id": 78,
+    "concept": "🕸️ + 🕷️ + 🌐 + 🔗",
+    "clue": "Informatique",
+    "answer": "Le World Wide Web"
+  },
+  {
+    "id": 79,
+    "concept": "☕ + 💻 + ⌨️",
+    "clue": "Informatique",
+    "answer": "Java"
+  },
+  {
+    "id": 80,
+    "concept": "🧠 + 🦾 + 🤖 + 💻",
+    "clue": "Informatique",
+    "answer": "L'Intelligence Artificielle"
+  },
+  {
+    "id": 81,
+    "concept": "🐍 + ⌨️ + 💻 + 📊",
+    "clue": "Informatique",
+    "answer": "Python"
+  },
+  {
+    "id": 82,
+    "concept": "🔥 + 🦊 + 🌐 + 💻",
+    "clue": "Informatique",
+    "answer": "Le navigateur Firefox"
+  },
+  {
+    "id": 83,
+    "concept": "🍪 + 🌐 + 🕵️",
+    "clue": "Informatique",
+    "answer": "Les Cookies"
+  },
+  {
+    "id": 84,
+    "concept": "🧱 + 🌐 + 🛡️ + 🚫",
+    "clue": "Informatique",
+    "answer": "Le Pare-feu (Firewall)"
+  },
+  {
+    "id": 85,
+    "concept": "🔗 + ⛓️ + 💰 + 🪙",
+    "clue": "Informatique",
+    "answer": "La Blockchain"
+  },
+  {
+    "id": 86,
+    "concept": "💻 + 🏴‍☠️ + 🦠",
+    "clue": "Informatique",
+    "answer": "Un virus informatique ou un malware"
+  },
+  {
+    "id": 87,
+    "concept": "🐜 + 💻 + 🔎 + 🛠️ + ✅",
+    "clue": "Informatique",
+    "answer": "Le Debugging"
+  },
+  {
+    "id": 88,
+    "concept": "🦖 + 🌐 + ❌ + 🔌 + 🕹️",
+    "clue": "Informatique",
+    "answer": "Le jeu du dinosaure de Chrome (quand on est hors-ligne)"
+  },
+  {
+    "id": 89,
+    "concept": "🐳 + 🚢 + 📦",
+    "clue": "Informatique",
+    "answer": "Docker"
+  },
+  {
+    "id": 90,
+    "concept": "🏺 + 📜 + 🏛️ + 🌍 + 🔥",
+    "clue": "Histoire",
+    "answer": "La Grande Bibliothèque d'Alexandrie"
+  },
+  {
+    "id": 91,
+    "concept": "🎨 + 🖌️ + 🌐 + 💅",
+    "clue": "Informatique",
+    "answer": "CSS"
+  },
+  {
+    "id": 92,
+    "concept": "🟥 + ▶️ + 📹 + 🤳",
+    "clue": "Informatique",
+    "answer": "YouTube"
+  },
+  {
+    "id": 93,
+    "concept": "🟥 + 🟦 + 🟩 + 🟨 + 🔃",
+    "clue": "Jeu de cartes",
+    "answer": "Le Uno"
+  },
+  {
+    "id": 94,
+    "concept": "🏁 + ⚪ + ⚫",
+    "clue": "Jeu de société",
+    "answer": "Le jeu de dames (le plateau à damier et la promotion d'un pion en dame)"
+  },
+  {
+    "id": 95,
+    "concept": "🧱 + 🏗️ + 🧱 + 🔨 + 🏃‍♂️",
+    "clue": "Jeu vidéo",
+    "answer": "Roblox"
+  },
+  {
+    "id": 96,
+    "concept": "🏰 + 🧱 + ⛏️ + 📦",
+    "clue": "Jeu vidéo",
+    "answer": "Minecraft"
+  },
+  {
+    "id": 97,
+    "concept": "🎲 + 🏨 + 💸 + 🎩",
+    "clue": "Jeu de société",
+    "answer": "Le Monopoly"
+  },
+  {
+    "id": 98,
+    "concept": "🔠 + 🔠 + 🔠 + 🧩 + 🔢",
+    "clue": "Jeu de société",
+    "answer": "Le Scrabble"
+  },
+  {
+    "id": 99,
+    "concept": "🐦 + 🏹 + 🐷 + 🏰 + 💥",
+    "clue": "Jeu vidéo",
+    "answer": "Angry Birds"
+  },
+  {
+    "id": 100,
+    "concept": "🍬 + 🍭 + 🍬 + ⛓️ + 🌈",
+    "clue": "Jeu vidéo",
+    "answer": "Candy Crush"
+  }
+]
