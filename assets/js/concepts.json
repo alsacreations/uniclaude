@@ -445,33 +445,33 @@
   },
   {
     "id": 75,
-    "concept": "💾 ➔ 🧊 ➔ 💿 ➔ ☁️",
-    "clue": "Informatique",
-    "answer": "L'évolution du stockage de données (Disquette vers Cloud)"
+    "concept": "🦍 + 🏢 + 🏢 + 🚁",
+    "clue": "Cinéma",
+    "answer": "King Kong"
   },
   {
     "id": 76,
-    "concept": "🔒 + 🔑 + 📜 + 🔏",
-    "clue": "Informatique",
-    "answer": "La cryptographie"
+    "concept": "🎅 + 🎁 + 🦌 + ❄️",
+    "clue": "Légende",
+    "answer": "Le Père Noël"
   },
   {
     "id": 77,
-    "concept": "🐧 + 💻 + 🔓 + 👨",
-    "clue": "Informatique",
-    "answer": "Linux"
+    "concept": "🐎 + 🛡️ + 🌬️ + ⛪",
+    "clue": "Littérature",
+    "answer": "Don Quichotte"
   },
   {
     "id": 78,
     "concept": "🕸️ + 🕷️ + 🌐 + 🔗",
     "clue": "Informatique",
-    "answer": "Le World Wide Web"
+    "answer": "Le Web"
   },
   {
     "id": 79,
     "concept": "☕ + 💻 + ⌨️",
     "clue": "Informatique",
-    "answer": "Java"
+    "answer": "Le langage Java"
   },
   {
     "id": 80,
@@ -483,7 +483,7 @@
     "id": 81,
     "concept": "🐍 + ⌨️ + 💻 + 📊",
     "clue": "Informatique",
-    "answer": "Python"
+    "answer": "Le langage Python"
   },
   {
     "id": 82,
@@ -505,9 +505,9 @@
   },
   {
     "id": 85,
-    "concept": "🔗 + ⛓️ + 💰 + 🪙",
-    "clue": "Informatique",
-    "answer": "La Blockchain"
+    "concept": "🐳 + 🚢 + 🌊 + 🗡️",
+    "clue": "Littérature",
+    "answer": "Moby Dick"
   },
   {
     "id": 86,
@@ -517,9 +517,9 @@
   },
   {
     "id": 87,
-    "concept": "🐜 + 💻 + 🔎 + 🛠️ + ✅",
-    "clue": "Informatique",
-    "answer": "Le Debugging"
+    "concept": "💪 + 🦁 + 🏛️ + ⚔️",
+    "clue": "Mythologie",
+    "answer": "Hercule"
   },
   {
     "id": 88,
