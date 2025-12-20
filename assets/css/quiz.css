@@ -334,7 +334,6 @@
 }
 
 .feedback-msg {
-  grid-area: feedback;
   font-size: var(--text-l);
   font-weight: 600;
   min-height: 1.5em;

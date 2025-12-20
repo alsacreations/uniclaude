@@ -83,9 +83,14 @@ header {
 
 .header-top {
   display: grid;
-  grid-template-columns: 1fr auto;
+  grid-template-columns: auto;
   gap: var(--spacing-16);
-  place-items: center start;
+  justify-items: center;
+
+  @media (width >= 48rem) {
+      grid-template-columns: 1fr auto;
+      place-items: center start;
+  }
 }
 
 .header-actions {
