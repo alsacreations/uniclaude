@@ -251,9 +251,16 @@
   text-align: left;
 }
 
+.summary-list {
+  display: grid;
+  grid-template-columns: 2rem auto auto;
+}
+
 .summary-item {
-  display: flex;
-  gap: var(--spacing-m);
+  display: grid;
+  grid-template-columns: subgrid;
+  grid-column: 1 / 4;
+  gap: var(--spacing-s);
   padding: var(--spacing-8) 0;
   border-bottom: 1px solid var(--border-color);
 }
