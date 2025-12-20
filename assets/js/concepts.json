@@ -1846,5 +1846,103 @@
     "clue": "Métier",
     "answer": "Paléontologue",
     "keyword": ["Paléontologue", "Paleontologue"]
+  },
+  {
+    "id": 250,
+    "concept": "🩺 + 🥼 + 🏥 + 🩹",
+    "clue": "Métier",
+    "answer": "Médecin",
+    "keyword": ["Médecin", "Medecin", "Docteur"]
+  },
+  {
+    "id": 251,
+    "concept": "🚒 + 👨‍🚒 + 🏠 + 🔥",
+    "clue": "Métier",
+    "answer": "Pompier",
+    "keyword": ["Pompier"]
+  },
+  {
+    "id": 252,
+    "concept": "🥖 + 🥐 + 🥨 + 👨‍🍳",
+    "clue": "Métier",
+    "answer": "Boulanger",
+    "keyword": ["Boulanger"]
+  },
+  {
+    "id": 253,
+    "concept": "✂️ + 💇‍♀️ + 💇‍♂️ + 🧴",
+    "clue": "Métier",
+    "answer": "Coiffeur",
+    "keyword": ["Coiffeur", "Coiffeuse"]
+  },
+  {
+    "id": 254,
+    "concept": "⚖️ + 🏛️ + 💼 + 👨‍⚖️",
+    "clue": "Métier",
+    "answer": "Avocat",
+    "keyword": ["Avocat"]
+  },
+  {
+    "id": 255,
+    "concept": "🚀 + 👨‍🚀 + 🌌 + 🛰️",
+    "clue": "Métier",
+    "answer": "Astronaute",
+    "keyword": ["Astronaute", "Cosmonaute"]
+  },
+  {
+    "id": 256,
+    "concept": "🏫 + 🍎 + 📚 + 🧑‍🏫",
+    "clue": "Métier",
+    "answer": "Professeur",
+    "keyword": ["Professeur", "Enseignant", "Prof"]
+  },
+  {
+    "id": 257,
+    "concept": "👮‍♂️ + 🚔 + 🚨 + 🚓",
+    "clue": "Métier",
+    "answer": "Policier",
+    "keyword": ["Policier", "Police"]
+  },
+  {
+    "id": 258,
+    "concept": "👩‍🌾 + 🚜 + 🐮 + 🌽",
+    "clue": "Métier",
+    "answer": "Agriculteur",
+    "keyword": ["Agriculteur", "Fermier"]
+  },
+  {
+    "id": 259,
+    "concept": "🧱 + 🏗️ + 👷‍♂️ + 📐",
+    "clue": "Métier",
+    "answer": "Architecte",
+    "keyword": ["Architecte"]
+  },
+  {
+    "id": 260,
+    "concept": "🐝 + 🍯 + 🧥 + 💨",
+    "clue": "Métier",
+    "answer": "Apiculteur",
+    "keyword": ["Apiculteur"]
+  },
+  {
+    "id": 262,
+    "concept": "🍇 + 🍷 + 👃 + 🍷",
+    "clue": "Métier",
+    "answer": "Sommelier / Œnologue",
+    "keyword": ["Sommelier", "Oenologue"]
+  },
+  {
+    "id": 263,
+    "concept": "🎬 + 💥 + 🏃‍♂️ + 🤺",
+    "clue": "Métier",
+    "answer": "Cascadeur",
+    "keyword": ["Cascadeur"]
+  },
+  {
+    "id": 264,
+    "concept": "🎤 + 🗣️ + 🇫🇷 + 🇬🇧",
+    "clue": "Métier",
+    "answer": "Interprète / Traducteur",
+    "keyword": ["Interprète", "Interprete", "Traducteur"]
   }
 ]
