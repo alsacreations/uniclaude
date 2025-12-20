@@ -718,7 +718,7 @@
     "concept": "🧇 + 🚲 + 🔦 + 📺",
     "clue": "Série",
     "answer": "Stranger Things",
-    "keyword": ["Stranger Things"]
+    "keyword": ["Stranger Things", "Stranger"]
   },
   {
     "id": 104,
@@ -1534,7 +1534,7 @@
   },
   {
     "id": 220,
-    "concept": "🌌 + 🎹 + 🎸 + 🎵",
+    "concept": "🥶 + 🎸 + 🎵 ",
     "clue": "Groupe",
     "answer": "Coldplay",
     "keyword": ["Coldplay"]
@@ -1642,7 +1642,7 @@
     "concept": "🏅 + 🏟️ + 🌍 + 🔥",
     "clue": "Sport",
     "answer": "Les Jeux Olympiques",
-    "keyword": ["Jeux Olympiques", "JO"]
+    "keyword": ["Jeux Olympiques", "JO", "olympiques"]
   },
   {
     "id": 236,
