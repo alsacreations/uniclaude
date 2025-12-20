@@ -8,7 +8,8 @@ class UniClaudeQuiz {
     this.allConcepts = [];
     this.selectedConcepts = [];
     this.currentIndex = 0;
-    this.currentStep = 0; // 0: characters, 1: clue, 2: answer
+    this.score = 0;
+    this.isQuestionActive = false;
 
     // DOM Elements
     this.introSection = document.getElementById('quiz-intro');
@@ -19,6 +20,13 @@ class UniClaudeQuiz {
     this.restartBtn = document.getElementById('restart-quiz');
 
     this.charactersDisplay = document.getElementById('concept-characters');
+
+    // Input & Feedback
+    this.userInput = document.getElementById('user-guess');
+    this.btnSubmit = document.getElementById('btn-submit-guess');
+    this.feedbackMsg = document.getElementById('feedback-msg');
+    this.scoreDisplay = document.getElementById('current-score');
+
     this.clueContainer = document.getElementById('clue-container');
     this.clueText = document.getElementById('concept-clue');
     this.answerContainer = document.getElementById('answer-container');
@@ -56,14 +64,22 @@ class UniClaudeQuiz {
   attachEventListeners() {
     this.startBtn.addEventListener('click', () => this.startQuiz());
     this.restartBtn.addEventListener('click', () => this.startQuiz());
+
     this.btnShowClue.addEventListener('click', () => this.showClue());
-    this.btnShowAnswer.addEventListener('click', () => this.showAnswer());
+    this.btnShowAnswer.addEventListener('click', () => this.giveUp());
     this.btnNext.addEventListener('click', () => this.nextQuestion());
+
+    this.btnSubmit.addEventListener('click', () => this.checkAnswer());
+    this.userInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') this.checkAnswer();
+    });
   }
 
   startQuiz() {
     this.selectedConcepts = this.shuffleArray([...this.allConcepts]).slice(0, 10);
     this.currentIndex = 0;
+    this.score = 0;
+    this.updateScoreDisplay();
     this.showSection('play');
     this.updateQuestion();
   }
@@ -88,14 +104,31 @@ class UniClaudeQuiz {
 
   updateQuestion() {
     const concept = this.selectedConcepts[this.currentIndex];
+    this.isQuestionActive = true;
 
-    // Reset state
-    this.currentStep = 0;
+    // Reset UI state
     this.clueContainer.classList.add('hidden');
     this.answerContainer.classList.add('hidden');
+
     this.btnShowClue.classList.remove('hidden');
-    this.btnShowAnswer.classList.add('hidden');
+    this.btnShowClue.disabled = false;
+
+    this.btnShowAnswer.classList.remove('hidden');
+    this.btnShowAnswer.disabled = false;
+
     this.btnNext.classList.add('hidden');
+
+    this.userInput.value = '';
+    this.userInput.disabled = false;
+    this.userInput.focus();
+
+    this.btnSubmit.disabled = false;
+    this.feedbackMsg.textContent = '';
+    this.feedbackMsg.className = 'feedback-msg hidden';
+
+    // Clear success states
+    this.playSection.classList.remove('celebrate');
+    this.userInput.classList.remove('success');
 
     // Update Content
     this.charactersDisplay.textContent = concept.concept;
@@ -113,18 +146,122 @@ class UniClaudeQuiz {
     this.charactersDisplay.style.animation = null;
   }
 
-  showClue() {
-    this.currentStep = 1;
-    this.clueContainer.classList.remove('hidden');
-    this.btnShowClue.classList.add('hidden');
-    this.btnShowAnswer.classList.remove('hidden');
+  normalizeString(str) {
+    return str
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .toLowerCase();
   }
 
-  showAnswer() {
-    this.currentStep = 2;
-    this.answerContainer.classList.remove('hidden');
+  checkAnswer() {
+    if (!this.isQuestionActive) return;
+
+    const userVal = this.normalizeString(this.userInput.value.trim());
+    if (!userVal) return;
+
+    const currentConcept = this.selectedConcepts[this.currentIndex];
+    const keywords = currentConcept.keyword || []; // Safety check
+
+    // Check if user input contains any of the keywords
+    const isCorrect = keywords.some(k => userVal.includes(this.normalizeString(k)));
+
+    if (isCorrect) {
+      this.handleSuccess();
+    } else {
+      this.handleFailure();
+    }
+  }
+
+  handleSuccess() {
+    this.isQuestionActive = false;
+    this.score++;
+    this.updateScoreDisplay();
+
+    this.feedbackMsg.textContent = "✅ Correct ! Bien joué.";
+    this.feedbackMsg.className = 'feedback-msg success';
+
+    // Visual feedback
+    this.userInput.classList.add('success');
+    this.playSection.classList.add('celebrate');
+    this.createConfetti();
+
+    this.revealAnswer(true);
+  }
+
+  createConfetti() {
+    const emojis = ['🎉', '✨', '👏', '🦄', '⭐', '🎈'];
+    const container = this.playSection;
+
+    for (let i = 0; i < 30; i++) {
+      const el = document.createElement('div');
+      el.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+      el.style.position = 'absolute';
+      el.style.left = '50%';
+      el.style.top = '50%';
+      el.style.transform = 'translate(-50%, -50%)';
+      el.style.pointerEvents = 'none';
+      el.style.fontSize = `${1.5 + Math.random()}rem`;
+      el.style.zIndex = '100';
+      el.style.opacity = '1';
+
+      // Random direction
+      const angle = Math.random() * Math.PI * 2;
+      const velocity = 100 + Math.random() * 200; // exploded distance
+      const tx = Math.cos(angle) * velocity;
+      const ty = Math.sin(angle) * velocity;
+      const rot = (Math.random() - 0.5) * 720;
+
+      el.animate([
+        { transform: 'translate(-50%, -50%) scale(0.5) rotate(0deg)', opacity: 1 },
+        { transform: `translate(calc(-50% + ${tx}px), calc(-50% + ${ty}px)) scale(1.2) rotate(${rot}deg)`, opacity: 0 }
+      ], {
+        duration: 800 + Math.random() * 600,
+        easing: 'cubic-bezier(0, .9, .57, 1)',
+        fill: 'forwards'
+      }).onfinish = () => el.remove();
+
+      container.appendChild(el);
+    }
+  }
+
+  handleFailure() {
+    this.feedbackMsg.textContent = "❌ Ce n'est pas ça. Essayez encore ou demandez un indice !";
+    this.feedbackMsg.className = 'feedback-msg error';
+
+    // Shake animation on input
+    this.userInput.classList.add('shake');
+    setTimeout(() => this.userInput.classList.remove('shake'), 500);
+  }
+
+  giveUp() {
+    if (!this.isQuestionActive) return;
+    this.isQuestionActive = false;
+
+    this.feedbackMsg.textContent = "Dommage ! Voici la réponse.";
+    this.feedbackMsg.className = 'feedback-msg';
+
+    this.revealAnswer(false);
+  }
+
+  revealAnswer(isWin) {
+    this.userInput.disabled = true;
+    this.btnSubmit.disabled = true;
+
+    this.btnShowClue.disabled = true; // Disable instead of hide to keep layout stable often better
     this.btnShowAnswer.classList.add('hidden');
+
+    this.answerContainer.classList.remove('hidden');
     this.btnNext.classList.remove('hidden');
+    this.btnNext.focus();
+  }
+
+  showClue() {
+    this.clueContainer.classList.remove('hidden');
+    this.btnShowClue.classList.add('hidden'); // One-time use usually
+  }
+
+  updateScoreDisplay() {
+    this.scoreDisplay.textContent = this.score;
   }
 
   nextQuestion() {
@@ -142,7 +279,18 @@ class UniClaudeQuiz {
   }
 
   generateSummary() {
-    this.summaryContainer.innerHTML = '';
+    this.summaryContainer.innerHTML = `
+      <div class="final-score">
+        <h3>Score final : ${this.score} / ${this.selectedConcepts.length}</h3>
+        <p>${this.getMotivationMessage()}</p>
+      </div>
+    `;
+
+    // List details if needed, or just the score
+    // User requested simpler flow, but retained summary list is nice
+    const list = document.createElement('div');
+    list.className = 'summary-list';
+
     this.selectedConcepts.forEach(concept => {
       const item = document.createElement('div');
       item.className = 'summary-item';
@@ -150,8 +298,17 @@ class UniClaudeQuiz {
         <span class="summary-chars">${concept.concept}</span>
         <span class="summary-answer">${concept.answer}</span>
       `;
-      this.summaryContainer.appendChild(item);
+      list.appendChild(item);
     });
+    this.summaryContainer.appendChild(list);
+  }
+
+  getMotivationMessage() {
+    const ratio = this.score / this.selectedConcepts.length;
+    if (ratio === 1) return "Incroyable ! Un sans-faute ! 🏆";
+    if (ratio >= 0.8) return "Excellent travail ! 🌟";
+    if (ratio >= 0.5) return "Bien joué ! 👍";
+    return "Tu feras mieux la prochaine fois ! 💪";
   }
 }
 

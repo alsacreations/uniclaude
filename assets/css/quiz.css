@@ -8,6 +8,7 @@
 }
 
 .quiz-card {
+  position: relative;
   width: 100%;
   background: color-mix(in srgb, var(--bg-card) 80%, transparent);
   backdrop-filter: blur(12px);
@@ -15,10 +16,52 @@
   border-radius: var(--radius-xl);
   padding: var(--spacing-l);
   box-shadow: var(--shadow-lg);
-  display: flex;
-  flex-direction: column;
-  gap: var(--spacing-m);
+  display: grid;
+  gap: var(--spacing-s);
+  align-content: start;
+  align-items: start;
   animation: fadeIn 0.5s ease-out;
+  overflow: hidden; /* Keep confetti inside */
+}
+
+.quiz-play {
+  @media (width >= 48rem) {
+    grid-template-columns: 1.5fr 1fr;
+    grid-template-areas:
+      "header header"
+      "concept input"
+      "concept controls"
+      "clue controls"
+      "answer feedback";
+
+    & .quiz-header {
+      grid-area: header;
+    }
+
+    & .concept-characters {
+      grid-area: concept;
+    }
+
+    & .quiz-input-area {
+      grid-area: input;
+    }
+
+    & .clue-container {
+      grid-area: clue;
+    }
+
+    & .quiz-controls {
+      grid-area: controls;
+    }
+
+    & .answer-container {
+      grid-area: answer;
+    }
+
+    & .feedback-msg {
+      grid-area: feedback;
+    }
+  }
 }
 
 .quiz-card h2 {
@@ -131,43 +174,6 @@
   transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.concept-display {
-  display: grid;
-  gap: var(--spacing-m);
-  justify-content: center;
-
-  grid-template-columns: auto;
-  grid-template-areas:
-    "concept"
-    "clue"
-    "answer"
-    "controls";
-
-    & .concept-characters {
-      grid-area: concept;
-      min-height: 240px;
-    }
-
-    & .clue-container {
-      grid-area: clue;
-    }
-
-    & .answer-container {
-      grid-area: answer;
-    }
-
-    & .quiz-controls {
-      grid-area: controls;
-    }
-
-    @media (width >= 48rem) {
-      grid-template-columns: 1.5fr 1fr;
-      grid-template-areas:
-        "concept clue"
-        "concept answer"
-        "controls controls";
-    }
-}
 
 .concept-characters {
   font-size: var(--text-4xl);
@@ -228,7 +234,6 @@
   display: grid;
   grid-template-columns: 1fr;
   gap: var(--spacing-m);
-  margin-top: auto;
 }
 
 @media (min-width: 600px) {
@@ -272,4 +277,114 @@
 
 .btn-accent:hover {
   background: var(--secondary-color-on-dark);
+}
+
+/* Input & Game Mechanics */
+.score-display {
+  position: absolute;
+  top: var(--spacing-m);
+  right: var(--spacing-m);
+  font-size: var(--text-l);
+  font-weight: 800;
+  background: var(--bg-surface);
+  padding: var(--spacing-4) var(--spacing-12);
+  border-radius: var(--radius-full);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--border-color);
+  z-index: 2;
+}
+
+.quiz-input-area {
+  grid-area: input;
+  display: flex;
+  gap: var(--spacing-s);
+  margin-top: var(--spacing-m);
+  flex-wrap: wrap;
+}
+
+.quiz-input {
+  flex: 1;
+  min-width: 200px;
+  padding: var(--spacing-12) var(--spacing-16);
+  border: 2px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  font-size: var(--text-m);
+  background: var(--bg-input);
+  color: var(--text-main);
+  transition: all 0.2s ease;
+}
+
+.quiz-input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--primary-color) 20%, transparent);
+}
+
+.feedback-msg {
+  grid-area: feedback;
+  font-size: var(--text-l);
+  font-weight: 600;
+  min-height: 1.5em;
+  margin: var(--spacing-s) 0;
+  transition: color 0.3s ease;
+}
+
+.feedback-msg.success {
+  color: var(--success-color, #10b981);
+}
+
+.feedback-msg.error {
+  color: var(--error-color, #ef4444);
+}
+
+/* Shake Animation */
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20%, 60% { transform: translateX(-5px); }
+  40%, 80% { transform: translateX(5px); }
+}
+
+.shake {
+  animation: shake 0.4s cubic-bezier(.36,.07,.19,.97) both;
+  border-color: var(--error-color) !important;
+}
+
+/* Update Layout Map for new elements */
+.concept-display {
+  grid-template-areas:
+    "concept"
+    "input"
+    "feedback"
+    "clue"
+    "answer"
+    "controls";
+}
+
+@media (width >= 48rem) {
+  .concept-display {
+    grid-template-areas:
+      "concept clue"
+      "concept answer"
+      "input input"
+      "feedback feedback"
+      "controls controls";
+  }
+}
+
+/* Success Visuals */
+@keyframes success-pop {
+  0% { transform: scale(1); }
+  40% { transform: scale(1.02); box-shadow: 0 0 30px color-mix(in srgb, var(--success-color) 20%, transparent); border-color: var(--success-color); }
+  100% { transform: scale(1); border-color: var(--success-color); }
+}
+
+.quiz-input.success {
+  border-color: var(--success-color);
+  background-color: color-mix(in srgb, var(--success-color) 10%, transparent);
+  color: var(--success-color);
+  font-weight: 700;
+}
+
+.quiz-card.celebrate {
+  animation: success-pop 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }

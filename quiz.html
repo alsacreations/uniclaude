@@ -105,8 +105,14 @@
             </div>
           </div>
 
-          <div class="concept-display">
+            <div class="score-display">Score : <span id="current-score">0</span></div>
             <div id="concept-characters" class="concept-characters"></div>
+
+            <div id="quiz-input-area" class="quiz-input-area">
+              <input type="text" id="user-guess" class="quiz-input" placeholder="Votre réponse..." autocomplete="off">
+              <button id="btn-submit-guess" class="btn btn-primary">Valider</button>
+            </div>
+            <p id="feedback-msg" class="feedback-msg hidden"></p>
 
             <div id="clue-container" class="clue-container hidden">
               <p class="clue-label">Indice&#8239;:</p>
@@ -119,8 +125,8 @@
             </div>
 
             <div class="quiz-controls">
-              <button id="btn-show-clue" class="btn btn-secondary">Afficher l'indice</button>
-              <button id="btn-show-answer" class="btn btn-accent hidden">Voir la réponse</button>
+              <button id="btn-show-clue" class="btn btn-secondary">Besoin d'un indice ?</button>
+              <button id="btn-show-answer" class="btn btn-accent">Je donne ma langue au chat</button>
               <button id="btn-next" class="btn btn-primary hidden">Concept suivant</button>
             </div>
           </div>

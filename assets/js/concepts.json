@@ -3,1500 +3,1848 @@
     "id": 1,
     "concept": "👧🏻 + ⧓ + 💀",
     "clue": "Série",
-    "answer": "La série Mercredi (Wednesday)"
+    "answer": "La série Mercredi (Wednesday)",
+    "keyword": ["Wednesday", "Mercredi"]
   },
   {
     "id": 2,
     "concept": "🇫🇷 + 🏗️ + ⚙️",
     "clue": "Construction",
-    "answer": "La Tour Eiffel"
+    "answer": "La Tour Eiffel",
+    "keyword": ["Tour Eiffel", "Eiffel"]
   },
   {
     "id": 3,
     "concept": "🏺 + 🇮🇹 + 🌋",
     "clue": "Géographie",
-    "answer": "Pompéi"
+    "answer": "Pompéi",
+    "keyword": ["Pompéi", "Pompei"]
   },
   {
     "id": 4,
     "concept": "🎭 + 💰 + 👺 + 🇪🇸",
     "clue": "Série",
-    "answer": "La Casa de Papel"
+    "answer": "La Casa de Papel",
+    "keyword": ["Casa", "Papel"]
   },
   {
     "id": 5,
     "concept": "🍎 + ⚖️ + 🔭",
     "clue": "Science",
-    "answer": "Isaac Newton (La Gravité)"
+    "answer": "Isaac Newton (La Gravité)",
+    "keyword": ["Isaac", "Newton", "Gravité", "Gravite"]
   },
   {
     "id": 6,
     "concept": "⚡ + 👓 + 🪄 + 🦉",
     "clue": "Littérature / Film",
-    "answer": "Harry Potter"
+    "answer": "Harry Potter",
+    "keyword": ["Harry", "Potter"]
   },
   {
     "id": 7,
     "concept": "🚢 + 🧊 + 🎻",
     "clue": "Film",
-    "answer": "Le Titanic"
+    "answer": "Le Titanic",
+    "keyword": ["Titanic"]
   },
   {
     "id": 8,
     "concept": "🥊 + 🥩 + 🏃‍♂️",
     "clue": "Film",
-    "answer": "Rocky"
+    "answer": "Rocky",
+    "keyword": ["Rocky", "Balboa"]
   },
   {
     "id": 9,
     "concept": "🦶 + 💍 + 🌋",
     "clue": "Film",
-    "answer": "Le Seigneur des Anneaux"
+    "answer": "Le Seigneur des Anneaux",
+    "keyword": ["Anneaux", "Seigneur", "Seigneur des Anneaux"]
   },
   {
     "id": 10,
     "concept": "🐒 + 🧬 + 🧔🏻‍♂️",
     "clue": "Science",
-    "answer": "Charles Darwin (L'Évolution)"
+    "answer": "Charles Darwin (L'Évolution)",
+    "keyword": ["Charles", "Darwin", "évolution", "evolution"]
   },
   {
     "id": 11,
     "concept": "🇺🇸 + 🎰 + 🏜️",
     "clue": "Géographie",
-    "answer": "Las Vegas"
+    "answer": "Las Vegas",
+    "keyword": ["Las Vegas"]
   },
   {
     "id": 12,
     "concept": "🐇 + 💊 + 🕶️",
     "clue": "Film",
-    "answer": "Matrix"
+    "answer": "Matrix",
+    "keyword": ["Matrix"]
   },
   {
     "id": 13,
     "concept": "🎨 + 👩🏻‍🎨 + 🤨",
     "clue": "Art",
-    "answer": "Frida Kahlo"
+    "answer": "Frida Kahlo",
+    "keyword": ["Frida", "Kahlo"]
   },
   {
     "id": 14,
     "concept": "🦁 + 👑 + 🌅",
     "clue": "Film d'animation",
-    "answer": "Le Roi Lion"
+    "answer": "Le Roi Lion",
+    "keyword": ["Roi Lion"]
   },
   {
     "id": 15,
     "concept": "🧱 + 🐉 + 🇨🇳",
     "clue": "Géographie",
-    "answer": "La Grande Muraille de Chine"
+    "answer": "La Grande Muraille de Chine",
+    "keyword": ["Muraille", "Grande Muraille", "Grande Muraille de Chine"]
   },
   {
     "id": 16,
     "concept": "🎾 + 🏆 + 🇫🇷",
     "clue": "Sport",
-    "answer": "Roland-Garros"
+    "answer": "Roland-Garros",
+    "keyword": ["Roland-Garros", "Roland Garros"]
   },
   {
     "id": 17,
     "concept": "🐊 + 🕒 + 🏴‍☠️",
     "clue": "Conte",
-    "answer": "Peter Pan"
+    "answer": "Peter Pan",
+    "keyword": ["Peter Pan"]
   },
   {
     "id": 18,
     "concept": "☕ + 🛋️ + ⛲",
     "clue": "Série",
-    "answer": "Friends"
+    "answer": "Friends",
+    "keyword": ["Friends"]
   },
 {
     "id": 19,
     "concept": "🐎 + 🪵 + 🏛️ + ⚔️ + 🛡️",
     "clue": "Mythologie",
-    "answer": "Le Cheval de Troie"
+    "answer": "Le Cheval de Troie",
+    "keyword": ["Cheval", "Troie"]
   },
   {
     "id": 20,
     "concept": "🧠 + ⚡ + 🧟‍♂️",
     "clue": "Littérature",
-    "answer": "Frankenstein"
+    "answer": "Frankenstein",
+    "keyword": ["Frankenstein", "créature"]
   },
   {
     "id": 21,
     "concept": "🎹 + 🤫 + 🎞️",
     "clue": "Histoire du Cinéma",
-    "answer": "Le cinéma muet"
+    "answer": "Le cinéma muet",
+    "keyword": ["cinéma muet", "cinema muet"]
   },
   {
     "id": 22,
     "concept": "🏹 + 🍎 + 🇨🇭",
     "clue": "Légende",
-    "answer": "Guillaume Tell"
+    "answer": "Guillaume Tell",
+    "keyword": ["Guillaume Tell"]
   },
   {
     "id": 23,
     "concept": "🐱 + 📦 + 🧪",
     "clue": "Physique",
-    "answer": "Le chat de Schrödinger"
+    "answer": "Le chat de Schrödinger",
+    "keyword": ["chat de Schrödinger", "Schrödinger", "Schrodinger"]
   },
   {
     "id": 24,
     "concept": "🕵️‍♂️ + 🎻 + 🔍",
     "clue": "Littérature",
-    "answer": "Sherlock Holmes"
+    "answer": "Sherlock Holmes",
+    "keyword": ["Sherlock Holmes", "Sherlock"]
   },
   {
     "id": 25,
     "concept": "👗 + 👠 + 🎃",
     "clue": "Conte",
-    "answer": "Cendrillon"
+    "answer": "Cendrillon",
+    "keyword": ["Cendrillon", "Cendrella"]
   },
   {
     "id": 26,
     "concept": "🦷 + 🦈 + 🎼",
     "clue": "Film",
-    "answer": "Les Dents de la Mer (Jaws)"
+    "answer": "Les Dents de la Mer (Jaws)",
+    "keyword": ["Dents de la Mer", "Jaws"]
   },
   {
     "id": 27,
     "concept": "🏎️ + 🇲🇨 + 🏁",
     "clue": "Sport",
-    "answer": "Le Grand Prix de Monaco"
+    "answer": "Le Grand Prix de Monaco",
+    "keyword": ["Grand Prix"]
   },
   {
     "id": 28,
     "concept": "🥐 + 🥖 + 🍷 + 🧀",
-    "clue": "Gastronomie",
-    "answer": "Le Petit Déjeuner"
+    "clue": "Géographie",
+    "answer": "La France",
+    "keyword": ["France"]
   },
   {
     "id": 29,
     "concept": "🧗‍♂️ + 🌋 + 🇯🇵",
     "clue": "Géographie",
-    "answer": "Le Mont Fuji"
+    "answer": "Le Mont Fuji",
+    "keyword": ["Mont Fuji", "Fuji"]
   },
   {
     "id": 30,
     "concept": "🍄 + 🏰 + 👨🏻‍🔧",
     "clue": "Jeu Vidéo",
-    "answer": "Super Mario"
+    "answer": "Super Mario",
+    "keyword": ["Super Mario", "Mario"]
   },
   {
     "id": 31,
     "concept": "🚀 + 🌔 + 👨‍🚀 + 👣",
-    "clue": "Espace / Histoire",
-    "answer": "Le premier pas sur la Lune (Apollo 11)"
+    "clue": "Histoire",
+    "answer": "Le premier pas sur la Lune (Apollo 11)",
+    "keyword": ["Apollo 11", "Lune", "Apollo"]
   },
   {
     "id": 32,
     "concept": "🧶 + 🐂 + 🏛️",
     "clue": "Mythologie",
-    "answer": "Le fil d'Ariane et le Minotaure"
+    "answer": "Le fil d'Ariane et le Minotaure",
+    "keyword": ["Minotaure", "Ariane", "fil d'Ariane"]
   },
   {
     "id": 33,
     "concept": "📉 + 🍎 + 🍎 + 😵‍💫",
     "clue": "Expression",
-    "answer": "Tomber dans les pommes"
+    "answer": "Tomber dans les pommes",
+    "keyword": ["Tomber dans les pommes"]
   },
   {
     "id": 34,
     "concept": "🧍 + ⬜ + 🟥 + 🟦 + 🟩",
     "clue": "Expression",
-    "answer": "Se tenir à carreaux"
+    "answer": "Se tenir à carreaux",
+    "keyword": ["Se tenir à carreaux", "Se tenir a carreaux"]
   },
   {
     "id": 35,
     "concept": "🥐 + 🌀 + 🌾 + 🎭",
     "clue": "Expression",
-    "answer": "Se faire rouler dans la farine"
+    "answer": "Se faire rouler dans la farine",
+    "keyword": ["Se faire rouler dans la farine"]
   },
   {
     "id": 36,
     "concept": "👣 + 👣 + 🍲 + 🤫",
     "clue": "Expression",
-    "answer": "Mettre les pieds dans le plat"
+    "answer": "Mettre les pieds dans le plat",
+    "keyword": ["Mettre les pieds dans le plat"]
   },
   {
     "id": 37,
     "concept": "🗣️ + 🥗 + 🥗 + 🤥",
     "clue": "Expression",
-    "answer": "Raconter des salades"
+    "answer": "Raconter des salades",
+    "keyword": ["Raconter des salades"]
   },
   {
     "id": 38,
     "concept": "🥷 + 🥚 ➔ 🥷 + 🐂",
     "clue": "Expression",
-    "answer": "Qui vole un œuf vole un bœuf"
+    "answer": "Qui vole un œuf vole un bœuf",
+    "keyword": ["vole un œuf", "vole un bœuf", "vole un oeuf", "vole un boeuf"]
   },
   {
     "id": 39,
     "concept": "💧 + 🏺 + 🌊",
     "clue": "Expression",
-    "answer": "C'est la goutte d'eau qui fait déborder le vase"
+    "answer": "C'est la goutte d'eau qui fait déborder le vase",
+    "keyword": ["goutte d'eau", "déborder le vase", "deborder le vase"]
   },
   {
     "id": 40,
     "concept": "👅 + 🐈 + ❓ + 🤐",
     "clue": "Expression",
-    "answer": "Donner sa langue au chat"
+    "answer": "Donner sa langue au chat",
+    "keyword": ["Donner sa langue au chat", "langue au chat"]
   },
   {
     "id": 41,
     "concept": "🐔 + 🦷 + ⏳ + 🚫",
     "clue": "Expression",
-    "answer": "Quand les poules auront des dents"
+    "answer": "Quand les poules auront des dents",
+    "keyword": ["poules auront des dents"]
   },
   {
     "id": 42,
     "concept": "🐜 + 🏔️ + 🏗️ + 🤯",
     "clue": "Expression",
-    "answer": "Faire une montagne d'une petite souris"
+    "answer": "Faire une montagne d'une petite souris",
+    "keyword": ["Faire une montagne", "une petite souris"]
   },
   {
     "id": 43,
     "concept": "🦶 + 🪵 + 🍀",
     "clue": "Expression",
-    "answer": "Toucher du bois"
+    "answer": "Toucher du bois",
+    "keyword": ["Toucher du bois"]
   },
   {
     "id": 44,
     "concept": "💔 + 🏺 + 🏚️ + 🛠️",
     "clue": "Expression",
-    "answer": "Les pots cassés"
+    "answer": "Les pots cassés",
+    "keyword": ["Les pots cassés", "Les pots casses"]
   },
   {
     "id": 45,
     "concept": "🏛️ + ⚡ + ⛈️ + 🧔🏻‍♂️ + 🔱",
     "clue": "Mythologie",
-    "answer": "L'Olympe et les dieux grecs (Zeus et Poséidon)"
+    "answer": "L'Olympe et les dieux grecs (Zeus et Poséidon)",
+    "keyword": ["Olympe", "dieux grecs", "Zeus", "Poséidon"]
   },
   {
     "id": 46,
     "concept": "📜 + 🖋️ + 🕊️ + 🇫🇷 + ⚖️",
     "clue": "Histoire",
-    "answer": "La Déclaration des Droits de l'Homme et du Citoyen"
+    "answer": "La Déclaration des Droits de l'Homme et du Citoyen",
+    "keyword": ["Déclaration des Droits", "l'Homme et du Citoyen"]
   },
   {
     "id": 47,
     "concept": "🎻 + ❄️ + 🌱 + ☀️ + 🍂",
     "clue": "Musique Classique",
-    "answer": "Les Quatre Saisons de Vivaldi"
+    "answer": "Les Quatre Saisons de Vivaldi",
+    "keyword": ["Quatre Saisons", "Vivaldi"]
   },
   {
     "id": 48,
     "concept": "🔭 + 🪐 + 🛰️ + 👨‍🔬 + 🇮🇹",
     "clue": "Science / Histoire",
-    "answer": "Galilée (Découverte des lunes de Jupiter)"
+    "answer": "Galilée (Découverte des lunes de Jupiter)",
+    "keyword": ["Galilée", "Galilee"]
   },
   {
     "id": 49,
-    "concept": "🇫🇷 + 🥖 + 🎖️ + 🏰 + 🥐",
-    "clue": "Patrimoine Culturel",
-    "answer": "La gastronomie et l'art de vivre à la française"
+    "concept": "🏠 + 🎈 + 🎈 + ⛰️",
+    "clue": "Animation",
+    "answer": "Là-haut (Up)",
+    "keyword": ["Là-haut", "La-haut", "Up"]
   },
   {
     "id": 50,
     "concept": "🧖‍♂️ + 🛁 + 💡 + 🏃‍♂️ + 🏛️",
     "clue": "Science / Anecdote",
-    "answer": "Eurêka ! (Archimède dans son bain)"
+    "answer": "Eurêka ! (Archimède dans son bain)",
+    "keyword": ["Eureka", "Archimède", "Archimede"]
   },
   {
     "id": 51,
     "concept": "🐑 + 🐑 + 🧬 + 🧪 + 🏴‍☠️",
     "clue": "Science",
-    "answer": "Dolly la brebis (Le premier clonage)"
+    "answer": "Dolly la brebis (Le premier clonage)",
+    "keyword": ["Dolly", "brebis", "clonage"]
   },
   {
     "id": 52,
     "concept": "🧇 + 🍫 + 🍺 + 🍟",
     "clue": "Géographie / Gastronomie",
-    "answer": "La Belgique"
+    "answer": "La Belgique",
+    "keyword": ["Belgique"]
   },
   {
     "id": 53,
     "concept": "🐵 + 🙈 + 🙉 + 🙊 + 🏮",
     "clue": "Philosophie / Sagesse",
-    "answer": "Les trois singes de la sagesse"
+    "answer": "Les trois singes de la sagesse",
+    "keyword": ["singes", "sagesse"]
   },
   {
     "id": 54,
     "concept": "🦸‍♂️ + 🦇 + 🔦 + 🃏 + 🌃",
     "clue": "Comics / Film",
-    "answer": "Batman (Le Chevalier Noir)"
+    "answer": "Batman (Le Chevalier Noir)",
+    "keyword": ["Batman", "Chevalier Noir"]
   },
   {
     "id": 55,
     "concept": "🦅 + 🐍 + 🌵 + 🏜️",
     "clue": "Géographie",
-    "answer": "Le drapeau du Mexique (La légende de Tenochtitlan)"
+    "answer": "Le drapeau du Mexique (La légende de Tenochtitlan)",
+    "keyword": ["Mexique", "Tenochtitlan"]
   },
   {
     "id": 56,
     "concept": "🦢 + 🩰 + 🎼 + 👑 + 🌌",
     "clue": "Spectacle / Musique",
-    "answer": "Le Lac des Cygnes (Tchaïkovski)"
+    "answer": "Le Lac des Cygnes (Tchaïkovski)",
+    "keyword": ["Lac des Cygnes", "Tchaïkovski", "Tchaikovski"]
   },
   {
     "id": 57,
     "concept": "👂 + 🌻 + 🎨",
     "clue": "Art",
-    "answer": "Vincent van Gogh"
+    "answer": "Vincent van Gogh",
+    "keyword": ["Van Gogh", "Vincent"]
   },
   {
     "id": 58,
     "concept": "🕯️ + 🧛‍♂️ + 🏰 + 🦇",
     "clue": "Littérature / Légende",
-    "answer": "Dracula (Vlad l'Empaleur / Transylvanie)"
+    "answer": "Dracula (Vlad l'Empaleur / Transylvanie)",
+    "keyword": ["Dracula", "Vlad", "Transylvanie"]
   },
   {
     "id": 59,
     "concept": "🧺 + 🐺 + 👵 + 🍎",
     "clue": "Conte",
-    "answer": "Le Petit Chaperon Rouge"
+    "answer": "Le Petit Chaperon Rouge",
+    "keyword": ["Chaperon Rouge"]
   },
   {
     "id": 60,
     "concept": "🍎 + 💻 + 📱 + ⌚ + 💰",
     "clue": "Entreprise",
-    "answer": "Apple"
+    "answer": "Apple",
+    "keyword": ["Apple"]
   },
   {
     "id": 61,
     "concept": "🍳 + 🥚 + 🥓 + ☕",
     "clue": "Gastronomie",
-    "answer": "Le petit-déjeuner anglais (Full English Breakfast)"
+    "answer": "Le petit-déjeuner anglais (Full English Breakfast)",
+    "keyword": ["petit-déjeuner anglais", "petit-dejeuner anglais", "English Breakfast"]
   },
   {
     "id": 62,
     "concept": "🧥 + 🦁 + ❄️ + 🚪 + 🧚",
     "clue": "Littérature / Film",
-    "answer": "Le Monde de Narnia"
+    "answer": "Le Monde de Narnia",
+    "keyword": ["Narnia"]
   },
   {
     "id": 63,
     "concept": "🧱 + 🧱 + 🎮 + 🕹️ + 🇷🇺",
     "clue": "Jeu Vidéo",
-    "answer": "Tetris"
+    "answer": "Tetris",
+    "keyword": ["Tetris"]
   },
   {
     "id": 64,
     "concept": "🧛‍♂️ + 🏰 + 🦇 + 🧛‍♀️ + 🇷🇴",
     "clue": "Légende / Littérature",
-    "answer": "Dracula et la Transylvanie"
+    "answer": "Dracula et la Transylvanie",
+    "keyword": ["Dracula", "Transylvanie"]
   },
   {
     "id": 65,
     "concept": "🐄 + 🤠 + 🎸 + 🏜️",
     "clue": "Culture / Musique",
-    "answer": "Le Far West / Musique Country"
+    "answer": "Le Far West / Musique Country",
+    "keyword": ["Far West", "Country"]
   },
   {
     "id": 66,
     "concept": "🤐 + 🤫 + 🧱 + 🧱 + 👂",
     "clue": "Expression",
-    "answer": "Les murs ont des oreilles"
+    "answer": "Les murs ont des oreilles",
+    "keyword": ["murs ont des oreilles"]
   },
   {
     "id": 67,
     "concept": "🍒 + 🍰 + 🔝 + ✨ + 🤏",
     "clue": "Expression",
-    "answer": "La cerise sur le gâteau"
+    "answer": "La cerise sur le gâteau",
+    "keyword": ["cerise sur le gâteau", "cerise sur le gateau"]
   },
   {
     "id": 68,
     "concept": "🐓 + 🥚 + 🐣 + 🧐 + ❓",
     "clue": "Philosophie",
-    "answer": "L'œuf ou la poule (le paradoxe)"
+    "answer": "L'œuf ou la poule (le paradoxe)",
+    "keyword": ["œuf", "oeuf", "poule"]
   },
   {
     "id": 69,
     "concept": "🪞 + 🍎 + 👸 + ⛏️ + 💎",
     "clue": "Conte",
-    "answer": "Blanche-Neige et les sept nains"
+    "answer": "Blanche-Neige et les sept nains",
+    "keyword": ["Blanche-Neige", "Blanche Neige"]
   },
   {
     "id": 70,
     "concept": "🏃‍♂️ + 🏁 + 🐢 + 🐇 + 💤",
     "clue": "Littérature / Fable",
-    "answer": "Le Lièvre et la Tortue"
+    "answer": "Le Lièvre et la Tortue",
+    "keyword": ["Lièvre", "Lievre", "Tortue"]
   },
   {
     "id": 71,
     "concept": "🧠 + 💡 + 💡 + 🌩️ + 🏛️",
     "clue": "Processus",
-    "answer": "Le remue-méninges (Brainstorming)"
+    "answer": "Le remue-méninges (Brainstorming)",
+    "keyword": ["remue-méninges", "remue-meninges", "Brainstorming"]
   },
   {
     "id": 72,
     "concept": "🎭 + 🖋️ + 💀 + 🤴",
     "clue": "Littérature / Théâtre",
-    "answer": "William Shakespeare (Hamlet)"
+    "answer": "William Shakespeare (Hamlet)",
+    "keyword": ["Shakespeare", "Hamlet"]
   },
   {
     "id": 73,
     "concept": "🍯 + 🐻 + 🎈",
     "clue": "Personnage",
-    "answer": "Winnie l'Ourson"
+    "answer": "Winnie l'Ourson",
+    "keyword": ["Winnie"]
   },
   {
     "id": 74,
     "concept": "🧗 + ⛰️ + 🔝",
     "clue": "Géographie",
-    "answer": "L'Everest"
+    "answer": "L'Everest",
+    "keyword": ["Everest"]
   },
   {
     "id": 75,
     "concept": "🦍 + 🏢 + 🏢 + 🚁",
     "clue": "Cinéma",
-    "answer": "King Kong"
+    "answer": "King Kong",
+    "keyword": ["King Kong"]
   },
   {
     "id": 76,
     "concept": "🎅 + 🎁 + 🦌 + ❄️",
     "clue": "Légende",
-    "answer": "Le Père Noël"
+    "answer": "Le Père Noël",
+    "keyword": ["Père Noël", "Pere Noel"]
   },
   {
     "id": 77,
     "concept": "🐎 + 🛡️ + 🌬️ + ⛪",
     "clue": "Littérature",
-    "answer": "Don Quichotte"
+    "answer": "Don Quichotte",
+    "keyword": ["Don Quichotte"]
   },
   {
     "id": 78,
     "concept": "🕸️ + 🕷️ + 🌐 + 🔗",
     "clue": "Informatique",
-    "answer": "Le Web"
+    "answer": "Le Web",
+    "keyword": ["Web", "Internet"]
   },
   {
     "id": 79,
     "concept": "☕ + 💻 + ⌨️",
     "clue": "Informatique",
-    "answer": "Le langage Java"
+    "answer": "Le langage Java",
+    "keyword": ["Java"]
   },
   {
     "id": 80,
     "concept": "🧠 + 🦾 + 🤖 + 💻",
     "clue": "Informatique",
-    "answer": "L'Intelligence Artificielle"
+    "answer": "L'Intelligence Artificielle",
+    "keyword": ["Intelligence Artificielle", "IA", "AI"]
   },
   {
     "id": 81,
     "concept": "🐍 + ⌨️ + 💻 + 📊",
     "clue": "Informatique",
-    "answer": "Le langage Python"
+    "answer": "Le langage Python",
+    "keyword": ["Python"]
   },
   {
     "id": 82,
     "concept": "🔥 + 🦊 + 🌐 + 💻",
     "clue": "Informatique",
-    "answer": "Le navigateur Firefox"
+    "answer": "Le navigateur Firefox",
+    "keyword": ["Firefox"]
   },
   {
     "id": 83,
     "concept": "🍪 + 🌐 + 🕵️",
     "clue": "Informatique",
-    "answer": "Les Cookies"
+    "answer": "Les Cookies",
+    "keyword": ["Cookies"]
   },
   {
     "id": 84,
     "concept": "🧱 + 🌐 + 🛡️ + 🚫",
     "clue": "Informatique",
-    "answer": "Le Pare-feu (Firewall)"
+    "answer": "Le Pare-feu (Firewall)",
+    "keyword": ["Pare-feu", "Pare feu", "Firewall"]
   },
   {
     "id": 85,
     "concept": "🐳 + 🚢 + 🌊 + 🗡️",
     "clue": "Littérature",
-    "answer": "Moby Dick"
+    "answer": "Moby Dick",
+    "keyword": ["Moby Dick"]
   },
   {
     "id": 86,
     "concept": "💻 + 🏴‍☠️ + 🦠",
     "clue": "Informatique",
-    "answer": "Un virus informatique ou un malware"
+    "answer": "Un virus informatique ou un malware",
+    "keyword": ["virus", "malware"]
   },
   {
     "id": 87,
     "concept": "💪 + 🦁 + 🏛️ + ⚔️",
     "clue": "Mythologie",
-    "answer": "Hercule"
+    "answer": "Hercule",
+    "keyword": ["Hercule"]
   },
   {
     "id": 88,
     "concept": "🦖 + 🌐 + ❌ + 🔌 + 🕹️",
     "clue": "Informatique",
-    "answer": "Le jeu du dinosaure de Chrome (quand on est hors-ligne)"
+    "answer": "Le jeu du dinosaure de Chrome (quand on est hors-ligne)",
+    "keyword": ["dinosaure", "Chrome", "offline"]
   },
   {
     "id": 89,
     "concept": "🐳 + 🚢 + 📦",
     "clue": "Informatique",
-    "answer": "Docker"
+    "answer": "Docker",
+    "keyword": ["Docker"]
   },
   {
     "id": 90,
     "concept": "🏺 + 📜 + 🏛️ + 🌍 + 🔥",
     "clue": "Histoire",
-    "answer": "La Grande Bibliothèque d'Alexandrie"
+    "answer": "La Grande Bibliothèque d'Alexandrie",
+    "keyword": ["Alexandrie", "Bibliothèque", "Bibliotheque"]
   },
   {
     "id": 91,
     "concept": "🎨 + 🖌️ + 🌐 + 💅",
     "clue": "Informatique",
-    "answer": "CSS"
+    "answer": "CSS",
+    "keyword": ["CSS"]
   },
   {
     "id": 92,
     "concept": "🟥 + ▶️ + 📹 + 🤳",
     "clue": "Informatique",
-    "answer": "YouTube"
+    "answer": "YouTube",
+    "keyword": ["YouTube", "Youtube"]
   },
   {
     "id": 93,
     "concept": "🟥 + 🟦 + 🟩 + 🟨 + 🔃",
     "clue": "Jeu de cartes",
-    "answer": "Le Uno"
+    "answer": "Le Uno",
+    "keyword": ["Uno"]
   },
   {
     "id": 94,
     "concept": "🏁 + ⚪ + ⚫",
     "clue": "Jeu de société",
-    "answer": "Le jeu de dames"
+    "answer": "Le jeu de dames",
+    "keyword": ["dames"]
   },
   {
     "id": 95,
     "concept": "🧱 + 🏗️ + 🧱 + 🔨 + 🏃‍♂️",
     "clue": "Jeu vidéo",
-    "answer": "Roblox"
+    "answer": "Roblox",
+    "keyword": ["Roblox"]
   },
   {
     "id": 96,
     "concept": "🏰 + 🧱 + ⛏️ + 📦",
     "clue": "Jeu vidéo",
-    "answer": "Minecraft"
+    "answer": "Minecraft",
+    "keyword": ["Minecraft"]
   },
   {
     "id": 97,
     "concept": "🎲 + 🏨 + 💸 + 🎩",
     "clue": "Jeu de société",
-    "answer": "Le Monopoly"
+    "answer": "Le Monopoly",
+    "keyword": ["Monopoly"]
   },
   {
     "id": 98,
     "concept": "🔠 + 🔠 + 🔠 + 🧩 + 🔢",
     "clue": "Jeu de société",
-    "answer": "Le Scrabble"
+    "answer": "Le Scrabble",
+    "keyword": ["Scrabble"]
   },
   {
     "id": 99,
     "concept": "🐦 + 🏹 + 🐷 + 🏰 + 💥",
     "clue": "Jeu vidéo",
-    "answer": "Angry Birds"
+    "answer": "Angry Birds",
+    "keyword": ["Angry Birds"]
   },
   {
     "id": 100,
     "concept": "🍬 + 🍭 + ⛓️ + 🌈",
     "clue": "Jeu vidéo",
-    "answer": "Candy Crush"
+    "answer": "Candy Crush",
+    "keyword": ["Candy Crush"]
   },
   {
     "id": 101,
     "concept": "🐺 + ⚔️ + ❄️ + 🧊 + 🔥",
     "clue": "Série",
-    "answer": "Game of Thrones"
+    "answer": "Game of Thrones",
+    "keyword": ["Game of Thrones", "Thrones"]
   },
   {
     "id": 102,
     "concept": "👨‍🍳 + 🧪 + 🚐 + 💵",
     "clue": "Série",
-    "answer": "Breaking Bad"
+    "answer": "Breaking Bad",
+    "keyword": ["Breaking Bad"]
   },
   {
     "id": 103,
     "concept": "🧇 + 🚲 + 🔦 + 📺",
     "clue": "Série",
-    "answer": "Stranger Things"
+    "answer": "Stranger Things",
+    "keyword": ["Stranger Things"]
   },
   {
     "id": 104,
     "concept": "🦑 + 🔫 + 🔴 + 🟢",
     "clue": "Série",
-    "answer": "Squid Game"
+    "answer": "Squid Game",
+    "keyword": ["Squid Game"]
   },
   {
     "id": 105,
     "concept": "👑 + 🏴󠁧󠁢󠁥󠁮󠁧󠁿 + 🏰 + 🏛️",
     "clue": "Série",
-    "answer": "The Crown"
+    "answer": "The Crown",
+    "keyword": ["The Crown", "Crown"]
   },
   {
     "id": 106,
     "concept": "👨‍🍳 + 🥪 + 🔪 + 🤌",
     "clue": "Série",
-    "answer": "The Bear"
+    "answer": "The Bear",
+    "keyword": ["The Bear", "Bear"]
   },
   {
     "id": 107,
     "concept": "📱 + 🕸️ + 👁️ + 🖤",
     "clue": "Série",
-    "answer": "Black Mirror"
+    "answer": "Black Mirror",
+    "keyword": ["Black Mirror"]
   },
   {
     "id": 108,
     "concept": "🏛️ + 🌿 + ⚔️ + 🇮🇹",
     "clue": "Histoire",
-    "answer": "Jules César / L'Empire Romain"
+    "answer": "Jules César / L'Empire Romain",
+    "keyword": ["César", "Cesar", "Empire Romain"]
   },
   {
     "id": 109,
     "concept": "🐍 + 👸 + 🇪🇬 + 🏛️",
     "clue": "Histoire",
-    "answer": "Cléopâtre"
+    "answer": "Cléopâtre",
+    "keyword": ["Cléopâtre", "Cleopatre"]
   },
   {
     "id": 110,
     "concept": "👑 + ✂️ + 🍰 + 🇫🇷",
     "clue": "Histoire",
-    "answer": "Marie-Antoinette"
+    "answer": "Marie-Antoinette",
+    "keyword": ["Marie-Antoinette"]
   },
   {
     "id": 111,
     "concept": "👓 + 🕊️ + 🇮🇳 + 🧘‍♂️",
     "clue": "Histoire",
-    "answer": "Mahatma Gandhi"
+    "answer": "Mahatma Gandhi",
+    "keyword": ["Gandhi"]
   },
   {
     "id": 112,
     "concept": "⛓️ + 🇿🇦 + 🕊️ + 🗳️",
     "clue": "Histoire",
-    "answer": "Nelson Mandela"
+    "answer": "Nelson Mandela",
+    "keyword": ["Mandela", "Nelson"]
   },
   {
     "id": 113,
     "concept": "🚌 + 🚫 + 👩🏾‍ + ✊",
     "clue": "Histoire",
-    "answer": "Rosa Parks"
+    "answer": "Rosa Parks",
+    "keyword": ["Rosa Parks"]
   },
   {
     "id": 114,
     "concept": "👟 + ✅ + 🏀",
     "clue": "Marque",
-    "answer": "Nike"
+    "answer": "Nike",
+    "keyword": ["Nike"]
   },
   {
     "id": 115,
     "concept": "🥤 + 🔴 + ⚪ + 🧊",
     "clue": "Marque",
-    "answer": "Coca-Cola"
+    "answer": "Coca-Cola",
+    "keyword": ["Coca-Cola", "Coca"]
   },
   {
     "id": 116,
-    "concept": "🍔 + 🍟 + 🤡 + 🏠",
+    "concept": "🍔 +  Fries + 🤡 + 🏠",
     "clue": "Marque",
-    "answer": "McDonald's"
+    "answer": "McDonald's",
+    "keyword": ["McDonald", "MacDo", "McDo"]
   },
   {
     "id": 117,
     "concept": "☕ + 🧜‍♀️ + 🟢 + 🥤",
     "clue": "Marque",
-    "answer": "Starbucks"
+    "answer": "Starbucks",
+    "keyword": ["Starbucks"]
   },
   {
     "id": 118,
     "concept": "🚗 + 🐎 + 🇮🇹 + 🏎️",
     "clue": "Marque",
-    "answer": "Ferrari"
+    "answer": "Ferrari",
+    "keyword": ["Ferrari"]
   },
   {
     "id": 119,
     "concept": "🚗 + ⚡ + 🔋 + 🛰️",
     "clue": "Marque",
-    "answer": "Tesla"
+    "answer": "Tesla",
+    "keyword": ["Tesla"]
   },
   {
     "id": 120,
     "concept": "📦 + 📦 + 📦 + 🌎 + 🚚",
     "clue": "Marque",
-    "answer": "Amazon"
+    "answer": "Amazon",
+    "keyword": ["Amazon"]
   },
   {
     "id": 121,
-    "concept": "🏰 + 🐭 + 🎇 + 🧚",
+    "concept": "Castle + 🐭 + 🎇 + 🧚",
     "clue": "Marque",
-    "answer": "Disney"
+    "answer": "Disney",
+    "keyword": ["Disney"]
   },
   {
     "id": 122,
     "concept": "🌕 + 🕺 + 🧤 + 🎤",
     "clue": "Chanteur",
-    "answer": "Michael Jackson"
+    "answer": "Michael Jackson",
+    "keyword": ["Jackson", "Michael"]
   },
   {
     "id": 123,
     "concept": "🎤 + 💎 + 👨🏼‍🎤 + 👑",
     "clue": "Groupe",
-    "answer": "Queen / Freddie Mercury"
+    "answer": "Queen / Freddie Mercury",
+    "keyword": ["Queen", "Freddie Mercury"]
   },
   {
     "id": 124,
     "concept": "🤖 + 🤖 + 🎧 + 🕺",
     "clue": "Groupe",
-    "answer": "Daft Punk"
+    "answer": "Daft Punk",
+    "keyword": ["Daft Punk"]
   },
   {
     "id": 125,
     "concept": "🐍 + 🧣 + 🎸 + 🕰️",
     "clue": "Chanteuse",
-    "answer": "Taylor Swift"
+    "answer": "Taylor Swift",
+    "keyword": ["Taylor Swift"]
   },
   {
     "id": 126,
     "concept": "🐝 + 👑 + 🍋 + 💃",
     "clue": "Chanteuse",
-    "answer": "Beyoncé"
+    "answer": "Beyoncé",
+    "keyword": ["Beyonce", "Beyoncé"]
   },
   {
     "id": 127,
     "concept": "🍏 + 🥁 + 👓 + 🇬🇧",
     "clue": "Groupe",
-    "answer": "The Beatles"
+    "answer": "The Beatles",
+    "keyword": ["Beatles"]
   },
   {
     "id": 128,
     "concept": "🎸 + 🍼 + 🌊 + 🎸",
     "clue": "Groupe",
-    "answer": "Nirvana"
+    "answer": "Nirvana",
+    "keyword": ["Nirvana"]
   },
   {
     "id": 129,
     "concept": "🏴‍☠️ + 🍷 + 🎩 + 🧔🏻‍♂️",
     "clue": "Acteur",
-    "answer": "Johnny Depp"
+    "answer": "Johnny Depp",
+    "keyword": ["Depp", "Johnny"]
   },
   {
     "id": 130,
     "concept": "👱🏻‍♀️ + 👗 + 🗽 + 💋",
     "clue": "Actrice",
-    "answer": "Marilyn Monroe"
+    "answer": "Marilyn Monroe",
+    "keyword": ["Marilyn Monroe"]
   },
   {
     "id": 131,
     "concept": "🕵️‍♂️ + 🕶️ + 🏃‍♂️ + 🚁",
     "clue": "Acteur",
-    "answer": "Tom Cruise (Mission Impossible)"
+    "answer": "Tom Cruise (Mission Impossible)",
+    "keyword": ["Tom Cruise", "Mission Impossible"]
   },
   {
     "id": 132,
     "concept": "👠 + 👗 + 🎭 + 🏆",
     "clue": "Actrice",
-    "answer": "Meryl Streep"
+    "answer": "Meryl Streep",
+    "keyword": ["Meryl Streep"]
   },
   {
     "id": 133,
     "concept": "🚢 + 🌲 + 🐺 + 🏆",
     "clue": "Acteur",
-    "answer": "Leonardo DiCaprio"
+    "answer": "Leonardo DiCaprio",
+    "keyword": ["DiCaprio", "Leonardo"]
   },
   {
     "id": 134,
     "concept": "🇫🇷 + 🎸 + 🕶️ + 🚬",
     "clue": "Chanteur",
-    "answer": "Johnny Hallyday"
+    "answer": "Johnny Hallyday",
+    "keyword": ["Johnny", "Hallyday"]
   },
   {
     "id": 135,
     "concept": "🎷 + 🕶️ + 🎹 + 🎹",
     "clue": "Chanteur",
-    "answer": "Ray Charles"
+    "answer": "Ray Charles",
+    "keyword": ["Ray Charles"]
   },
   {
     "id": 136,
     "concept": "🗡️ + 🧝‍♂️ + 🛡️ + 💎",
     "clue": "Jeu Vidéo",
-    "answer": "The Legend of Zelda"
+    "answer": "The Legend of Zelda",
+    "keyword": ["Zelda"]
   },
   {
     "id": 137,
     "concept": "🐭 + ⚡ + 🟡 + ⚫",
     "clue": "Jeu Vidéo",
-    "answer": "Pokémon (Pikachu)"
+    "answer": "Pokémon (Pikachu)",
+    "keyword": ["Pokemon", "Pokémon", "Pikachu"]
   },
   {
     "id": 138,
     "concept": "⚔️ + ✨ + 🚀 + 🌑",
     "clue": "Cinéma",
-    "answer": "Star Wars"
+    "answer": "Star Wars",
+    "keyword": ["Star Wars"]
   },
   {
     "id": 139,
     "concept": "🛸 + 🕰️ + 📞 + 🇬🇧",
     "clue": "Série",
-    "answer": "Doctor Who"
+    "answer": "Doctor Who",
+    "keyword": ["Doctor Who"]
   },
   {
     "id": 140,
     "concept": "👻 + 🔫 + 🚫 + 🚐",
     "clue": "Cinéma",
-    "answer": "S.O.S. Fantômes (Ghostbusters)"
+    "answer": "S.O.S. Fantômes (Ghostbusters)",
+    "keyword": ["Ghostbusters", "S.O.S. Fantômes", "SOS Fantomes"]
   },
   {
     "id": 141,
     "concept": "🚗 + ⚡ + 🕰️ + 🏎️",
     "clue": "Cinéma",
-    "answer": "Retour vers le futur"
+    "answer": "Retour vers le futur",
+    "keyword": ["Retour vers le futur"]
   },
   {
     "id": 142,
     "concept": "🤠 + 🐍 + 💎 + 🏺",
     "clue": "Cinéma",
-    "answer": "Indiana Jones"
+    "answer": "Indiana Jones",
+    "keyword": ["Indiana Jones"]
   },
   {
     "id": 143,
     "concept": "👦 + 🚲 + 🌕 + 👽",
     "clue": "Cinéma",
-    "answer": "E.T. l'extra-terrestre"
+    "answer": "E.T. l'extra-terrestre",
+    "keyword": ["E.T.", "ET"]
   },
   {
     "id": 144,
     "concept": "🦖 + 🚗 + 🌴 + 🧬",
     "clue": "Cinéma",
-    "answer": "Jurassic Park"
+    "answer": "Jurassic Park",
+    "keyword": ["Jurassic Park"]
   },
   {
     "id": 145,
     "concept": "🟡 + 👻 + 🍒 + 🕹️",
     "clue": "Jeu Vidéo",
-    "answer": "Pac-Man"
+    "answer": "Pac-Man",
+    "keyword": ["Pac-Man", "Pacman"]
   },
   {
     "id": 146,
     "concept": "🪟 + 💻 + 🌍 + 📧",
     "clue": "Marque",
-    "answer": "Microsoft"
+    "answer": "Microsoft",
+    "keyword": ["Microsoft", "Windows"]
   },
   {
     "id": 147,
     "concept": "🔍 + 🌈 + 🏢 + 🌐",
     "clue": "Marque",
-    "answer": "Google"
+    "answer": "Google",
+    "keyword": ["Google"]
   },
   {
     "id": 148,
     "concept": "🟥 + 📺 + 🍿 + 🎞️",
     "clue": "Marque",
-    "answer": "Netflix"
+    "answer": "Netflix",
+    "keyword": ["Netflix"]
   },
   {
     "id": 149,
     "concept": "🟦 + 👤 + 📱 + 👍",
     "clue": "Marque",
-    "answer": "Facebook"
+    "answer": "Facebook",
+    "keyword": ["Facebook"]
   },
   {
     "id": 150,
     "concept": "📷 + 🌈 + 🤳 + ✨",
     "clue": "Marque",
-    "answer": "Instagram"
+    "answer": "Instagram",
+    "keyword": ["Instagram"]
   },
   {
     "id": 151,
     "concept": "🐦 ➔ ❌ + 📱",
     "clue": "Marque",
-    "answer": "Twitter / X"
+    "answer": "Twitter / X",
+    "keyword": ["Twitter", "X"]
   },
   {
     "id": 152,
     "concept": "🟢 + 🎧 + 🎼 + 📱",
     "clue": "Marque",
-    "answer": "Spotify"
+    "answer": "Spotify",
+    "keyword": ["Spotify"]
   },
   {
     "id": 153,
     "concept": "🇸🇪 + 🟦 + 🟨 + 🪑",
     "clue": "Marque",
-    "answer": "IKEA"
+    "answer": "IKEA",
+    "keyword": ["IKEA", "Ikea"]
   },
   {
     "id": 154,
     "concept": "🧱 + 🧱 + 🌈 + 👷",
     "clue": "Marque",
-    "answer": "LEGO"
+    "answer": "LEGO",
+    "keyword": ["LEGO", "Lego"]
   },
   {
     "id": 155,
     "concept": "👟 + 🐆 + 🐾",
     "clue": "Marque",
-    "answer": "Puma"
+    "answer": "Puma",
+    "keyword": ["Puma"]
   },
   {
     "id": 156,
     "concept": "👟 + ⬜ + ⬜ + ⬜",
     "clue": "Marque",
-    "answer": "Adidas"
+    "answer": "Adidas",
+    "keyword": ["Adidas"]
   },
   {
     "id": 157,
     "concept": "🕊️ + 🎹 + ☮️ + 🌍",
     "clue": "Chanson",
-    "answer": "Imagine (John Lennon)"
+    "answer": "Imagine (John Lennon)",
+    "keyword": ["Imagine", "Lennon"]
   },
   {
     "id": 158,
     "concept": "🧟‍♂️ + 🕺 + 🌕 + 🧥",
     "clue": "Chanson",
-    "answer": "Thriller (Michael Jackson)"
+    "answer": "Thriller (Michael Jackson)",
+    "keyword": ["Thriller", "Jackson"]
   },
   {
     "id": 159,
     "concept": "🌂 + 🌧️ + 💃 + 🎤",
     "clue": "Chanson",
-    "answer": "Umbrella (Rihanna)"
+    "answer": "Umbrella (Rihanna)",
+    "keyword": ["Umbrella", "Rihanna"]
   },
   {
     "id": 160,
     "concept": "🌊 + 🔥 + 🎤 + 💔",
     "clue": "Chanson",
-    "answer": "Rolling in the Deep (Adele)"
+    "answer": "Rolling in the Deep (Adele)",
+    "keyword": ["Rolling in the Deep", "Adele"]
   },
   {
     "id": 161,
     "concept": "🃏 + 💄 + 🎤 + 👗",
     "clue": "Chanson",
-    "answer": "Poker Face (Lady Gaga)"
+    "answer": "Poker Face (Lady Gaga)",
+    "keyword": ["Poker Face", "Lady Gaga"]
   },
   {
     "id": 162,
     "concept": "🕺 + 🙌 + ☀️ + 🧢",
     "clue": "Chanson",
-    "answer": "Happy (Pharrell Williams)"
+    "answer": "Happy (Pharrell Williams)",
+    "keyword": ["Happy", "Pharrell"]
   },
   {
     "id": 163,
     "concept": "🇧🇪 + 🧔🏻‍♂️ + 🍷 + 📉",
     "clue": "Chanson",
-    "answer": "Formidable (Stromae)"
+    "answer": "Formidable (Stromae)",
+    "keyword": ["Formidable", "Stromae"]
   },
   {
     "id": 164,
     "concept": "💎 + ✨ + 🎤 + 🌟",
     "clue": "Chanson",
-    "answer": "Diamonds (Rihanna)"
+    "answer": "Diamonds (Rihanna)",
+    "keyword": ["Diamonds", "Rihanna"]
   },
   {
     "id": 165,
     "concept": "👶 + 🎤 + 🥊 + 📈",
     "clue": "Chanson",
-    "answer": "Baby One More Time (Britney Spears)"
+    "answer": "Baby One More Time (Britney Spears)",
+    "keyword": ["Baby One More Time", "Britney"]
   },
   {
     "id": 166,
     "concept": "🤠 + 🛣️ + 🐎 + 🎸",
     "clue": "Chanson",
-    "answer": "Old Town Road (Lil Nas X)"
+    "answer": "Old Town Road (Lil Nas X)",
+    "keyword": ["Old Town Road", "Lil Nas X"]
   },
   {
     "id": 167,
     "concept": "💃 + 🏝️ + 🌊 + ☀️",
     "clue": "Chanson",
-    "answer": "Despacito (Luis Fonsi)"
+    "answer": "Despacito (Luis Fonsi)",
+    "keyword": ["Despacito", "Fonsi"]
   },
   {
     "id": 168,
     "concept": "👰 + 👗 + 💄 + 🎤",
     "clue": "Chanson",
-    "answer": "Like a Virgin (Madonna)"
+    "answer": "Like a Virgin (Madonna)",
+    "keyword": ["Like a Virgin", "Madonna"]
   },
   {
     "id": 169,
     "concept": "🦁 + 🎸 + 🧤 + 🇬🇧",
     "clue": "Chanson",
-    "answer": "Shape of You (Ed Sheeran)"
+    "answer": "Shape of You (Ed Sheeran)",
+    "keyword": ["Shape of You", "Ed Sheeran"]
   },
   {
     "id": 170,
     "concept": "🚗 + 🎙️ + 🕺 + 👗",
     "clue": "Film",
-    "answer": "Grease"
+    "answer": "Grease",
+    "keyword": ["Grease"]
   },
   {
     "id": 171,
     "concept": "🍔 + 🔫 + 💉 + 🕺",
     "clue": "Film",
-    "answer": "Pulp Fiction"
+    "answer": "Pulp Fiction",
+    "keyword": ["Pulp Fiction"]
   },
   {
     "id": 172,
     "concept": "🌀 + 🛌 + 🏢 + ⏳",
     "clue": "Film",
-    "answer": "Inception"
+    "answer": "Inception",
+    "keyword": ["Inception"]
   },
   {
     "id": 173,
     "concept": "👔 + 🐴 + 🔪 + 🤌",
     "clue": "Film",
-    "answer": "Le Parrain"
+    "answer": "Le Parrain",
+    "keyword": ["Parrain", "Godfather"]
   },
   {
     "id": 174,
     "concept": "🧼 + 🥊 + 🤐 + 🏙️",
     "clue": "Film",
-    "answer": "Fight Club"
+    "answer": "Fight Club",
+    "keyword": ["Fight Club"]
   },
   {
     "id": 175,
     "concept": "🚿 + 🔪 + 🏨 + 👗",
     "clue": "Film",
-    "answer": "Psychose"
+    "answer": "Psychose",
+    "keyword": ["Psychose", "Psycho"]
   },
   {
     "id": 176,
     "concept": "👹 + 🏰 + 🐴 + 🌳",
     "clue": "Film",
-    "answer": "Shrek"
+    "answer": "Shrek",
+    "keyword": ["Shrek"]
   },
   {
     "id": 177,
     "concept": "👽 + 🥚 + 🚀 + 🤰",
     "clue": "Film",
-    "answer": "Alien, le huitième passager"
+    "answer": "Alien, le huitième passager",
+    "keyword": ["Alien"]
   },
   {
     "id": 178,
     "concept": "🤖 + 🕶️ + 🏍️ + 🧱",
     "clue": "Film",
-    "answer": "Terminator"
+    "answer": "Terminator",
+    "keyword": ["Terminator"]
   },
   {
     "id": 179,
     "concept": "⚔️ + 🏟️ + 🏛️ + 🇮🇹",
     "clue": "Film",
-    "answer": "Gladiator"
+    "answer": "Gladiator",
+    "keyword": ["Gladiator", "Gladiateur"]
   },
   {
     "id": 180,
     "concept": "🍫 + 👟 + 🏃‍♂️ + 🪖",
     "clue": "Film",
-    "answer": "Forrest Gump"
+    "answer": "Forrest Gump",
+    "keyword": ["Forrest Gump"]
   },
   {
     "id": 181,
     "concept": "🕸️ + 🕷️ + 🏙️ + 🔴",
     "clue": "Film / Super-héros",
-    "answer": "Spider-Man"
+    "answer": "Spider-Man",
+    "keyword": ["Spider-Man", "Spiderman"]
   },
   {
     "id": 182,
     "concept": "📦 + 🕵️‍♂️ + 🌧️ + 🔪",
     "clue": "Film",
-    "answer": "Seven"
+    "answer": "Seven",
+    "keyword": ["Seven", "Se7en"]
   },
   {
     "id": 183,
     "concept": "🤖 + ☔ + 🌆 + 🕵️‍♂️",
     "clue": "Film",
-    "answer": "Blade Runner"
+    "answer": "Blade Runner",
+    "keyword": ["Blade Runner"]
   },
   {
     "id": 184,
     "concept": "🤖 + 🤠 + 📦 + 🚀",
     "clue": "Film",
-    "answer": "Toy Story"
+    "answer": "Toy Story",
+    "keyword": ["Toy Story"]
   },
   {
     "id": 185,
     "concept": "🍩 + 👨‍👩‍👧‍👦 + 🍺 + 📺",
     "clue": "Série",
-    "answer": "Les Simpson"
+    "answer": "Les Simpson",
+    "keyword": ["Simpson"]
   },
   {
     "id": 186,
     "concept": "🏝️ + ✈️ + 💨 + 🔢",
     "clue": "Série",
-    "answer": "Lost"
+    "answer": "Lost",
+    "keyword": ["Lost"]
   },
   {
     "id": 187,
     "concept": "🧟 + 🤠 + 🏹 + 👮",
     "clue": "Série",
-    "answer": "The Walking Dead"
+    "answer": "The Walking Dead",
+    "keyword": ["Walking Dead"]
   },
   {
     "id": 188,
     "concept": "📄 + 💼 + ☕ + 🖇️",
     "clue": "Série",
-    "answer": "The Office"
+    "answer": "The Office",
+    "keyword": ["The Office", "Office"]
   },
   {
     "id": 189,
     "concept": "🎻 + 🕵️‍♂️ + 🏙️ + 🧠",
     "clue": "Série",
-    "answer": "Sherlock"
+    "answer": "Sherlock",
+    "keyword": ["Sherlock"]
   },
   {
     "id": 190,
     "concept": "☕ + 🥧 + 🌲 + 🦉",
     "clue": "Série",
-    "answer": "Twin Peaks"
+    "answer": "Twin Peaks",
+    "keyword": ["Twin Peaks"]
   },
   {
     "id": 191,
     "concept": "👽 + 🛸 + 🕵️‍♂️ + 🔍",
     "clue": "Série",
-    "answer": "X-Files"
+    "answer": "X-Files",
+    "keyword": ["X-Files", "X Files"]
   },
   {
     "id": 192,
     "concept": "🖖 + 🚀 + ✨ + 🪐",
     "clue": "Série",
-    "answer": "Star Trek"
+    "answer": "Star Trek",
+    "keyword": ["Star Trek"]
   },
   {
     "id": 193,
     "concept": "🔪 + 💉 + 🩸 + 🚢",
     "clue": "Série",
-    "answer": "Dexter"
+    "answer": "Dexter",
+    "keyword": ["Dexter"]
   },
   {
     "id": 194,
     "concept": "🏥 + 🩺 + 👩‍⚕️ + 💔",
     "clue": "Série",
-    "answer": "Grey's Anatomy"
+    "answer": "Grey's Anatomy",
+    "keyword": ["Grey's Anatomy", "Greys Anatomy"]
   },
   {
     "id": 195,
     "concept": "👨‍👩‍👦‍👦 + 🛹 + 📺 + 🧠",
     "clue": "Série",
-    "answer": "Malcolm"
+    "answer": "Malcolm",
+    "keyword": ["Malcolm"]
   },
   {
     "id": 196,
     "concept": "🃏 + 🏛️ + 🇺🇸 + 🥃",
     "clue": "Série",
-    "answer": "House of Cards"
+    "answer": "House of Cards",
+    "keyword": ["House of Cards"]
   },
   {
     "id": 197,
     "concept": "🧽 + 🟨 + 🐚",
     "clue": "Animation",
-    "answer": "Bob l'éponge"
+    "answer": "Bob l'éponge",
+    "keyword": ["Bob l'éponge", "Bob l'eponge"]
   },
   {
     "id": 198,
     "concept": "⛓️ + 🏃‍♂️ + 🗺️ + 🧱",
     "clue": "Série",
-    "answer": "Prison Break"
+    "answer": "Prison Break",
+    "keyword": ["Prison Break"]
   },
   {
     "id": 199,
     "concept": "🍸 + 🔫 + 🕵️‍♂️ + 🇬🇧",
     "clue": "Cinéma",
-    "answer": "James Bond (007)"
+    "answer": "James Bond (007)",
+    "keyword": ["James Bond", "007"]
   },
   {
     "id": 200,
-    "concept": "💃 + 🎤 + ��🇷 + 🎹",
+    "concept": "💃 + 🎤 + 🇸🇪 + 🎹",
     "clue": "Chanson",
-    "answer": "Mamma Mia (ABBA)"
+    "answer": "Mamma Mia (ABBA)",
+    "keyword": ["Mamma Mia", "ABBA"]
   },
   {
     "id": 201,
     "concept": "🕺 + 👟 + 🎶 + 🌈",
     "clue": "Chanson",
-    "answer": "Stayin' Alive (Bee Gees)"
+    "answer": "Stayin' Alive (Bee Gees)",
+    "keyword": ["Stayin' Alive", "Bee Gees"]
   },
   {
     "id": 202,
     "concept": "🤘 + 🎸 + 🏎️ + 🔥",
     "clue": "Chanson",
-    "answer": "Highway to Hell (AC/DC)"
+    "answer": "Highway to Hell (AC/DC)",
+    "keyword": ["Highway to Hell", "AC/DC", "ACDC"]
   },
   {
     "id": 203,
     "concept": "💃 + 🖐️ + 🖐️ + 🇪🇸",
     "clue": "Chanson",
-    "answer": "Macarena (Los del Río)"
+    "answer": "Macarena (Los del Río)",
+    "keyword": ["Macarena"]
   },
   {
     "id": 204,
     "concept": "⚽ + 💃 + 🌍 + 🎤",
     "clue": "Chanson",
-    "answer": "Waka Waka (Shakira)"
+    "answer": "Waka Waka (Shakira)",
+    "keyword": ["Waka Waka", "Shakira"]
   },
   {
     "id": 205,
     "concept": "🕺 + 👷 + 👮 + 🤠",
     "clue": "Chanson",
-    "answer": "YMCA (Village People)"
+    "answer": "YMCA (Village People)",
+    "keyword": ["YMCA"]
   },
   {
     "id": 206,
     "concept": "💃 + 👑 + 🎹 + 🇸🇪",
     "clue": "Chanson",
-    "answer": "Dancing Queen (ABBA)"
+    "answer": "Dancing Queen (ABBA)",
+    "keyword": ["Dancing Queen", "ABBA"]
   },
   {
     "id": 207,
     "concept": "🎸 + 🌹 + 🎩 + 🔫",
     "clue": "Chanson",
-    "answer": "Sweet Child O' Mine (Guns N' Roses)"
+    "answer": "Sweet Child O' Mine (Guns N' Roses)",
+    "keyword": ["Sweet Child", "Guns N' Roses", "Guns N Roses"]
   },
   {
     "id": 208,
     "concept": "🎸 + ☔ + 🟣 + 🏍️",
     "clue": "Chanson",
-    "answer": "Purple Rain (Prince)"
+    "answer": "Purple Rain (Prince)",
+    "keyword": ["Purple Rain", "Prince"]
   },
   {
     "id": 209,
     "concept": "✏️ + 🏃‍♂️ + 🏍️ + 🎹",
     "clue": "Chanson",
-    "answer": "Take On Me (a-ha)"
+    "answer": "Take On Me (a-ha)",
+    "keyword": ["Take On Me", "a-ha"]
   },
   {
     "id": 210,
     "concept": "🕶️ + 🕺 + 🐎 + 🇰🇷",
     "clue": "Chanson",
-    "answer": "Gangnam Style (PSY)"
+    "answer": "Gangnam Style (PSY)",
+    "keyword": ["Gangnam Style", "PSY"]
   },
   {
     "id": 211,
     "concept": "🎤 + 🇫🇷 + 🌹 + 🕊️",
     "clue": "Chanteuse Francophone",
-    "answer": "Édith Piaf"
+    "answer": "Édith Piaf",
+    "keyword": ["Edith Piaf", "Piaf"]
   },
   {
     "id": 212,
     "concept": "🇨🇦 + 🎤 + 🚢 + 🧊",
     "clue": "Chanteuse Francophone",
-    "answer": "Céline Dion"
+    "answer": "Céline Dion",
+    "keyword": ["Céline Dion", "Celine Dion"]
   },
   {
     "id": 213,
     "concept": "🎤 + 🇧🇪 + 🍦 + 🎸",
     "clue": "Chanteuse Francophone",
-    "answer": "Angèle"
+    "answer": "Angèle",
+    "keyword": ["Angèle", "Angele"]
   },
   {
     "id": 214,
     "concept": "🎸 + 🇫🇷 + 🧱 + 🌔",
     "clue": "Groupe Francophone",
-    "answer": "Indochine"
+    "answer": "Indochine",
+    "keyword": ["Indochine"]
   },
   {
     "id": 215,
     "concept": "🐭 + 🏰 + 🔴 + 🧤",
     "clue": "Animation",
-    "answer": "Mickey Mouse"
+    "answer": "Mickey Mouse",
+    "keyword": ["Mickey"]
   },
   {
     "id": 216,
     "concept": "🚬 + 🎤 + 🥬 + 🇫🇷",
     "clue": "Chanteur Francophone",
-    "answer": "Serge Gainsbourg"
+    "answer": "Serge Gainsbourg",
+    "keyword": ["Gainsbourg", "Serge"]
   },
   {
     "id": 217,
     "concept": "🎩 + 🦯 + 🕴️ + 🤐",
     "clue": "Cinéma",
-    "answer": "Charlie Chaplin"
+    "answer": "Charlie Chaplin",
+    "keyword": ["Chaplin", "Charlie"]
   },
   {
     "id": 218,
     "concept": "🦸‍♂️ + 🟥 + 🟦 + 🌌",
     "clue": "Super-héros",
-    "answer": "Superman"
+    "answer": "Superman",
+    "keyword": ["Superman"]
   },
   {
     "id": 219,
     "concept": "🤡 + 🃏 + 💜 + 🏙️",
     "clue": "Cinéma / Comics",
-    "answer": "Le Joker"
+    "answer": "Le Joker",
+    "keyword": ["Joker"]
   },
   {
     "id": 220,
     "concept": "🌌 + 🎹 + 🎸 + 🎵",
     "clue": "Groupe",
-    "answer": "Coldplay"
+    "answer": "Coldplay",
+    "keyword": ["Coldplay"]
   },
   {
     "id": 221,
     "concept": "🐲 + 🎸 + 🥁 + 🔥",
     "clue": "Groupe",
-    "answer": "Imagine Dragons"
+    "answer": "Imagine Dragons",
+    "keyword": ["Imagine Dragons"]
   },
   {
     "id": 222,
     "concept": "👱‍♂️ + 🇨🇦 + 🎤 + 🎸",
     "clue": "Artiste",
-    "answer": "Justin Bieber"
+    "answer": "Justin Bieber",
+    "keyword": ["Justin Bieber", "Bieber"]
   },
   {
     "id": 223,
     "concept": "🏛️ + 🇮🇹 + 📐 + 📉",
     "clue": "Monument",
-    "answer": "La Tour de Pise"
+    "answer": "La Tour de Pise",
+    "keyword": ["Pise"]
   },
   {
     "id": 224,
     "concept": "🎤 + 🇫🇷 + 🚕 + 🍭",
     "clue": "Chanteuse Francophone",
-    "answer": "Vanessa Paradis"
+    "answer": "Vanessa Paradis",
+    "keyword": ["Vanessa Paradis"]
   },
   {
     "id": 225,
     "concept": "🎸 + 🕺 + 🎙️ + 🇺🇸",
     "clue": "Artiste",
-    "answer": "Elvis Presley"
+    "answer": "Elvis Presley",
+    "keyword": ["Elvis Presley", "Elvis"]
   },
   {
     "id": 226,
     "concept": "🖼️ + 🇮🇹 + 🤨 + 🏛️",
     "clue": "Art",
-    "answer": "La Joconde (Mona Lisa)"
+    "answer": "La Joconde (Mona Lisa)",
+    "keyword": ["Joconde", "Mona Lisa"]
   },
   {
     "id": 227,
     "concept": "🗽 + 🇫🇷 + 🇺🇸 + 🏗️",
     "clue": "Construction",
-    "answer": "La Statue de la Liberté"
+    "answer": "La Statue de la Liberté",
+    "keyword": ["Liberté", "Liberte", "Statue de la Liberté"]
   },
   {
     "id": 228,
     "concept": "🕌 + 🇮🇳 + 🤍 + 💍",
     "clue": "Monument",
-    "answer": "Le Taj Mahal"
+    "answer": "Le Taj Mahal",
+    "keyword": ["Taj Mahal"]
   },
   {
     "id": 229,
     "concept": "🇩🇪 + 🧱 + 🔨 + 🕊️",
     "clue": "Histoire",
-    "answer": "La chute du mur de Berlin"
+    "answer": "La chute du mur de Berlin",
+    "keyword": ["Mur de Berlin"]
   },
   {
     "id": 230,
     "concept": "📖 + ⚙️ + 🖋️ + 🇩🇪",
     "clue": "Invention",
-    "answer": "L'imprimerie (Gutenberg)"
+    "answer": "L'imprimerie (Gutenberg)",
+    "keyword": ["imprimerie", "Gutenberg"]
   },
   {
     "id": 231,
     "concept": "🚢 + 🌊 + 🌎 + 🧭",
     "clue": "Histoire",
-    "answer": "Découverte de l'Amérique (Christophe Colomb)"
+    "answer": "Découverte de l'Amérique (Christophe Colomb)",
+    "keyword": ["Amérique", "Amerique", "Colomb"]
   },
   {
     "id": 232,
     "concept": "👨‍🎨 + 🚁 + 🇮🇹 + 🎨",
     "clue": "Science",
-    "answer": "Léonard de Vinci"
+    "answer": "Léonard de Vinci",
+    "keyword": ["Léonard de Vinci", "Leonard de Vinci", "Vinci"]
   },
   {
     "id": 233,
     "concept": "🧠 + 🪐 + ⚛️ + 👅",
     "clue": "Science",
-    "answer": "Albert Einstein"
+    "answer": "Albert Einstein",
+    "keyword": ["Einstein", "Albert Einstein"]
   },
   {
     "id": 234,
     "concept": "🎹 + 🎼 + 🇦🇹 + 🎩",
     "clue": "Musique",
-    "answer": "Wolfgang Amadeus Mozart"
+    "answer": "Wolfgang Amadeus Mozart",
+    "keyword": ["Mozart"]
   },
   {
     "id": 235,
     "concept": "🏅 + 🏟️ + 🌍 + 🔥",
     "clue": "Sport",
-    "answer": "Les Jeux Olympiques"
+    "answer": "Les Jeux Olympiques",
+    "keyword": ["Jeux Olympiques", "JO"]
   },
   {
     "id": 236,
     "concept": "🐫 + 🏜️ + 📐 + 🇪🇬",
     "clue": "Construction",
-    "answer": "Les Pyramides d'Égypte (Gizeh)"
+    "answer": "Les Pyramides d'Égypte (Gizeh)",
+    "keyword": ["Pyramides", "Gizeh"]
   },
   {
     "id": 237,
     "concept": "🕰️ + 🇬🇧 + 🏰 + 🏛️",
     "clue": "Construction",
-    "answer": "Big Ben"
+    "answer": "Big Ben",
+    "keyword": ["Big Ben"]
   },
   {
     "id": 238,
     "concept": "🌉 + 🇺🇸 + 🌫️ + 🔴",
     "clue": "Construction",
-    "answer": "Le Golden Gate Bridge"
+    "answer": "Le Golden Gate Bridge",
+    "keyword": ["Golden Gate"]
   },
   {
     "id": 239,
-    "concept": "🌳 + 🦜 + 🌊 + 🐍",
+    "concept": "🌳 + 🦜 + 🌊 + 蛇",
     "clue": "Géographie",
-    "answer": "La Forêt Amazonienne"
+    "answer": "La Forêt Amazonienne",
+    "keyword": ["Amazonie", "Amazonienne"]
   },
   {
     "id": 240,
     "concept": "🏹 + 🌳 + 🏃‍♂️ + 💰",
     "clue": "Légende",
-    "answer": "Robin des Bois"
+    "answer": "Robin des Bois",
+    "keyword": ["Robin des Bois"]
   },
   {
     "id": 241,
     "concept": "🤴 + 🦊 + 🌹 + 🪐",
     "clue": "Littérature",
-    "answer": "Le Petit Prince"
+    "answer": "Le Petit Prince",
+    "keyword": ["Petit Prince"]
   },
   {
     "id": 242,
     "concept": "🫐 + 🍄 + 🧙‍♂️ + 🏠",
     "clue": "BD",
-    "answer": "Les Schtroumpfs"
+    "answer": "Les Schtroumpfs",
+    "keyword": ["Schtroumpfs"]
   },
   {
     "id": 243,
     "concept": "🛡️ + 🧪 + 🐗 + 🇫🇷",
     "clue": "BD",
-    "answer": "Astérix & Obélix"
+    "answer": "Astérix & Obélix",
+    "keyword": ["Astérix", "Asterix", "Obélix", "Obelix"]
   },
   {
     "id": 244,
     "concept": "🎀 + 👗 + 💄 + 💖",
     "clue": "Jouet",
-    "answer": "Barbie"
+    "answer": "Barbie",
+    "keyword": ["Barbie"]
   },
   {
     "id": 245,
     "concept": "🦍 + 🌳 + 🗡️ + 🗣️",
     "clue": "Littérature",
-    "answer": "Tarzan"
+    "answer": "Tarzan",
+    "keyword": ["Tarzan"]
   },
   {
     "id": 246,
     "concept": "🧞‍♂️ + 🕌 + 🐒 + 🪜",
     "clue": "Conte",
-    "answer": "Aladdin"
+    "answer": "Aladdin",
+    "keyword": ["Aladdin", "Aladin"]
   },
   {
     "id": 247,
     "concept": "🤥 + 🪵 + 🦗 + 🇮🇹",
     "clue": "Conte",
-    "answer": "Pinocchio"
+    "answer": "Pinocchio",
+    "keyword": ["Pinocchio"]
   },
   {
     "id": 248,
     "concept": "🌂 + 👜 + 🎶 + 🇬🇧",
     "clue": "Film",
-    "answer": "Mary Poppins"
+    "answer": "Mary Poppins",
+    "keyword": ["Mary Poppins"]
   },
   {
     "id": 249,
     "concept": "🤡 + 🐟 + 🌊 + 🦷",
     "clue": "Animation",
-    "answer": "Le Monde de Nemo"
+    "answer": "Le Monde de Nemo",
+    "keyword": ["Nemo"]
   },
   {
     "id": 250,
-    "concept": "🏠 + 🎈 + 🎈 + ⛰️",
+    "concept": "🐑 + 🐺 + 👕 + 🤐",
+    "clue": "Expression",
+    "answer": "Un loup déguisé en agneau",
+    "keyword": ["loup", "agneau"]
+  },
+  {
+    "id": 251,
+    "concept": "🦢 + 🦆 + 🦢 + 🦢",
+    "clue": "Conte",
+    "answer": "Le Vilain Petit Canard",
+    "keyword": ["Petit Canard", "Vilain"]
+  },
+  {
+    "id": 252,
+    "concept": "🍞 + 🐟 + 🍷 + ⛪",
+    "clue": "Religion",
+    "answer": "La multiplication des pains (Jésus)",
+    "keyword": ["Jésus", "Jesus", "multiplication"]
+  },
+  {
+    "id": 253,
+    "concept": "🦷 + 🧚‍♀️ + 🪙",
+    "clue": "Légende",
+    "answer": "La petite souris (Fée des dents)",
+    "keyword": ["petite souris", "fee des dents", "fée des dents"]
+  },
+  {
+    "id": 254,
+    "concept": "🔭 + 🪐 + ⛪ + 🇮🇹",
+    "clue": "Science",
+    "answer": "Galilée",
+    "keyword": ["Galilée", "Galilee"]
+  },
+  {
+    "id": 255,
+    "concept": "🦍 + 🍌 + 🎮 + 🏎️",
+    "clue": "Jeu Vidéo",
+    "answer": "Donkey Kong",
+    "keyword": ["Donkey Kong"]
+  },
+  {
+    "id": 256,
+    "concept": "🧛‍♂️ + 🧛‍♀️ + 🍎 + 🐺",
+    "clue": "Saga / Film",
+    "answer": "Twilight",
+    "keyword": ["Twilight"]
+  },
+  {
+    "id": 257,
+    "concept": "🍫 + 🏭 + 🎩 + 🎟️",
+    "clue": "Littérature / Film",
+    "answer": "Charlie et la Chocolaterie",
+    "keyword": ["Charlie", "Chocolaterie"]
+  },
+  {
+    "id": 258,
+    "concept": "🦓 + 🦁 + 🦒 + 🏙️",
     "clue": "Animation",
-    "answer": "Là-haut (Up)"
+    "answer": "Madagascar",
+    "keyword": ["Madagascar"]
+  },
+  {
+    "id": 259,
+    "concept": "🐼 + 🥋 + 🍜 + 👊",
+    "clue": "Animation",
+    "answer": "Kung Fu Panda",
+    "keyword": ["Kung Fu Panda", "Panda"]
+  },
+  {
+    "id": 260,
+    "concept": "🧤 + 👻 + 👦 + 👁️",
+    "clue": "Film",
+    "answer": "Sixième Sens",
+    "keyword": ["Sixième Sens", "Sixieme Sens"]
+  },
+  {
+    "id": 261,
+    "concept": "🐘 + 🎪 + 👂 + ✈️",
+    "clue": "Animation",
+    "answer": "Dumbo",
+    "keyword": ["Dumbo"]
+  },
+  {
+    "id": 262,
+    "concept": "🌪️ + 👧 + 🐕 + 👠",
+    "clue": "Littérature / Film",
+    "answer": "Le Magicien d'Oz",
+    "keyword": ["Magicien d'Oz", "Oz", "Magicien"]
+  },
+  {
+    "id": 263,
+    "concept": "🥐 + 🗼 + ☕ + 📧",
+    "clue": "Cinéma",
+    "answer": "Le Fabuleux Destin d'Amélie Poulain",
+    "keyword": ["Amélie Poulain", "Amelie Poulain"]
+  },
+  {
+    "id": 264,
+    "concept": "🦖 + 🦴 + 🔍 + 🏛️",
+    "clue": "Métier",
+    "answer": "Paléontologue",
+    "keyword": ["Paléontologue", "Paleontologue"]
   }
 ]
