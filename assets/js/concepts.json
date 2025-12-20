@@ -1012,7 +1012,7 @@
     "concept": "🟡 + 👻 + 🍒 + 🕹️",
     "clue": "Jeu Vidéo",
     "answer": "Pac-Man",
-    "keyword": ["Pac-Man", "Pacman"]
+    "keyword": ["Pac-Man", "Pacman", "Pac man"]
   },
   {
     "id": 146,
@@ -1306,7 +1306,7 @@
     "concept": "🧟 + 🤠 + 🏹 + 👮",
     "clue": "Série",
     "answer": "The Walking Dead",
-    "keyword": ["Walking Dead"]
+    "keyword": ["Walking Dead", "Walking"]
   },
   {
     "id": 188,

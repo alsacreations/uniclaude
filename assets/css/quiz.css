@@ -79,6 +79,8 @@
 .quiz-intro, .quiz-finish {
   text-align: center;
   align-items: center;
+  justify-content: center;
+  justify-items: center;
 }
 
 .quiz-example {
@@ -180,7 +182,7 @@
   line-height: 1.2;
   font-weight: 800;
   letter-spacing: 0.1em;
-  padding: var(--spacing-l);
+  padding: var(--spacing-s);
   background: color-mix(in srgb, var(--primary-color) 10%, transparent);
   border-radius: var(--radius-lg);
   width: 100%;

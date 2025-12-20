@@ -174,6 +174,7 @@ class UniClaudeQuiz {
 
   handleSuccess() {
     this.isQuestionActive = false;
+    this.selectedConcepts[this.currentIndex].isCorrect = true;
     this.score++;
     this.updateScoreDisplay();
 
@@ -236,6 +237,7 @@ class UniClaudeQuiz {
   giveUp() {
     if (!this.isQuestionActive) return;
     this.isQuestionActive = false;
+    this.selectedConcepts[this.currentIndex].isCorrect = false;
 
     this.feedbackMsg.textContent = "Dommage ! Voici la réponse.";
     this.feedbackMsg.className = 'feedback-msg';
@@ -294,7 +296,13 @@ class UniClaudeQuiz {
     this.selectedConcepts.forEach(concept => {
       const item = document.createElement('div');
       item.className = 'summary-item';
+
+      const status = concept.isCorrect
+        ? '<span class="status-icon" aria-label="Correct">✅</span>'
+        : '<span class="status-icon" aria-label="Incorrect">❌</span>';
+
       item.innerHTML = `
+        ${status}
         <span class="summary-chars">${concept.concept}</span>
         <span class="summary-answer">${concept.answer}</span>
       `;
