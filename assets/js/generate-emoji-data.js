@@ -119,7 +119,23 @@ function parseEmojiTestFile(content) {
     // Parser les lignes d'emoji
     const emoji = parseEmojiLine(trimmed);
     if (emoji) {
-      emojiData[emoji.codepoint] = {
+      // Un emoji "simple" (un seul codepoint, éventuellement suivi du
+      // sélecteur de variante FE0F) est indexé par ce codepoint de base,
+      // comme un caractère Unicode classique.
+      // Une séquence (drapeau, carnation, ZWJ...) partage souvent son
+      // premier codepoint avec d'autres séquences : l'indexer par ce seul
+      // codepoint de base écraserait ces entrées entre elles ainsi que
+      // l'emoji simple correspondant. On l'indexe donc par la séquence
+      // complète pour éviter toute collision.
+      const isSimple =
+        emoji.fullCodepoints.length === 1 ||
+        (emoji.fullCodepoints.length === 2 &&
+          emoji.fullCodepoints[1] === "FE0F");
+      const key = isSimple
+        ? emoji.codepoint
+        : emoji.fullCodepoints.join("-");
+
+      emojiData[key] = {
         name: emoji.name,
         emoji: emoji.emoji,
         group: currentGroup,

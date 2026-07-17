@@ -95,6 +95,13 @@ const UNICODE_BLOCKS = [
   { name: "Alchemical Symbols", start: 0x1f700, end: 0x1f77f },
   { name: "Geometric Shapes Extended", start: 0x1f780, end: 0x1f7ff },
   { name: "Supplemental Arrows-C", start: 0x1f800, end: 0x1f8ff },
+  { name: "Enclosed Alphanumeric Supplement", start: 0x1f100, end: 0x1f1e5 },
+  { name: "Enclosed Ideographic Supplement", start: 0x1f200, end: 0x1f2ff },
+  {
+    name: "Symbols and Pictographs Extended-A",
+    start: 0x1fa70,
+    end: 0x1faff,
+  },
 ];
 
 // ===== Dictionnaire de mots-clés français → anglais pour la recherche =====
