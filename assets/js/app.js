@@ -1988,7 +1988,7 @@ function displayCharacters(characters, append = false) {
   }
 }
 
-const SEARCH_SUGGESTIONS = ["pop", "guillemet", "flèche", "cœur", "2026"];
+const SEARCH_SUGGESTIONS = ["guillemet", "flèche", "cœur"];
 
 function displayPopularBlocks() {
   charactersGrid.innerHTML = "";
