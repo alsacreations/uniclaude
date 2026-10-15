@@ -1327,6 +1327,9 @@ const blockFilter = document.getElementById("blockFilter");
 const charactersGrid = document.getElementById("charactersGrid");
 const statsDisplay = document.getElementById("statsDisplay");
 const statsContainer = document.querySelector(".stats");
+// Sélecteur de bloc : sous « Parcourir un bloc » à l'accueil,
+// au-dessus des résultats sinon (voir displayPopularBlocks / displayCharacters)
+const blockFilterWrap = document.querySelector(".block-filter");
 const resetButton = document.getElementById("resetButton");
 const totalCharsCount = document.getElementById("totalCharsCount");
 const loadingSpinner = document.getElementById("loadingSpinner");
@@ -1915,6 +1918,7 @@ function displayCharacters(characters, append = false) {
   if (!append) {
     currentDisplayLimit = 500;
     charactersGrid.innerHTML = "";
+    statsContainer.before(blockFilterWrap);
   }
 
   const startIndex = append
@@ -2121,6 +2125,7 @@ function displayPopularBlocks() {
     blocksRow.appendChild(btn);
   });
   charactersGrid.appendChild(blocksRow);
+  charactersGrid.appendChild(blockFilterWrap);
 }
 
 /**
