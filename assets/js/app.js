@@ -1816,6 +1816,49 @@ function isDisplayableCharacter(char, codePoint) {
   return false;
 }
 
+// ===== Détection des glyphes manquants =====
+/**
+ * Un caractère sans glyphe dans les fontes du système s'affiche en « tofu »
+ * (un carré vide). On le repère en dessinant le caractère sur un canvas et
+ * en comparant l'image à celle d'un code point non attribué (U+0378).
+ */
+const glyphCache = new Map();
+const glyphCanvas = document.createElement("canvas");
+glyphCanvas.width = glyphCanvas.height = 32;
+const glyphContext = glyphCanvas.getContext("2d", { willReadFrequently: true });
+let tofuSignature = null;
+
+function glyphSignature(char) {
+  const size = glyphCanvas.width;
+  glyphContext.font = `${size * 0.75}px "Instrument Serif", georgia, serif`;
+  glyphContext.textAlign = "center";
+  glyphContext.textBaseline = "middle";
+  glyphContext.clearRect(0, 0, size, size);
+  glyphContext.fillText(char, size / 2, size / 2);
+  const pixels = glyphContext.getImageData(0, 0, size, size).data;
+  let hash = 0;
+  for (let i = 3; i < pixels.length; i += 4) {
+    hash = (hash * 31 + pixels[i]) | 0; // canal alpha uniquement
+  }
+  return hash;
+}
+
+/**
+ * Indique si le caractère a un glyphe affichable (résultat mis en cache)
+ * @param {Object} charData
+ * @returns {boolean}
+ */
+function hasGlyph(charData) {
+  if (glyphCache.has(charData.codePoint)) {
+    return glyphCache.get(charData.codePoint);
+  }
+  if (tofuSignature === null) tofuSignature = glyphSignature("\u0378");
+  const result =
+    isSpaceChar(charData) || glyphSignature(charData.char) !== tofuSignature;
+  glyphCache.set(charData.codePoint, result);
+  return result;
+}
+
 // ===== Sélection aléatoire de caractères =====
 function getRandomCharacters(characters, count) {
   // Filtrer d'abord les caractères affichables
@@ -1836,8 +1879,13 @@ function getRandomCharacters(characters, count) {
     [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
   }
 
-  // Retourner les N premiers
-  return shuffled.slice(0, count);
+  // Retourner les N premiers qui ont un glyphe (testés au fil de l'eau)
+  const picked = [];
+  for (const charData of shuffled) {
+    if (picked.length === count) break;
+    if (hasGlyph(charData)) picked.push(charData);
+  }
+  return picked;
 }
 
 // ===== Affichage des caractères =====
@@ -2830,7 +2878,8 @@ function filterCharacters(searchTerm, blockName) {
     filtered = searchCharacters(filtered, searchTerm);
   }
 
-  filteredCharacters = filtered;
+  // Pas de carrés vides : on écarte les caractères sans glyphe
+  filteredCharacters = filtered.filter(hasGlyph);
 
   // Mettre à jour l'URL avec les paramètres de recherche
   updateURL(searchTerm, blockName);
