@@ -264,7 +264,7 @@ Absolument ! Ouvrez une [issue sur GitHub](https://github.com/alsacreations/unic
 - **HTML5** sémantique (zéro framework)
 - **CSS3** moderne (Grid, Flexbox, variables CSS)
 - **JavaScript Vanilla** (aucune dépendance)
-- **Unicode 15.1** (base de données officielle)
+- **Unicode 18.0** (base de données officielle)
 
 ### Structure du projet
 
@@ -324,7 +324,7 @@ Données Unicode © [Unicode Consortium](https://unicode.org/)
 
 - [Consortium Unicode](https://unicode.org/) - Organisme de standardisation
 - [Unicode Character Database](https://www.unicode.org/Public/UCD/latest/) - Base de données officielle
-- [Unicode 15.1 Release Notes](https://www.unicode.org/versions/Unicode15.1.0/) - Dernière version
+- [Unicode 18.0 Release Notes](https://www.unicode.org/versions/Unicode18.0.0/) - Dernière version
 
 ### Accessibilité
 

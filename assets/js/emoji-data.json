@@ -883,6 +883,16 @@
       "1FAE0"
     ]
   },
+  "1FAEB": {
+    "name": "cracking face",
+    "emoji": "🫫",
+    "group": "Smileys & Emotion",
+    "subgroup": "face-smiling",
+    "version": "E18.0",
+    "fullCodepoints": [
+      "1FAEB"
+    ]
+  },
   "1F609": {
     "name": "winking face",
     "emoji": "😉",
@@ -4355,6 +4365,136 @@
     "version": "E1.0",
     "fullCodepoints": [
       "1F44E",
+      "1F3FF"
+    ]
+  },
+  "1FAF9": {
+    "name": "leftwards thumb sign",
+    "emoji": "🫹",
+    "group": "People & Body",
+    "subgroup": "hand-fingers-closed",
+    "version": "E18.0",
+    "fullCodepoints": [
+      "1FAF9"
+    ]
+  },
+  "1FAF9-1F3FB": {
+    "name": "leftwards thumb sign: light skin tone",
+    "emoji": "🫹🏻",
+    "group": "People & Body",
+    "subgroup": "hand-fingers-closed",
+    "version": "E18.0",
+    "fullCodepoints": [
+      "1FAF9",
+      "1F3FB"
+    ]
+  },
+  "1FAF9-1F3FC": {
+    "name": "leftwards thumb sign: medium-light skin tone",
+    "emoji": "🫹🏼",
+    "group": "People & Body",
+    "subgroup": "hand-fingers-closed",
+    "version": "E18.0",
+    "fullCodepoints": [
+      "1FAF9",
+      "1F3FC"
+    ]
+  },
+  "1FAF9-1F3FD": {
+    "name": "leftwards thumb sign: medium skin tone",
+    "emoji": "🫹🏽",
+    "group": "People & Body",
+    "subgroup": "hand-fingers-closed",
+    "version": "E18.0",
+    "fullCodepoints": [
+      "1FAF9",
+      "1F3FD"
+    ]
+  },
+  "1FAF9-1F3FE": {
+    "name": "leftwards thumb sign: medium-dark skin tone",
+    "emoji": "🫹🏾",
+    "group": "People & Body",
+    "subgroup": "hand-fingers-closed",
+    "version": "E18.0",
+    "fullCodepoints": [
+      "1FAF9",
+      "1F3FE"
+    ]
+  },
+  "1FAF9-1F3FF": {
+    "name": "leftwards thumb sign: dark skin tone",
+    "emoji": "🫹🏿",
+    "group": "People & Body",
+    "subgroup": "hand-fingers-closed",
+    "version": "E18.0",
+    "fullCodepoints": [
+      "1FAF9",
+      "1F3FF"
+    ]
+  },
+  "1FAFA": {
+    "name": "rightwards thumb sign",
+    "emoji": "🫺",
+    "group": "People & Body",
+    "subgroup": "hand-fingers-closed",
+    "version": "E18.0",
+    "fullCodepoints": [
+      "1FAFA"
+    ]
+  },
+  "1FAFA-1F3FB": {
+    "name": "rightwards thumb sign: light skin tone",
+    "emoji": "🫺🏻",
+    "group": "People & Body",
+    "subgroup": "hand-fingers-closed",
+    "version": "E18.0",
+    "fullCodepoints": [
+      "1FAFA",
+      "1F3FB"
+    ]
+  },
+  "1FAFA-1F3FC": {
+    "name": "rightwards thumb sign: medium-light skin tone",
+    "emoji": "🫺🏼",
+    "group": "People & Body",
+    "subgroup": "hand-fingers-closed",
+    "version": "E18.0",
+    "fullCodepoints": [
+      "1FAFA",
+      "1F3FC"
+    ]
+  },
+  "1FAFA-1F3FD": {
+    "name": "rightwards thumb sign: medium skin tone",
+    "emoji": "🫺🏽",
+    "group": "People & Body",
+    "subgroup": "hand-fingers-closed",
+    "version": "E18.0",
+    "fullCodepoints": [
+      "1FAFA",
+      "1F3FD"
+    ]
+  },
+  "1FAFA-1F3FE": {
+    "name": "rightwards thumb sign: medium-dark skin tone",
+    "emoji": "🫺🏾",
+    "group": "People & Body",
+    "subgroup": "hand-fingers-closed",
+    "version": "E18.0",
+    "fullCodepoints": [
+      "1FAFA",
+      "1F3FE"
+    ]
+  },
+  "1FAFA-1F3FF": {
+    "name": "rightwards thumb sign: dark skin tone",
+    "emoji": "🫺🏿",
+    "group": "People & Body",
+    "subgroup": "hand-fingers-closed",
+    "version": "E18.0",
+    "fullCodepoints": [
+      "1FAFA",
       "1F3FF"
     ]
   },
@@ -10811,7 +10951,7 @@
   },
   "1F469-200D-1F393": {
     "name": "woman student",
-    "emoji": "👩‍���",
+    "emoji": "👩‍🎓",
     "group": "People & Body",
     "subgroup": "person-role",
     "version": "E4.0",
@@ -15171,7 +15311,7 @@
   },
   "1FAC5-1F3FC": {
     "name": "person with crown: medium-light skin tone",
-    "emoji": "🫅����",
+    "emoji": "🫅🏼",
     "group": "People & Body",
     "subgroup": "person-role",
     "version": "E14.0",
@@ -26985,7 +27125,7 @@
   },
   "1F9D1-1F3FD-200D-1FAEF-200D-1F9D1-1F3FE": {
     "name": "people wrestling: medium skin tone, medium-dark skin tone",
-    "emoji": "🧑🏽‍🫯‍����🏾",
+    "emoji": "🧑🏽‍🫯‍🧑🏾",
     "group": "People & Body",
     "subgroup": "person-sport",
     "version": "E17.0",
@@ -31704,7 +31844,7 @@
   },
   "1F468-1F3FE-200D-2764-FE0F-200D-1F48B-200D-1F468-1F3FE": {
     "name": "kiss: man, man, medium-dark skin tone",
-    "emoji": "👨����‍❤️‍💋‍👨🏾",
+    "emoji": "👨🏾‍❤️‍💋‍👨🏾",
     "group": "People & Body",
     "subgroup": "family",
     "version": "E13.1",
@@ -33376,7 +33516,7 @@
   },
   "1F468-1F3FD-200D-2764-FE0F-200D-1F468-1F3FC": {
     "name": "couple with heart: man, man, medium skin tone, medium-light skin tone",
-    "emoji": "����🏽‍❤️‍👨🏼",
+    "emoji": "👨🏽‍❤️‍👨🏼",
     "group": "People & Body",
     "subgroup": "family",
     "version": "E13.1",
@@ -35722,6 +35862,16 @@
       "1F98B"
     ]
   },
+  "1FACC": {
+    "name": "monarch butterfly",
+    "emoji": "🫌",
+    "group": "Animals & Nature",
+    "subgroup": "animal-bug",
+    "version": "E18.0",
+    "fullCodepoints": [
+      "1FACC"
+    ]
+  },
   "1F41B": {
     "name": "bug",
     "emoji": "🐛",
@@ -36426,6 +36576,16 @@
     "version": "E3.0",
     "fullCodepoints": [
       "1F952"
+    ]
+  },
+  "1FADD": {
+    "name": "pickle",
+    "emoji": "🫝",
+    "group": "Food & Drink",
+    "subgroup": "food-vegetable",
+    "version": "E18.0",
+    "fullCodepoints": [
+      "1FADD"
     ]
   },
   "1F96C": {
@@ -37372,7 +37532,7 @@
   },
   "1F9CA": {
     "name": "ice",
-    "emoji": "���",
+    "emoji": "🧊",
     "group": "Food & Drink",
     "subgroup": "drink",
     "version": "E12.0",
@@ -38631,6 +38791,16 @@
       "1F6A7"
     ]
   },
+  "1F6D9": {
+    "name": "lighthouse",
+    "emoji": "🛙",
+    "group": "Travel & Places",
+    "subgroup": "transport-water",
+    "version": "E18.0",
+    "fullCodepoints": [
+      "1F6D9"
+    ]
+  },
   "1F6DF": {
     "name": "ring buoy",
     "emoji": "🛟",
@@ -39550,6 +39720,16 @@
     "version": "E0.6",
     "fullCodepoints": [
       "26C4"
+    ]
+  },
+  "1FA8B": {
+    "name": "meteor",
+    "emoji": "🪋",
+    "group": "Travel & Places",
+    "subgroup": "sky & weather",
+    "version": "E18.0",
+    "fullCodepoints": [
+      "1FA8B"
     ]
   },
   "1F525": {
@@ -42001,6 +42181,16 @@
       "1F4DD"
     ]
   },
+  "1FA8C": {
+    "name": "eraser",
+    "emoji": "🪌",
+    "group": "Objects",
+    "subgroup": "writing",
+    "version": "E18.0",
+    "fullCodepoints": [
+      "1FA8C"
+    ]
+  },
   "1F4BC": {
     "name": "briefcase",
     "emoji": "💼",
@@ -42287,6 +42477,16 @@
     "fullCodepoints": [
       "1F5DD",
       "FE0F"
+    ]
+  },
+  "1FA8D": {
+    "name": "net with handle",
+    "emoji": "🪍",
+    "group": "Objects",
+    "subgroup": "tool",
+    "version": "E18.0",
+    "fullCodepoints": [
+      "1FA8D"
     ]
   },
   "1F528": {
@@ -46090,7 +46290,7 @@
     ]
   },
   "1F1ED-1F1F2": {
-    "name": "flag: Heard & McDonald Islands",
+    "name": "flag: Heard Island & McDonald Islands",
     "emoji": "🇭🇲",
     "group": "Flags",
     "subgroup": "country-flag",
@@ -47234,7 +47434,7 @@
     ]
   },
   "1F1F8-1F1ED": {
-    "name": "flag: St. Helena",
+    "name": "flag: St. Helena, Ascension & Tristan da Cunha",
     "emoji": "🇸🇭",
     "group": "Flags",
     "subgroup": "country-flag",
@@ -47432,7 +47632,7 @@
     ]
   },
   "1F1F9-1F1EB": {
-    "name": "flag: French Southern Territories",
+    "name": "flag: French Southern and Antarctic Lands",
     "emoji": "🇹🇫",
     "group": "Flags",
     "subgroup": "country-flag",

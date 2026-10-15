@@ -39,6 +39,9 @@ function downloadFile(url) {
           return;
         }
 
+        // Décodage UTF-8 au fil du flux : un caractère multi-octets coupé
+        // entre deux morceaux serait sinon remplacé par « � »
+        response.setEncoding("utf8");
         let data = "";
         response.on("data", (chunk) => (data += chunk));
         response.on("end", () => {
