@@ -17,6 +17,27 @@
     font-size: var(--text-14);
   }
 
+  /* Nom du bloc : un clic affiche le bloc entier */
+  .specimen-block {
+    --button-background-color: transparent;
+    --button-border-color: transparent;
+    --button-text-color: var(--contrast-muted);
+    --button-background-color-hover: transparent;
+    --button-text-color-hover: var(--accent-1);
+    --button-border-radius: 0;
+
+    padding: 0;
+    font: inherit;
+    text-decoration: underline;
+    text-decoration-color: var(--border-medium);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.25em;
+
+    &:hover {
+      text-decoration-color: currentcolor;
+    }
+  }
+
   .specimen-figure {
     display: grid;
     row-gap: var(--spacing-12);

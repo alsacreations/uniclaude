@@ -2116,16 +2116,24 @@ function displayPopularBlocks() {
     btn.className = "btn is-chip";
     btn.textContent = blockConfig.displayName;
     btn.title = blockConfig.blockName;
-    btn.addEventListener("click", () => {
-      blockFilter.value = blockConfig.blockName;
-      currentBlock = blockConfig.blockName;
-      filterCharacters("", blockConfig.blockName);
-      blockFilter.focus();
-    });
+    btn.addEventListener("click", () => showBlock(blockConfig.blockName));
     blocksRow.appendChild(btn);
   });
   charactersGrid.appendChild(blocksRow);
   charactersGrid.appendChild(blockFilterWrap);
+}
+
+/**
+ * Affiche un bloc entier (la recherche en cours est abandonnée)
+ * @param {string} blockName
+ */
+function showBlock(blockName) {
+  searchInput.value = "";
+  clearSearchBtn.classList.remove("visible");
+  blockFilter.value = blockName;
+  currentBlock = blockName;
+  filterCharacters("", blockName);
+  blockFilter.focus();
 }
 
 /**
@@ -2226,6 +2234,10 @@ function selectCharacter(charData) {
 
   specimen.hex.textContent = `U+${charData.hex}`;
   specimen.block.textContent = charData.block;
+  specimen.block.setAttribute(
+    "aria-label",
+    `${charData.block}, afficher tout le bloc`
+  );
   specimen.name.textContent = charData.name;
 
   specimen.glyph.textContent = charData.char;
@@ -2472,6 +2484,9 @@ function renderMetrics() {
 }
 
 function setupSpecimen() {
+  specimen.block.addEventListener("click", () => {
+    if (selectedCharacter) showBlock(selectedCharacter.block);
+  });
   specimen.copy.addEventListener("click", () => {
     if (selectedCharacter) copyToClipboard(selectedCharacter);
   });
