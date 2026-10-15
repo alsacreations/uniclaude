@@ -2176,11 +2176,13 @@ function selectCharacter(charData) {
   const aka = (tagsFr.length ? tagsFr : tags).slice(0, 4).join(", ");
   specimen.aka.textContent = aka ? `Aussi${NBSP}: ${aka}` : "";
 
-  // Le caractère est surligné dans les exemples (indispensable pour une espace)
-  specimen.samples.forEach((el) => {
+  // Un exemple d'usage par famille de fonte, adapté au type de signe ;
+  // le caractère y est surligné (indispensable pour une espace)
+  const samples = getContextSamples(charData);
+  specimen.samples.forEach((el, i) => {
     el.textContent = "";
-    ["Avant", "après, et la suite", ""].forEach((text, i) => {
-      if (i > 0) {
+    samples[i].split("{c}").forEach((text, j) => {
+      if (j > 0) {
         const mark = document.createElement("mark");
         mark.className = "sample-char";
         mark.classList.toggle("is-invisible", invisible);
@@ -2237,6 +2239,112 @@ function updateSpecimenFavorite() {
   specimen.favorite.innerHTML = `<span class="star" aria-hidden="true">${
     active ? "★" : "☆"
   }</span> Favori`;
+}
+
+/**
+ * Exemples « En situation » selon le type de signe : une phrase par
+ * famille de fonte (serif, sans, mono), {c} marque l'emplacement du caractère
+ */
+const CONTEXT_SAMPLES = {
+  nbsp: [`Page{c}12`, `10{c}km à pied`, `M.{c}Dupont`],
+  nnbsp: [
+    `«{c}Bonjour{c}!{c}»`,
+    `Vraiment{c}? Oui{c}; enfin.`,
+    `1{c}234{c}567`,
+  ],
+  space: [`mot{c}mot{c}mot`, `mot{c}mot{c}mot`, `mot{c}mot{c}mot`],
+  emoji: [
+    `{c} Au menu ce soir`,
+    `Rendez-vous demain à 8${NBSP}h {c}`,
+    `status: {c} done`,
+  ],
+  mark: [`a{c} e{c} o{c}`, `a{c} e{c} o{c}`, `a{c} e{c} o{c}`],
+  arrow: [`Paris {c} Lyon`, `Voir la suite {c}`, `a {c} b`],
+  dash: [`Paris{c}Lyon`, `{c} Bonjour, dit-elle.`, `2020{c}2026`],
+  open: [`voir {c}note`, `fonction{c}x`, `liste{c}0`],
+  close: [`note{c} et suite`, `fonction(x{c}`, `liste[0{c}`],
+  punctuation: [`Et puis{c} rien`, `Une phrase{c}`, `const x = a{c}`],
+  currency: [
+    `42${NBSP}{c}`,
+    `Prix${NBSP}: 12,50${NBSP}{c}`,
+    `{c}1,234.00`,
+  ],
+  math: [`a {c} b`, `x {c} 2y`, `if (a {c} b)`],
+  superscript: [`10${NBSP}m{c}`, `E = mc{c}`, `x{c} + y{c}`],
+  subscript: [`H{c}O`, `CO{c}`, `x{c} + x{c}`],
+  digit: [`Chapitre {c}`, `{c} cuillères de sucre`, `v{c}.0`],
+  number: [`Recette${NBSP}: {c} tasse`, `Il en reste {c}`, `n = {c}`],
+  symbol: [`{c} Recommandé`, `{c} Tâche terminée`, `[{c}] todo`],
+  letter: [
+    `Le {c} au fil du texte`,
+    `Le {c} au fil du texte`,
+    `Le {c} au fil du texte`,
+  ],
+};
+
+// Guillemets : chaque signe est montré avec son partenaire
+const QUOTE_PAIRS = {
+  "«": "»",
+  "‹": "›",
+  "“": "”",
+  "‘": "’",
+  "„": "“",
+  "‚": "‘",
+};
+
+/**
+ * Exemples pour un guillemet, ouvrant ou fermant, avec son partenaire
+ * (et l'espace fine insécable à l'intérieur des guillemets français)
+ * @param {string} char
+ * @param {boolean} opening
+ * @returns {string[]}
+ */
+function getQuoteSamples(char, opening) {
+  const partner = opening
+    ? QUOTE_PAIRS[char]
+    : Object.keys(QUOTE_PAIRS).find((o) => QUOTE_PAIRS[o] === char);
+  const french = "«»‹›".includes(char);
+  const inner = french ? NNBSP : "";
+  const open = opening ? "{c}" : partner || "";
+  const close = opening ? partner || "" : "{c}";
+  return [
+    `Il répondit${NBSP}: ${open}${inner}Oui${inner}${close}`,
+    `Elle a dit ${open}${inner}merci${inner}${close}`,
+    `str = ${open}texte${close}`,
+  ];
+}
+
+/**
+ * Choisit les exemples adaptés à un caractère
+ * @param {Object} charData
+ * @returns {string[]} trois phrases (serif, sans, mono)
+ */
+function getContextSamples(charData) {
+  const { char, codePoint } = charData;
+  const is = (re) => re.test(char);
+
+  if (codePoint === 0x00a0 || codePoint === 0x2007) return CONTEXT_SAMPLES.nbsp;
+  if (codePoint === 0x202f) return CONTEXT_SAMPLES.nnbsp;
+  if (isSpaceChar(charData)) return CONTEXT_SAMPLES.space;
+  if (charData.emojiGroup || is(/\p{Emoji_Presentation}/u))
+    return CONTEXT_SAMPLES.emoji;
+  if (is(/\p{M}/u)) return CONTEXT_SAMPLES.mark;
+  if (/arrow/i.test(charData.name) || charData.block === "Arrows")
+    return CONTEXT_SAMPLES.arrow;
+  if (is(/\p{Pi}/u)) return getQuoteSamples(char, true);
+  if (is(/\p{Pf}/u)) return getQuoteSamples(char, false);
+  if (is(/\p{Pd}/u)) return CONTEXT_SAMPLES.dash;
+  if (is(/\p{Ps}/u)) return CONTEXT_SAMPLES.open;
+  if (is(/\p{Pe}/u)) return CONTEXT_SAMPLES.close;
+  if (is(/\p{P}/u)) return CONTEXT_SAMPLES.punctuation;
+  if (is(/\p{Sc}/u)) return CONTEXT_SAMPLES.currency;
+  if (is(/\p{Sm}/u)) return CONTEXT_SAMPLES.math;
+  if (/superscript/i.test(charData.name)) return CONTEXT_SAMPLES.superscript;
+  if (/subscript/i.test(charData.name)) return CONTEXT_SAMPLES.subscript;
+  if (is(/\p{Nd}/u)) return CONTEXT_SAMPLES.digit;
+  if (is(/\p{N}/u)) return CONTEXT_SAMPLES.number;
+  if (is(/\p{S}/u)) return CONTEXT_SAMPLES.symbol;
+  return CONTEXT_SAMPLES.letter;
 }
 
 /**
