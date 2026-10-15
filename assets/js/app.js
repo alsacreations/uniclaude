@@ -1361,11 +1361,10 @@ function updateURL(searchTerm, blockName) {
     params.set("block", blockName);
   }
 
-  // On garde le #U+XXXX du caractère affiché
-  const newURL =
-    (params.toString()
-      ? `${window.location.pathname}?${params.toString()}`
-      : window.location.pathname) + window.location.hash;
+  // Une recherche remplace le caractère choisi : pas de #U+XXXX
+  const newURL = params.toString()
+    ? `${window.location.pathname}?${params.toString()}`
+    : window.location.pathname;
 
   // Utiliser pushState pour mettre à jour l'URL sans recharger la page
   // replaceState : pas une entrée d'historique par frappe au clavier
@@ -1388,17 +1387,13 @@ function getCharacterFromHash() {
 }
 
 /**
- * Inscrit le caractère affiché dans le hash, sans entrée d'historique
+ * Inscrit le caractère choisi dans le hash, sans entrée d'historique.
+ * Le choix remplace la recherche : on retire ?search et ?block.
  * @param {Object} charData
  */
 function updateHash(charData) {
-  const hash = `#U+${charData.hex}`;
-  if (window.location.hash === hash) return;
-  window.history.replaceState(
-    window.history.state,
-    "",
-    `${window.location.pathname}${window.location.search}${hash}`
-  );
+  const url = `${window.location.pathname}#U+${charData.hex}`;
+  window.history.replaceState(null, "", url);
 }
 
 /**
@@ -1444,7 +1439,10 @@ async function initializeApp() {
     // La recherche sélectionne son premier résultat : le hash reste prioritaire
     const hashChar = getCharacterFromHash();
     applyURLParams();
-    if (hashChar) selectCharacter(hashChar);
+    if (hashChar) {
+      selectCharacter(hashChar);
+      updateHash(hashChar);
+    }
   } else {
     // Afficher les blocs populaires seulement si pas de paramètres URL
     displayPopularBlocks();
@@ -2160,7 +2158,6 @@ function getCharTags(charData) {
 function selectCharacter(charData) {
   if (!charData) return;
   selectedCharacter = charData;
-  updateHash(charData);
   const invisible = isSpaceChar(charData);
 
   specimen.hex.textContent = `U+${charData.hex}`;
@@ -2363,6 +2360,7 @@ async function copyToClipboard(charData) {
     const full =
       allCharacters.find((c) => c.codePoint === charData.codePoint) || charData;
     selectCharacter(full);
+    updateHash(full);
   }
   await copyText(charData.char, charData.char);
 }
