@@ -1816,21 +1816,60 @@ const NNBSP = " "; // espace fine insécable
 const NBSP = " "; // espace insécable
 
 /**
+ * Espaces Unicode : abréviation affichée à la place du glyphe (invisible)
+ * et sécabilité (une espace insécable empêche le retour à la ligne)
+ */
+const SPACES = {
+  0x0020: { abbr: "ESP", nobreak: false },
+  0x00a0: { abbr: "INS", nobreak: true },
+  0x2000: { abbr: "QUAD ½", nobreak: false },
+  0x2001: { abbr: "QUAD", nobreak: false },
+  0x2002: { abbr: "½ EM", nobreak: false },
+  0x2003: { abbr: "EM", nobreak: false },
+  0x2004: { abbr: "⅓ EM", nobreak: false },
+  0x2005: { abbr: "¼ EM", nobreak: false },
+  0x2006: { abbr: "⅙ EM", nobreak: false },
+  0x2007: { abbr: "CHIFFRE", nobreak: true },
+  0x2008: { abbr: "PONCT", nobreak: false },
+  0x2009: { abbr: "FINE", nobreak: false },
+  0x200a: { abbr: "ULTRAFINE", nobreak: false },
+  0x202f: { abbr: "FINE INS", nobreak: true },
+  0x205f: { abbr: "MATH", nobreak: false },
+  0x3000: { abbr: "IDÉO", nobreak: false },
+};
+
+/**
  * Indique si un caractère est un espace (invisible à l'écran)
  * @param {Object} charData
  * @returns {boolean}
  */
 function isSpaceChar(charData) {
-  const cp = charData.codePoint;
-  return (
-    (charData.name || "").toLowerCase().includes("space") ||
-    (cp >= 0x2000 && cp <= 0x200a) ||
-    cp === 0x0020 ||
-    cp === 0x00a0 ||
-    cp === 0x202f ||
-    cp === 0x205f ||
-    cp === 0x3000
-  );
+  return charData.codePoint in SPACES;
+}
+
+/**
+ * Représentation visible d'une espace : une barre hachurée de sa chasse
+ * réelle (le caractère lui-même) et son abréviation
+ * @param {Object} charData
+ * @returns {HTMLElement}
+ */
+function createSpaceSymbol(charData) {
+  const { abbr, nobreak } = SPACES[charData.codePoint];
+  const symbol = document.createElement("span");
+  symbol.className = "space-symbol";
+  symbol.classList.toggle("is-nobreak", nobreak);
+  symbol.setAttribute("aria-hidden", "true");
+
+  const width = document.createElement("span");
+  width.className = "space-width";
+  width.textContent = charData.char;
+
+  const label = document.createElement("span");
+  label.className = "space-abbr";
+  label.textContent = abbr;
+
+  symbol.append(width, label);
+  return symbol;
 }
 
 /**
@@ -2014,12 +2053,12 @@ function createCharacterCard(charData, index) {
   card.setAttribute("tabindex", index === 0 ? "0" : "-1");
   card.setAttribute("aria-label", `Copier ${charData.name}, U+${charData.hex}`);
 
-  const glyph = document.createElement("span");
-  glyph.setAttribute("aria-hidden", "true");
+  let glyph;
   if (isSpaceChar(charData)) {
-    glyph.className = "space-symbol";
-    glyph.textContent = "esp.";
+    glyph = createSpaceSymbol(charData);
   } else {
+    glyph = document.createElement("span");
+    glyph.setAttribute("aria-hidden", "true");
     glyph.textContent = charData.char;
   }
 
@@ -2094,17 +2133,32 @@ function selectCharacter(charData) {
   specimen.block.textContent = charData.block;
   specimen.name.textContent = charData.name;
 
-  specimen.glyph.textContent = invisible ? "" : charData.char;
+  specimen.glyph.textContent = charData.char;
   specimen.glyph.classList.toggle("is-invisible", invisible);
+  specimen.glyph.classList.toggle(
+    "is-nobreak",
+    invisible && SPACES[charData.codePoint].nobreak
+  );
+  renderSpaceWidth();
 
   const { tags = [], tagsFr = [] } = getCharTags(charData);
   const aka = (tagsFr.length ? tagsFr : tags).slice(0, 4).join(", ");
   specimen.aka.textContent = aka ? `Aussi${NBSP}: ${aka}` : "";
 
-  const sample = invisible
-    ? `«${NNBSP}Bonjour${NNBSP}!${NNBSP}», dit-elle${NNBSP};`
-    : `Avant${charData.char}après, et la suite${charData.char}`;
-  specimen.samples.forEach((el) => (el.textContent = sample));
+  // Le caractère est surligné dans les exemples (indispensable pour une espace)
+  specimen.samples.forEach((el) => {
+    el.textContent = "";
+    ["Avant", "après, et la suite", ""].forEach((text, i) => {
+      if (i > 0) {
+        const mark = document.createElement("mark");
+        mark.className = "sample-char";
+        mark.classList.toggle("is-invisible", invisible);
+        mark.textContent = charData.char;
+        el.append(mark);
+      }
+      el.append(text);
+    });
+  });
 
   const utf8 = Array.from(new TextEncoder().encode(charData.char))
     .map((b) => b.toString(16).toUpperCase().padStart(2, "0"))
@@ -2152,6 +2206,21 @@ function updateSpecimenFavorite() {
   specimen.favorite.innerHTML = `<span class="star" aria-hidden="true">${
     active ? "★" : "☆"
   }</span> Favori`;
+}
+
+/**
+ * Affiche la chasse mesurée d'une espace dans le spécimen (en em)
+ */
+function renderSpaceWidth() {
+  const glyph = specimen.glyph;
+  if (!glyph.classList.contains("is-invisible")) {
+    delete glyph.dataset.width;
+    return;
+  }
+  const size = parseFloat(getComputedStyle(glyph).fontSize);
+  const em = glyph.getBoundingClientRect().width / size;
+  const value = em.toFixed(2).replace(/^0/, "").replace(/^-0/, "−");
+  glyph.dataset.width = `chasse ${value} em`;
 }
 
 /**
@@ -2219,6 +2288,7 @@ function setupSpecimen() {
       .then(() => {
         measureFontMetrics();
         renderMetrics();
+        renderSpaceWidth();
       })
       .catch(() => {});
   }
@@ -2282,7 +2352,8 @@ function showCopyNotification(shown) {
     selectedCharacter && selectedCharacter.char === shown
       ? selectedCharacter.name
       : shown;
-  charSpan.textContent = shown.trim() ? shown : "esp.";
+  const space = [...shown].length === 1 && SPACES[shown.codePointAt(0)];
+  charSpan.textContent = space ? space.abbr : shown;
   textSpan.textContent = `${label} copié${NNBSP}!`;
 
   copyNotification.classList.add("show");
@@ -2715,11 +2786,7 @@ function renderFavorites() {
     copyBtn.className = "favorite-item-btn";
     copyBtn.setAttribute("aria-label", `Copier ${fav.name}, U+${fav.hex}`);
     if (isSpaceChar(fav)) {
-      const symbol = document.createElement("span");
-      symbol.className = "space-symbol";
-      symbol.setAttribute("aria-hidden", "true");
-      symbol.textContent = "esp.";
-      copyBtn.appendChild(symbol);
+      copyBtn.appendChild(createSpaceSymbol(fav));
     } else {
       copyBtn.textContent = fav.char;
     }

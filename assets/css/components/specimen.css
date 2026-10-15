@@ -129,13 +129,41 @@
     color: var(--contrast);
   }
 
-  /* Espaces et caractères invisibles : on matérialise la chasse */
+  /* Espaces : le caractère est bien là, on matérialise sa chasse réelle
+     (box-shadow plutôt que border, pour ne pas fausser la mesure) */
   .specimen-glyph.is-invisible {
+    --tone: var(--accent-1);
+
     display: inline-block;
-    width: 0.12em;
     height: 1em;
-    border-inline: 2px dashed var(--accent-2);
+    background-image: repeating-linear-gradient(
+      135deg,
+      color-mix(in oklch, var(--tone) 45%, transparent) 0 2px,
+      transparent 2px 10px
+    );
+    box-shadow:
+      inset 2px 0 var(--tone),
+      inset -2px 0 var(--tone);
     vertical-align: top;
+    white-space: pre;
+
+    &.is-nobreak {
+      --tone: var(--accent-2);
+    }
+
+    /* Chasse mesurée, sous le cadratin */
+    &::after {
+      content: attr(data-width);
+      position: absolute;
+      inset-block-start: calc(100% + var(--spacing-8));
+      inset-inline-start: 50%;
+      translate: -50% 0;
+      color: var(--tone);
+      font-family: var(--font-mono);
+      font-size: var(--text-11);
+      line-height: 1;
+      white-space: nowrap;
+    }
   }
 
   .specimen-head {
@@ -187,6 +215,19 @@
     &.is-mono {
       font-family: var(--font-mono);
       font-size: var(--text-18);
+    }
+  }
+
+  /* Caractère surligné dans les exemples */
+  .sample-char {
+    background-color: color-mix(in oklch, var(--accent-1) 25%, transparent);
+    color: inherit;
+    white-space: pre;
+
+    &.is-invisible {
+      box-shadow:
+        inset 1px 0 var(--accent-1),
+        inset -1px 0 var(--accent-1);
     }
   }
 

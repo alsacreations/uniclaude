@@ -78,6 +78,47 @@ kbd {
   padding-inline: var(--spacing-m);
 }
 
+/* Espace visualisée : barre hachurée à la chasse réelle du caractère
+   (en fonte d'affichage), suivie de son abréviation.
+   Les espaces insécables sont signalées par la couleur et un tenon. */
+.space-symbol {
+  --tone: currentcolor;
+
+  display: inline-flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  align-items: center;
+  line-height: 1;
+
+  &.is-nobreak {
+    --tone: var(--accent-2);
+  }
+}
+
+.space-width {
+  display: block;
+  min-width: 1px;
+  height: calc(var(--space-size, 1em) * 0.6);
+  background-image: repeating-linear-gradient(
+    135deg,
+    var(--tone) 0 1px,
+    transparent 1px 4px
+  );
+  box-shadow:
+    inset 1px 0 var(--tone),
+    inset -1px 0 var(--tone);
+  font-size: var(--space-size, 1em);
+  white-space: pre;
+}
+
+.space-abbr {
+  color: var(--tone);
+  font-family: var(--font-mono);
+  font-size: var(--text-10);
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+
 /* Petites étiquettes en capitales (intertitres d'interface) */
 .eyebrow {
   color: var(--accent-2);

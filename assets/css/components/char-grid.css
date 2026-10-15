@@ -148,11 +148,14 @@
     color: var(--base);
   }
 
+  /* Espace : barre à sa chasse réelle + abréviation (voir createSpaceSymbol) */
   .space-symbol {
-    padding: 0.15rem 0.3rem;
-    border: 1px dashed currentcolor;
-    font-family: var(--font-mono);
-    font-size: var(--text-11);
+    --space-size: 1em;
+  }
+
+  /* Sur fond lime, le corail des insécables manque de contraste */
+  .char-card.is-selected .space-symbol {
+    --tone: currentcolor;
   }
 
   /* Étoile : raccourci souris. Au clavier, le bouton Favori de la fiche fait la même chose. */

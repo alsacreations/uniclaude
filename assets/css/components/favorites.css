@@ -96,10 +96,7 @@
   }
 
   .space-symbol {
-    padding: 0.1rem 0.25rem;
-    border: 1px dashed currentcolor;
-    font-family: var(--font-mono);
-    font-size: var(--text-11);
+    --space-size: 0.9em;
   }
 
   .favorites-empty {
