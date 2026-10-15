@@ -1990,6 +1990,46 @@ function displayCharacters(characters, append = false) {
 
 const SEARCH_SUGGESTIONS = ["guillemet", "flèche", "cœur"];
 
+/**
+ * Thèmes : sélections faites main, accessibles par une puce ou en tapant
+ * leur nom dans la recherche (?search=geek). Les caractères absents des
+ * blocs chargés sont simplement ignorés.
+ */
+const THEMES = {
+  geek: "⌘⌥⇧⌃⎋⏎⌫⇥⏻⌨λ∞≠≈∑π∅🤓💾💿🖥🖱🕹👾🤖🐛🚀☕⚡🔌🧪🛸🦄",
+  apéro: "🍷🍺🍻🥂🍾🍸🍹🥃🧀🥨🫒🥖🍕🥜🌭🍋🧊",
+  météo: "☀🌤⛅🌥☁🌦🌧⛈🌩🌨❄☃⛄🌪🌫🌈☂☔⚡🌡🌬",
+  typographe: "«»‹›“”‘’„—–…‰§¶†‡⁂❦❧☞※‽&·•¦№℃™©®",
+  jeux: "♠♥♦♣♤♡♢♧♔♕♖♗♘♙♚♛♜♝♞♟⚀⚁⚂⚃⚄⚅🎲🃏🀄🎯🧩🎮",
+  musique: "♩♪♫♬♭♮♯🎵🎶🎼🎤🎧🎸🎹🥁🎷🎺🎻🪕📯",
+  astro: "♈♉♊♋♌♍♎♏♐♑♒♓☉☽☾☿♀♁♂♃♄♅♆♇★☆✦✧🌙🪐🌌🔭☄",
+  ornements: "❦❧☙✿❀✾❁✻✺✼❋❖◆◇✦✧⁂※❈❉❊✥✤",
+  alsace: "🥨🍷🍺🥬🥓🌭🧀🏰⛪🎄🍪🌲🚲🐦🥖",
+};
+
+// « Apéro », « apero » ou « APÉRO » désignent le même thème
+const normalizeTheme = (term) =>
+  term
+    .trim()
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/\p{M}/gu, "");
+
+/**
+ * Caractères d'un thème, dans l'ordre de la sélection
+ * @param {string} term - Terme saisi
+ * @returns {Object[]|null} null si le terme n'est pas un thème
+ */
+function getThemeCharacters(term) {
+  const key = Object.keys(THEMES).find(
+    (name) => normalizeTheme(name) === normalizeTheme(term)
+  );
+  if (!key) return null;
+  return [...THEMES[key]]
+    .map((char) => allCharacters.find((c) => c.codePoint === char.codePointAt(0)))
+    .filter(Boolean);
+}
+
 function displayPopularBlocks() {
   charactersGrid.innerHTML = "";
 
@@ -2017,6 +2057,25 @@ function displayPopularBlocks() {
     tryRow.appendChild(btn);
   });
   charactersGrid.appendChild(tryRow);
+
+  // Thèmes faits main
+  const themesRow = document.createElement("p");
+  themesRow.className = "try";
+  themesRow.append(`Thèmes${NBSP}:`);
+  Object.keys(THEMES).forEach((term) => {
+    const btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "btn is-chip";
+    btn.textContent = term;
+    btn.addEventListener("click", () => {
+      searchInput.value = term;
+      clearSearchBtn.classList.add("visible");
+      filterCharacters(term, "");
+      searchInput.focus();
+    });
+    themesRow.appendChild(btn);
+  });
+  charactersGrid.appendChild(themesRow);
 
   // Une seule pioche : quelques caractères de chaque bloc populaire, mélangés
   const list = createCharList();
@@ -2743,7 +2802,11 @@ function filterCharacters(searchTerm, blockName) {
     filtered = filtered.filter((char) => char.block === blockName);
   }
 
-  if (searchTerm) {
+  // Un thème remplace la recherche (et ignore le filtre de bloc)
+  const themeChars = searchTerm ? getThemeCharacters(searchTerm) : null;
+  if (themeChars) {
+    filtered = themeChars;
+  } else if (searchTerm) {
     filtered = searchCharacters(filtered, searchTerm);
   }
 
@@ -2759,7 +2822,7 @@ function filterCharacters(searchTerm, blockName) {
     statsDisplay.textContent = "";
   } else {
     displayCharacters(filteredCharacters);
-    updateStats(filteredCharacters.length, searchTerm);
+    updateStats(filteredCharacters.length, searchTerm, Boolean(themeChars));
     // Le meilleur résultat s'affiche dans la fiche
     if (searchTerm && filteredCharacters.length) {
       selectCharacter(filteredCharacters[0]);
@@ -2783,8 +2846,12 @@ function resetFilters() {
   searchInput.focus();
 }
 
-function updateStats(count, searchTerm) {
+function updateStats(count, searchTerm, isTheme = false) {
   statsContainer.classList.remove("hidden");
+  if (isTheme) {
+    statsDisplay.textContent = `Thème ${searchTerm.trim().toLowerCase()}${NBSP}: ${count}${NBSP}caractères`;
+    return;
+  }
   if (count === 0) {
     statsDisplay.textContent = `Aucun caractère ne correspond à «${NNBSP}${searchTerm}${NNBSP}»`;
     return;
