@@ -62,22 +62,3 @@
     color: var(--accent-1);
   }
 }
-
-/* Bouton de thème (clair / sombre) */
-@scope (.theme-toggle) {
-  :scope {
-    --button-background-color: transparent;
-    --button-border-color: var(--border-medium);
-    --button-text-color: var(--contrast);
-
-    gap: var(--spacing-8);
-    min-height: var(--target-size);
-    padding-inline: var(--spacing-16);
-    border-radius: var(--radius-full);
-    font-size: var(--text-14);
-  }
-
-  svg {
-    flex: none;
-  }
-}

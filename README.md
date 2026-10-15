@@ -275,7 +275,7 @@ uniclaude/
 │   ├── css/
 │   │   ├── app.css            # Point d'entrée CSS (@layer)
 │   │   ├── theme.css          # Primitives (couleurs, tailles…)
-│   │   ├── theme-tokens.css   # Tokens sémantiques (light-dark)
+│   │   ├── theme-tokens.css   # Tokens sémantiques (thème sombre)
 │   │   ├── natives.css        # Styles éléments natifs
 │   │   ├── styles.css         # Styles de base
 │   │   ├── components/        # Un fichier par composant (@scope)

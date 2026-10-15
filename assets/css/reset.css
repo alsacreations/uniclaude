@@ -11,7 +11,7 @@
 
 /* Couleurs système pour adaptation automatique dark/light mode */
 :root {
-  color-scheme: light dark;
+  color-scheme: dark;
 }
 
 /* Modèle de boîte uniforme et prévention des débordements flex/grid */
@@ -53,7 +53,7 @@ body {
 
 /* Outline uniquement pour la navigation au clavier */
 :focus-visible {
-  outline: 2px solid light-dark(#4285f4, #8ab4f8);
+  outline: 2px solid #8ab4f8;
   outline-offset: 2px;
 }
 

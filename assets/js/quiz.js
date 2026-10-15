@@ -376,27 +376,7 @@ class UniClaudeQuiz {
   }
 }
 
-// ===== Thème clair / sombre (partagé avec l'explorateur) =====
-function setupThemeToggle() {
-  const toggle = document.getElementById('themeToggle');
-  if (!toggle) return;
-  const current = () =>
-    document.documentElement.dataset.theme ||
-    (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-  const sync = () => toggle.setAttribute('aria-pressed', current() === 'dark' ? 'true' : 'false');
-  sync();
-  toggle.addEventListener('click', () => {
-    const next = current() === 'dark' ? 'light' : 'dark';
-    document.documentElement.dataset.theme = next;
-    try {
-      localStorage.setItem('uniclaude-theme', next);
-    } catch (e) {}
-    sync();
-  });
-}
-
 // Initialize when DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
-  setupThemeToggle();
   new UniClaudeQuiz();
 });

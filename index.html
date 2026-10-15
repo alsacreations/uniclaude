@@ -6,11 +6,6 @@
     <script>
       document.documentElement.classList.remove("no-js")
       document.documentElement.classList.add("js")
-      // Thème choisi par l'utilisateur (sinon : préférence système)
-      try {
-        const savedTheme = localStorage.getItem("uniclaude-theme")
-        if (savedTheme) document.documentElement.dataset.theme = savedTheme
-      } catch (e) {}
     </script>
     <meta charset="UTF-8" />
     <meta
@@ -134,35 +129,6 @@
               <a href="https://github.com/alsacreations/uniclaude"
                 >Code source sur GitHub</a
               >
-            </li>
-            <li>
-              <button
-                type="button"
-                id="themeToggle"
-                class="theme-toggle"
-                aria-pressed="false">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="16"
-                  height="16"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  aria-hidden="true"
-                  focusable="false">
-                  <circle
-                    cx="12"
-                    cy="12"
-                    r="9" />
-                  <path
-                    d="M12 3a9 9 0 0 0 0 18z"
-                    fill="currentColor" />
-                </svg>
-                Thème sombre
-              </button>
             </li>
           </ul>
         </nav>

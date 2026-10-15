@@ -1408,7 +1408,6 @@ async function initializeApp() {
   populateBlockFilter();
   await generateCharacters();
   setupEventListeners();
-  setupThemeToggle();
   initFavoritesEvents(); // Initialiser les favoris
   setupSpecimen(); // Fiche du caractère sélectionné
 
@@ -2228,36 +2227,6 @@ function setupSpecimen() {
   const initial =
     allCharacters.find((c) => c.codePoint === 0x2026) || allCharacters[0];
   selectCharacter(initial);
-}
-
-// ===== Thème clair / sombre =====
-const THEME_KEY = "uniclaude-theme";
-
-function currentTheme() {
-  const forced = document.documentElement.dataset.theme;
-  if (forced) return forced;
-  return window.matchMedia("(prefers-color-scheme: dark)").matches
-    ? "dark"
-    : "light";
-}
-
-function setupThemeToggle() {
-  const toggle = document.getElementById("themeToggle");
-  if (!toggle) return;
-  const sync = () =>
-    toggle.setAttribute(
-      "aria-pressed",
-      currentTheme() === "dark" ? "true" : "false"
-    );
-  sync();
-  toggle.addEventListener("click", () => {
-    const next = currentTheme() === "dark" ? "light" : "dark";
-    document.documentElement.dataset.theme = next;
-    try {
-      localStorage.setItem(THEME_KEY, next);
-    } catch (e) {}
-    sync();
-  });
 }
 
 // ===== Copie dans le presse-papier =====
