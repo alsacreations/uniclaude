@@ -1361,9 +1361,11 @@ function updateURL(searchTerm, blockName) {
     params.set("block", blockName);
   }
 
-  const newURL = params.toString()
-    ? `${window.location.pathname}?${params.toString()}`
-    : window.location.pathname;
+  // On garde le #U+XXXX du caractère affiché
+  const newURL =
+    (params.toString()
+      ? `${window.location.pathname}?${params.toString()}`
+      : window.location.pathname) + window.location.hash;
 
   // Utiliser pushState pour mettre à jour l'URL sans recharger la page
   // replaceState : pas une entrée d'historique par frappe au clavier
@@ -1371,6 +1373,31 @@ function updateURL(searchTerm, blockName) {
     { search: searchTerm, block: blockName },
     "",
     newURL
+  );
+}
+
+/**
+ * Caractère désigné par le hash de l'URL (#U+1F600, ou #1F600)
+ * @returns {Object|undefined}
+ */
+function getCharacterFromHash() {
+  const match = window.location.hash.match(/^#(?:U\+)?([0-9A-F]{4,6})$/i);
+  if (!match) return undefined;
+  const codePoint = parseInt(match[1], 16);
+  return allCharacters.find((c) => c.codePoint === codePoint);
+}
+
+/**
+ * Inscrit le caractère affiché dans le hash, sans entrée d'historique
+ * @param {Object} charData
+ */
+function updateHash(charData) {
+  const hash = `#U+${charData.hex}`;
+  if (window.location.hash === hash) return;
+  window.history.replaceState(
+    window.history.state,
+    "",
+    `${window.location.pathname}${window.location.search}${hash}`
   );
 }
 
@@ -1414,7 +1441,10 @@ async function initializeApp() {
   // Appliquer les paramètres URL s'ils existent
   const urlParams = getURLParams();
   if (urlParams.search || urlParams.block) {
+    // La recherche sélectionne son premier résultat : le hash reste prioritaire
+    const hashChar = getCharacterFromHash();
     applyURLParams();
+    if (hashChar) selectCharacter(hashChar);
   } else {
     // Afficher les blocs populaires seulement si pas de paramètres URL
     displayPopularBlocks();
@@ -2130,6 +2160,7 @@ function getCharTags(charData) {
 function selectCharacter(charData) {
   if (!charData) return;
   selectedCharacter = charData;
+  updateHash(charData);
   const invisible = isSpaceChar(charData);
 
   specimen.hex.textContent = `U+${charData.hex}`;
@@ -2296,10 +2327,19 @@ function setupSpecimen() {
       .catch(() => {});
   }
 
-  // Caractère affiché au chargement : les points de suspension
-  const initial =
-    allCharacters.find((c) => c.codePoint === 0x2026) || allCharacters[0];
-  selectCharacter(initial);
+  // Caractère affiché au chargement : celui du hash (#U+XXXX),
+  // sinon tiré au hasard dans les blocs populaires
+  const popularBlockNames = POPULAR_BLOCKS.map((b) => b.blockName);
+  const [random = allCharacters[0]] = getRandomCharacters(
+    allCharacters.filter((c) => popularBlockNames.includes(c.blockName)),
+    1
+  );
+  selectCharacter(getCharacterFromHash() || random);
+
+  // Hash modifié à la main (ou lien interne) : on suit
+  window.addEventListener("hashchange", () => {
+    selectCharacter(getCharacterFromHash());
+  });
 }
 
 // ===== Copie dans le presse-papier =====
