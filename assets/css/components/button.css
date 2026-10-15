@@ -1,0 +1,51 @@
+/* Boutons : surcouche des boutons natifs (natives.css).
+   La logique d'états reste dans natives.css, les variantes ne changent que les variables. */
+
+@scope (.btn) {
+  :scope {
+    --button-background-color: transparent;
+    --button-border-color: var(--contrast);
+    --button-text-color: var(--contrast);
+    --button-background-color-hover: var(--contrast);
+    --button-text-color-hover: var(--base);
+    --button-border-radius: var(--radius-full);
+    --button-font-weight: var(--font-weight-semibold);
+
+    gap: var(--spacing-8);
+    min-height: var(--target-size);
+    padding-inline: var(--spacing-20);
+  }
+
+  :scope.is-accent {
+    --button-background-color: var(--accent-1);
+    --button-border-color: var(--accent-1);
+    --button-text-color: var(--base);
+  }
+
+  :scope.is-hot {
+    --button-background-color: var(--accent-2);
+    --button-border-color: var(--accent-2);
+    --button-text-color: var(--base);
+  }
+
+  :scope.is-chip {
+    --button-border-color: var(--border-medium);
+    --button-font-weight: var(--font-weight-regular);
+
+    padding-inline: var(--spacing-16);
+  }
+
+  :scope.is-large {
+    min-height: 3.5rem;
+    padding-inline: var(--spacing-32);
+    font-size: var(--text-18);
+  }
+
+  .star {
+    color: var(--accent-2);
+  }
+
+  :scope:hover .star {
+    color: inherit;
+  }
+}

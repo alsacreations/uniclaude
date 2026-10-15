@@ -31,7 +31,6 @@
 
   /* Typographie */
   --font-base: system-ui, sans-serif;
-  --font-poppins: poppins, sans-serif;
   --font-weight-light: 300;
   --font-weight-regular: 400;
   --font-weight-semibold: 600;
@@ -138,36 +137,37 @@
   --color-slate-fade: oklch(37.17% 0.02 257.32);
   --color-slate-bright: oklch(37.17% 0.05 257.32);
 
-  /* ===== Ajout : palette Indigo/Violet pour UniClaude ===== */
+  /* ===== Palette UniClaude « Spécimen de nuit » ===== */
 
-  /* Indigo (couleur primaire app) */
-  --color-indigo-900: #312e81;
-  --color-indigo-700: #4338ca;
-  --color-indigo-600: #4f46e5;
-  --color-indigo-500: #6366f1;
-  --color-indigo-400: #818cf8;
-  --color-indigo-300: #a5b4fc;
-  --color-indigo-200: #c7d2fe;
-  --color-indigo-100: #e0e7ff;
+  /* Encre (fonds sombres) */
+  --color-ink-950: #0f1714;
+  --color-ink-900: #18231e;
+  --color-ink-800: #22302a;
+  --color-ink-700: #2e3d35;
+  --color-ink-600: #4a5c52;
 
-  /* Violet (couleur secondaire app) */
-  --color-violet-700: #6d28d9;
-  --color-violet-600: #7c3aed;
-  --color-violet-500: #8b5cf6;
-  --color-violet-400: #a78bfa;
-  --color-violet-300: #c4b5fd;
-  --color-violet-200: #ddd6fe;
-  --color-violet-100: #ede9fe;
+  /* Sauge (textes secondaires, bordures) */
+  --color-sage-300: #a3ae9f;
+  --color-sage-500: #8e978f;
+  --color-sage-600: #4c5a52;
 
-  /* Emerald (succès) */
-  --color-emerald-600: #059669;
-  --color-emerald-500: #10b981;
-  --color-emerald-400: #34d399;
-  --color-emerald-300: #6ee7b7;
+  /* Papier (fonds clairs) */
+  --color-cream-100: #ede6d3;
+  --color-paper-50: #f1efe6;
+  --color-paper-100: #e6e3d6;
+  --color-paper-200: #d3cfbf;
+  --color-paper-300: #cfcbbb;
+
+  /* Accents */
+  --color-lime-300: #ddf26a;
+  --color-lime-800: #3d5a12;
+  --color-coral-300: #ff7a59;
+  --color-coral-800: #a93a10;
 
   /* Familles de polices */
-  --font-family-base: system-ui, sans-serif;
-  --font-family-mono: "Courier New", "Consolas", monospace;
+  --font-family-base: system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-family-mono: ui-monospace, "Cascadia Code", menlo, consolas, monospace;
+  --font-instrument-serif: "Instrument Serif", georgia, serif;
 
   /* Ombres supplémentaires */
   --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.1);

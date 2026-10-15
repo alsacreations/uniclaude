@@ -2,6 +2,7 @@
  * Design tokens
  * Made par Alsacréations
  * Nécessite les variables CSS primaires (theme.css)
+ * Direction graphique : « Spécimen de nuit »
  * ----------------------------------
  */
 
@@ -17,34 +18,36 @@
     color-scheme: dark;
   }
 
-  --primary: var(--color-blue-500);
-  --on-primary: var(--color-white);
-  --surface: light-dark(var(--color-white), var(--color-gray-800));
-  --on-surface: light-dark(var(--color-gray-900), var(--color-gray-100));
-  --on-surface-secondary: light-dark(
-    var(--color-gray-600),
-    var(--color-gray-300)
-  );
-  --color-quetsche: light-dark(
-    var(--color-quetsche-700),
-    var(--color-quetsche-200)
-  );
-  --layer-1: light-dark(var(--color-gray-50), var(--color-gray-900));
-  --layer-2: light-dark(var(--color-gray-100), var(--color-gray-700));
-  --layer-3: light-dark(var(--color-gray-200), var(--color-gray-600));
-  --link: light-dark(var(--color-green-500), var(--color-orange-300));
-  --link-hover: light-dark(var(--color-green-500), var(--color-orange-300));
-  --selection: light-dark(var(--color-orange-300), var(--color-orange-500));
-  --accent: light-dark(var(--primary), var(--color-blue-300));
-  --accent-invert: light-dark(var(--color-blue-300), var(--primary));
-  --warning: light-dark(var(--color-orange-500), var(--color-orange-100));
-  --error: light-dark(var(--color-red-500), var(--color-red-100));
-  --success: light-dark(var(--color-green-500), var(--color-green-100));
-  --border-light: var(--color-gray-200);
-  --border-medium: var(--color-gray-400);
-  --border-dark: var(--color-gray-600);
+  /* Rôles sémantiques (convention WordPress / kiwipedia) */
+  --base: light-dark(var(--color-paper-50), var(--color-ink-950));
+  --base-2: light-dark(var(--color-paper-100), var(--color-ink-900));
+  --contrast: light-dark(var(--color-ink-950), var(--color-cream-100));
+  --contrast-muted: light-dark(var(--color-sage-600), var(--color-sage-300));
+  --accent-1: light-dark(var(--color-lime-800), var(--color-lime-300));
+  --accent-2: light-dark(var(--color-coral-800), var(--color-coral-300));
+  --grid-dot: light-dark(var(--color-paper-200), var(--color-ink-800));
+  --border-light: light-dark(var(--color-paper-300), var(--color-ink-700));
+  --border-medium: light-dark(var(--color-sage-500), var(--color-ink-600));
+  --link: var(--contrast);
+  --link-hover: var(--accent-1);
+  --selection: var(--accent-1);
+  --error: var(--accent-2);
+  --success: var(--accent-1);
+
+  /* Alias attendus par natives.css (KNACSS) */
+  --primary: var(--accent-1);
+  --on-primary: var(--base);
+  --surface: var(--base-2);
+  --on-surface: var(--contrast);
+  --on-surface-secondary: var(--contrast-muted);
+  --layer-1: var(--base);
+  --layer-2: var(--base-2);
+  --layer-3: var(--border-light);
+  --accent: var(--accent-1);
 
   /* Typo Tokens */
+  --font-display: var(--font-instrument-serif);
+  --font-mono: var(--font-family-mono);
   --text-m: clamp(var(--text-16), 0.9565rem + 0.2174vw, var(--text-18));
   --text-l: clamp(var(--text-18), 1.0761rem + 0.2174vw, var(--text-20));
   --text-xl: clamp(var(--text-20), 1.0054rem + 1.087vw, var(--text-30));
@@ -75,54 +78,20 @@
   );
 
   /* Forms Tokens */
-  --form-control-background: light-dark(
-    var(--color-slate-200),
-    var(--color-slate-700)
-  );
-  --on-form-control: light-dark(var(--color-gray-900), var(--color-gray-100));
+  --form-control-background: var(--base-2);
+  --on-form-control: var(--contrast);
   --form-control-spacing: var(--spacing-12) var(--spacing-16);
   --form-control-border-width: 1px;
-  --form-control-border-color: var(--color-gray-400);
-  --form-control-border-radius: var(--radius-md);
-  --checkables-border-color: var(--color-gray-400);
+  --form-control-border-color: var(--border-medium);
+  --form-control-border-radius: var(--radius-full);
+  --checkables-border-color: var(--border-medium);
   --checkable-size: 1.25em;
 
   /* States Tokens */
-  --focus-ring-color: AccentColor;
+  --focus-ring-color: var(--accent-1);
   --focus-ring-width: 2px;
-  --focus-ring-offset: 2px;
+  --focus-ring-offset: 3px;
 
-  /* ===== Tokens spécifiques UniClaude ===== */
-
-  /* Couleurs principales */
-  --primary-color: var(--color-indigo-700);
-  --primary-dark: var(--color-indigo-800);
-  --primary-color-on-dark: var(
-    --color-indigo-400
-  ); /* Optimisé pour contraste WCAG AA (5.78:1) */
-  --secondary-color: var(--color-violet-500);
-  --secondary-color-on-dark: var(
-    --color-violet-400
-  ); /* Optimisé pour contraste WCAG AA (6.10:1) */
-
-  /* Surfaces et arrière-plans */
-  --bg-color: var(--color-slate-900);
-  --bg-light: var(--color-slate-800);
-  --bg-card: var(--color-slate-900);
-
-  /* Texte */
-  --text-color: var(--color-slate-100);
-  --text-muted: var(
-    --color-slate-300
-  ); /* Optimisé pour contraste WCAG AA (10.15:1) */
-
-  /* Bordures */
-  --border-color: var(--color-slate-600);
-
-  /* États */
-  --success-color: var(--color-green-500);
-
-  /* Ombres (utilisent les primitives) */
-  --shadow: var(--shadow-sm);
-  --shadow-lg: var(--shadow-lg);
+  /* Interactions */
+  --target-size: 2.75rem; /* 44px, taille de cible minimale */
 }

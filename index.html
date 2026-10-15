@@ -1,261 +1,432 @@
-<!DOCTYPE html>
-<html lang="fr">
+<!doctype html>
+<html
+  lang="fr"
+  class="no-js">
   <head>
+    <script>
+      document.documentElement.classList.remove("no-js")
+      document.documentElement.classList.add("js")
+      // Thème choisi par l'utilisateur (sinon : préférence système)
+      try {
+        const savedTheme = localStorage.getItem("uniclaude-theme")
+        if (savedTheme) document.documentElement.dataset.theme = savedTheme
+      } catch (e) {}
+    </script>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>UniClaude - Explorateur de caractères Unicode</title>
-    <link rel="icon" type="image/png" href="assets/images/favicon-96x96.png" sizes="96x96" />
-    <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg" />
-    <meta name="author" content="Alsacreations" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1" />
+    <title>UniClaude, explorateur de caractères Unicode</title>
+    <link
+      rel="icon"
+      type="image/png"
+      href="assets/images/favicon-96x96.png"
+      sizes="96x96" />
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="assets/images/favicon.svg" />
+    <meta
+      name="author"
+      content="Alsacreations" />
     <meta
       name="description"
-      content="Explorateur de caractères Unicode pour les humains"
-    />
-    <link rel="stylesheet" href="assets/css/app.css" />
-    <meta name="robots" content="index,follow" />
-    <meta name="referrer" content="strict-origin-when-cross-origin" />
+      content="Explorateur de caractères Unicode pour les humains : cherchez, inspectez et copiez n’importe quel signe." />
+    <link
+      rel="preload"
+      href="assets/fonts/instrument-serif-latin-400-normal.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin />
+    <link
+      rel="stylesheet"
+      href="assets/css/app.css" />
+    <meta
+      name="robots"
+      content="index,follow" />
+    <meta
+      name="referrer"
+      content="strict-origin-when-cross-origin" />
   </head>
   <body>
-    <a href="#main" class="skip-link">Aller au contenu principal</a>
-    <a href="#searchInput" class="skip-link">Aller à la recherche</a>
+    <a
+      href="#main"
+      class="skip-link"
+      >Aller au contenu principal</a
+    >
+    <a
+      href="#searchInput"
+      class="skip-link"
+      >Aller à la recherche</a
+    >
 
-    <header role="banner">
-      <div class="header-top" data-layout="boxed">
-        <div class="logo">
-          <svg
-            role="img"
-            aria-labelledby="title-alsacreations"
-            class="logo-alsacreations is-default"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 241 45"
-            width="200"
-            height="37"
-            preserveAspectRatio="xMidYMid meet"
-          >
-            <title id="title-alsacreations">Alsacreations</title>
-            <g class="logo-alsacreations-pepins-group">
-              <path
-                class="logo-alsacreations-pepins-outer"
-                d="M232 18.5c2.2-1.1 3.5-2.4 4-4 .6-1.9-.2-4-2.2-6.2-1.7-2-3.5-2.7-5.3-2.2-1.5.4-2.9 1.7-4.2 3.7-1.1 1.7-2 3.8-2.6 5.9-.6 2.1-.7 3.6-.4 4.5.9.3 2.3.3 4.5 0a14 14 0 0 0 6.2-1.7zm-12-9.1c1.1-2.2 1.4-4 .8-5.5-.7-1.9-2.5-3.1-5.4-3.7-2.5-.6-4.4-.1-5.5 1.4-.9 1.2-1.4 3-1.2 5.5.1 2.1.6 4.2 1.5 6.4.8 2 1.5 3.3 2.3 3.9a20 20 0 0 0 7.5-8zm13.6 24.3c2.4.4 4.2.1 5.5-.9 1.5-1.2 2.1-3.3 1.8-6.3-.2-2.6-1.3-4.1-3-4.8-1.5-.5-3.3-.3-5.6.6-1.9.8-3.8 1.9-5.5 3.3-1.7 1.4-2.7 2.5-2.9 3.5.6.7 1.7 1.6 3.6 2.6 2.1 1.1 4.1 1.8 6.1 2z"
-              ></path>
-              <path
-                class="logo-alsacreations-pepins-inner"
-                d="M214.4 7.8c-.9-.2-1.5 0-1.9.5-.3.4-.5 1.1-.4 1.9.1.7.2 1.5.5 2.2.2.7.6 1.2.8 1.4l1.2-.9c.6-.6 1.1-1.2 1.4-1.8.4-.7.5-1.4.3-1.9-.3-.7-1-1.2-1.9-1.4zm14 6.1c-.6-.7-1.2-.9-1.9-.7-.5.1-1 .6-1.5 1.3-.4.6-.7 1.3-.9 2.1-.2.7-.2 1.2-.1 1.5h1.5c.8-.1 1.5-.3 2.2-.7.7-.4 1.2-.8 1.4-1.4.2-.6 0-1.4-.7-2.1zm4.9 14c-.1-.9-.4-1.5-1.1-1.7-.5-.2-1.2-.1-2 .2-.7.3-1.4.7-1.9 1.2-.6.5-.9.9-1.1 1.2.2.2.6.6 1.3.9.7.4 1.5.6 2.2.7.8.1 1.5 0 1.9-.3.6-.5.9-1.2.7-2.2z"
-              ></path>
-            </g>
-            <path
-              class="logo-alsacreations-alsa"
-              d="m1.5 25.1-.1-.6.1-.6a12.7 12.7 0 0 1 9-2.2c3.8.2 5 2.6 5 6.7v2l-.1 5.3-.1 4s-.1 2.1 1.3 1.9l-.1 2c-.4.6-1.5 1.3-2.9 1.3a4 4 0 0 1-2.8-1.4l-1.1.7c-1.1.6-2.3.7-3.6.7-3.1 0-6.1-2-6.1-6.3 0-5.7 5.3-7.4 8.2-7.7l1.4-.1 1.1.1v-2.3c0-2-.2-3-1.7-3s-3.3.7-4.7 1.2c-.5.2-1.1.4-1.7.4-.8-.9-1-1.7-1.1-2.1zm9.1 12V34h-.5l-1.5.1h.1c-2 .4-3.8 1.3-3.8 4 0 2.2.9 3 2 3h.3c1.2 0 2.7-.6 3.2-1.4l-.1.1.1-.6c.2-.5.2-1.2.2-2.1zm16.2 4.4-.1 2c-.5.7-1.5 1.3-2.9 1.3-.7 0-1.4-.3-1.9-.7a3 3 0 0 1-1.4-2.5v-24l-.1-5.2c.6-1.3 2.3-1.5 4.6-1.5.3 1.1.3 2.2.3 4.6v24.1c.1.1 0 2.2 1.5 1.9zm11.6-19.9c3 .2 4.4 1.5 4.6 2.1 0 .6-.4 1.7-.9 2.4l-.9-.2-1.5-.4c-.7-.3-1.4-.4-2.1-.4-1.7 0-2.7.9-2.7 2.2 0 .7.3 1.4 1.3 2.2l2 1.4 2.7 2c2 1.7 2.9 3.3 2.9 5.3 0 4.5-3.6 6.7-8.2 6.7-3 0-5.7-.9-6.2-2.3 0-.7.4-1.8.9-2.5h.5c.4 0 .9.1 1.4.4v-.1c1 .4 2.2.7 3.3.7l.9-.1c1.4-.1 2.3-1.1 2.3-2.5 0-1.1-.5-1.9-1.8-2.8l-.6-.4c-1.1-.7-2.3-1.7-3.2-2.5l-1.3-.8c-1.5-1.5-2.2-2.9-2.2-4.6 0-3.7 3-5.9 7.5-5.9l1.3.1zm8.9 3.5-.1-.6.1-.6a12.7 12.7 0 0 1 9-2.2c3.8.2 5 2.6 5 6.7v2l-.1 5.3-.1 4s-.1 2.1 1.3 1.9l-.1 2c-.4.6-1.5 1.3-2.9 1.3a4 4 0 0 1-2.8-1.4l-1.1.7c-1.1.6-2.3.7-3.6.7-3.2 0-6.2-2-6.2-6.4 0-5.7 5.3-7.4 8.2-7.7l1.4-.1 1.1.1v-2.3c0-2-.2-3-1.7-3s-3.3.7-4.7 1.2c-.5.2-1.1.4-1.7.4-.8-.8-.9-1.6-1-2zm9.1 12V34h-.5l-1.5.1h.1c-2 .4-3.8 1.3-3.8 4 0 2.2.9 3 2 3h.3c1.2 0 2.7-.6 3.2-1.4l-.1.1.1-.6c.2-.5.2-1.2.2-2.1z"
-            ></path>
-            <path
-              class="logo-alsacreations-creations"
-              d="M80.8 23.6c0 .6-.3 1.7-.7 2.5h-.6a4 4 0 0 1-1.5-.3 7 7 0 0 0-2.5-.6 1 1 0 0 0-.5.1c-2.7.2-4.6 2.7-4.6 8.1 0 6.5 2.7 7.9 5.4 7.9 1.5 0 3.1-.5 4.3-1.1l.4 1.8c-.1.7-.6 1.5-1.2 2-.9.7-2.5 1.1-4.4 1.1-5.2 0-9.8-1.9-9.8-11.4 0-4.9 1.7-8 3.5-9.8a9.8 9.8 0 0 1 6.7-2.3c3-.1 5.3 1.3 5.5 2zm8.3 3.5V42c0 .7-.1 1.3-.5 1.9-.7.6-1.5.6-4.5.6l.1-9.3.1-7.9c0-1.5-.3-2.6-.6-3.5.4-.4 1-.7 2-1.2l.7-.1c1 0 1.4.3 1.7.9.9-.6 1.9-1.1 2.8-1.4.8-.3 1.9-.5 2.7-.4 1.4.1 2.2.6 2.3 1.3 0 .7-.2 2-.9 3l-.7.1-1.4-.1-.6-.1c-1.3.1-2.3.4-3.2 1.3zM113 39.7c.3.9.4 1.9.5 2.3-.1 1-1.6 2-3 2.5h.1c-.7.2-2.2.5-3.6.5-2.3 0-4.8-.4-6.6-2.3-1.7-1.8-2.6-4.8-2.6-8.6 0-9.2 4-12.5 9.3-12.5 4.5 0 6.8 2.7 7.2 6.7l.1 2.3-.2 2.8c-.6.5-2.3 1.1-3.6 1.3-1.5.2-3.8.3-6.1.3h-1.7c.1 4.7 2 6.2 5 6.2 1.6-.2 3.4-.5 5.2-1.5zM106.2 25c-1.7.2-3.3 2.2-3.6 6.4h1.3l4.5-.1.7-.2.2-1.4-.1-.5v-.5c-.2-2.5-1.1-3.7-2.8-3.7h-.2zm11.7.1-.1-.6.1-.6a12.7 12.7 0 0 1 9-2.2c3.8.2 5 2.6 5 6.7v2l-.1 5.3-.1 4s-.1 2.1 1.3 1.9l-.1 2c-.4.6-1.5 1.3-2.9 1.3a4 4 0 0 1-2.8-1.4l-1.1.7c-1.1.6-2.3.7-3.6.7-3.2 0-6.2-2-6.2-6.4 0-5.7 5.3-7.4 8.2-7.7l1.4-.1 1.1.1v-2.3c0-2-.2-3-1.7-3s-3.3.7-4.7 1.2c-.5.2-1.1.4-1.7.4-.7-.8-.9-1.6-1-2zm9.1 12V34h-.5l-1.5.1h.1c-2 .4-3.8 1.3-3.8 4 0 2.2.9 3 2 3h.3c1.2 0 2.7-.6 3.2-1.4l-.1.1.1-.6c.2-.5.2-1.2.2-2.1zm21.6 3.4.1 1.1-.1 1.3c-.1.3-.3.6-.7.9a8.7 8.7 0 0 1-4.4 1.1c-4.7 0-5.6-4.2-5.6-8V25.8a6.3 6.3 0 0 1-2.8-.7c0-1.4.1-1.4.4-1.7.7-.5 1.4-.7 2-.9l.7-.1.2-4.1c.4-1.1 1.6-2 4.5-2.2v.7l-.1 5.3h6c-.1 2.7-.5 3.2-1.5 3.5l-1.2.1-3.3.1-.1 6.1.1 3v2.2c.2 2.5.5 4.2 2 4.2.6.1 2.5-.6 2.8-.9l1 .1zm6.3-29c2.2 0 2.7.9 2.6 2.7-.1 1.8-.6 3-2.8 3-1.9 0-2.7-.9-2.7-2.9 0-1.8 1-2.8 2.9-2.8zm1.9 10.6c.4.7.4 1.4.4 3.4v15.8c0 1.1-.2 1.9-.7 2.6-.3.5-1.1.5-4.4.6v-3.8l.1-4.3v-8.2l-.1-4.8c.6-1.2 2.2-1.3 4.3-1.3h.4zm13.6 22.8c-6 0-9.4-3.5-9.4-11.7 0-8.1 4-11.8 9.5-11.8 6.2 0 9.3 4 9.3 11.5 0 8-4 12-9.4 12zm.1-3.4c2.2 0 4.1-2.1 4.1-8.3 0-5.9-1.7-8.1-4.2-8.1-2.2 0-4.2 2.2-4.2 8 0 6.3 1.8 8.4 4.3 8.4zm18-14.2.1-.1v14.5c0 1.1-.1 1.6-.6 2.3-.7.6-1.2.6-3.3.6h-1.2l.1-9.3v-7.9c0-1.5-.2-2.6-.5-3.5.3-.4.9-.7 2-1.2l.7-.1c.9 0 1.4.4 1.7 1a10 10 0 0 1 5.8-1.9c5.9 0 7 3 7 8.3v7l.1 6.7c-.6.6-1.5.7-4.6.7a4 4 0 0 1-.5-2.1V30c0-3.4-.8-4.6-3.2-4.6-1.4 0-2.7.8-3.6 1.9zm24.7-5.7c3 .2 4.4 1.5 4.6 2.1 0 .6-.4 1.7-.9 2.4l-.9-.2-1.5-.4c-.7-.3-1.4-.4-2.1-.4-1.7 0-2.7.9-2.7 2.2 0 .7.3 1.4 1.3 2.2l2 1.4 2.7 2c2 1.7 2.9 3.3 2.9 5.3 0 4.5-3.6 6.7-8.2 6.7-3 0-5.7-.9-6.2-2.3 0-.7.4-1.8.9-2.5h.5c.4 0 .9.1 1.4.4v-.1c1 .4 2.2.7 3.3.7l.9-.1c1.4-.1 2.3-1.1 2.3-2.5 0-1.1-.5-1.9-1.8-2.8l-.6-.4c-1.1-.7-2.3-1.7-3.2-2.5l-1.2-.9c-1.5-1.5-2.2-2.9-2.2-4.6 0-3.7 3-5.9 7.5-5.9l1.2.2zm-110.1-3.4s.5-3.2 1.9-5.1c1.5-2.1 3.9-3.3 5.5-1.3 1.2 1.4.9 2.9-1.6 4.5-3.1 1.9-5.8 1.9-5.8 1.9z"
-            ></path>
-          </svg>
+    <header
+      id="header"
+      class="header"
+      role="banner">
+      <div class="header-inner wrapper">
+        <div class="brand">
+          <h1 class="brand-title">
+            <a href="index.html">Uni<em>Claude</em></a>
+          </h1>
+          <p class="brand-meta">Unicode 15.1</p>
         </div>
 
-        <div class="header-actions">
-          <a href="quiz.html" class="btn btn-secondary btn-cta">
-            Jouer au Quiz 🎮
-          </a>
-          <a
-            href="https://github.com/alsacreations/uniclaude"
-            class="btn btn-primary btn-cta"
-            title="voir le repo sur Github"
+        <form
+          id="search"
+          class="search"
+          role="search"
+          aria-label="Recherche de caractères Unicode"
+          action="index.html">
+          <label
+            for="searchInput"
+            class="search-label"
+            >Chercher</label
           >
-            GitHub&nbsp;
-            <svg
-              width="20"
-              height="20"
-              viewBox="0 0 1024 1024"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                fill-rule="evenodd"
-                clip-rule="evenodd"
-                d="M8 0C3.58 0 0 3.58 0 8C0 11.54 2.29 14.53 5.47 15.59C5.87 15.66 6.02 15.42 6.02 15.21C6.02 15.02 6.01 14.39 6.01 13.72C4 14.09 3.48 13.23 3.32 12.78C3.23 12.55 2.84 11.84 2.5 11.65C2.22 11.5 1.82 11.13 2.49 11.12C3.12 11.11 3.57 11.7 3.72 11.94C4.44 13.15 5.59 12.81 6.05 12.6C6.12 12.08 6.33 11.73 6.56 11.53C4.78 11.33 2.92 10.64 2.92 7.58C2.92 6.71 3.23 5.99 3.74 5.43C3.66 5.23 3.38 4.41 3.82 3.31C3.82 3.31 4.49 3.1 6.02 4.13C6.66 3.95 7.34 3.86 8.02 3.86C8.7 3.86 9.38 3.95 10.02 4.13C11.55 3.09 12.22 3.31 12.22 3.31C12.66 4.41 12.38 5.23 12.3 5.43C12.81 5.99 13.12 6.7 13.12 7.58C13.12 10.65 11.25 11.33 9.47 11.53C9.76 11.78 10.01 12.26 10.01 13.01C10.01 14.08 10 14.94 10 15.21C10 15.42 10.15 15.67 10.55 15.59C13.71 14.53 16 11.53 16 8C16 3.58 12.42 0 8 0Z"
-                transform="scale(64)"
-                fill="#ffff"
-              />
-            </svg>
-          </a>
-        </div>
+          <div class="search-field">
+            <input
+              type="search"
+              id="searchInput"
+              class="search-input"
+              name="search"
+              placeholder="pop, guillemet, U+2026…"
+              autocomplete="off"
+              spellcheck="false"
+              aria-describedby="searchHelp" />
+            <button
+              type="button"
+              id="clearSearch"
+              class="clear-btn"
+              aria-label="Effacer la recherche">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+                focusable="false">
+                <path d="M18 6 6 18M6 6l12 12" />
+              </svg>
+            </button>
+          </div>
+          <p
+            id="searchHelp"
+            class="visually-hidden">
+            Par nom français ou anglais, code hexadécimal, entité HTML, ou en
+            collant le caractère lui-même. Les résultats s’affichent pendant la
+            saisie.
+          </p>
+        </form>
+
+        <nav
+          id="navigation"
+          class="navigation"
+          role="navigation"
+          aria-label="Navigation principale">
+          <ul>
+            <li><a href="quiz.html">Quiz</a></li>
+            <li>
+              <a href="https://github.com/alsacreations/uniclaude"
+                >Code source sur GitHub</a
+              >
+            </li>
+            <li>
+              <button
+                type="button"
+                id="themeToggle"
+                class="theme-toggle"
+                aria-pressed="false">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                  focusable="false">
+                  <circle
+                    cx="12"
+                    cy="12"
+                    r="9" />
+                  <path
+                    d="M12 3a9 9 0 0 0 0 18z"
+                    fill="currentColor" />
+                </svg>
+                Thème sombre
+              </button>
+            </li>
+          </ul>
+        </nav>
       </div>
-      <h1>🦄 UniClaude</h1>
-      <p class="subtitle">Explorateur de caractères Unicode pour les humains</p>
     </header>
 
     <main
-      role="main"
       id="main"
-      tabindex="-1"
+      class="main wrapper"
       role="main"
-      id="main"
-      tabindex="-1"
-    >
-      <section
-        class="search-section"
-        role="search"
-        aria-label="Recherche de caractères Unicode"
-      >
-        <div class="search-container">
-          <label for="searchInput" class="visually-hidden"
-            >Rechercher un caractère</label
+      tabindex="-1">
+      <article
+        id="specimen"
+        class="specimen"
+        aria-labelledby="specimenName">
+        <p class="specimen-meta">
+          <span id="specimenHex">U+2026</span>
+          <span id="specimenBlock">General Punctuation</span>
+        </p>
+
+        <figure class="specimen-figure">
+          <div
+            class="specimen-stage"
+            aria-hidden="true">
+            <div class="specimen-em">
+              <span class="em-bracket"></span>
+              <span class="em-label">em box</span>
+              <span
+                class="metric"
+                data-metric="ascender"
+                ><span class="metric-label"
+                  >ascender <span class="metric-value"></span></span
+              ></span>
+              <span
+                class="metric"
+                data-metric="cap"
+                ><span class="metric-label"
+                  >cap height <span class="metric-value"></span></span
+              ></span>
+              <span
+                class="metric"
+                data-metric="xheight"
+                ><span class="metric-label"
+                  >x-height <span class="metric-value"></span></span
+              ></span>
+              <span
+                class="metric"
+                data-metric="baseline"
+                ><span class="metric-label"
+                  >baseline <span class="metric-value">0 em</span></span
+                ></span
+              >
+              <span
+                class="metric"
+                data-metric="descender"
+                ><span class="metric-label"
+                  >descender <span class="metric-value"></span></span
+              ></span>
+              <span
+                id="specimenGlyph"
+                class="specimen-glyph"
+                >…</span
+              >
+            </div>
+          </div>
+          <figcaption>
+            Métriques mesurées sur la fonte Instrument Serif, en fraction de
+            cadratin (em). Un émoji est dessiné par la fonte du système&#8239;:
+            il peut déborder de ces repères.
+          </figcaption>
+        </figure>
+
+        <div class="specimen-head">
+          <div>
+            <h2
+              id="specimenName"
+              class="specimen-name">
+              horizontal ellipsis
+            </h2>
+            <p
+              id="specimenAka"
+              class="specimen-aka"></p>
+          </div>
+          <div
+            class="specimen-actions"
+            data-layout="cluster">
+            <button
+              type="button"
+              id="specimenCopy"
+              class="btn is-accent">
+              Copier le caractère
+            </button>
+            <button
+              type="button"
+              id="specimenFavorite"
+              class="btn"
+              aria-pressed="false">
+              <span
+                class="star"
+                aria-hidden="true"
+                >☆</span
+              >
+              Favori
+            </button>
+          </div>
+        </div>
+
+        <div class="specimen-details">
+          <section aria-labelledby="contextTitle">
+            <h3
+              id="contextTitle"
+              class="eyebrow">
+              En situation
+            </h3>
+            <p
+              class="sample is-serif"
+              data-sample></p>
+            <p
+              class="sample is-sans"
+              data-sample></p>
+            <p
+              class="sample is-mono"
+              data-sample></p>
+          </section>
+          <section aria-labelledby="codesTitle">
+            <h3
+              id="codesTitle"
+              class="eyebrow">
+              Codes, un clic pour copier
+            </h3>
+            <ul
+              id="specimenCodes"
+              class="codes"></ul>
+          </section>
+        </div>
+      </article>
+
+      <aside
+        class="browser"
+        role="complementary"
+        aria-label="Parcourir les caractères">
+        <details
+          id="favoritesSection"
+          class="favorites hidden"
+          open>
+          <summary class="favorites-title">Favoris</summary>
+          <ul
+            id="favoritesGrid"
+            class="favorites-list"></ul>
+          <p
+            id="favoritesEmpty"
+            class="favorites-empty">
+            Aucun favori pour le moment. Utilisez le bouton Favori de la fiche
+            pour en ajouter.
+          </p>
+        </details>
+
+        <div class="block-filter">
+          <label
+            for="blockFilter"
+            class="eyebrow"
+            >Bloc Unicode</label
           >
-          <input
-            type="text"
-            id="searchInput"
-            placeholder="Rechercher par caractère, nom, code hexa, entité HTML..."
-            autocomplete="off"
-            autofocus
-          />
+          <div class="select-wrap">
+            <select id="blockFilter">
+              <option value="">Tous les blocs</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="stats hidden">
+          <p
+            id="statsDisplay"
+            class="stats-count"
+            role="status"></p>
           <button
-            id="clearSearch"
-            class="clear-btn"
-            aria-label="Effacer la recherche"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="20"
-              height="20"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              aria-hidden="true"
-            >
-              <line x1="18" y1="6" x2="6" y2="18"></line>
-              <line x1="6" y1="6" x2="18" y2="18"></line>
-            </svg>
+            type="button"
+            id="resetButton"
+            class="btn is-chip">
+            Réinitialiser
           </button>
         </div>
 
-        <div class="stats hidden" role="status" aria-live="polite">
-          <span id="statsDisplay"></span>
-          <button type="button" id="resetButton">Reset</button>
-        </div>
-      </section>
-
-      <section
-        class="characters-section"
-        aria-label="Grille des caractères Unicode"
-      >
-        <!-- Section des favoris -->
-        <details id="favoritesSection" class="favorites-section hidden" open>
-          <summary class="details-title">⭐ Favoris</summary>
-          <div class="favorites-content">
-            <div id="favoritesGrid" class="favorites-grid" role="list">
-              <!-- Les favoris seront générés ici -->
-            </div>
-            <p class="favorites-empty" id="favoritesEmpty">
-              Aucun favori pour le moment. Cliquez sur ⭐ pour ajouter des
-              caractères.
-            </p>
-          </div>
-        </details>
-
-        <!-- <div class="keyboard-help" id="keyboardHelp">
-          <p>
-            <strong>Navigation au clavier :</strong>
-            Utilisez les <kbd>flèches</kbd> pour naviguer, <kbd>Entrée</kbd> ou
-            <kbd>Espace</kbd> pour copier un caractère. <kbd>Home</kbd> et
-            <kbd>End</kbd> pour aller au début/fin.
-          </p>
-        </div> -->
+        <section
+          id="charactersGrid"
+          class="characters"
+          aria-label="Caractères Unicode">
+          <!-- Les caractères seront générés ici -->
+        </section>
 
         <div
-          id="charactersGrid"
-          class="characters-grid"
-          role="grid"
-          aria-describedby="keyboardHelp"
-        >
-          <!-- Les caractères seront générés ici -->
+          id="loadingSpinner"
+          class="loading"
+          role="status">
+          <span
+            class="spinner"
+            aria-hidden="true"></span>
+          <p>Génération des caractères Unicode…</p>
         </div>
-      </section>
-
-      <div class="filters">
-        <label for="blockFilter">Filtrer par bloc :</label>
-        <select id="blockFilter">
-          <option value="">Tous les blocs</option>
-        </select>
-      </div>
-
-      <div id="loadingSpinner" class="loading" role="status" aria-live="polite">
-        <div class="spinner" aria-hidden="true"></div>
-        <p>Génération des caractères Unicode...</p>
-      </div>
+      </aside>
     </main>
 
     <div
       id="copyNotification"
       class="copy-notification"
       role="status"
-      aria-live="polite"
-      aria-atomic="true"
-    >
-      <span class="copied-char" aria-hidden="true"></span>
-      <span class="copied-text">Copié !</span>
+      aria-atomic="true">
+      <span
+        class="copied-char"
+        aria-hidden="true"></span>
+      <span class="copied-text">Copié&#8239;!</span>
     </div>
 
-    <!-- Annonce ARIA pour les favoris -->
+    <!-- Annonces pour les lecteurs d'écran (favoris) -->
     <div
       id="favoritesAnnouncement"
       class="visually-hidden"
       role="status"
-      aria-live="polite"
-      aria-atomic="true"
-    ></div>
+      aria-atomic="true"></div>
 
-    <footer class="footer" role="contentinfo" role="contentinfo">
-      <div class="footer-alsa">
-        <p>UniClaude est un projet <i>fifoo</i> conçu avec ❤️ par</p>
-        <a class="logo-link" href="https://www.alsacreations.fr/"
-          ><svg
-            role="img"
-            aria-labelledby="title-alsacreations-footer"
-            class="logo-alsacreations"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 241 45"
-            width="241"
-            height="45"
-          >
-            <title id="title-alsacreations-footer">Alsacreations</title>
-            <g class="logo-alsacreations-pepins-group">
+    <footer
+      id="footer"
+      class="footer"
+      role="contentinfo">
+      <div class="footer-inner wrapper">
+        <div class="footer-alsa">
+          <p>UniClaude est un projet <i>fifoo</i> conçu avec soin par</p>
+          <a
+            class="logo-link"
+            href="https://www.alsacreations.fr/"
+            translate="no"
+            ><svg
+              role="img"
+              aria-labelledby="title-alsacreations-footer"
+              class="logo-alsacreations"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 241 45"
+              width="241"
+              height="45">
+              <title id="title-alsacreations-footer">Alsacreations</title>
+              <g class="logo-alsacreations-pepins-group">
+                <path
+                  class="logo-alsacreations-pepins-outer"
+                  d="M232 18.5c2.2-1.1 3.5-2.4 4-4 .6-1.9-.2-4-2.2-6.2-1.7-2-3.5-2.7-5.3-2.2-1.5.4-2.9 1.7-4.2 3.7-1.1 1.7-2 3.8-2.6 5.9-.6 2.1-.7 3.6-.4 4.5.9.3 2.3.3 4.5 0a14 14 0 0 0 6.2-1.7zm-12-9.1c1.1-2.2 1.4-4 .8-5.5-.7-1.9-2.5-3.1-5.4-3.7-2.5-.6-4.4-.1-5.5 1.4-.9 1.2-1.4 3-1.2 5.5.1 2.1.6 4.2 1.5 6.4.8 2 1.5 3.3 2.3 3.9a20 20 0 0 0 7.5-8zm13.6 24.3c2.4.4 4.2.1 5.5-.9 1.5-1.2 2.1-3.3 1.8-6.3-.2-2.6-1.3-4.1-3-4.8-1.5-.5-3.3-.3-5.6.6-1.9.8-3.8 1.9-5.5 3.3-1.7 1.4-2.7 2.5-2.9 3.5.6.7 1.7 1.6 3.6 2.6 2.1 1.1 4.1 1.8 6.1 2z"></path>
+                <path
+                  class="logo-alsacreations-pepins-inner"
+                  d="M214.4 7.8c-.9-.2-1.5 0-1.9.5-.3.4-.5 1.1-.4 1.9.1.7.2 1.5.5 2.2.2.7.6 1.2.8 1.4l1.2-.9c.6-.6 1.1-1.2 1.4-1.8.4-.7.5-1.4.3-1.9-.3-.7-1-1.2-1.9-1.4zm14 6.1c-.6-.7-1.2-.9-1.9-.7-.5.1-1 .6-1.5 1.3-.4.6-.7 1.3-.9 2.1-.2.7-.2 1.2-.1 1.5h1.5c.8-.1 1.5-.3 2.2-.7.7-.4 1.2-.8 1.4-1.4.2-.6 0-1.4-.7-2.1zm4.9 14c-.1-.9-.4-1.5-1.1-1.7-.5-.2-1.2-.1-2 .2-.7.3-1.4.7-1.9 1.2-.6.5-.9.9-1.1 1.2.2.2.6.6 1.3.9.7.4 1.5.6 2.2.7.8.1 1.5 0 1.9-.3.6-.5.9-1.2.7-2.2z"></path>
+              </g>
               <path
-                class="logo-alsacreations-pepins-outer"
-                d="M232 18.5c2.2-1.1 3.5-2.4 4-4 .6-1.9-.2-4-2.2-6.2-1.7-2-3.5-2.7-5.3-2.2-1.5.4-2.9 1.7-4.2 3.7-1.1 1.7-2 3.8-2.6 5.9-.6 2.1-.7 3.6-.4 4.5.9.3 2.3.3 4.5 0a14 14 0 0 0 6.2-1.7zm-12-9.1c1.1-2.2 1.4-4 .8-5.5-.7-1.9-2.5-3.1-5.4-3.7-2.5-.6-4.4-.1-5.5 1.4-.9 1.2-1.4 3-1.2 5.5.1 2.1.6 4.2 1.5 6.4.8 2 1.5 3.3 2.3 3.9a20 20 0 0 0 7.5-8zm13.6 24.3c2.4.4 4.2.1 5.5-.9 1.5-1.2 2.1-3.3 1.8-6.3-.2-2.6-1.3-4.1-3-4.8-1.5-.5-3.3-.3-5.6.6-1.9.8-3.8 1.9-5.5 3.3-1.7 1.4-2.7 2.5-2.9 3.5.6.7 1.7 1.6 3.6 2.6 2.1 1.1 4.1 1.8 6.1 2z"
-              ></path>
+                class="logo-alsacreations-alsa"
+                d="m1.5 25.1-.1-.6.1-.6a12.7 12.7 0 0 1 9-2.2c3.8.2 5 2.6 5 6.7v2l-.1 5.3-.1 4s-.1 2.1 1.3 1.9l-.1 2c-.4.6-1.5 1.3-2.9 1.3a4 4 0 0 1-2.8-1.4l-1.1.7c-1.1.6-2.3.7-3.6.7-3.1 0-6.1-2-6.1-6.3 0-5.7 5.3-7.4 8.2-7.7l1.4-.1 1.1.1v-2.3c0-2-.2-3-1.7-3s-3.3.7-4.7 1.2c-.5.2-1.1.4-1.7.4-.8-.9-1-1.7-1.1-2.1zm9.1 12V34h-.5l-1.5.1h.1c-2 .4-3.8 1.3-3.8 4 0 2.2.9 3 2 3h.3c1.2 0 2.7-.6 3.2-1.4l-.1.1.1-.6c.2-.5.2-1.2.2-2.1zm16.2 4.4-.1 2c-.5.7-1.5 1.3-2.9 1.3-.7 0-1.4-.3-1.9-.7a3 3 0 0 1-1.4-2.5v-24l-.1-5.2c.6-1.3 2.3-1.5 4.6-1.5.3 1.1.3 2.2.3 4.6v24.1c.1.1 0 2.2 1.5 1.9zm11.6-19.9c3 .2 4.4 1.5 4.6 2.1 0 .6-.4 1.7-.9 2.4l-.9-.2-1.5-.4c-.7-.3-1.4-.4-2.1-.4-1.7 0-2.7.9-2.7 2.2 0 .7.3 1.4 1.3 2.2l2 1.4 2.7 2c2 1.7 2.9 3.3 2.9 5.3 0 4.5-3.6 6.7-8.2 6.7-3 0-5.7-.9-6.2-2.3 0-.7.4-1.8.9-2.5h.5c.4 0 .9.1 1.4.4v-.1c1 .4 2.2.7 3.3.7l.9-.1c1.4-.1 2.3-1.1 2.3-2.5 0-1.1-.5-1.9-1.8-2.8l-.6-.4c-1.1-.7-2.3-1.7-3.2-2.5l-1.3-.8c-1.5-1.5-2.2-2.9-2.2-4.6 0-3.7 3-5.9 7.5-5.9l1.3.1zm8.9 3.5-.1-.6.1-.6a12.7 12.7 0 0 1 9-2.2c3.8.2 5 2.6 5 6.7v2l-.1 5.3-.1 4s-.1 2.1 1.3 1.9l-.1 2c-.4.6-1.5 1.3-2.9 1.3a4 4 0 0 1-2.8-1.4l-1.1.7c-1.1.6-2.3.7-3.6.7-3.2 0-6.2-2-6.2-6.4 0-5.7 5.3-7.4 8.2-7.7l1.4-.1 1.1.1v-2.3c0-2-.2-3-1.7-3s-3.3.7-4.7 1.2c-.5.2-1.1.4-1.7.4-.8-.8-.9-1.6-1-2zm9.1 12V34h-.5l-1.5.1h.1c-2 .4-3.8 1.3-3.8 4 0 2.2.9 3 2 3h.3c1.2 0 2.7-.6 3.2-1.4l-.1.1.1-.6c.2-.5.2-1.2.2-2.1z"></path>
               <path
-                class="logo-alsacreations-pepins-inner"
-                d="M214.4 7.8c-.9-.2-1.5 0-1.9.5-.3.4-.5 1.1-.4 1.9.1.7.2 1.5.5 2.2.2.7.6 1.2.8 1.4l1.2-.9c.6-.6 1.1-1.2 1.4-1.8.4-.7.5-1.4.3-1.9-.3-.7-1-1.2-1.9-1.4zm14 6.1c-.6-.7-1.2-.9-1.9-.7-.5.1-1 .6-1.5 1.3-.4.6-.7 1.3-.9 2.1-.2.7-.2 1.2-.1 1.5h1.5c.8-.1 1.5-.3 2.2-.7.7-.4 1.2-.8 1.4-1.4.2-.6 0-1.4-.7-2.1zm4.9 14c-.1-.9-.4-1.5-1.1-1.7-.5-.2-1.2-.1-2 .2-.7.3-1.4.7-1.9 1.2-.6.5-.9.9-1.1 1.2.2.2.6.6 1.3.9.7.4 1.5.6 2.2.7.8.1 1.5 0 1.9-.3.6-.5.9-1.2.7-2.2z"
-              ></path>
-            </g>
-            <path
-              class="logo-alsacreations-alsa"
-              d="m1.5 25.1-.1-.6.1-.6a12.7 12.7 0 0 1 9-2.2c3.8.2 5 2.6 5 6.7v2l-.1 5.3-.1 4s-.1 2.1 1.3 1.9l-.1 2c-.4.6-1.5 1.3-2.9 1.3a4 4 0 0 1-2.8-1.4l-1.1.7c-1.1.6-2.3.7-3.6.7-3.1 0-6.1-2-6.1-6.3 0-5.7 5.3-7.4 8.2-7.7l1.4-.1 1.1.1v-2.3c0-2-.2-3-1.7-3s-3.3.7-4.7 1.2c-.5.2-1.1.4-1.7.4-.8-.9-1-1.7-1.1-2.1zm9.1 12V34h-.5l-1.5.1h.1c-2 .4-3.8 1.3-3.8 4 0 2.2.9 3 2 3h.3c1.2 0 2.7-.6 3.2-1.4l-.1.1.1-.6c.2-.5.2-1.2.2-2.1zm16.2 4.4-.1 2c-.5.7-1.5 1.3-2.9 1.3-.7 0-1.4-.3-1.9-.7a3 3 0 0 1-1.4-2.5v-24l-.1-5.2c.6-1.3 2.3-1.5 4.6-1.5.3 1.1.3 2.2.3 4.6v24.1c.1.1 0 2.2 1.5 1.9zm11.6-19.9c3 .2 4.4 1.5 4.6 2.1 0 .6-.4 1.7-.9 2.4l-.9-.2-1.5-.4c-.7-.3-1.4-.4-2.1-.4-1.7 0-2.7.9-2.7 2.2 0 .7.3 1.4 1.3 2.2l2 1.4 2.7 2c2 1.7 2.9 3.3 2.9 5.3 0 4.5-3.6 6.7-8.2 6.7-3 0-5.7-.9-6.2-2.3 0-.7.4-1.8.9-2.5h.5c.4 0 .9.1 1.4.4v-.1c1 .4 2.2.7 3.3.7l.9-.1c1.4-.1 2.3-1.1 2.3-2.5 0-1.1-.5-1.9-1.8-2.8l-.6-.4c-1.1-.7-2.3-1.7-3.2-2.5l-1.3-.8c-1.5-1.5-2.2-2.9-2.2-4.6 0-3.7 3-5.9 7.5-5.9l1.3.1zm8.9 3.5-.1-.6.1-.6a12.7 12.7 0 0 1 9-2.2c3.8.2 5 2.6 5 6.7v2l-.1 5.3-.1 4s-.1 2.1 1.3 1.9l-.1 2c-.4.6-1.5 1.3-2.9 1.3a4 4 0 0 1-2.8-1.4l-1.1.7c-1.1.6-2.3.7-3.6.7-3.2 0-6.2-2-6.2-6.4 0-5.7 5.3-7.4 8.2-7.7l1.4-.1 1.1.1v-2.3c0-2-.2-3-1.7-3s-3.3.7-4.7 1.2c-.5.2-1.1.4-1.7.4-.8-.8-.9-1.6-1-2zm9.1 12V34h-.5l-1.5.1h.1c-2 .4-3.8 1.3-3.8 4 0 2.2.9 3 2 3h.3c1.2 0 2.7-.6 3.2-1.4l-.1.1.1-.6c.2-.5.2-1.2.2-2.1z"
-            ></path>
-            <path
-              class="logo-alsacreations-creations"
-              d="M80.8 23.6c0 .6-.3 1.7-.7 2.5h-.6a4 4 0 0 1-1.5-.3 7 7 0 0 0-2.5-.6 1 1 0 0 0-.5.1c-2.7.2-4.6 2.7-4.6 8.1 0 6.5 2.7 7.9 5.4 7.9 1.5 0 3.1-.5 4.3-1.1l.4 1.8c-.1.7-.6 1.5-1.2 2-.9.7-2.5 1.1-4.4 1.1-5.2 0-9.8-1.9-9.8-11.4 0-4.9 1.7-8 3.5-9.8a9.8 9.8 0 0 1 6.7-2.3c3-.1 5.3 1.3 5.5 2zm8.3 3.5V42c0 .7-.1 1.3-.5 1.9-.7.6-1.5.6-4.5.6l.1-9.3.1-7.9c0-1.5-.3-2.6-.6-3.5.4-.4 1-.7 2-1.2l.7-.1c1 0 1.4.3 1.7.9.9-.6 1.9-1.1 2.8-1.4.8-.3 1.9-.5 2.7-.4 1.4.1 2.2.6 2.3 1.3 0 .7-.2 2-.9 3l-.7.1-1.4-.1-.6-.1c-1.3.1-2.3.4-3.2 1.3zM113 39.7c.3.9.4 1.9.5 2.3-.1 1-1.6 2-3 2.5h.1c-.7.2-2.2.5-3.6.5-2.3 0-4.8-.4-6.6-2.3-1.7-1.8-2.6-4.8-2.6-8.6 0-9.2 4-12.5 9.3-12.5 4.5 0 6.8 2.7 7.2 6.7l.1 2.3-.2 2.8c-.6.5-2.3 1.1-3.6 1.3-1.5.2-3.8.3-6.1.3h-1.7c.1 4.7 2 6.2 5 6.2 1.6-.2 3.4-.5 5.2-1.5zM106.2 25c-1.7.2-3.3 2.2-3.6 6.4h1.3l4.5-.1.7-.2.2-1.4-.1-.5v-.5c-.2-2.5-1.1-3.7-2.8-3.7h-.2zm11.7.1-.1-.6.1-.6a12.7 12.7 0 0 1 9-2.2c3.8.2 5 2.6 5 6.7v2l-.1 5.3-.1 4s-.1 2.1 1.3 1.9l-.1 2c-.4.6-1.5 1.3-2.9 1.3a4 4 0 0 1-2.8-1.4l-1.1.7c-1.1.6-2.3.7-3.6.7-3.2 0-6.2-2-6.2-6.4 0-5.7 5.3-7.4 8.2-7.7l1.4-.1 1.1.1v-2.3c0-2-.2-3-1.7-3s-3.3.7-4.7 1.2c-.5.2-1.1.4-1.7.4-.7-.8-.9-1.6-1-2zm9.1 12V34h-.5l-1.5.1h.1c-2 .4-3.8 1.3-3.8 4 0 2.2.9 3 2 3h.3c1.2 0 2.7-.6 3.2-1.4l-.1.1.1-.6c.2-.5.2-1.2.2-2.1zm21.6 3.4.1 1.1-.1 1.3c-.1.3-.3.6-.7.9a8.7 8.7 0 0 1-4.4 1.1c-4.7 0-5.6-4.2-5.6-8V25.8a6.3 6.3 0 0 1-2.8-.7c0-1.4.1-1.4.4-1.7.7-.5 1.4-.7 2-.9l.7-.1.2-4.1c.4-1.1 1.6-2 4.5-2.2v.7l-.1 5.3h6c-.1 2.7-.5 3.2-1.5 3.5l-1.2.1-3.3.1-.1 6.1.1 3v2.2c.2 2.5.5 4.2 2 4.2.6.1 2.5-.6 2.8-.9l1 .1zm6.3-29c2.2 0 2.7.9 2.6 2.7-.1 1.8-.6 3-2.8 3-1.9 0-2.7-.9-2.7-2.9 0-1.8 1-2.8 2.9-2.8zm1.9 10.6c.4.7.4 1.4.4 3.4v15.8c0 1.1-.2 1.9-.7 2.6-.3.5-1.1.5-4.4.6v-3.8l.1-4.3v-8.2l-.1-4.8c.6-1.2 2.2-1.3 4.3-1.3h.4zm13.6 22.8c-6 0-9.4-3.5-9.4-11.7 0-8.1 4-11.8 9.5-11.8 6.2 0 9.3 4 9.3 11.5 0 8-4 12-9.4 12zm.1-3.4c2.2 0 4.1-2.1 4.1-8.3 0-5.9-1.7-8.1-4.2-8.1-2.2 0-4.2 2.2-4.2 8 0 6.3 1.8 8.4 4.3 8.4zm18-14.2.1-.1v14.5c0 1.1-.1 1.6-.6 2.3-.7.6-1.2.6-3.3.6h-1.2l.1-9.3v-7.9c0-1.5-.2-2.6-.5-3.5.3-.4.9-.7 2-1.2l.7-.1c.9 0 1.4.4 1.7 1a10 10 0 0 1 5.8-1.9c5.9 0 7 3 7 8.3v7l.1 6.7c-.6.6-1.5.7-4.6.7a4 4 0 0 1-.5-2.1V30c0-3.4-.8-4.6-3.2-4.6-1.4 0-2.7.8-3.6 1.9zm24.7-5.7c3 .2 4.4 1.5 4.6 2.1 0 .6-.4 1.7-.9 2.4l-.9-.2-1.5-.4c-.7-.3-1.4-.4-2.1-.4-1.7 0-2.7.9-2.7 2.2 0 .7.3 1.4 1.3 2.2l2 1.4 2.7 2c2 1.7 2.9 3.3 2.9 5.3 0 4.5-3.6 6.7-8.2 6.7-3 0-5.7-.9-6.2-2.3 0-.7.4-1.8.9-2.5h.5c.4 0 .9.1 1.4.4v-.1c1 .4 2.2.7 3.3.7l.9-.1c1.4-.1 2.3-1.1 2.3-2.5 0-1.1-.5-1.9-1.8-2.8l-.6-.4c-1.1-.7-2.3-1.7-3.2-2.5l-1.2-.9c-1.5-1.5-2.2-2.9-2.2-4.6 0-3.7 3-5.9 7.5-5.9l1.2.2zm-110.1-3.4s.5-3.2 1.9-5.1c1.5-2.1 3.9-3.3 5.5-1.3 1.2 1.4.9 2.9-1.6 4.5-3.1 1.9-5.8 1.9-5.8 1.9z"
-            ></path>
-          </svg>
-        </a>
+                class="logo-alsacreations-creations"
+                d="M80.8 23.6c0 .6-.3 1.7-.7 2.5h-.6a4 4 0 0 1-1.5-.3 7 7 0 0 0-2.5-.6 1 1 0 0 0-.5.1c-2.7.2-4.6 2.7-4.6 8.1 0 6.5 2.7 7.9 5.4 7.9 1.5 0 3.1-.5 4.3-1.1l.4 1.8c-.1.7-.6 1.5-1.2 2-.9.7-2.5 1.1-4.4 1.1-5.2 0-9.8-1.9-9.8-11.4 0-4.9 1.7-8 3.5-9.8a9.8 9.8 0 0 1 6.7-2.3c3-.1 5.3 1.3 5.5 2zm8.3 3.5V42c0 .7-.1 1.3-.5 1.9-.7.6-1.5.6-4.5.6l.1-9.3.1-7.9c0-1.5-.3-2.6-.6-3.5.4-.4 1-.7 2-1.2l.7-.1c1 0 1.4.3 1.7.9.9-.6 1.9-1.1 2.8-1.4.8-.3 1.9-.5 2.7-.4 1.4.1 2.2.6 2.3 1.3 0 .7-.2 2-.9 3l-.7.1-1.4-.1-.6-.1c-1.3.1-2.3.4-3.2 1.3zM113 39.7c.3.9.4 1.9.5 2.3-.1 1-1.6 2-3 2.5h.1c-.7.2-2.2.5-3.6.5-2.3 0-4.8-.4-6.6-2.3-1.7-1.8-2.6-4.8-2.6-8.6 0-9.2 4-12.5 9.3-12.5 4.5 0 6.8 2.7 7.2 6.7l.1 2.3-.2 2.8c-.6.5-2.3 1.1-3.6 1.3-1.5.2-3.8.3-6.1.3h-1.7c.1 4.7 2 6.2 5 6.2 1.6-.2 3.4-.5 5.2-1.5zM106.2 25c-1.7.2-3.3 2.2-3.6 6.4h1.3l4.5-.1.7-.2.2-1.4-.1-.5v-.5c-.2-2.5-1.1-3.7-2.8-3.7h-.2zm11.7.1-.1-.6.1-.6a12.7 12.7 0 0 1 9-2.2c3.8.2 5 2.6 5 6.7v2l-.1 5.3-.1 4s-.1 2.1 1.3 1.9l-.1 2c-.4.6-1.5 1.3-2.9 1.3a4 4 0 0 1-2.8-1.4l-1.1.7c-1.1.6-2.3.7-3.6.7-3.2 0-6.2-2-6.2-6.4 0-5.7 5.3-7.4 8.2-7.7l1.4-.1 1.1.1v-2.3c0-2-.2-3-1.7-3s-3.3.7-4.7 1.2c-.5.2-1.1.4-1.7.4-.7-.8-.9-1.6-1-2zm9.1 12V34h-.5l-1.5.1h.1c-2 .4-3.8 1.3-3.8 4 0 2.2.9 3 2 3h.3c1.2 0 2.7-.6 3.2-1.4l-.1.1.1-.6c.2-.5.2-1.2.2-2.1zm21.6 3.4.1 1.1-.1 1.3c-.1.3-.3.6-.7.9a8.7 8.7 0 0 1-4.4 1.1c-4.7 0-5.6-4.2-5.6-8V25.8a6.3 6.3 0 0 1-2.8-.7c0-1.4.1-1.4.4-1.7.7-.5 1.4-.7 2-.9l.7-.1.2-4.1c.4-1.1 1.6-2 4.5-2.2v.7l-.1 5.3h6c-.1 2.7-.5 3.2-1.5 3.5l-1.2.1-3.3.1-.1 6.1.1 3v2.2c.2 2.5.5 4.2 2 4.2.6.1 2.5-.6 2.8-.9l1 .1zm6.3-29c2.2 0 2.7.9 2.6 2.7-.1 1.8-.6 3-2.8 3-1.9 0-2.7-.9-2.7-2.9 0-1.8 1-2.8 2.9-2.8zm1.9 10.6c.4.7.4 1.4.4 3.4v15.8c0 1.1-.2 1.9-.7 2.6-.3.5-1.1.5-4.4.6v-3.8l.1-4.3v-8.2l-.1-4.8c.6-1.2 2.2-1.3 4.3-1.3h.4zm13.6 22.8c-6 0-9.4-3.5-9.4-11.7 0-8.1 4-11.8 9.5-11.8 6.2 0 9.3 4 9.3 11.5 0 8-4 12-9.4 12zm.1-3.4c2.2 0 4.1-2.1 4.1-8.3 0-5.9-1.7-8.1-4.2-8.1-2.2 0-4.2 2.2-4.2 8 0 6.3 1.8 8.4 4.3 8.4zm18-14.2.1-.1v14.5c0 1.1-.1 1.6-.6 2.3-.7.6-1.2.6-3.3.6h-1.2l.1-9.3v-7.9c0-1.5-.2-2.6-.5-3.5.3-.4.9-.7 2-1.2l.7-.1c.9 0 1.4.4 1.7 1a10 10 0 0 1 5.8-1.9c5.9 0 7 3 7 8.3v7l.1 6.7c-.6.6-1.5.7-4.6.7a4 4 0 0 1-.5-2.1V30c0-3.4-.8-4.6-3.2-4.6-1.4 0-2.7.8-3.6 1.9zm24.7-5.7c3 .2 4.4 1.5 4.6 2.1 0 .6-.4 1.7-.9 2.4l-.9-.2-1.5-.4c-.7-.3-1.4-.4-2.1-.4-1.7 0-2.7.9-2.7 2.2 0 .7.3 1.4 1.3 2.2l2 1.4 2.7 2c2 1.7 2.9 3.3 2.9 5.3 0 4.5-3.6 6.7-8.2 6.7-3 0-5.7-.9-6.2-2.3 0-.7.4-1.8.9-2.5h.5c.4 0 .9.1 1.4.4v-.1c1 .4 2.2.7 3.3.7l.9-.1c1.4-.1 2.3-1.1 2.3-2.5 0-1.1-.5-1.9-1.8-2.8l-.6-.4c-1.1-.7-2.3-1.7-3.2-2.5l-1.2-.9c-1.5-1.5-2.2-2.9-2.2-4.6 0-3.7 3-5.9 7.5-5.9l1.2.2zm-110.1-3.4s.5-3.2 1.9-5.1c1.5-2.1 3.9-3.3 5.5-1.3 1.2 1.4.9 2.9-1.6 4.5-3.1 1.9-5.8 1.9-5.8 1.9z"></path>
+            </svg>
+          </a>
+        </div>
+        <p>
+          <span id="totalCharsCount"></span> · Données Unicode version&nbsp;15.1
+          ·
+          <a href="https://unicode.org">Unicode.org</a>
+        </p>
       </div>
-      <p>
-        <span id="totalCharsCount"></span> • Données Unicode version 15.1 •
-        <a
-          href="https://unicode.org"
-          target="_blank"
-          rel="noopener"
-          aria-label="Unicode.org (ouvre une nouvelle fenêtre)"
-          >Unicode.org</a
-        >
-      </p>
     </footer>
-
     <script src="assets/js/app.js"></script>
   </body>
 </html>

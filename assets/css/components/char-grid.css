@@ -1,0 +1,218 @@
+/* Colonne de navigation et grille de caractères */
+
+@scope (.main) {
+  :scope {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-48);
+    align-items: flex-start;
+    padding-block: var(--spacing-32) var(--spacing-64);
+  }
+
+  .specimen {
+    flex: 999 1 36rem;
+  }
+
+  .browser {
+    display: grid;
+    flex: 1 1 24rem;
+    row-gap: var(--spacing-24);
+    min-width: 0;
+  }
+}
+
+@scope (.characters) {
+  :scope {
+    display: grid;
+    row-gap: var(--spacing-32);
+  }
+
+  .characters-title {
+    font-family: var(--font-display);
+    font-size: var(--text-30);
+  }
+
+  .block-section {
+    display: grid;
+    row-gap: var(--spacing-12);
+  }
+
+  .block-title {
+    --button-background-color: transparent;
+    --button-border-color: transparent;
+    --button-text-color: var(--contrast);
+    --button-background-color-hover: transparent;
+    --button-text-color-hover: var(--accent-1);
+
+    justify-content: flex-start;
+    width: auto;
+    min-height: var(--target-size);
+    padding-inline: 0;
+    font-family: var(--font-display);
+    font-size: var(--text-24);
+    text-align: start;
+    white-space: normal;
+    text-decoration: underline;
+    text-decoration-color: var(--border-medium);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.2em;
+  }
+
+  .try {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-8);
+    align-items: center;
+    color: var(--contrast-muted);
+    font-size: var(--text-14);
+  }
+
+  .load-more-container {
+    display: grid;
+    row-gap: var(--spacing-8);
+    justify-items: start;
+  }
+
+  .remaining-info {
+    color: var(--contrast-muted);
+    font-size: var(--text-14);
+  }
+
+  .empty {
+    color: var(--contrast-muted);
+  }
+}
+
+/* Une grille : liste de cases, bordures fines partagées */
+@scope (.char-list) {
+  :scope {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(4.5rem, 1fr));
+    margin: 0;
+    padding: 0;
+    border-block-start: 1px solid var(--border-light);
+    border-inline-start: 1px solid var(--border-light);
+    list-style: none;
+  }
+
+  .char-item {
+    position: relative;
+    border-block-end: 1px solid var(--border-light);
+    border-inline-end: 1px solid var(--border-light);
+  }
+
+  .char-card {
+    --button-background-color: transparent;
+    --button-border-color: transparent;
+    --button-text-color: var(--contrast);
+    --button-background-color-hover: var(--base-2);
+    --button-text-color-hover: var(--accent-2);
+    --button-border-radius: 0;
+
+    position: relative;
+    display: grid;
+    width: 100%;
+    aspect-ratio: 1;
+    padding: 0;
+    font-family: var(--font-display);
+    font-size: var(--text-32);
+    line-height: 1;
+    place-items: center;
+  }
+
+  .char-card:focus-visible {
+    outline-offset: -4px;
+  }
+
+  .char-card.is-selected {
+    --button-background-color: var(--accent-1);
+    --button-text-color: var(--base);
+    --button-background-color-hover: var(--accent-1);
+    --button-text-color-hover: var(--base);
+  }
+
+  .char-hex {
+    position: absolute;
+    inset-block-end: 0.3rem;
+    inset-inline-start: 0.4rem;
+    color: var(--contrast-muted);
+    font-family: var(--font-mono);
+    font-size: var(--text-10);
+  }
+
+  .char-card:hover .char-hex {
+    color: var(--accent-2);
+  }
+
+  .char-card.is-selected .char-hex {
+    color: var(--base);
+  }
+
+  .space-symbol {
+    padding: 0.15rem 0.3rem;
+    border: 1px dashed currentcolor;
+    font-family: var(--font-mono);
+    font-size: var(--text-11);
+  }
+
+  /* Étoile : raccourci souris. Au clavier, le bouton Favori de la fiche fait la même chose. */
+  .favorite-btn {
+    --button-background-color: transparent;
+    --button-border-color: transparent;
+    --button-text-color: var(--contrast-muted);
+    --button-background-color-hover: transparent;
+    --button-text-color-hover: var(--accent-2);
+
+    position: absolute;
+    inset-block-start: 0;
+    inset-inline-end: 0;
+    width: 1.75rem;
+    height: 1.75rem;
+    padding: 0;
+    font-size: var(--text-14);
+    opacity: 0%;
+  }
+
+  .char-item:hover .favorite-btn,
+  .favorite-btn.is-favorite {
+    opacity: 100%;
+  }
+
+  .favorite-btn.is-favorite {
+    --button-text-color: var(--accent-2);
+  }
+
+  .char-item:has(.is-selected) .favorite-btn {
+    --button-text-color: var(--base);
+  }
+
+  @media (hover: none) {
+    .favorite-btn {
+      opacity: 100%;
+    }
+  }
+}
+
+@scope (.loading) {
+  :scope {
+    display: flex;
+    gap: var(--spacing-12);
+    align-items: center;
+    color: var(--contrast-muted);
+  }
+
+  .spinner {
+    width: 1.25rem;
+    height: 1.25rem;
+    border: 2px solid var(--border-light);
+    border-block-start-color: var(--accent-1);
+    border-radius: var(--radius-full);
+    animation: spin 0.8s linear infinite;
+  }
+}
+
+@keyframes spin {
+  to {
+    rotate: 1turn;
+  }
+}

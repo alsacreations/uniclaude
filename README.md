@@ -108,7 +108,8 @@ Partagez une recherche en copiant simplement l'URL :
 
 ### 🎨 Interface agréable
 
-- **Design moderne** en mode sombre reposant pour les yeux
+- **Spécimen typographique** : le caractère choisi s’affiche en grand avec ses métriques (ascender, cap height, x-height, baseline, descender)
+- **Thème clair ou sombre**, selon votre système ou au choix
 - **Responsive** : fonctionne sur ordinateur, tablette et mobile
 - **Navigation au clavier** complète pour plus d'efficacité
 - **Accessible** : conforme aux normes WCAG et RGAA
@@ -272,10 +273,14 @@ uniclaude/
 ├── index.html                  # Page principale
 ├── assets/
 │   ├── css/
-│   │   ├── app.css            # Point d'entrée CSS
-│   │   ├── theme.css          # Variables et thème
+│   │   ├── app.css            # Point d'entrée CSS (@layer)
+│   │   ├── theme.css          # Primitives (couleurs, tailles…)
+│   │   ├── theme-tokens.css   # Tokens sémantiques (light-dark)
 │   │   ├── natives.css        # Styles éléments natifs
-│   │   └── styles.css         # Composants application
+│   │   ├── styles.css         # Styles de base
+│   │   ├── components/        # Un fichier par composant (@scope)
+│   │   └── utilities.css      # Utilitaires minimaux
+│   ├── fonts/                 # Instrument Serif (SIL OFL), hébergée localement
 │   ├── js/
 │   │   ├── app.js             # Logique principale
 │   │   └── emoji-data.json    # Données enrichies emojis

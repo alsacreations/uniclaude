@@ -1,0 +1,107 @@
+/* Recherche (en-tête) et filtres (colonne de navigation) */
+
+@scope (.search) {
+  :scope {
+    display: flex;
+    gap: var(--spacing-12);
+    align-items: center;
+  }
+
+  .search-label {
+    color: var(--contrast-muted);
+    font-size: var(--text-15);
+    white-space: nowrap;
+  }
+
+  .search-field {
+    position: relative;
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+
+  .search-input {
+    min-height: var(--target-size);
+    padding-inline: var(--spacing-20) var(--spacing-48);
+    font-size: var(--text-16);
+  }
+
+  .clear-btn {
+    --button-background-color: transparent;
+    --button-border-color: transparent;
+    --button-text-color: var(--contrast-muted);
+    --button-background-color-hover: var(--border-light);
+
+    position: absolute;
+    inset-block-start: 50%;
+    inset-inline-end: 0.125rem;
+    width: 2.5rem;
+    height: 2.5rem;
+    padding: 0;
+    border-radius: var(--radius-full);
+    translate: 0 -50%;
+    visibility: hidden;
+  }
+
+  .clear-btn.visible {
+    visibility: visible;
+  }
+}
+
+@scope (.block-filter) {
+  :scope {
+    display: grid;
+    row-gap: var(--spacing-8);
+  }
+
+  .select-wrap {
+    position: relative;
+
+    /* Chevron décoratif, suit la couleur du texte (thème clair ou sombre) */
+    &::after {
+      content: "";
+      position: absolute;
+      inset-block-start: 50%;
+      inset-inline-end: var(--spacing-16);
+      width: 1rem;
+      height: 1rem;
+      translate: 0 -50%;
+      background-color: currentcolor;
+      mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><path fill='none' stroke='black' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/></svg>")
+        center / contain no-repeat;
+      pointer-events: none;
+    }
+  }
+
+  select {
+    min-height: var(--target-size);
+    padding-inline-start: var(--spacing-20);
+    background-image: none;
+
+    &:not(:disabled) {
+      background-image: none;
+    }
+  }
+}
+
+@scope (.stats) {
+  :scope {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-8) var(--spacing-16);
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .stats-count {
+    padding: var(--spacing-4) var(--spacing-12);
+    border-radius: var(--radius-full);
+    background-color: var(--accent-2);
+    color: var(--base);
+    font-family: var(--font-mono);
+    font-size: var(--text-13);
+  }
+
+  .stats-count:empty {
+    display: none;
+  }
+}

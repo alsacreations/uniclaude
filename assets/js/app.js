@@ -1366,7 +1366,8 @@ function updateURL(searchTerm, blockName) {
     : window.location.pathname;
 
   // Utiliser pushState pour mettre à jour l'URL sans recharger la page
-  window.history.pushState(
+  // replaceState : pas une entrée d'historique par frappe au clavier
+  window.history.replaceState(
     { search: searchTerm, block: blockName },
     "",
     newURL
@@ -1391,7 +1392,7 @@ function applyURLParams() {
     }
 
     // Lancer la recherche/filtrage
-    filterCharacters(search.toLowerCase().trim(), block);
+    filterCharacters(search.trim(), block);
   }
 }
 
@@ -1407,7 +1408,9 @@ async function initializeApp() {
   populateBlockFilter();
   await generateCharacters();
   setupEventListeners();
+  setupThemeToggle();
   initFavoritesEvents(); // Initialiser les favoris
+  setupSpecimen(); // Fiche du caractère sélectionné
 
   // Appliquer les paramètres URL s'ils existent
   const urlParams = getURLParams();
@@ -1810,6 +1813,36 @@ function getRandomCharacters(characters, count) {
 // ===== Affichage des caractères =====
 let currentDisplayLimit = 500; // Limite initiale d'affichage
 const DISPLAY_INCREMENT = 200; // Nombre de caractères à ajouter à chaque clic
+const NNBSP = " "; // espace fine insécable
+const NBSP = " "; // espace insécable
+
+/**
+ * Indique si un caractère est un espace (invisible à l'écran)
+ * @param {Object} charData
+ * @returns {boolean}
+ */
+function isSpaceChar(charData) {
+  const cp = charData.codePoint;
+  return (
+    (charData.name || "").toLowerCase().includes("space") ||
+    (cp >= 0x2000 && cp <= 0x200a) ||
+    cp === 0x0020 ||
+    cp === 0x00a0 ||
+    cp === 0x202f ||
+    cp === 0x205f ||
+    cp === 0x3000
+  );
+}
+
+/**
+ * Crée une liste de cases de caractères
+ * @returns {HTMLUListElement}
+ */
+function createCharList() {
+  const list = document.createElement("ul");
+  list.className = "char-list";
+  return list;
+}
 
 function displayCharacters(characters, append = false) {
   // Réinitialiser la limite si on ne fait pas un append
@@ -1818,250 +1851,441 @@ function displayCharacters(characters, append = false) {
     charactersGrid.innerHTML = "";
   }
 
-  // Limiter l'affichage pour de meilleures performances
-  const displayLimit = currentDisplayLimit;
   const startIndex = append
     ? charactersGrid.querySelectorAll(".char-card").length
     : 0;
-  const charsToDisplay = characters.slice(startIndex, displayLimit);
+  const charsToDisplay = characters.slice(startIndex, currentDisplayLimit);
 
-  // Supprimer le bouton "Afficher plus" existant s'il y en a un
-  const existingLoadMoreBtn = charactersGrid.querySelector(".load-more-btn");
-  if (existingLoadMoreBtn) {
-    existingLoadMoreBtn.remove();
+  // Supprimer le bloc "Afficher plus" existant s'il y en a un
+  const existingLoadMore = charactersGrid.querySelector(
+    ".load-more-container"
+  );
+  if (existingLoadMore) {
+    existingLoadMore.remove();
+  }
+
+  if (characters.length === 0) {
+    const empty = document.createElement("p");
+    empty.className = "empty";
+    empty.textContent =
+      "Essayez un autre mot, en français ou en anglais, ou un code comme 2026.";
+    charactersGrid.appendChild(empty);
+    return;
+  }
+
+  let list = charactersGrid.querySelector(".char-list");
+  if (!list) {
+    list = createCharList();
+    charactersGrid.appendChild(list);
   }
 
   charsToDisplay.forEach((charData, index) => {
-    const card = createCharacterCard(charData, startIndex + index);
-    charactersGrid.appendChild(card);
+    list.appendChild(createCharacterCard(charData, startIndex + index));
   });
 
   // Ajouter le bouton "Afficher plus" s'il reste des caractères
-  if (characters.length > displayLimit) {
+  if (characters.length > currentDisplayLimit) {
+    const remaining = characters.length - currentDisplayLimit;
+    const next = Math.min(DISPLAY_INCREMENT, remaining);
+
     const loadMoreContainer = document.createElement("div");
     loadMoreContainer.className = "load-more-container";
 
     const loadMoreBtn = document.createElement("button");
     loadMoreBtn.type = "button";
-    loadMoreBtn.className = "load-more-btn";
-    loadMoreBtn.textContent = `Afficher plus (${Math.min(
-      DISPLAY_INCREMENT,
-      characters.length - displayLimit
-    )} caractères supplémentaires)`;
-    loadMoreBtn.setAttribute(
-      "aria-label",
-      `Afficher ${Math.min(
-        DISPLAY_INCREMENT,
-        characters.length - displayLimit
-      )} caractères supplémentaires sur ${
-        characters.length - displayLimit
-      } restants`
-    );
+    loadMoreBtn.className = "btn is-chip load-more-btn";
+    loadMoreBtn.textContent = `Afficher ${next}${NBSP}caractères de plus`;
 
     loadMoreBtn.addEventListener("click", () => {
+      const firstNew = list.children.length;
       currentDisplayLimit += DISPLAY_INCREMENT;
       displayCharacters(characters, true);
+      // Le focus va au premier caractère ajouté
+      const newCard = list.children[firstNew]?.querySelector(".char-card");
+      if (newCard) {
+        list
+          .querySelectorAll(".char-card[tabindex='0']")
+          .forEach((card) => card.setAttribute("tabindex", "-1"));
+        newCard.setAttribute("tabindex", "0");
+        newCard.focus();
+      }
     });
-
-    loadMoreContainer.appendChild(loadMoreBtn);
 
     const remainingInfo = document.createElement("p");
     remainingInfo.className = "remaining-info";
-    remainingInfo.textContent = `${displayLimit} affichés sur ${characters.length.toLocaleString(
+    remainingInfo.textContent = `${currentDisplayLimit.toLocaleString(
       "fr-FR"
-    )} caractères`;
-    loadMoreContainer.appendChild(remainingInfo);
+    )} affichés sur ${characters.length.toLocaleString("fr-FR")}`;
 
+    loadMoreContainer.append(loadMoreBtn, remainingInfo);
     charactersGrid.appendChild(loadMoreContainer);
   }
 }
 
-function displayPopularBlocks() {
-  console.log("🌟 Affichage des blocs populaires...");
-  console.log("Total de caractères:", allCharacters.length);
-  console.log("Blocs à afficher:", POPULAR_BLOCKS);
+const SEARCH_SUGGESTIONS = ["pop", "guillemet", "flèche", "cœur", "2026"];
 
+function displayPopularBlocks() {
   charactersGrid.innerHTML = "";
 
   // Introduction
-  const introSection = document.createElement("div");
-  introSection.className = "popular-blocks-intro";
-  introSection.innerHTML = `
-    <h2>
-      🌟 En manque d'idées ?
-    </h2>
-  `;
-  charactersGrid.appendChild(introSection);
+  const intro = document.createElement("h2");
+  intro.className = "characters-title";
+  intro.textContent = `En manque d’idées${NNBSP}?`;
+  charactersGrid.appendChild(intro);
+
+  // Suggestions de recherche
+  const tryRow = document.createElement("p");
+  tryRow.className = "try";
+  tryRow.append(`Essayez${NBSP}:`);
+  SEARCH_SUGGESTIONS.forEach((term) => {
+    const btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "btn is-chip";
+    btn.textContent = term;
+    btn.addEventListener("click", () => {
+      searchInput.value = term;
+      clearSearchBtn.classList.add("visible");
+      filterCharacters(term, currentBlock);
+      searchInput.focus();
+    });
+    tryRow.appendChild(btn);
+  });
+  charactersGrid.appendChild(tryRow);
 
   // Afficher chaque bloc populaire
   POPULAR_BLOCKS.forEach((blockConfig) => {
-    console.log(`\n📦 Traitement du bloc: ${blockConfig.displayName}`);
-    console.log(
-      `   Recherche des caractères avec blockName = "${blockConfig.blockName}"`
-    );
-
-    // Filtrer les caractères du bloc
     const blockChars = allCharacters.filter(
       (char) => char.blockName === blockConfig.blockName
     );
 
-    console.log(`   Trouvé ${blockChars.length} caractères`);
-
     if (blockChars.length === 0) {
-      console.log(`   ⚠️ Aucun caractère trouvé pour ce bloc!`);
       return;
     }
 
-    // Sélectionner aléatoirement les caractères
     const randomChars = getRandomCharacters(blockChars, blockConfig.count);
 
-    // Créer la section du bloc
-    const blockSection = document.createElement("div");
-    blockSection.className = "popular-block-section";
+    const blockSection = document.createElement("section");
+    blockSection.className = "block-section";
 
     // Titre du bloc (cliquable pour filtrer)
-    const blockTitleContainer = document.createElement("div");
-    blockTitleContainer.className = "popular-block-header";
-
+    const heading = document.createElement("h3");
     const blockTitle = document.createElement("button");
     blockTitle.type = "button";
-    blockTitle.className = "popular-block-title";
+    blockTitle.className = "block-title";
     blockTitle.textContent = blockConfig.displayName;
-    const filterLabel = `Filtrer par ${blockConfig.displayName}`;
-    blockTitle.setAttribute("aria-label", filterLabel);
-    blockTitle.setAttribute("title", filterLabel);
-
-    // Événement de clic pour appliquer le filtre
+    blockTitle.setAttribute(
+      "aria-label",
+      `${blockConfig.displayName}, afficher tout le bloc`
+    );
     blockTitle.addEventListener("click", () => {
-      // Sélectionner le bloc dans le filtre
       blockFilter.value = blockConfig.blockName;
       currentBlock = blockConfig.blockName;
-
-      // Appliquer le filtre
       filterCharacters("", blockConfig.blockName);
-
-      // Afficher les stats
-      statsContainer.classList.remove("hidden");
-
-      // Scroller vers le haut
-      window.scrollTo({ top: 0, behavior: "smooth" });
+      blockFilter.focus();
     });
+    heading.appendChild(blockTitle);
+    blockSection.appendChild(heading);
 
-    blockTitleContainer.appendChild(blockTitle);
-    blockSection.appendChild(blockTitleContainer);
-
-    // Grille des caractères
-    const blockGrid = document.createElement("div");
-    blockGrid.className = "popular-block-grid";
-
+    const list = createCharList();
     randomChars.forEach((charData, index) => {
-      const card = createCharacterCard(charData, index);
-      blockGrid.appendChild(card);
+      list.appendChild(createCharacterCard(charData, index));
     });
-
-    blockSection.appendChild(blockGrid);
+    blockSection.appendChild(list);
     charactersGrid.appendChild(blockSection);
   });
 }
 
+/**
+ * Crée une case de la grille : un bouton qui copie (et affiche la fiche),
+ * et, à côté (jamais dedans), un bouton étoile pour les favoris.
+ */
 function createCharacterCard(charData, index) {
+  const item = document.createElement("li");
+  item.className = "char-item";
+
   const card = document.createElement("button");
+  card.type = "button";
   card.className = "char-card";
-  card.setAttribute("data-char", charData.char);
-  card.setAttribute("data-codepoint", charData.codePoint);
-  card.setAttribute("data-index", index);
-  card.setAttribute("type", "button");
-
-  // Seul le premier bouton est tabbable, les autres utilisent la navigation par flèches
+  if (selectedCharacter && selectedCharacter.codePoint === charData.codePoint) {
+    card.classList.add("is-selected");
+  }
+  card.dataset.codepoint = charData.codePoint;
+  card.dataset.index = index;
+  // Un seul arrêt de tabulation par grille, les flèches font le reste
   card.setAttribute("tabindex", index === 0 ? "0" : "-1");
+  card.setAttribute("aria-label", `Copier ${charData.name}, U+${charData.hex}`);
 
-  // Label accessible pour le bouton
-  const accessibleLabel = `Copier ${charData.name}, code ${charData.hex}, entité ${charData.htmlEntity}`;
-  card.setAttribute("aria-label", accessibleLabel);
-
-  // Pour les espaces, afficher un symbole visible
-  let displayChar = charData.char;
-  const isSpace =
-    charData.name.toLowerCase().includes("space") ||
-    (charData.codePoint >= 0x2000 && charData.codePoint <= 0x200a) ||
-    charData.codePoint === 0x0020 ||
-    charData.codePoint === 0x00a0 ||
-    charData.codePoint === 0x202f ||
-    charData.codePoint === 0x205f ||
-    charData.codePoint === 0x3000;
-
-  if (isSpace) {
-    // Afficher un cadre avec "␣" (symbole open box U+2423) pour visualiser l'espace
-    displayChar = `<span class="space-symbol" aria-hidden="true">␣</span>`;
+  const glyph = document.createElement("span");
+  glyph.setAttribute("aria-hidden", "true");
+  if (isSpaceChar(charData)) {
+    glyph.className = "space-symbol";
+    glyph.textContent = "esp.";
+  } else {
+    glyph.textContent = charData.char;
   }
 
-  // Échapper l'entité HTML pour qu'elle s'affiche telle quelle
-  const escapedHtmlEntity = charData.htmlEntity
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;");
+  const hex = document.createElement("span");
+  hex.className = "char-hex";
+  hex.setAttribute("aria-hidden", "true");
+  hex.textContent = charData.hex;
 
-  // Échapper les caractères pour les attributs data
-  const escapedName = charData.name
-    .replace(/'/g, "\\'")
-    .replace(/"/g, "&quot;");
-
-  card.innerHTML = `
-        <button
-          class="favorite-btn ${
-            isFavorite(charData.codePoint) ? "is-favorite" : ""
-          }"
-          data-codepoint="${charData.codePoint}"
-          data-label-add="Ajouter ${escapedName} aux favoris"
-          data-label-remove="Retirer ${escapedName} des favoris"
-          aria-label="${
-            isFavorite(charData.codePoint)
-              ? `Retirer ${escapedName} des favoris`
-              : `Ajouter ${escapedName} aux favoris`
-          }"
-          title="${
-            isFavorite(charData.codePoint)
-              ? "Retirer des favoris"
-              : "Ajouter aux favoris"
-          }"
-          type="button"
-          tabindex="0"
-        >${isFavorite(charData.codePoint) ? "⭐" : "☆"}</button>
-        <div class="char-display" aria-hidden="true">${displayChar}</div>
-        <div class="char-info" aria-hidden="true">
-            <div class="char-code">U+${charData.hex}</div>
-            <div class="char-code" style="color: var(--secondary-color-on-dark);">${escapedHtmlEntity}</div>
-            <div class="char-name" title="${charData.name}">${
-    charData.name
-  }</div>
-        </div>
-    `;
-
-  // Événement pour copier le caractère
+  card.append(glyph, hex);
   card.addEventListener("click", () => copyToClipboard(charData));
 
-  // Événement pour le bouton favori (empêcher la propagation)
-  const favoriteBtn = card.querySelector(".favorite-btn");
-  if (favoriteBtn) {
-    favoriteBtn.addEventListener("click", (e) => toggleFavorite(e, charData));
+  const favoriteBtn = document.createElement("button");
+  favoriteBtn.type = "button";
+  favoriteBtn.className = "favorite-btn";
+  favoriteBtn.dataset.codepoint = charData.codePoint;
+  // Raccourci souris : au clavier, le bouton Favori de la fiche suffit
+  favoriteBtn.setAttribute("tabindex", "-1");
+  favoriteBtn.setAttribute("aria-label", `Favori : ${charData.name}`);
+  setFavoriteButtonState(favoriteBtn, isFavorite(charData.codePoint));
+  favoriteBtn.addEventListener("click", (e) => toggleFavorite(e, charData));
+
+  item.append(card, favoriteBtn);
+  return item;
+}
+
+function setFavoriteButtonState(btn, active) {
+  btn.classList.toggle("is-favorite", active);
+  btn.setAttribute("aria-pressed", active ? "true" : "false");
+  btn.textContent = active ? "★" : "☆";
+}
+
+// ===== Fiche « spécimen » du caractère sélectionné =====
+let selectedCharacter = null;
+let fontMetrics = {
+  // Valeurs de repli, remplacées par la mesure réelle de la fonte
+  asc: 0.88,
+  desc: 0.25,
+  ascender: 0.7,
+  cap: 0.64,
+  xheight: 0.42,
+  descender: 0.22,
+};
+
+const specimen = {
+  hex: document.getElementById("specimenHex"),
+  block: document.getElementById("specimenBlock"),
+  glyph: document.getElementById("specimenGlyph"),
+  name: document.getElementById("specimenName"),
+  aka: document.getElementById("specimenAka"),
+  copy: document.getElementById("specimenCopy"),
+  favorite: document.getElementById("specimenFavorite"),
+  codes: document.getElementById("specimenCodes"),
+  samples: document.querySelectorAll("[data-sample]"),
+  metrics: document.querySelectorAll(".metric"),
+};
+
+function getCharTags(charData) {
+  const tags = semanticTags[charData.decimal.toString(16).toUpperCase()];
+  return tags || { tags: [], tagsFr: [] };
+}
+
+/**
+ * Affiche un caractère dans la fiche
+ * @param {Object} charData
+ */
+function selectCharacter(charData) {
+  if (!charData) return;
+  selectedCharacter = charData;
+  const invisible = isSpaceChar(charData);
+
+  specimen.hex.textContent = `U+${charData.hex}`;
+  specimen.block.textContent = charData.block;
+  specimen.name.textContent = charData.name;
+
+  specimen.glyph.textContent = invisible ? "" : charData.char;
+  specimen.glyph.classList.toggle("is-invisible", invisible);
+
+  const { tags = [], tagsFr = [] } = getCharTags(charData);
+  const aka = (tagsFr.length ? tagsFr : tags).slice(0, 4).join(", ");
+  specimen.aka.textContent = aka ? `Aussi${NBSP}: ${aka}` : "";
+
+  const sample = invisible
+    ? `«${NNBSP}Bonjour${NNBSP}!${NNBSP}», dit-elle${NNBSP};`
+    : `Avant${charData.char}après, et la suite${charData.char}`;
+  specimen.samples.forEach((el) => (el.textContent = sample));
+
+  const utf8 = Array.from(new TextEncoder().encode(charData.char))
+    .map((b) => b.toString(16).toUpperCase().padStart(2, "0"))
+    .join(" ");
+  const codes = [
+    ["Entité HTML", charData.htmlEntity],
+    ["Décimal", `&#${charData.decimal};`],
+    ["CSS", `\\${charData.hex}`],
+    [
+      "JavaScript",
+      charData.codePoint > 0xffff ? `\\u{${charData.hex}}` : `\\u${charData.hex}`,
+    ],
+    ["UTF-8", utf8],
+  ];
+  specimen.codes.innerHTML = "";
+  codes.forEach(([label, value]) => {
+    const li = document.createElement("li");
+    const btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "code-row";
+    btn.innerHTML = `<span class="code-key"></span><span class="code-value"></span><span class="code-action">Copier<span class="visually-hidden"></span></span>`;
+    btn.querySelector(".code-key").textContent = label;
+    btn.querySelector(".code-value").textContent = value;
+    btn.querySelector(".visually-hidden").textContent = ` le code ${label}`;
+    btn.addEventListener("click", () => copyText(value, value));
+    li.appendChild(btn);
+    specimen.codes.appendChild(li);
+  });
+
+  updateSpecimenFavorite();
+
+  // Case sélectionnée dans la grille
+  charactersGrid.querySelectorAll(".char-card.is-selected").forEach((card) => {
+    card.classList.remove("is-selected");
+  });
+  charactersGrid
+    .querySelectorAll(`.char-card[data-codepoint="${charData.codePoint}"]`)
+    .forEach((card) => card.classList.add("is-selected"));
+}
+
+function updateSpecimenFavorite() {
+  if (!selectedCharacter) return;
+  const active = isFavorite(selectedCharacter.codePoint);
+  specimen.favorite.setAttribute("aria-pressed", active ? "true" : "false");
+  specimen.favorite.innerHTML = `<span class="star" aria-hidden="true">${
+    active ? "★" : "☆"
+  }</span> Favori`;
+}
+
+/**
+ * Mesure les métriques réelles de la fonte d'affichage (canvas)
+ */
+function measureFontMetrics() {
+  try {
+    const size = 200;
+    const ctx = document.createElement("canvas").getContext("2d");
+    ctx.font = `${size}px "Instrument Serif"`;
+    const H = ctx.measureText("H");
+    if (!H.fontBoundingBoxAscent) return;
+    fontMetrics = {
+      asc: H.fontBoundingBoxAscent / size,
+      desc: H.fontBoundingBoxDescent / size,
+      ascender: ctx.measureText("d").actualBoundingBoxAscent / size,
+      cap: H.actualBoundingBoxAscent / size,
+      xheight: ctx.measureText("x").actualBoundingBoxAscent / size,
+      descender: ctx.measureText("p").actualBoundingBoxDescent / size,
+    };
+  } catch (e) {
+    // On garde les valeurs de repli
+  }
+}
+
+/**
+ * Place les lignes de métriques. Avec line-height: 1, la ligne de base
+ * se trouve à asc + (1 - asc - desc) / 2 depuis le haut du cadratin.
+ */
+function renderMetrics() {
+  const m = fontMetrics;
+  const baseline = m.asc + (1 - m.asc - m.desc) / 2;
+  const format = (v) => v.toFixed(2).replace(/^0/, "");
+  const positions = {
+    ascender: [baseline - m.ascender, `${format(m.ascender)} em`],
+    cap: [baseline - m.cap, `${format(m.cap)} em`],
+    xheight: [baseline - m.xheight, `${format(m.xheight)} em`],
+    baseline: [baseline, "0 em"],
+    descender: [baseline + m.descender, `−${format(m.descender)} em`],
+  };
+  specimen.metrics.forEach((line) => {
+    const [top, value] = positions[line.dataset.metric];
+    line.style.setProperty("--top", top.toFixed(4));
+    line.querySelector(".metric-value").textContent = value;
+  });
+}
+
+function setupSpecimen() {
+  specimen.copy.addEventListener("click", () => {
+    if (selectedCharacter) copyToClipboard(selectedCharacter);
+  });
+  specimen.favorite.addEventListener("click", () => {
+    if (!selectedCharacter) return;
+    if (isFavorite(selectedCharacter.codePoint)) {
+      removeFromFavorites(selectedCharacter.codePoint);
+    } else {
+      addToFavorites(selectedCharacter);
+    }
+  });
+
+  renderMetrics();
+  if (document.fonts && document.fonts.load) {
+    document.fonts
+      .load('200px "Instrument Serif"')
+      .then(() => {
+        measureFontMetrics();
+        renderMetrics();
+      })
+      .catch(() => {});
   }
 
-  return card;
+  // Caractère affiché au chargement : les points de suspension
+  const initial =
+    allCharacters.find((c) => c.codePoint === 0x2026) || allCharacters[0];
+  selectCharacter(initial);
+}
+
+// ===== Thème clair / sombre =====
+const THEME_KEY = "uniclaude-theme";
+
+function currentTheme() {
+  const forced = document.documentElement.dataset.theme;
+  if (forced) return forced;
+  return window.matchMedia("(prefers-color-scheme: dark)").matches
+    ? "dark"
+    : "light";
+}
+
+function setupThemeToggle() {
+  const toggle = document.getElementById("themeToggle");
+  if (!toggle) return;
+  const sync = () =>
+    toggle.setAttribute(
+      "aria-pressed",
+      currentTheme() === "dark" ? "true" : "false"
+    );
+  sync();
+  toggle.addEventListener("click", () => {
+    const next = currentTheme() === "dark" ? "light" : "dark";
+    document.documentElement.dataset.theme = next;
+    try {
+      localStorage.setItem(THEME_KEY, next);
+    } catch (e) {}
+    sync();
+  });
 }
 
 // ===== Copie dans le presse-papier =====
-async function copyToClipboard(charData) {
+async function copyText(text, shown) {
   try {
-    await navigator.clipboard.writeText(charData.char);
-    showCopyNotification(charData.char);
+    await navigator.clipboard.writeText(text);
+    showCopyNotification(shown);
   } catch (err) {
     console.error("Erreur lors de la copie:", err);
-    // Fallback pour les navigateurs plus anciens
-    fallbackCopyToClipboard(charData.char);
+    // Repli pour les navigateurs plus anciens
+    fallbackCopyToClipboard(text, shown);
   }
 }
 
-function fallbackCopyToClipboard(text) {
+/**
+ * Copie un caractère et l'affiche dans la fiche
+ * @param {Object} charData
+ */
+async function copyToClipboard(charData) {
+  if (charData.codePoint !== undefined) {
+    const full =
+      allCharacters.find((c) => c.codePoint === charData.codePoint) || charData;
+    selectCharacter(full);
+  }
+  await copyText(charData.char, charData.char);
+}
+
+function fallbackCopyToClipboard(text, shown = text) {
   const textArea = document.createElement("textarea");
   textArea.value = text;
   textArea.style.position = "fixed";
@@ -2071,21 +2295,30 @@ function fallbackCopyToClipboard(text) {
 
   try {
     document.execCommand("copy");
-    showCopyNotification(text);
+    showCopyNotification(shown);
   } catch (err) {
-    console.error("Fallback: Erreur lors de la copie", err);
+    console.error("Repli : erreur lors de la copie", err);
   }
 
   document.body.removeChild(textArea);
 }
 
-function showCopyNotification(char) {
+let copyNotificationTimer = null;
+
+function showCopyNotification(shown) {
   const charSpan = copyNotification.querySelector(".copied-char");
-  charSpan.textContent = char;
+  const textSpan = copyNotification.querySelector(".copied-text");
+  // Pour un lecteur d'écran, on annonce ce qui a été copié
+  const label =
+    selectedCharacter && selectedCharacter.char === shown
+      ? selectedCharacter.name
+      : shown;
+  charSpan.textContent = shown.trim() ? shown : "esp.";
+  textSpan.textContent = `${label} copié${NNBSP}!`;
 
   copyNotification.classList.add("show");
-
-  setTimeout(() => {
+  clearTimeout(copyNotificationTimer);
+  copyNotificationTimer = setTimeout(() => {
     copyNotification.classList.remove("show");
   }, 2000);
 }
@@ -2096,6 +2329,11 @@ function setupEventListeners() {
   clearSearchBtn.addEventListener("click", clearSearch);
   blockFilter.addEventListener("change", handleBlockFilter);
   resetButton.addEventListener("click", resetFilters);
+
+  // Entrée dans le champ : pas de rechargement, la recherche est déjà faite
+  document.getElementById("search").addEventListener("submit", (e) => {
+    e.preventDefault();
+  });
 
   searchInput.addEventListener("input", (e) => {
     clearSearchBtn.classList.toggle("visible", e.target.value.length > 0);
@@ -2108,64 +2346,44 @@ function setupEventListeners() {
 // ===== Navigation par flèches dans la grille =====
 function setupGridNavigation() {
   charactersGrid.addEventListener("keydown", (e) => {
-    // Ne gérer que si on est sur un bouton de caractère
     if (!e.target.classList.contains("char-card")) return;
 
-    const cards = Array.from(
-      charactersGrid.querySelectorAll(".char-card[data-index]")
-    );
-    const currentIndex = parseInt(e.target.getAttribute("data-index"));
+    const list = e.target.closest(".char-list");
+    const cards = Array.from(list.querySelectorAll(".char-card"));
+    const currentIndex = cards.indexOf(e.target);
     let targetIndex = currentIndex;
 
-    // Calculer le nombre de colonnes (approximatif basé sur la largeur)
-    const gridComputedStyle = window.getComputedStyle(charactersGrid);
-    const gridColumnCount =
-      gridComputedStyle.gridTemplateColumns.split(" ").length;
+    // Nombre de colonnes réel de cette grille
+    const columns = window
+      .getComputedStyle(list)
+      .gridTemplateColumns.split(" ").length;
 
     switch (e.key) {
       case "ArrowRight":
-        e.preventDefault();
         targetIndex = Math.min(currentIndex + 1, cards.length - 1);
         break;
-
       case "ArrowLeft":
-        e.preventDefault();
         targetIndex = Math.max(currentIndex - 1, 0);
         break;
-
       case "ArrowDown":
-        e.preventDefault();
-        targetIndex = Math.min(
-          currentIndex + gridColumnCount,
-          cards.length - 1
-        );
+        targetIndex = Math.min(currentIndex + columns, cards.length - 1);
         break;
-
       case "ArrowUp":
-        e.preventDefault();
-        targetIndex = Math.max(currentIndex - gridColumnCount, 0);
+        targetIndex = Math.max(currentIndex - columns, 0);
         break;
-
       case "Home":
-        e.preventDefault();
         targetIndex = 0;
         break;
-
       case "End":
-        e.preventDefault();
         targetIndex = cards.length - 1;
         break;
-
       default:
-        return; // Ne rien faire pour les autres touches
+        return;
     }
 
-    // Déplacer le focus et mettre à jour les tabindex
+    e.preventDefault();
     if (targetIndex !== currentIndex && cards[targetIndex]) {
-      // Retirer le tabindex de l'élément actuel
       e.target.setAttribute("tabindex", "-1");
-
-      // Ajouter le tabindex au nouvel élément et focus
       cards[targetIndex].setAttribute("tabindex", "0");
       cards[targetIndex].focus();
     }
@@ -2173,14 +2391,12 @@ function setupGridNavigation() {
 }
 
 function handleSearch(e) {
-  const searchTerm = e.target.value.toLowerCase().trim();
-  filterCharacters(searchTerm, currentBlock);
+  filterCharacters(e.target.value.trim(), currentBlock);
 }
 
 function handleBlockFilter(e) {
   currentBlock = e.target.value;
-  const searchTerm = searchInput.value.toLowerCase().trim();
-  filterCharacters(searchTerm, currentBlock);
+  filterCharacters(searchInput.value.trim(), currentBlock);
 }
 
 // ===== Fonction de traduction français → anglais pour la recherche =====
@@ -2216,82 +2432,130 @@ function translateSearchTerm(searchTerm) {
   return Array.from(translatedTerms).join(" ");
 }
 
+/**
+ * Normalise une chaîne pour la comparaison : minuscules, sans accents,
+ * « œ » développé, apostrophe typographique ramenée à l'apostrophe droite
+ */
+function normalizeForSearch(str) {
+  return String(str)
+    .toLowerCase()
+    .replace(/œ/g, "oe")
+    .normalize("NFD")
+    .replace(/[̀-ͯ]/g, "")
+    .replace(/’/g, "'");
+}
+
+/**
+ * Prépare (une seule fois) les champs normalisés d'un caractère
+ */
+function getSearchFields(char) {
+  if (!char._search) {
+    const { tags = [], tagsFr = [] } = getCharTags(char);
+    char._search = {
+      hex: char.hex.toLowerCase(),
+      name: normalizeForSearch(char.name),
+      block: normalizeForSearch(char.block),
+      entity: normalizeForSearch(char.htmlEntity),
+      tags: [...tags, ...tagsFr].map(normalizeForSearch),
+    };
+  }
+  return char._search;
+}
+
+/**
+ * Score d'un mot pour un caractère (plus petit = plus pertinent, 99 = aucun).
+ * strict : mot issu de la traduction FR → EN, il doit commencer un mot
+ * (sinon « flèche » → « arrow » trouverait « n-arrow no-break space »).
+ */
+function scoreWord(char, word, strict) {
+  const f = getSearchFields(char);
+  let best = 99;
+
+  if (!strict) {
+    const hex = word.replace(/^u\+/, "");
+    if (/^[0-9a-f]{2,6}$/.test(hex)) {
+      if (hex === f.hex) best = 0;
+      else if (f.hex.startsWith(hex)) best = 1;
+    }
+    if (word === String(char.decimal)) best = Math.min(best, 1);
+    if (word.startsWith("&") && f.entity.startsWith(word)) {
+      best = Math.min(best, 1);
+    }
+  }
+
+  const i = f.name.indexOf(word);
+  if (i === 0) best = Math.min(best, 2);
+  else if (i > 0 && /[\s-]/.test(f.name.charAt(i - 1))) best = Math.min(best, 3);
+  else if (i > 0 && !strict) best = Math.min(best, 4);
+
+  for (const tag of f.tags) {
+    const j = tag.indexOf(word);
+    if (j === 0) best = Math.min(best, 5);
+    else if (j > 0 && !strict) best = Math.min(best, 6);
+  }
+
+  if (!strict && f.block.includes(word)) best = Math.min(best, 7);
+
+  return best;
+}
+
+/**
+ * Recherche : tous les mots doivent correspondre (ET),
+ * résultats triés par pertinence puis par code.
+ */
+function searchCharacters(characters, rawTerm) {
+  const term = rawTerm.trim();
+
+  // Caractère collé tel quel
+  const direct = characters.filter((c) => c.char === term);
+  if (direct.length) return direct;
+
+  const words = normalizeForSearch(term).split(/\s+/).filter(Boolean);
+  const candidatesFor = (word) => {
+    const translated = translateSearchTerm(word) || translateSearchTerm(normalizeForSearch(word));
+    return [
+      [word, false],
+      ...translated
+        .toLowerCase()
+        .split(/\s+/)
+        .filter(Boolean)
+        .map((t) => [t, true]),
+    ];
+  };
+  const wordCandidates = words.map(candidatesFor);
+
+  const scored = [];
+  for (const char of characters) {
+    let total = 0;
+    let matches = true;
+    for (const candidates of wordCandidates) {
+      let best = 99;
+      for (const [candidate, strict] of candidates) {
+        best = Math.min(best, scoreWord(char, candidate, strict));
+        if (best === 0) break;
+      }
+      if (best === 99) {
+        matches = false;
+        break;
+      }
+      total += best;
+    }
+    if (matches) scored.push({ char, total });
+  }
+
+  scored.sort((a, b) => a.total - b.total || a.char.codePoint - b.char.codePoint);
+  return scored.map((s) => s.char);
+}
+
 function filterCharacters(searchTerm, blockName) {
   let filtered = [...allCharacters];
 
-  // Filtrer par bloc
   if (blockName) {
     filtered = filtered.filter((char) => char.block === blockName);
   }
 
-  // Filtrer par terme de recherche
   if (searchTerm) {
-    // Traduire les mots français en anglais pour la recherche
-    const translatedTerms = translateSearchTerm(searchTerm);
-    // Diviser le terme de recherche en mots pour recherche sémantique
-    const searchWords = searchTerm.toLowerCase().split(/\s+/);
-
-    filtered = filtered.filter((char) => {
-      const matchesChar = char.char.toLowerCase().includes(searchTerm);
-      const matchesHex = char.hex.toLowerCase().includes(searchTerm);
-      const matchesDecimal = char.decimal.toString().includes(searchTerm);
-      const matchesName = char.name.toLowerCase().includes(searchTerm);
-      const matchesBlock = char.block.toLowerCase().includes(searchTerm);
-      const matchesHtmlEntity = char.htmlEntity
-        .toLowerCase()
-        .includes(searchTerm);
-
-      // Recherche additionnelle avec les termes traduits
-      let matchesTranslated = false;
-      if (translatedTerms) {
-        const translatedWords = translatedTerms.toLowerCase().split(/\s+/);
-        matchesTranslated = translatedWords.some(
-          (word) =>
-            char.name.toLowerCase().includes(word) ||
-            char.block.toLowerCase().includes(word)
-        );
-      }
-
-      // 🆕 Recherche sémantique par tags (CLDR)
-      let matchesSemanticTags = false;
-      const charCode = char.decimal.toString(16).toUpperCase();
-      const charTags = semanticTags[charCode];
-
-      if (charTags && searchWords.length > 0) {
-        // Combiner tous les tags (EN + FR)
-        const allTags = [
-          ...(charTags.tags || []),
-          ...(charTags.tagsFr || []),
-        ].map((tag) => tag.toLowerCase());
-
-        // Étendre les mots de recherche avec le dictionnaire FR_TO_EN
-        const extendedSearchWords = [...searchWords];
-        searchWords.forEach((word) => {
-          // Traduire via notre dictionnaire pour enrichir la recherche
-          const translated = translateSearchTerm(word);
-          if (translated) {
-            extendedSearchWords.push(...translated.toLowerCase().split(/\s+/));
-          }
-        });
-
-        // Vérifier si au moins un mot de recherche (ou sa traduction) correspond à un tag
-        // Important : on cherche si le TAG contient le MOT (pas l'inverse)
-        matchesSemanticTags = extendedSearchWords.some((word) =>
-          allTags.some((tag) => tag.includes(word))
-        );
-      }
-
-      return (
-        matchesChar ||
-        matchesHex ||
-        matchesDecimal ||
-        matchesName ||
-        matchesBlock ||
-        matchesHtmlEntity ||
-        matchesTranslated ||
-        matchesSemanticTags
-      );
-    });
+    filtered = searchCharacters(filtered, searchTerm);
   }
 
   filteredCharacters = filtered;
@@ -2299,51 +2563,54 @@ function filterCharacters(searchTerm, blockName) {
   // Mettre à jour l'URL avec les paramètres de recherche
   updateURL(searchTerm, blockName);
 
-  // Si aucun filtre n'est actif (pas de recherche ni de bloc), afficher les blocs populaires
+  // Sans filtre (ni recherche ni bloc) : blocs mis en avant
   if (!searchTerm && !blockName) {
     displayPopularBlocks();
     statsContainer.classList.add("hidden");
+    statsDisplay.textContent = "";
   } else {
     displayCharacters(filteredCharacters);
-    updateStats(filteredCharacters.length, allCharacters.length);
+    updateStats(filteredCharacters.length, searchTerm);
+    // Le meilleur résultat s'affiche dans la fiche
+    if (searchTerm && filteredCharacters.length) {
+      selectCharacter(filteredCharacters[0]);
+    }
   }
 }
 
 function clearSearch() {
   searchInput.value = "";
   clearSearchBtn.classList.remove("visible");
-  blockFilter.value = ""; // Réinitialiser aussi le filtre de bloc
-  currentBlock = "";
-  filterCharacters("", "");
+  filterCharacters("", currentBlock);
+  searchInput.focus();
 }
 
 function resetFilters() {
-  // Réinitialiser tous les filtres
   searchInput.value = "";
   clearSearchBtn.classList.remove("visible");
   blockFilter.value = "";
   currentBlock = "";
-
-  // Cacher les stats et réafficher les blocs populaires
-  statsContainer.classList.add("hidden");
-  displayPopularBlocks();
-
-  // Scroller vers le haut
-  window.scrollTo({ top: 0, behavior: "smooth" });
+  filterCharacters("", "");
+  searchInput.focus();
 }
 
-function updateStats(displayed, total) {
-  // Afficher les stats seulement lors de recherche/filtre
+function updateStats(count, searchTerm) {
   statsContainer.classList.remove("hidden");
-  statsDisplay.textContent = `${displayed.toLocaleString("fr-FR")} caractère${
-    displayed > 1 ? "s" : ""
-  } affiché${displayed > 1 ? "s" : ""} sur ${total.toLocaleString("fr-FR")}`;
+  if (count === 0) {
+    statsDisplay.textContent = `Aucun caractère ne correspond à «${NNBSP}${searchTerm}${NNBSP}»`;
+    return;
+  }
+  const n = count.toLocaleString("fr-FR");
+  statsDisplay.textContent =
+    count > 1
+      ? `${n}${NBSP}caractères ${searchTerm ? "trouvés" : "dans ce bloc"}`
+      : `1${NBSP}caractère ${searchTerm ? "trouvé" : "dans ce bloc"}`;
 }
 
 function updateTotalCharsCount(total) {
   totalCharsCount.textContent = `${total.toLocaleString(
     "fr-FR"
-  )} caractères Unicode disponibles`;
+  )}${NBSP}caractères Unicode disponibles`;
 }
 
 // ===== GESTION DES FAVORIS =====
@@ -2452,84 +2719,55 @@ function renderFavorites() {
   const favoritesGrid = document.getElementById("favoritesGrid");
   const favoritesEmpty = document.getElementById("favoritesEmpty");
 
+  favoritesGrid.innerHTML = "";
+
   if (favorites.length === 0) {
     favoritesSection.classList.add("hidden");
-    favoritesEmpty.style.display = "block";
-    favoritesGrid.innerHTML = "";
+    favoritesEmpty.hidden = false;
     return;
   }
 
   favoritesSection.classList.remove("hidden");
-  favoritesEmpty.style.display = "none";
+  favoritesEmpty.hidden = true;
 
-  favoritesGrid.innerHTML = favorites
-    .map((fav) => {
-      // Vérifier si c'est un espace
-      const isSpace =
-        fav.name.toLowerCase().includes("space") ||
-        (fav.codePoint >= 0x2000 && fav.codePoint <= 0x200a) ||
-        fav.codePoint === 0x0020 ||
-        fav.codePoint === 0x00a0 ||
-        fav.codePoint === 0x202f ||
-        fav.codePoint === 0x205f ||
-        fav.codePoint === 0x3000;
+  favorites.forEach((fav) => {
+    const item = document.createElement("li");
+    item.className = "favorite-item";
+    item.draggable = true;
+    item.dataset.codepoint = fav.codePoint;
+    item.addEventListener("dragstart", handleDragStart);
+    item.addEventListener("dragover", handleDragOver);
+    item.addEventListener("dragleave", handleDragLeave);
+    item.addEventListener("drop", handleDrop);
+    item.addEventListener("dragend", handleDragEnd);
 
-      // Afficher un symbole visible pour les espaces
-      const displayChar = isSpace
-        ? `<span class="space-symbol" aria-hidden="true">␣</span>`
-        : fav.char;
+    const copyBtn = document.createElement("button");
+    copyBtn.type = "button";
+    copyBtn.className = "favorite-item-btn";
+    copyBtn.setAttribute("aria-label", `Copier ${fav.name}, U+${fav.hex}`);
+    if (isSpaceChar(fav)) {
+      const symbol = document.createElement("span");
+      symbol.className = "space-symbol";
+      symbol.setAttribute("aria-hidden", "true");
+      symbol.textContent = "esp.";
+      copyBtn.appendChild(symbol);
+    } else {
+      copyBtn.textContent = fav.char;
+    }
+    copyBtn.addEventListener("click", () => copyToClipboard(fav));
 
-      // Échapper l'entité HTML pour affichage
-      const escapedHtmlEntity = fav.htmlEntity
-        .replace(/&/g, "&amp;")
-        .replace(/</g, "&lt;")
-        .replace(/>/g, "&gt;");
+    const removeBtn = document.createElement("button");
+    removeBtn.type = "button";
+    removeBtn.className = "remove-favorite";
+    removeBtn.setAttribute("aria-label", `Retirer ${fav.name} des favoris`);
+    removeBtn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18 6 6 18M6 6l12 12"/></svg>`;
+    removeBtn.addEventListener("click", () =>
+      removeFromFavorites(fav.codePoint)
+    );
 
-      // Échapper les attributs
-      const escapedName = fav.name.replace(/'/g, "\\'").replace(/"/g, "&quot;");
-
-      return `
-    <div class="favorite-item"
-         role="listitem"
-         draggable="true"
-         data-codepoint="${fav.codePoint}"
-         ondragstart="handleDragStart(event)"
-         ondragover="handleDragOver(event)"
-         ondragleave="handleDragLeave(event)"
-         ondrop="handleDrop(event)"
-         ondragend="handleDragEnd(event)">
-      <button
-        class="favorite-item-btn"
-        onclick="copyToClipboard({char: '${fav.char.replace(
-          /'/g,
-          "\\'"
-        )}', name: '${escapedName}'})"
-        title="Cliquer pour copier ${fav.name}"
-        aria-label="Copier ${fav.name}"
-      >
-        <div class="favorite-char">${displayChar}</div>
-        <div class="favorite-info">
-          <div class="favorite-code">U+${fav.hex}</div>
-          <div class="favorite-code" style="color: var(--secondary-color-on-dark);">${escapedHtmlEntity}</div>
-          <div class="favorite-name" title="${fav.name}">${fav.name}</div>
-        </div>
-      </button>
-      <button
-        class="remove-favorite"
-        onclick="event.stopPropagation(); removeFromFavorites(${fav.codePoint})"
-        aria-label="Retirer ${fav.name} des favoris"
-        title="Retirer des favoris"
-        type="button"
-      >
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <line x1="18" y1="6" x2="6" y2="18"></line>
-          <line x1="6" y1="6" x2="18" y2="18"></line>
-        </svg>
-      </button>
-    </div>
-  `;
-    })
-    .join("");
+    item.append(copyBtn, removeBtn);
+    favoritesGrid.appendChild(item);
+  });
 }
 
 // ===== GESTION DU DRAG & DROP POUR RÉORDONNER LES FAVORIS =====
@@ -2619,32 +2857,19 @@ function handleDragEnd(event) {
 // Mettre à jour l'état des boutons étoile
 function updateFavoriteButtons() {
   document.querySelectorAll(".favorite-btn").forEach((btn) => {
-    const codePoint = parseInt(btn.dataset.codepoint);
-    if (isFavorite(codePoint)) {
-      btn.classList.add("is-favorite");
-      btn.setAttribute("aria-label", btn.dataset.labelRemove);
-      btn.textContent = "⭐";
-    } else {
-      btn.classList.remove("is-favorite");
-      btn.setAttribute("aria-label", btn.dataset.labelAdd);
-      btn.textContent = "☆";
-    }
+    setFavoriteButtonState(btn, isFavorite(parseInt(btn.dataset.codepoint)));
   });
+  updateSpecimenFavorite();
 }
 
 // Basculer l'état favori d'un caractère
 function toggleFavorite(event, charData) {
-  event.stopPropagation(); // Empêcher la copie du caractère
-
-  const btn = event.currentTarget;
+  event.stopPropagation();
 
   if (isFavorite(charData.codePoint)) {
     removeFromFavorites(charData.codePoint);
   } else {
     addToFavorites(charData);
-    // Animation
-    btn.classList.add("adding");
-    setTimeout(() => btn.classList.remove("adding"), 400);
   }
 }
 

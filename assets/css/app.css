@@ -1,13 +1,28 @@
 /* Cascade Layers
-  config : reset + tokens + theme
-  base   : styles applicatifs
+  config     : reset + primitives + tokens + layouts + natifs
+  base       : styles de base (body, typo, liens…)
+  components : un fichier par composant, isolé avec @scope
+  utilities  : classes utilitaires minimales
   On utilise la forme @import url(...) layer(nom); au niveau racine. */
 
-@layer config, base; /* déclaration d'ordre explicite */
+@layer config, base, components, utilities; /* déclaration d'ordre explicite */
 
 @import url("reset.css") layer(config);
 @import url("theme.css") layer(config);
 @import url("theme-tokens.css") layer(config);
+@import url("fonts.css") layer(config);
 @import url("layouts.css") layer(config);
 @import url("natives.css") layer(config);
+
 @import url("styles.css") layer(base);
+
+@import url("components/header.css") layer(components);
+@import url("components/button.css") layer(components);
+@import url("components/search.css") layer(components);
+@import url("components/specimen.css") layer(components);
+@import url("components/char-grid.css") layer(components);
+@import url("components/favorites.css") layer(components);
+@import url("components/toast.css") layer(components);
+@import url("components/footer.css") layer(components);
+
+@import url("utilities.css") layer(utilities);

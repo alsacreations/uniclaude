@@ -1,0 +1,35 @@
+/* Pied de page */
+
+@scope (.footer) {
+  :scope {
+    border-block-start: 1px solid var(--border-light);
+    color: var(--contrast-muted);
+    font-size: var(--text-14);
+  }
+
+  .footer-inner {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-16) var(--spacing-32);
+    align-items: center;
+    justify-content: space-between;
+    padding-block: var(--spacing-24);
+  }
+
+  .footer-alsa {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-12);
+    align-items: center;
+  }
+
+  .logo-alsacreations {
+    width: auto;
+    height: 1.5rem;
+    fill: var(--contrast);
+  }
+
+  .logo-alsacreations-pepins-inner {
+    fill: var(--base);
+  }
+}
