@@ -1265,49 +1265,49 @@ const CHARACTER_NAMES = {
 const POPULAR_BLOCKS = [
   {
     name: "Arrows",
-    displayName: "Arrows",
+    displayName: "Flèches",
     blockName: "Arrows",
     count: 8,
   },
   {
     name: "Emoticons",
-    displayName: "Emoticons",
+    displayName: "Émoticônes",
     blockName: "Emoticons",
     count: 8,
   },
   {
     name: "Miscellaneous Symbols and Pictographs",
-    displayName: "Miscellaneous Symbols and Pictographs",
+    displayName: "Pictogrammes",
     blockName: "Miscellaneous Symbols and Pictographs",
     count: 8,
   },
   {
     name: "Basic Latin",
-    displayName: "Basic Latin",
+    displayName: "Latin de base",
     blockName: "Basic Latin",
     count: 8,
   },
   {
     name: "Number Forms",
-    displayName: "Number Forms",
+    displayName: "Nombres",
     blockName: "Number Forms",
     count: 8,
   },
   {
     name: "Dingbats",
-    displayName: "Dingbats",
+    displayName: "Ornements",
     blockName: "Dingbats",
     count: 8,
   },
   {
     name: "Supplemental Symbols and Pictographs",
-    displayName: "Supplemental Symbols and Pictographs",
+    displayName: "Pictogrammes supplémentaires",
     blockName: "Supplemental Symbols and Pictographs",
     count: 8,
   },
   {
     name: "Transport and Map Symbols",
-    displayName: "Transport and Map Symbols",
+    displayName: "Transports",
     blockName: "Transport and Map Symbols",
     count: 8,
   },
@@ -1990,47 +1990,50 @@ function displayPopularBlocks() {
   });
   charactersGrid.appendChild(tryRow);
 
-  // Afficher chaque bloc populaire
+  // Une seule pioche : quelques caractères de chaque bloc populaire, mélangés
+  const list = createCharList();
+  const draw = () => {
+    const picked = POPULAR_BLOCKS.flatMap((blockConfig) =>
+      getRandomCharacters(
+        allCharacters.filter((c) => c.blockName === blockConfig.blockName),
+        4
+      )
+    );
+    list.innerHTML = "";
+    // 25 cases : des lignes complètes sur 5 colonnes
+    getRandomCharacters(picked, 25).forEach((charData, index) => {
+      list.appendChild(createCharacterCard(charData, index));
+    });
+  };
+  draw();
+  charactersGrid.appendChild(list);
+
+  const redraw = document.createElement("button");
+  redraw.type = "button";
+  redraw.className = "btn is-chip redraw";
+  redraw.textContent = "Piocher d’autres caractères";
+  redraw.addEventListener("click", draw);
+  charactersGrid.appendChild(redraw);
+
+  // Les blocs eux-mêmes, en raccourcis vers le filtre
+  const blocksRow = document.createElement("p");
+  blocksRow.className = "try";
+  blocksRow.append(`Parcourir un bloc${NBSP}:`);
   POPULAR_BLOCKS.forEach((blockConfig) => {
-    const blockChars = allCharacters.filter(
-      (char) => char.blockName === blockConfig.blockName
-    );
-
-    if (blockChars.length === 0) {
-      return;
-    }
-
-    const randomChars = getRandomCharacters(blockChars, blockConfig.count);
-
-    const blockSection = document.createElement("section");
-    blockSection.className = "block-section";
-
-    // Titre du bloc (cliquable pour filtrer)
-    const heading = document.createElement("h3");
-    const blockTitle = document.createElement("button");
-    blockTitle.type = "button";
-    blockTitle.className = "block-title";
-    blockTitle.textContent = blockConfig.displayName;
-    blockTitle.setAttribute(
-      "aria-label",
-      `${blockConfig.displayName}, afficher tout le bloc`
-    );
-    blockTitle.addEventListener("click", () => {
+    const btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "btn is-chip";
+    btn.textContent = blockConfig.displayName;
+    btn.title = blockConfig.blockName;
+    btn.addEventListener("click", () => {
       blockFilter.value = blockConfig.blockName;
       currentBlock = blockConfig.blockName;
       filterCharacters("", blockConfig.blockName);
       blockFilter.focus();
     });
-    heading.appendChild(blockTitle);
-    blockSection.appendChild(heading);
-
-    const list = createCharList();
-    randomChars.forEach((charData, index) => {
-      list.appendChild(createCharacterCard(charData, index));
-    });
-    blockSection.appendChild(list);
-    charactersGrid.appendChild(blockSection);
+    blocksRow.appendChild(btn);
   });
+  charactersGrid.appendChild(blocksRow);
 }
 
 /**

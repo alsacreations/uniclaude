@@ -32,30 +32,9 @@
     font-size: var(--text-30);
   }
 
-  .block-section {
-    display: grid;
-    row-gap: var(--spacing-12);
-  }
-
-  .block-title {
-    --button-background-color: transparent;
-    --button-border-color: transparent;
-    --button-text-color: var(--contrast);
-    --button-background-color-hover: transparent;
-    --button-text-color-hover: var(--accent-1);
-
-    justify-content: flex-start;
-    width: auto;
-    min-height: var(--target-size);
-    padding-inline: 0;
-    font-family: var(--font-display);
-    font-size: var(--text-24);
-    text-align: start;
-    white-space: normal;
-    text-decoration: underline;
-    text-decoration-color: var(--border-medium);
-    text-decoration-thickness: 1px;
-    text-underline-offset: 0.2em;
+  .redraw {
+    justify-self: start;
+    margin-block-start: calc(var(--spacing-16) * -1);
   }
 
   .try {
